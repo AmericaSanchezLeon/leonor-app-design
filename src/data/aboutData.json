@@ -1,0 +1,47 @@
+{
+    "Link1": [
+    {
+      "template": "Template1",
+      "title_es": "Sobre el proyecto",
+      "title_en": "About the project",
+      "descripcion_es": "Esta aplicación web es resultado de la investigación interdisciplinaria resultante del proyecto Alquimia, tecnología y vida cotidiana: museografía interactiva para la Casa Estudio Leonora Carrington de la Maestría en Diseño, Información y Comunicación de la Universidad Autónoma Metropolitana Unidad Cuajimalpa",
+      "descripcion_en": "This is the english description",
+      "imagen": "",
+      "link": ""
+    }
+  ],
+  "Link2": [
+    {
+      "title_es": "Sobre el proyecto",
+      "title_en": "About the project",
+      "descripcion_es": "Esta aplicación web es resultado de la investigación interdisciplinaria resultante del proyecto Alquimia, tecnología y vida cotidiana: museografía interactiva para la Casa Estudio Leonora Carrington de la Maestría en Diseño, Información y Comunicación de la Universidad Autónoma Metropolitana Unidad Cuajimalpa",
+      "descripcion_en": "This is the english description",
+      "autoras": [
+        {
+          "autora": "Itzel Alejandra Jiménez Loranca",
+          "descripcion": "",
+          "imagen": "",
+          "correo": "",
+          "linkedin": "",
+          "github": ""
+        },
+        {
+          "autora": "América Fabiola Sánchez León",
+          "descripcion": "",
+          "imagen1": "",
+          "correo1": "",
+          "linkedin1": "",
+          "github1": ""
+        },
+        {
+          "autora": "Ollintzin Mary Carmen Rosas Juarez",
+          "descripcion": "",
+          "imagen1": "",
+          "correo1": "",
+          "linkedin1": "",
+          "github1": ""
+        }
+      ]
+    }
+  ]
+}
