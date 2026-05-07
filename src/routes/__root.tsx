@@ -9,6 +9,8 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { LeonorProvider } from "@/lib/leonor-context";
+import { AppShell } from "@/components/AppShell";
 
 function NotFoundComponent() {
   return (
@@ -111,7 +113,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <LeonorProvider>
+        <AppShell>
+          <Outlet />
+        </AppShell>
+      </LeonorProvider>
     </QueryClientProvider>
   );
 }
