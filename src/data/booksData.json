@@ -1,0 +1,74 @@
+[
+    {
+      "nombre": "Tibetan book of the dead",
+      "nombre_es": "El libro tibetano de los muertos",
+      "autor": "Padmasambhava",
+      "tema": "Envejecimiento y muerte",
+      "reseña": "Basado en la sabiduría del budismo tibetano...",
+      "dato": "Originalmente, está escrito en dialecto de Lhasa. Su primera traducción al inglés se realizó en 1927.",
+      "imagen": "LibroTibetano_1.jpg"
+    },
+    {
+      "nombre": "The Oxford Book of English Ghost Stories",
+      "nombre_es": "El libro de Oxford de relatos ingleses de fantasmas",
+      "autor": "Michael Cox",
+      "tema": "Fantasmas",
+      "reseña": "Incluye historias de fantasmas desde el siglo XIX hasta la década de 1960...",
+      "dato": "",
+      "imagen": "LibroOxford_2.jpg"
+    },
+    {
+      "nombre": "The Gnostic Scriptures",
+      "nombre_es": "The Gnostic Scriptures",
+      "autor": "Bentley Layton",
+      "tema": "Espiritualidad",
+      "reseña": "Presenta una introducción a la literatura del cristianismo gnóstico...",
+      "dato": "Este libro solo se encuentra en inglés y en portugués.",
+      "imagen": "LibroGnostico_3.jpg"
+    },
+    {
+      "nombre": "Gothic Painting",
+      "nombre_es": "Gothic Painting",
+      "autor": "Jacques Dupont- Cesare Gnudi",
+      "tema": "Arte",
+      "reseña": "Parte de la colección de Los grandes siglos de la pintura...",
+      "dato": "El idioma original de esta obra es el francés.",
+      "imagen": "LibroGotico_4.jpg"
+    },
+    {
+      "nombre": "The Goddesses and Gods of Old Europe",
+      "nombre_es": "Las diosas y los dioses de la vieja Europa",
+      "autor": "Marija Gimbutas",
+      "tema": "Mitología y cuentos",
+      "reseña": "Se presentan fuentes arqueológicas sobre la cultura de la vieja Europa...",
+      "dato": "",
+      "imagen": "LibroGimbutas_5.jpg"
+    },
+    {
+      "nombre": "The Fountain of Age",
+      "nombre_es": "La fuente de la edad",
+      "autor": "Betty Friedan",
+      "tema": "Envejecimiento y muerte",
+      "reseña": "Presenta un estudio sobre cómo las personas enfrentan el envejecimiento...",
+      "dato": "Betty Friedan y Leonora Carrington se conocieron en persona.",
+      "imagen": "LibroFuente_6.jpg"
+    },
+    {
+      "nombre": "Folktales of Hungary",
+      "nombre_es": "Folktales of Hungary",
+      "autor": "Linda Dégh",
+      "tema": "Mitología y cuentos",
+      "reseña": "Una colección de cuentos de hadas del folclor húngaro...",
+      "dato": "",
+      "imagen": "LibroHungria_7.jpg"
+    },
+    {
+      "nombre": "Magister Ludi: The Glass Bead Game",
+      "nombre_es": "El juego de los abalorios",
+      "autor": "Herman Hesse",
+      "tema": "Novelas",
+      "reseña": "Narra la historia de Joseph Knecht...",
+      "dato": "Las lecturas de Leonora Carrington también abarcaban numerosas obras de ciencia ficción.",
+      "imagen": "LibroMagister_8.jpg"
+    }
+  ]

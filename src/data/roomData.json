@@ -1,0 +1,81 @@
+[
+  {
+    "es-id": "Cocina",
+    "en-id": "Kitchen",
+    "icon": "Coffee",
+    "color": "cocina",
+    "id": "cocina",
+    "mascot": "mascotas_monseur",
+    "link1": {
+      "template": "template1",
+      "title_es": "Recetas",
+      "title_en": "Recipes"
+    },
+    "link2": {
+      "template": "template2",
+      "title_es": "Secretos",
+      "title_en": "Secrets"
+    }
+  },
+  {
+    "es-id": "Comedor",
+    "en-id": "Dinning room",
+    "icon": "TableRestaurantOutlined",
+    "color": "comedor",
+    "id": "comedor",
+    "mascot": "mascotas_ramona",
+    "link1": {
+      "template": "template3",
+      "title_es": "Nuestros Amigos",
+      "title_en": "Our Friends"
+    },
+    "link2": {
+      "template": "template4",
+      "title_es": "Rutas Gastronómicas",
+      "title_en": "Gastronomic Routes"
+    }
+  },
+  {
+    "es-id": "Lobby",
+    "en-id": "Home",
+    "icon": "HomeOutlined",
+    "color": "home",
+    "id": "home",
+    "mascot": "mascotas_yeti"
+  },
+  {
+    "es-id": "Biblioteca",
+    "en-id": "Library",
+    "icon": "BookOutlined",
+    "color": "biblioteca",
+    "id": "biblioteca",
+    "mascot": "mascotas_minotaura",
+    "link1": {
+      "template": "template5",
+      "title_es": "Estante de libros",
+      "title_en": "Bookshelf"
+    },
+    "link2": {
+      "template": "template6",
+      "title_es": "Tesoros",
+      "title_en": "Treasures"
+    }
+  },
+  {
+    "es-id": "Sobre el proyecto",
+    "en-id": "About",
+    "icon": "InfoOutlined",
+    "color": "about",
+    "id": "about",
+    "link1": {
+      "template": "template1",
+      "title_es": "Sobre el proyecto",
+      "title_en": "About the project"
+    },
+    "link2": {
+      "template": "template1",
+      "title_es": "Las Autoras",
+      "title_en": "The Authors"
+    }
+  }
+]

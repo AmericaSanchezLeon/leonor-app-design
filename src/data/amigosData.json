@@ -1,0 +1,135 @@
+[
+    {
+      "amigo": "Alan Glass",
+      "es": "A través del dibujo y el arte objeto, Alan expresa su fascinación por lo maravilloso. Motivado por su arte dejó Canadá para residir con los surrealistas en Francia. Un día quedó encantado con una calaverita de azúcar y decidió vivir en México. Conoció a Leonora y se hicieron grandes amigos, compartiendo viajes y coincidencias mágicas. Vivía cerca de ella y cada sábado, llegaba con un postre para tomar el té.",
+      "en": "Through drawing and found object, Alan expresses his fascination with the wonderful. Motivated by his art, he left Canada to reside with the Surrealists in France. One day he was delighted with a sugar skull and decided to live in Mexico. He met Leonora and they became great friends, sharing trips and magical coincidences. He lived near her and every Saturday, he would come with a dessert for tea.",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-alan-glass.jpg"
+    },
+    {
+      "amigo": "Yolanda Gudiño Alvarado",
+      "es": "La señora Yolanda asistió a Leonora en la vida diaria en sus últimos años...",
+      "en": "Mrs. Yolanda assisted Leonora in daily life in her later years...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-yolanda-gudino-alvarado.jpg"
+    },
+    {
+      "amigo": "Joanna Moorhead",
+      "es": "Cuando esta periodista inglesa supo que Leonora era la prima rebelde...",
+      "en": "When this English journalist learned that Leonora was the rebellious cousin...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-joanna-moorhead.jpg"
+    },
+    {
+      "amigo": "Gloria Orenstein",
+      "es": "Gloria es pionera en la investigación de las mujeres artistas...",
+      "en": "Gloria is a pioneer in the research of women artists...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-gloria-orenstein.jpg"
+    },
+    {
+      "amigo": "Remedios Varo",
+      "es": "Al llegar a México, el encuentro de Leonora con la artista Remedios...",
+      "en": "Upon arriving in Mexico, Leonora's encounter with the artist Remedios...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-remedios-varo.jpg"
+    },
+    {
+      "amigo": "Kati Horna",
+      "es": "Kati fotografiaba relatos: periodísticos, de artistas...",
+      "en": "Kati photographed stories: journalistic, of artists...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-kati-horna.jpg"
+    },
+    {
+      "amigo": "Benjamin Péret",
+      "es": "Aunque fue activista político, el surrealismo lo inspiró...",
+      "en": "Although he was a political activist, he was inspired by surrealism...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-benjamin-peret.jpg"
+    },
+    {
+      "amigo": "Imre Emerico \"Chiki\" Weisz",
+      "es": "Escapando del odio contra los judíos...",
+      "en": "Escaping hatred against Jews...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-chiki-weisz.jpg"
+    },
+    {
+      "amigo": "Gerardo Lizárraga",
+      "es": "Su talento como pintor y dibujante brilló...",
+      "en": "His talent as a painter and draftsman shone...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-gerardo-lizarraga.jpg"
+    },
+    {
+      "amigo": "José Horna",
+      "es": "Atravesó la Guerra Civil Española...",
+      "en": "He went through the Spanish Civil War...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-jose-horna.jpg"
+    },
+    {
+      "amigo": "Inés Amor",
+      "es": "Abrió la Galería de Arte Mexicano...",
+      "en": "She opened the Mexican Art Gallery...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-ines-amor.jpg"
+    },
+    {
+      "amigo": "Edward James",
+      "es": "La personalidad y el universo de Leonora convencieron...",
+      "en": "Leonora's personality and universe convinced...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-edward-james.jpg"
+    },
+    {
+      "amigo": "Betty Friedan",
+      "es": "Esta pensadora y escritora feminista creó la Organización Nacional...",
+      "en": "This feminist thinker and writer created the National Organization...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-betty-friedan.jpg"
+    },
+    {
+      "amigo": "Alice Rahon",
+      "es": "Los accidentes la siguieron toda su vida...",
+      "en": "Accidents followed her all her life...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-alice-rahon.jpg"
+    },
+    {
+      "amigo": "Ignacio Bernal",
+      "es": "En exploraciones de sitios arqueológicos dirigidas...",
+      "en": "In explorations of archaeological sites...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-ignacio-bernal.jpg"
+    },
+    {
+      "amigo": "Carlos Fuentes",
+      "es": "Vivió sus primeros años en diferentes países...",
+      "en": "He lived his early years in different countries...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-carlos-fuentes.jpg"
+    },
+    {
+      "amigo": "Susan L. Aberth",
+      "es": "Esta historiadora de arte ha redescubierto...",
+      "en": "This art historian has rediscovered...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-susan-aberth.jpg"
+    },
+    {
+      "amigo": "Wolfgang Paalen",
+      "es": "Recorrió Europa explorando diferentes vanguardias...",
+      "en": "He toured Europe exploring different avant-gardes...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-wolfgang-paalen.jpg"
+    },
+    {
+      "amigo": "André Breton",
+      "es": "Poeta y ensayista, definió una época...",
+      "en": "Poet and essayist, he defined an era...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-andre-breton.jpg"
+    },
+    {
+      "amigo": "Gunther Gerzso",
+      "es": "El talento que desarrolló en Europa...",
+      "en": "The talent that he developed in Europe...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-gunther-gerzso.jpg"
+    },
+    {
+      "amigo": "Isaac Masri",
+      "es": "Cuando los años pesaron sobre el ánimo...",
+      "en": "As the years weighed on the artist...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-isaac-masri.jpg"
+    },
+    {
+      "amigo": "Gibrán Bazán",
+      "es": "En una tienda de la colonia Roma...",
+      "en": "In a store in the Roma neighborhood...",
+      "imagen": "src/assets/img/comedor-imagenes/amigos-gibran-bazan.jpg"
+    }
+  ]
+  
