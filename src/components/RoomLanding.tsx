@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useLeonor, t, type Lang } from "@/lib/leonor-context";
+import { RoomDialogueCard } from "@/components/RoomDialogueCard";
 import type { ReactNode } from "react";
 
 interface RoomLink {
@@ -14,7 +15,7 @@ export function RoomLanding({
   title_en,
   intro_es,
   intro_en,
-  mascotQuote,
+  sectionId,
   links,
   icon,
 }: {
@@ -23,14 +24,17 @@ export function RoomLanding({
   title_en: string;
   intro_es?: string;
   intro_en?: string;
-  mascotQuote?: { es: string; en: string };
+  sectionId?: string;
   links: RoomLink[];
   icon?: ReactNode;
 }) {
   const { language } = useLeonor();
   const lang: Lang = language;
   return (
-    <div className="min-h-[calc(100vh-104px)]" style={{ backgroundColor: color }}>
+    <div
+      className="relative min-h-[calc(100vh-104px)] pb-48"
+      style={{ backgroundColor: color }}
+    >
       <div className="px-6 py-10 text-center" style={{ color: "var(--leonor-cream)" }}>
         {icon && <div className="mb-4 flex justify-center opacity-90">{icon}</div>}
         <h1 className="font-serif text-4xl leading-tight">
@@ -42,14 +46,6 @@ export function RoomLanding({
           </p>
         )}
       </div>
-
-      {mascotQuote && (
-        <div className="mx-6 mb-6 rounded-2xl border border-white/30 bg-white/10 p-4 backdrop-blur-sm" style={{ color: "var(--leonor-cream)" }}>
-          <p className="font-serif text-sm italic leading-relaxed">
-            “{t(mascotQuote.es, mascotQuote.en, lang)}”
-          </p>
-        </div>
-      )}
 
       <div className="space-y-3 px-6 pb-10">
         {links.map((l) => (
@@ -64,6 +60,12 @@ export function RoomLanding({
           </Link>
         ))}
       </div>
+
+      {sectionId && (
+        <div className="absolute inset-x-0 bottom-0 px-4 pb-4">
+          <RoomDialogueCard sectionId={sectionId} color={color} />
+        </div>
+      )}
     </div>
   );
 }
