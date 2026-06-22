@@ -1,89 +1,94 @@
+# Plan: íconos Lucide + fondo gradiente dinámico por sección
 
-## Resumen
+## 1. Util de gradiente — `src/lib/section-gradient.ts`
 
-Voy a reconstruir **Leonor App** como una aplicación web móvil (estilo PWA) sobre el stack actual del proyecto (TanStack Start + React + Tailwind v4), portando:
-
-- **UI / diseño** desde el repo `Leonorappfigma` (basado en Vite + react-router + componentes shadcn).
-- **Datos de contenido** (JSON: libros, recetas, amigos, mascotas, rutas, about, rooms) desde `leonorapp2.0`.
-
-El repo de Figma ya tiene React + Tailwind, así que principalmente es **adaptar su routing y componentes a TanStack Router** y conectar las páginas a los datos JSON del segundo repo.
-
-## Estructura de la app (5 secciones principales)
-
-Header con título "Leonorapp" + botón de configuración (idioma ES/EN, tema claro/oscuro). Bottom nav con 5 secciones:
-
-```text
-Cocina   Comedor   Home   Biblioteca   About
-(verde)  (rojo)    (ámbar) (azul)      (vino)
+```ts
+export function generateSectionGradient(baseHex: string): string
 ```
 
-## Rutas a crear (TanStack file-based)
+- Convierte el hex base a HSL.
+- Genera 2-3 stops aleatorios en cada llamada:
+  - Hue: ±15° desde base
+  - Luminosidad: ±15% sobre base (clamp 15-75%)
+  - Saturación: pequeña variación ±10%
+- Ángulo aleatorio (0-360°).
+- Devuelve un string `linear-gradient(<deg>, hsl(...) 0%, hsl(...) 50%, hsl(...) 100%)`.
+- Resuelve el color base leyendo la CSS custom property si recibe un nombre tipo `--cocina` (vía `getComputedStyle(document.documentElement)`), con fallback al hex.
+- Se ejecuta en el cliente (en `useEffect`) para que respete el tema claro/oscuro vigente.
 
-```text
-src/routes/
-  __root.tsx                              -> shell (header + bottom nav + settings)
-  index.tsx                               -> Home
-  cocina/index.tsx                        -> Cocina
-  cocina/ra-instrucciones.tsx
-  cocina/recetario.tsx                    -> grid recetas (recetas.json)
-  cocina/recetario-libro.tsx
-  cocina/receta.$recetaId.tsx
-  comedor/index.tsx
-  comedor/mapas.tsx                       -> rutasData.json
-  comedor/amigos.tsx                      -> amigosData.json
-  comedor/amigos.$amigoId.tsx
-  biblioteca/index.tsx
-  biblioteca/estante.tsx                  -> booksData.json
-  biblioteca/libro.$libroId.tsx
-  biblioteca/ra-instrucciones.tsx
-  about/index.tsx
-  about/autoras.tsx
-  about/proyecto.tsx                      -> aboutData.json
+## 2. Hook `useSectionBackground` — `src/lib/use-section-background.ts`
+
+- Lee `useRouterState({ select: s => s.location.pathname })`.
+- Tabla `pathname[0]` → token de sección:
+  - `/` → `--leonor-amber`
+  - `/cocina/*` → `--cocina`
+  - `/comedor/*` → `--comedor`
+  - `/biblioteca/*` → `--biblioteca`
+  - `/about/*` → `--about`
+- Recalcula gradiente con `useMemo` dependiendo de `pathname` + `theme` (del contexto Leonor) → al navegar o cambiar tema, regenera.
+- Devuelve `{ gradient: string, sectionToken: string }`.
+
+## 3. AppShell — fondo dinámico
+
+En `src/components/AppShell.tsx`:
+- Llamar `useSectionBackground()`.
+- Cambiar el wrapper exterior actual (`backgroundColor: var(--leonor-amber)`) por `backgroundImage: gradient` aplicado al contenedor raíz que cubre toda la vista (mantener el `max-w-[500px]` interno con `bg-background` o transparente para que el gradiente se vea por detrás del card central — y además pintar el `<main>` interno con el mismo gradiente para que las subrutas lo hereden).
+- El header conserva su tinte ámbar; bottom nav sin cambios.
+
+## 4. Mapas de íconos Lucide
+
+`src/lib/leonor-icons.ts`:
+
+```ts
+import { ChefHat, UtensilsCrossed, Home, BookOpen, Info,
+         Soup, Users, BookMarked } from "lucide-react";
+
+export const sectionIcon = {
+  cocina: ChefHat,
+  comedor: UtensilsCrossed,
+  home: Home,
+  biblioteca: BookOpen,
+  about: Info,
+} as const;
+
+export const itemIcon = {
+  receta: Soup,
+  libro: BookMarked,
+  amigo: Users,
+} as const;
 ```
 
-## Pasos
+## 5. Bottom nav con íconos
 
-1. **Dependencias** — añadir `lucide-react` (íconos) si no está. No se añade `vite-plugin-pwa` (ver notas técnicas abajo).
-2. **Datos** — copiar los 7 JSON del repo `leonorapp2.0` a `src/data/`:
-   - `aboutData.json`, `amigosData.json`, `booksData.json`, `mascotData.json`, `recetas.json`, `roomData.json`, `rutasData.json`.
-3. **Imágenes** — descargar y copiar a `src/assets/`:
-   - Imágenes de `Leonorappfigma/src/assets/` (fondos de habitaciones, ilustraciones).
-   - Imágenes de libros desde `leonorapp2.0/src/assets/img/biblioteca-libros/` para conectarlas con `booksData.json`.
-   - (Las imágenes muy grandes >2MB se omiten o sustituyen para no inflar el bundle).
-4. **Estilos / tema** — actualizar `src/styles.css` con:
-   - Paleta de colores Leonor: `#b56503` (ámbar), `#035f4f` (verde cocina), `#c42718` (rojo comedor), `#03667c` (azul biblioteca), `#a61b37` (vino about), fondo `#faf9f7`.
-   - Fuentes Google: `DM Serif Text`, `DM Serif Display`, `DM Sans` vía `<link>` en `__root.tsx`.
-5. **Layout raíz** (`__root.tsx`) — portar `Root.tsx` del repo Figma:
-   - Header fijo con título y botón Settings.
-   - Sidebar de Settings con toggles de idioma (ES/EN) y tema (light/dark) — estado global vía context.
-   - Bottom nav con las 5 secciones, color activo dinámico.
-   - Contenedor centrado (max-width ~500px) estilo móvil.
-6. **Páginas** — portar cada página del repo Figma reemplazando `react-router` por `@tanstack/react-router` y conectando a los JSON correspondientes:
-   - Biblioteca/estante → mapea `booksData.json` a una vista de estantería.
-   - Biblioteca/libro/:id → detalle de libro.
-   - Cocina/recetario → grid desde `recetas.json`.
-   - Comedor/amigos → tarjetas desde `amigosData.json`.
-   - Comedor/mapas → desde `rutasData.json`.
-   - About/proyecto → contenido desde `aboutData.json`.
-   - Páginas con instrucciones de Realidad Aumentada (RA) se portan como pantallas estáticas explicativas (sin RA real).
-7. **i18n básico** — context `language` ya manejado en el shell; los textos de las páginas se mantienen en español (que es lo que viene en los JSON). Toggle a inglés queda preparado pero solo afecta etiquetas del shell por ahora.
-8. **Metadata** — cada ruta con su `head()` (title + description) específico.
-9. **Limpiar** placeholder en `src/routes/index.tsx`.
+En `AppShell.tsx`, render de cada nav item:
+- Icono arriba (`sectionIcon[id]`, `size={18}`, `currentColor`)
+- Label debajo (`text-[10px]`)
+- Layout `flex-col items-center justify-center gap-0.5`
 
-## Notas técnicas
+## 6. Listas con íconos por tipo
 
-- **Stack actual**: TanStack Start v1 + React 19 + Tailwind v4 + Vite 7. El repo Figma usa react-router DOM, así que se adapta el routing (no se instala react-router).
-- **PWA**: el repo original incluye `vite-plugin-pwa` y `manifest.json`. Por las restricciones de Lovable (service workers rompen el preview en iframe), **no** voy a registrar service worker. Si quieres instalabilidad real (Add to Home Screen) puedo añadir solo el `manifest.json` + íconos sin SW. Lo dejo fuera por defecto y lo añadimos al final si publicas.
-- **Imágenes pesadas**: el repo de libros tiene fotos de 1–2 MB cada una. Las copio tal cual pero conviene optimizarlas más adelante.
-- **Sin backend**: todos los datos son JSON estáticos importados, sin Lovable Cloud por ahora. Si después quieres editar contenido desde un panel admin, podemos migrar a Cloud.
-- **Sin Realidad Aumentada**: las pantallas "RA" se portan como mockups; implementar AR real (WebXR / 8thWall) es un proyecto aparte.
+- `src/routes/cocina/recetario.tsx`: añadir `<Soup>` pequeño en la esquina del card o junto al nombre.
+- `src/routes/biblioteca/estante.tsx`: `<BookMarked>` junto al título del libro.
+- `src/routes/comedor/amigos.index.tsx`: `<Users>` (o ícono de persona) en el contenedor izquierdo además del avatar, o como fallback. Aplicaremos como decoración junto al nombre, heredando `currentColor` del color de sección.
 
-## Lo que NO incluye este plan
+## 7. RoomLanding (opcional, coherencia)
 
-- Service worker / offline real (ver nota PWA).
-- Funcionalidad de Realidad Aumentada activa.
-- Traducción completa al inglés del contenido.
-- Optimización agresiva de imágenes.
-- Panel de administración para editar contenido.
+Aceptar `icon` ya existe; los `index.tsx` de cada sección ya pueden pasar `sectionIcon[id]` renderizado. No cambia el contrato — sólo asegurar que los landings pasan el ícono Lucide correcto.
 
-¿Confirmas que avance con esto, o quieres ajustar algo antes (por ejemplo: omitir alguna sección, incluir el manifest PWA desde el inicio, o priorizar solo Biblioteca y Cocina primero)?
+## Detalles técnicos
+
+- Sin clases Tailwind para colores dinámicos: todo vía `style={{ backgroundImage }}`.
+- Gradiente recalculado con `Math.random()` en cada montaje del hook → cumple "cada carga/navegación".
+- Compatibilidad dark: `getComputedStyle` lee la variable después de aplicada la clase `.dark`, así que el gradiente respeta el tema vigente.
+- Sin nuevas dependencias (lucide-react ya está instalado).
+
+## Archivos tocados
+
+- nuevo: `src/lib/section-gradient.ts`
+- nuevo: `src/lib/use-section-background.ts`
+- nuevo: `src/lib/leonor-icons.ts`
+- editar: `src/components/AppShell.tsx`
+- editar: `src/routes/cocina/recetario.tsx`
+- editar: `src/routes/biblioteca/estante.tsx`
+- editar: `src/routes/comedor/amigos.index.tsx`
+- editar (opcional): `src/routes/{cocina,comedor,biblioteca,about}/index.tsx` para pasar `sectionIcon` a `RoomLanding`.

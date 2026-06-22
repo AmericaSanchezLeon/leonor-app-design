@@ -2,28 +2,40 @@ import { useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { X, Settings } from "lucide-react";
 import { useLeonor, t } from "@/lib/leonor-context";
+import { sectionIcon, type SectionId } from "@/lib/leonor-icons";
+import { useSectionBackground } from "@/lib/use-section-background";
 
 const navItems = [
-  { path: "/cocina", label_es: "Cocina", label_en: "Kitchen", color: "var(--cocina)" },
-  { path: "/comedor", label_es: "Comedor", label_en: "Dining", color: "var(--comedor)" },
-  { path: "/", label_es: "Home", label_en: "Home", color: "var(--leonor-amber)" },
-  { path: "/biblioteca", label_es: "Biblioteca", label_en: "Library", color: "var(--biblioteca)" },
-  { path: "/about", label_es: "About", label_en: "About", color: "var(--about)" },
+  { path: "/cocina", id: "cocina", label_es: "Cocina", label_en: "Kitchen", color: "var(--cocina)" },
+  { path: "/comedor", id: "comedor", label_es: "Comedor", label_en: "Dining", color: "var(--comedor)" },
+  { path: "/", id: "home", label_es: "Home", label_en: "Home", color: "var(--leonor-amber)" },
+  { path: "/biblioteca", id: "biblioteca", label_es: "Biblioteca", label_en: "Library", color: "var(--biblioteca)" },
+  { path: "/about", id: "about", label_es: "About", label_en: "About", color: "var(--about)" },
 ] as const;
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [showSettings, setShowSettings] = useState(false);
   const { language, setLanguage, theme, setTheme } = useLeonor();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { gradient } = useSectionBackground();
 
   const isActive = (p: string) =>
     p === "/" ? pathname === "/" : pathname === p || pathname.startsWith(p + "/");
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: "var(--leonor-amber)" }}>
-      <div className="relative mx-auto min-h-screen w-full max-w-[500px] bg-background shadow-2xl">
+    <div
+      className="relative min-h-screen w-full overflow-x-hidden transition-[background-image] duration-700"
+      style={{ backgroundImage: gradient }}
+    >
+      <div
+        className="relative mx-auto min-h-screen w-full max-w-[500px] shadow-2xl"
+        style={{ backgroundImage: gradient }}
+      >
         {/* Header */}
-        <header className="fixed top-0 left-1/2 z-30 flex h-12 w-full max-w-[500px] -translate-x-1/2 items-center justify-between px-5 backdrop-blur-md" style={{ backgroundColor: "color-mix(in oklab, var(--leonor-amber) 92%, transparent)" }}>
+        <header
+          className="fixed top-0 left-1/2 z-30 flex h-12 w-full max-w-[500px] -translate-x-1/2 items-center justify-between px-5 backdrop-blur-md"
+          style={{ backgroundColor: "color-mix(in oklab, var(--leonor-amber) 92%, transparent)" }}
+        >
           <Link to="/" className="font-serif text-xl tracking-wide" style={{ color: "var(--leonor-cream)" }}>
             Leonorapp
           </Link>
@@ -38,24 +50,29 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Page content */}
-        <main className="min-h-screen pt-12 pb-14">{children}</main>
+        <main className="min-h-screen pt-12 pb-16">{children}</main>
 
         {/* Bottom nav */}
-        <nav className="fixed bottom-0 left-1/2 z-30 flex h-14 w-full max-w-[500px] -translate-x-1/2 items-stretch shadow-[0_-4px_20px_rgba(0,0,0,0.08)]" style={{ backgroundColor: "var(--leonor-cream)" }}>
+        <nav
+          className="fixed bottom-0 left-1/2 z-30 flex h-16 w-full max-w-[500px] -translate-x-1/2 items-stretch shadow-[0_-4px_20px_rgba(0,0,0,0.08)]"
+          style={{ backgroundColor: "var(--leonor-cream)" }}
+        >
           {navItems.map((item) => {
             const active = isActive(item.path);
+            const Icon = sectionIcon[item.id as SectionId];
             return (
               <Link
                 key={item.path}
                 to={item.path}
-                className="flex flex-1 items-center justify-center text-xs transition-all duration-200"
+                className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px] transition-all duration-200"
                 style={{
                   backgroundColor: active ? item.color : "transparent",
                   color: active ? "var(--leonor-cream)" : "#2e2a2a",
                   fontWeight: active ? 600 : 400,
                 }}
               >
-                {t(item.label_es, item.label_en, language)}
+                <Icon size={18} strokeWidth={1.75} />
+                <span>{t(item.label_es, item.label_en, language)}</span>
               </Link>
             );
           })}
