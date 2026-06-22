@@ -21,7 +21,7 @@ export function useSectionBackground() {
   const [gradient, setGradient] = useState<string>(`linear-gradient(135deg, var(${sectionToken}), var(${sectionToken}))`);
 
   useEffect(() => {
-    setGradient(generateSectionGradient(sectionToken));
+    setGradient(generateSectionGradient(sectionToken, theme === "dark"));
   }, [sectionToken, theme, pathname]);
 
   return { gradient, sectionToken };

@@ -1,6 +1,7 @@
-// Generates a randomized linear-gradient string based on a section's CSS color token.
-// Reads the actual computed value (so it respects light/dark theme), converts to HSL,
-// and produces 2-3 stops with random hue/lightness/saturation perturbations.
+// Generates a randomized linear-gradient string derived ONLY from a section's
+// base color token. Variations are constrained so the gradient stays within
+// that section's palette (hue ±15°, saturation ±10%, lightness ±15-20%).
+// Dark mode shifts the lightness range down to preserve contrast.
 
 function hexToHsl(hex: string): [number, number, number] {
   const m = hex.replace("#", "").trim();
@@ -26,16 +27,10 @@ function hexToHsl(hex: string): [number, number, number] {
   return [h, s * 100, l * 100];
 }
 
-function clamp(v: number, lo: number, hi: number) {
-  return Math.max(lo, Math.min(hi, v));
-}
-
-function rand(min: number, max: number) {
-  return Math.random() * (max - min) + min;
-}
+const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
+const rand = (min: number, max: number) => Math.random() * (max - min) + min;
 
 function resolveColor(token: string): string {
-  // token can be "--cocina" (CSS var name), "var(--cocina)", or a literal hex.
   if (typeof window === "undefined") return token.startsWith("#") ? token : "#b56503";
   let varName = token;
   const varMatch = token.match(/var\((--[\w-]+)\)/);
@@ -47,23 +42,28 @@ function resolveColor(token: string): string {
   return token.startsWith("#") ? token : "#b56503";
 }
 
-export function generateSectionGradient(token: string): string {
-  const base = resolveColor(token);
-  // If we couldn't resolve to hex, fallback flat color
+export function generateSectionGradient(baseColorVar: string, isDark = false): string {
+  const base = resolveColor(baseColorVar);
   if (!base.startsWith("#")) {
     return `linear-gradient(135deg, ${base}, ${base})`;
   }
   const [h, s, l] = hexToHsl(base);
   const stops = Math.random() > 0.5 ? 3 : 2;
   const angle = Math.floor(rand(0, 360));
+
+  // Dark mode: keep lightness lower so foreground text remains legible.
+  const lMin = isDark ? 12 : 25;
+  const lMax = isDark ? 45 : 70;
+  const lJitter = isDark ? 15 : 18;
+
   const parts: string[] = [];
   for (let i = 0; i < stops; i++) {
     const dh = rand(-15, 15);
     const ds = rand(-10, 10);
-    const dl = rand(-15, 15);
+    const dl = rand(-lJitter, lJitter);
     const hh = (h + dh + 360) % 360;
     const ss = clamp(s + ds, 20, 95);
-    const ll = clamp(l + dl, 15, 75);
+    const ll = clamp(l + dl, lMin, lMax);
     const pos = Math.round((i / (stops - 1)) * 100);
     parts.push(`hsl(${hh.toFixed(1)} ${ss.toFixed(1)}% ${ll.toFixed(1)}%) ${pos}%`);
   }
