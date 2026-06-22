@@ -27,3 +27,12 @@ const BOOK_COVERS = [
 
 export const bookImg = (i: number) =>
   `${RAW_BASE}/src/assets/img/biblioteca-libros/${BOOK_COVERS[i % BOOK_COVERS.length]}`;
+
+// Mascot illustrations per section (verified against repo tree).
+export const mascotImg: Record<string, string> = {
+  lobby: `${RAW_BASE}/src/assets/img/mascotas/mascotas_yeti.svg`,
+  cocina: `${RAW_BASE}/src/assets/img/mascotas/mascotas_monseur.svg`,
+  comedor: `${RAW_BASE}/src/assets/img/mascotas/mascotas_ramona.svg`,
+  biblioteca: `${RAW_BASE}/src/assets/img/mascotas/mascotas_minotaura.svg`,
+  about: `${RAW_BASE}/src/assets/img/mascotas/mascotas_yeti.svg`,
+};
