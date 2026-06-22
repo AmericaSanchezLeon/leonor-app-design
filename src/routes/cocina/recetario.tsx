@@ -4,6 +4,8 @@ import { useLeonor } from "@/lib/leonor-context";
 import { recetaImg } from "@/lib/leonor-images";
 import { itemIcon } from "@/lib/leonor-icons";
 
+const RecetaIcon = itemIcon.receta;
+
 export const Route = createFileRoute("/cocina/recetario")({
   head: () => ({
     meta: [
