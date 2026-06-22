@@ -1,61 +1,110 @@
-# Card de diálogo anclado con mascota + paginación
+# AR Camera Filter — biblioteca + cocina
 
-Rediseñar el bloque de mascotQuote en `RoomLanding` como un card fijo al borde inferior del viewport de la room, con la ilustración del animal a la derecha y dots de paginación que avanzan solo por tap/swipe.
+Convertir las dos páginas `ra-instrucciones` (mockup actual) en una experiencia de cámara con overlays, swipe para cambiar, captura de foto y share/download. Biblioteca usa face tracking (MediaPipe); cocina usa un sticker fijo anclado al borde inferior (sin tracking).
 
-## Mapeo confirmado de mascotas
+## Assets
 
-Verificado contra el árbol del repo `AmericaSanchezLeon/leonorapp2.0` (`src/assets/img/mascotas/`):
+Las 7 imágenes subidas se copian al repo en `src/assets/ar/`:
 
-- `mascotas_yeti.svg` → `lobby` (home `/`)
-- `mascotas_monseur.svg` → `cocina` (nota: archivo es `monseur`, no `monsieur` ni `monsoeur`)
-- `mascotas_ramona.svg` → `comedor`
-- `mascotas_minotaura.svg` → `biblioteca`
-- `about` → no existe mascota propia; fallback a `yeti`
+```
+src/assets/ar/biblioteca/mascara0.png   (azul, manos)
+src/assets/ar/biblioteca/mascara1.png   (verde, ceja alta)
+src/assets/ar/biblioteca/mascara2.png   (rosa, triangular)
+src/assets/ar/biblioteca/mascara3.png   (naranja, cuernos)
+src/assets/ar/cocina/sticker1.png       (tetera — "A Leonora le encantaba el té")
+src/assets/ar/cocina/sticker2.png       (latas — "3 tazas de té negro")
+src/assets/ar/cocina/sticker3.png       (taza — "uno herbal")
+```
 
-## Pasos
+Se importan vía Vite (`import mask0 from "@/assets/ar/biblioteca/mascara0.png"`) y se agrupan en arrays `bibliotecaMasks` / `cocinaStickers` exportados desde `src/lib/ar-assets.ts`.
 
-1. **`src/lib/leonor-images.ts`** — añadir:
-   ```ts
-   export const mascotImg: Record<string, string> = {
-     lobby: `${RAW_BASE}/src/assets/img/mascotas/mascotas_yeti.svg`,
-     cocina: `${RAW_BASE}/src/assets/img/mascotas/mascotas_monseur.svg`,
-     comedor: `${RAW_BASE}/src/assets/img/mascotas/mascotas_ramona.svg`,
-     biblioteca: `${RAW_BASE}/src/assets/img/mascotas/mascotas_minotaura.svg`,
-     about: `${RAW_BASE}/src/assets/img/mascotas/mascotas_yeti.svg`,
-   };
-   ```
+## Arquitectura
 
-2. **`src/components/RoomDialogueCard.tsx`** (nuevo):
-   - Props: `sectionId: keyof typeof mascotImg`, `color: string`.
-   - Lee `mascotData[sectionId]` (array de `{es,en}`); soporta también claves no-array (errores) devolviendo `null` si no hay frases.
-   - `useState<number>(0)` para índice activo. Sin timers, sin autoplay.
-   - Avance: `onClick` del card (`(i+1) % n`) y swipe horizontal con `onPointerDown/Up` (delta X > 40 px → siguiente; < -40 → anterior).
-   - Layout interno: `flex flex-row items-end justify-between gap-3`, texto+dots a la izquierda (`flex-1`), `<img>` mascota a la derecha (`w-20 h-auto shrink-0`, `select-none`, `draggable={false}`, `alt=""`).
-   - Card: fondo `bg-[var(--leonor-cream)]/95 backdrop-blur-sm`, border-radius grande arriba, texto color `color`, sombra arriba.
-   - Subcomponente `Dots` inline: render `n` divs, activo `w-2 h-2 bg-current`, inactivo `w-2 h-2 border border-current opacity-40`, todos `rounded-full`.
+```
+src/
+  lib/
+    ar-assets.ts                 ← arrays { id, image, anchor? } por room
+    use-face-tracking.ts         ← hook MediaPipe Face Landmarker
+  components/
+    ar/
+      ARCamera.tsx               ← shell común: getUserMedia, video, canvas, swipe, captura, share, errores
+      FaceMaskOverlay.tsx        ← biblioteca: posiciona máscara según landmarks
+      SurfaceStickerOverlay.tsx  ← cocina: sticker anclado bottom-center, escala responsive
+  routes/
+    biblioteca/ra-instrucciones.tsx  ← <ARCamera mode="face" items={bibliotecaMasks} />
+    cocina/ra-instrucciones.tsx      ← <ARCamera mode="surface" items={cocinaStickers} />
+```
 
-3. **`src/components/RoomLanding.tsx`** — refactor de posicionamiento:
-   - Cambiar el wrapper raíz a `relative min-h-[calc(100vh-104px)] pb-48` (padding-bottom para que el contenido no quede oculto bajo el card).
-   - Eliminar el bloque actual de `mascotQuote` (las dos `div` con la cita).
-   - Cambiar firma: aceptar `sectionId: string` en vez de `mascotQuote`.
-   - Al final del wrapper, antes de cerrar, renderizar:
-     ```tsx
-     <div className="absolute inset-x-0 bottom-0 px-4 pb-4">
-       <RoomDialogueCard sectionId={sectionId} color={color} />
-     </div>
-     ```
+## Componentes
 
-4. **Routes que usan RoomLanding** — pasar `sectionId` en vez de `mascotQuote`:
-   - `src/routes/index.tsx` → `sectionId="lobby"`
-   - `src/routes/cocina/index.tsx` → `"cocina"`
-   - `src/routes/comedor/index.tsx` → `"comedor"`
-   - `src/routes/biblioteca/index.tsx` → `"biblioteca"`
-   - `src/routes/about/index.tsx` → `"about"`
+### `ARCamera` (shell)
+- Props: `mode: "face" | "surface"`, `items: ARItem[]`, `sectionColor: string`.
+- Estado: `currentIndex`, `facingMode` (`"user" | "environment"`), `permissionState` (`prompt | granted | denied | error`), `isCapturing`.
+- `useEffect`: abre `getUserMedia({ video: { facingMode } })`, asigna a `videoRef.current.srcObject`. Re-ejecuta al cambiar `facingMode`. Cleanup detiene tracks.
+- Swipe horizontal sobre el viewport: `onPointerDown/Move/Up`, threshold 50px, wrap-around con `(i + n) % n`. No interfiere con tap en botones.
+- Botones overlay (estilo room color):
+  - Flip cámara (`SwitchCamera` lucide)
+  - Capturar (`Circle` grande centrado abajo)
+  - Cerrar / volver (`X` arriba izq → `useNavigate`)
+  - Dots de paginación abajo (igual patrón que `RoomDialogueCard`)
+- Renderiza el overlay según `mode`: `<FaceMaskOverlay>` o `<SurfaceStickerOverlay>`, pasándole `videoRef`, `item`, `facingMode`.
+- Captura: crea canvas offscreen del tamaño del video, dibuja `videoEl` (con `scale(-1,1)` si front), luego dibuja el overlay actual con las mismas transforms que el render en vivo, exporta `toBlob("image/png")`. Abre modal post-captura con preview + botones Share / Download / Retomar.
+- Share: si `navigator.canShare?.({ files: [file] })` → `navigator.share`. Si no → link `download="leonor-ar-<timestamp>.png"`.
 
-## Detalles técnicos
+### `useFaceTracking(videoRef, enabled)`
+- Carga `FaceLandmarker` de `@mediapipe/tasks-vision` con WASM desde CDN (`https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@<version>/wasm`) y el modelo `face_landmarker.task` (también CDN). `runningMode: "VIDEO"`, `numFaces: 1`.
+- Loop con `requestAnimationFrame`: llama `detectForVideo(video, performance.now())`, guarda landmarks en una `useRef` (no state) para evitar re-render por frame; expone un `subscribe(cb)` que el overlay usa para repintar su propio canvas/transform.
+- `enabled=false` cuando `facingMode === "environment"` → pausa loop, libera nada (mantiene landmarker para resume rápido).
+- Devuelve `{ ready, error, subscribe }`.
 
-- El card es `absolute bottom-0` respecto al contenedor `relative` de RoomLanding (no `fixed`), así no tapa la bottom-nav global del AppShell.
-- Swipe: implementado con eventos `pointer*` (no se agregan deps). Threshold 40 px. `touch-action: pan-y` en el card para no bloquear scroll vertical.
-- Si `mascotData[sectionId]` no existe o no es array → no se renderiza el card (return `null`).
-- Imagen de mascota se carga desde GitHub raw vía `mascotImg[sectionId]`; el archivo `mascotas_monseur.svg` se confirma literalmente con esa ortografía.
-- El gradiente dinámico de sección sigue intacto detrás; el card lleva fondo crema semi-translúcido para legibilidad.
+### `FaceMaskOverlay`
+- Canvas absoluto sobre el video, mismo tamaño (resize observer).
+- Cada frame: lee landmarks vía `subscribe`. Si hay cara:
+  - `leftEye = lm[33]`, `rightEye = lm[263]`, `noseTip = lm[1]`, `chin = lm[152]`, `foreheadTop ≈ lm[10]`.
+  - Centro = midpoint ojos. Ancho = `distance(leftEye, rightEye) * k` (k≈2.6). Alto proporcional al aspect ratio nativo de la imagen.
+  - Rotación = `atan2(rightEye.y - leftEye.y, rightEye.x - leftEye.x)`.
+  - `ctx.translate(cx, cy); ctx.rotate(angle); ctx.drawImage(maskImg, -w/2, -h/2, w, h)`.
+- Si front camera: el canvas se transforma con `scaleX(-1)` (mismo flip que video) para que el mirror sea consistente.
+- Sin cara detectada: no dibuja (cara desaparece → mask desaparece).
+
+### `SurfaceStickerOverlay`
+- Solo CSS: `<img>` posicionado `absolute bottom-[8%] left-1/2 -translate-x-1/2`, `max-w-[60%] max-h-[45%] object-contain pointer-events-none select-none`.
+- Sin tracking, sin canvas. Para la captura: el `ARCamera` lo redibuja sobre el canvas con las mismas coordenadas calculadas a partir del tamaño del video.
+
+## Manejo de permisos / errores
+
+`permissionState` se setea en el `catch` de `getUserMedia`:
+- `NotAllowedError` → UI con icono `CameraOff`, mensaje "Necesitamos acceso a tu cámara" + botón "Reintentar" (re-llama getUserMedia).
+- `NotFoundError` / `OverconstrainedError` → "No encontramos cámara disponible".
+- Cualquier otro error → mensaje genérico + `Reintentar`.
+
+Toda la UI de error usa `sectionColor` como acento y respeta el theme actual.
+
+## Edits a rutas
+
+`src/routes/biblioteca/ra-instrucciones.tsx` y `src/routes/cocina/ra-instrucciones.tsx`: reemplazar el mockup actual (icono + texto "Próximamente") por:
+
+```tsx
+<ARCamera mode="face" items={bibliotecaMasks} sectionColor="var(--biblioteca)" />
+```
+
+Mantener el `Route = createFileRoute(...)` y el `head` actual (solo cambia `component`).
+
+## Dependencias
+
+`bun add @mediapipe/tasks-vision` (solo eso; no se agrega gesture lib — swipe con `pointer*` nativos).
+
+## Notas técnicas
+
+- MediaPipe WASM se carga desde CDN para evitar configurar `assetsInclude` o servir desde `/public`. Si en runtime falla por CORS/CSP, fallback: copiar wasm + .task a `public/mediapipe/` (no se hace por defecto).
+- Captura sobre canvas respeta `videoWidth/videoHeight` reales (no el tamaño CSS), para que la foto exportada sea de calidad nativa.
+- Loop de tracking corre fuera de React (rAF + refs); React solo re-renderiza al cambiar `currentIndex` / `facingMode` / `permissionState`.
+- Scope: `comedor` y `about` no se tocan. No se modifica routing ni layout global.
+- Si MediaPipe falla al cargar (offline, bloqueado): la cámara y el flip siguen funcionando, los overlays no aparecen, se muestra un toast suave "Tracking facial no disponible".
+
+## Out of scope
+
+- Posteo directo a redes (solo `navigator.share` + download).
+- Grabación de video.
+- Multiface.
+- Surface tracking real (cocina es overlay fijo, decidido).
