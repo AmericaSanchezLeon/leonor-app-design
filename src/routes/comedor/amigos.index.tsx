@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import amigos from "@/data/amigosData.json";
 import { amigoImg } from "@/lib/leonor-images";
+import { itemIcon } from "@/lib/leonor-icons";
 
 export const Route = createFileRoute("/comedor/amigos/")({
   head: () => ({ meta: [{ title: "Amigos — Leonorapp" }] }),
@@ -29,7 +30,10 @@ function AmigosPage() {
                 style={{ backgroundImage: `url(${amigoImg(a.imagen)})` }}
               />
               <div className="min-w-0">
-                <p className="font-serif text-lg leading-tight">{a.amigo}</p>
+                <div className="flex items-center gap-1.5" style={{ color: "var(--comedor)" }}>
+                  <itemIcon.amigo size={14} strokeWidth={1.75} className="flex-shrink-0" />
+                  <p className="font-serif text-lg leading-tight text-foreground">{a.amigo}</p>
+                </div>
                 <p className="line-clamp-2 text-xs text-muted-foreground">{a.es}</p>
               </div>
             </Link>

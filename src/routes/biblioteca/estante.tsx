@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import books from "@/data/booksData.json";
 import { useLeonor } from "@/lib/leonor-context";
 import { bookImg } from "@/lib/leonor-images";
+import { itemIcon } from "@/lib/leonor-icons";
 
 export const Route = createFileRoute("/biblioteca/estante")({
   head: () => ({ meta: [{ title: "Estante — Leonorapp" }] }),
@@ -31,9 +32,12 @@ function EstantePage() {
               style={{ backgroundImage: `url(${bookImg(i)})` }}
             />
             <div className="p-3">
-              <p className="font-serif text-sm leading-tight">
-                {language === "es" ? b.nombre_es : b.nombre}
-              </p>
+              <div className="flex items-start gap-2" style={{ color: "var(--biblioteca)" }}>
+                <itemIcon.libro size={14} strokeWidth={1.75} className="mt-0.5 flex-shrink-0" />
+                <p className="font-serif text-sm leading-tight text-foreground">
+                  {language === "es" ? b.nombre_es : b.nombre}
+                </p>
+              </div>
               <p className="mt-1 text-[10px] uppercase tracking-wide text-muted-foreground">
                 {b.autor}
               </p>

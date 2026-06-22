@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import recetas from "@/data/recetas.json";
 import { useLeonor } from "@/lib/leonor-context";
 import { recetaImg } from "@/lib/leonor-images";
+import { itemIcon } from "@/lib/leonor-icons";
 
 export const Route = createFileRoute("/cocina/recetario")({
   head: () => ({
@@ -33,7 +34,10 @@ function Recetario() {
               style={{ backgroundImage: `url(${recetaImg(r.imagen)})` }}
             />
             <div className="p-3">
-              <p className="font-serif text-sm leading-tight">{r.nombre}</p>
+              <div className="flex items-start gap-2" style={{ color: "var(--cocina)" }}>
+                <itemIcon.receta size={14} strokeWidth={1.75} className="mt-0.5 flex-shrink-0" />
+                <p className="font-serif text-sm leading-tight text-foreground">{r.nombre}</p>
+              </div>
             </div>
           </Link>
         ))}
