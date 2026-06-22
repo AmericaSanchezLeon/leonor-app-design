@@ -1,94 +1,61 @@
-# Plan: íconos Lucide + fondo gradiente dinámico por sección
+# Card de diálogo anclado con mascota + paginación
 
-## 1. Util de gradiente — `src/lib/section-gradient.ts`
+Rediseñar el bloque de mascotQuote en `RoomLanding` como un card fijo al borde inferior del viewport de la room, con la ilustración del animal a la derecha y dots de paginación que avanzan solo por tap/swipe.
 
-```ts
-export function generateSectionGradient(baseHex: string): string
-```
+## Mapeo confirmado de mascotas
 
-- Convierte el hex base a HSL.
-- Genera 2-3 stops aleatorios en cada llamada:
-  - Hue: ±15° desde base
-  - Luminosidad: ±15% sobre base (clamp 15-75%)
-  - Saturación: pequeña variación ±10%
-- Ángulo aleatorio (0-360°).
-- Devuelve un string `linear-gradient(<deg>, hsl(...) 0%, hsl(...) 50%, hsl(...) 100%)`.
-- Resuelve el color base leyendo la CSS custom property si recibe un nombre tipo `--cocina` (vía `getComputedStyle(document.documentElement)`), con fallback al hex.
-- Se ejecuta en el cliente (en `useEffect`) para que respete el tema claro/oscuro vigente.
+Verificado contra el árbol del repo `AmericaSanchezLeon/leonorapp2.0` (`src/assets/img/mascotas/`):
 
-## 2. Hook `useSectionBackground` — `src/lib/use-section-background.ts`
+- `mascotas_yeti.svg` → `lobby` (home `/`)
+- `mascotas_monseur.svg` → `cocina` (nota: archivo es `monseur`, no `monsieur` ni `monsoeur`)
+- `mascotas_ramona.svg` → `comedor`
+- `mascotas_minotaura.svg` → `biblioteca`
+- `about` → no existe mascota propia; fallback a `yeti`
 
-- Lee `useRouterState({ select: s => s.location.pathname })`.
-- Tabla `pathname[0]` → token de sección:
-  - `/` → `--leonor-amber`
-  - `/cocina/*` → `--cocina`
-  - `/comedor/*` → `--comedor`
-  - `/biblioteca/*` → `--biblioteca`
-  - `/about/*` → `--about`
-- Recalcula gradiente con `useMemo` dependiendo de `pathname` + `theme` (del contexto Leonor) → al navegar o cambiar tema, regenera.
-- Devuelve `{ gradient: string, sectionToken: string }`.
+## Pasos
 
-## 3. AppShell — fondo dinámico
+1. **`src/lib/leonor-images.ts`** — añadir:
+   ```ts
+   export const mascotImg: Record<string, string> = {
+     lobby: `${RAW_BASE}/src/assets/img/mascotas/mascotas_yeti.svg`,
+     cocina: `${RAW_BASE}/src/assets/img/mascotas/mascotas_monseur.svg`,
+     comedor: `${RAW_BASE}/src/assets/img/mascotas/mascotas_ramona.svg`,
+     biblioteca: `${RAW_BASE}/src/assets/img/mascotas/mascotas_minotaura.svg`,
+     about: `${RAW_BASE}/src/assets/img/mascotas/mascotas_yeti.svg`,
+   };
+   ```
 
-En `src/components/AppShell.tsx`:
-- Llamar `useSectionBackground()`.
-- Cambiar el wrapper exterior actual (`backgroundColor: var(--leonor-amber)`) por `backgroundImage: gradient` aplicado al contenedor raíz que cubre toda la vista (mantener el `max-w-[500px]` interno con `bg-background` o transparente para que el gradiente se vea por detrás del card central — y además pintar el `<main>` interno con el mismo gradiente para que las subrutas lo hereden).
-- El header conserva su tinte ámbar; bottom nav sin cambios.
+2. **`src/components/RoomDialogueCard.tsx`** (nuevo):
+   - Props: `sectionId: keyof typeof mascotImg`, `color: string`.
+   - Lee `mascotData[sectionId]` (array de `{es,en}`); soporta también claves no-array (errores) devolviendo `null` si no hay frases.
+   - `useState<number>(0)` para índice activo. Sin timers, sin autoplay.
+   - Avance: `onClick` del card (`(i+1) % n`) y swipe horizontal con `onPointerDown/Up` (delta X > 40 px → siguiente; < -40 → anterior).
+   - Layout interno: `flex flex-row items-end justify-between gap-3`, texto+dots a la izquierda (`flex-1`), `<img>` mascota a la derecha (`w-20 h-auto shrink-0`, `select-none`, `draggable={false}`, `alt=""`).
+   - Card: fondo `bg-[var(--leonor-cream)]/95 backdrop-blur-sm`, border-radius grande arriba, texto color `color`, sombra arriba.
+   - Subcomponente `Dots` inline: render `n` divs, activo `w-2 h-2 bg-current`, inactivo `w-2 h-2 border border-current opacity-40`, todos `rounded-full`.
 
-## 4. Mapas de íconos Lucide
+3. **`src/components/RoomLanding.tsx`** — refactor de posicionamiento:
+   - Cambiar el wrapper raíz a `relative min-h-[calc(100vh-104px)] pb-48` (padding-bottom para que el contenido no quede oculto bajo el card).
+   - Eliminar el bloque actual de `mascotQuote` (las dos `div` con la cita).
+   - Cambiar firma: aceptar `sectionId: string` en vez de `mascotQuote`.
+   - Al final del wrapper, antes de cerrar, renderizar:
+     ```tsx
+     <div className="absolute inset-x-0 bottom-0 px-4 pb-4">
+       <RoomDialogueCard sectionId={sectionId} color={color} />
+     </div>
+     ```
 
-`src/lib/leonor-icons.ts`:
-
-```ts
-import { ChefHat, UtensilsCrossed, Home, BookOpen, Info,
-         Soup, Users, BookMarked } from "lucide-react";
-
-export const sectionIcon = {
-  cocina: ChefHat,
-  comedor: UtensilsCrossed,
-  home: Home,
-  biblioteca: BookOpen,
-  about: Info,
-} as const;
-
-export const itemIcon = {
-  receta: Soup,
-  libro: BookMarked,
-  amigo: Users,
-} as const;
-```
-
-## 5. Bottom nav con íconos
-
-En `AppShell.tsx`, render de cada nav item:
-- Icono arriba (`sectionIcon[id]`, `size={18}`, `currentColor`)
-- Label debajo (`text-[10px]`)
-- Layout `flex-col items-center justify-center gap-0.5`
-
-## 6. Listas con íconos por tipo
-
-- `src/routes/cocina/recetario.tsx`: añadir `<Soup>` pequeño en la esquina del card o junto al nombre.
-- `src/routes/biblioteca/estante.tsx`: `<BookMarked>` junto al título del libro.
-- `src/routes/comedor/amigos.index.tsx`: `<Users>` (o ícono de persona) en el contenedor izquierdo además del avatar, o como fallback. Aplicaremos como decoración junto al nombre, heredando `currentColor` del color de sección.
-
-## 7. RoomLanding (opcional, coherencia)
-
-Aceptar `icon` ya existe; los `index.tsx` de cada sección ya pueden pasar `sectionIcon[id]` renderizado. No cambia el contrato — sólo asegurar que los landings pasan el ícono Lucide correcto.
+4. **Routes que usan RoomLanding** — pasar `sectionId` en vez de `mascotQuote`:
+   - `src/routes/index.tsx` → `sectionId="lobby"`
+   - `src/routes/cocina/index.tsx` → `"cocina"`
+   - `src/routes/comedor/index.tsx` → `"comedor"`
+   - `src/routes/biblioteca/index.tsx` → `"biblioteca"`
+   - `src/routes/about/index.tsx` → `"about"`
 
 ## Detalles técnicos
 
-- Sin clases Tailwind para colores dinámicos: todo vía `style={{ backgroundImage }}`.
-- Gradiente recalculado con `Math.random()` en cada montaje del hook → cumple "cada carga/navegación".
-- Compatibilidad dark: `getComputedStyle` lee la variable después de aplicada la clase `.dark`, así que el gradiente respeta el tema vigente.
-- Sin nuevas dependencias (lucide-react ya está instalado).
-
-## Archivos tocados
-
-- nuevo: `src/lib/section-gradient.ts`
-- nuevo: `src/lib/use-section-background.ts`
-- nuevo: `src/lib/leonor-icons.ts`
-- editar: `src/components/AppShell.tsx`
-- editar: `src/routes/cocina/recetario.tsx`
-- editar: `src/routes/biblioteca/estante.tsx`
-- editar: `src/routes/comedor/amigos.index.tsx`
-- editar (opcional): `src/routes/{cocina,comedor,biblioteca,about}/index.tsx` para pasar `sectionIcon` a `RoomLanding`.
+- El card es `absolute bottom-0` respecto al contenedor `relative` de RoomLanding (no `fixed`), así no tapa la bottom-nav global del AppShell.
+- Swipe: implementado con eventos `pointer*` (no se agregan deps). Threshold 40 px. `touch-action: pan-y` en el card para no bloquear scroll vertical.
+- Si `mascotData[sectionId]` no existe o no es array → no se renderiza el card (return `null`).
+- Imagen de mascota se carga desde GitHub raw vía `mascotImg[sectionId]`; el archivo `mascotas_monseur.svg` se confirma literalmente con esa ortografía.
+- El gradiente dinámico de sección sigue intacto detrás; el card lleva fondo crema semi-translúcido para legibilidad.
