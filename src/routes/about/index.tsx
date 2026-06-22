@@ -12,6 +12,7 @@ export const Route = createFileRoute("/about/")({
       intro_es="Conoce el proyecto y a las autoras detrás de esta museografía interactiva."
       intro_en="Learn about the project and the authors behind this interactive museography."
       icon={<Info className="h-10 w-10" strokeWidth={1.5} />}
+      sectionId="about"
       links={[
         { to: "/about/proyecto", title_es: "Sobre el proyecto", title_en: "About the project" },
         { to: "/about/autoras", title_es: "Las Autoras", title_en: "The Authors" },
