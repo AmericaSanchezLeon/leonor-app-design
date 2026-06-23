@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import amigos from "@/data/amigosData.json";
 import { amigoImg } from "@/lib/leonor-images";
 import { itemIcon } from "@/lib/leonor-icons";
+import { SectionPageLayout } from "@/components/SectionPageLayout";
 const AmigoIcon = itemIcon.amigo;
 
 export const Route = createFileRoute("/comedor/amigos/")({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/comedor/amigos/")({
 
 function AmigosPage() {
   return (
+    <SectionPageLayout sectionId="comedor">
     <div className="px-5 py-8">
       <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--comedor)" }}>
         Nuestros Amigos
@@ -42,5 +44,6 @@ function AmigosPage() {
         ))}
       </ul>
     </div>
+    </SectionPageLayout>
   );
 }

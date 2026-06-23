@@ -3,6 +3,7 @@ import books from "@/data/booksData.json";
 import { bookImg } from "@/lib/leonor-images";
 import { useLeonor } from "@/lib/leonor-context";
 import { ArrowLeft } from "lucide-react";
+import { SectionPageLayout } from "@/components/SectionPageLayout";
 
 export const Route = createFileRoute("/biblioteca/libro/$libroId")({
   component: LibroDetalle,
@@ -16,6 +17,7 @@ function LibroDetalle() {
   const b = books[i];
   if (!b) throw notFound();
   return (
+    <SectionPageLayout sectionId="biblioteca" bare>
     <div className="pb-10">
       <div className="px-5 pt-8">
         <Link to="/biblioteca/estante" className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
@@ -43,5 +45,6 @@ function LibroDetalle() {
         )}
       </div>
     </div>
+    </SectionPageLayout>
   );
 }
