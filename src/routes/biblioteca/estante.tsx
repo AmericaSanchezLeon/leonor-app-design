@@ -3,6 +3,7 @@ import books from "@/data/booksData.json";
 import { useLeonor } from "@/lib/leonor-context";
 import { bookImg } from "@/lib/leonor-images";
 import { itemIcon } from "@/lib/leonor-icons";
+import { SectionPageLayout } from "@/components/SectionPageLayout";
 const LibroIcon = itemIcon.libro;
 
 export const Route = createFileRoute("/biblioteca/estante")({
@@ -13,6 +14,7 @@ export const Route = createFileRoute("/biblioteca/estante")({
 function EstantePage() {
   const { language } = useLeonor();
   return (
+    <SectionPageLayout sectionId="biblioteca">
     <div className="px-5 py-8">
       <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--biblioteca)" }}>
         Estante de libros
@@ -47,5 +49,6 @@ function EstantePage() {
         ))}
       </div>
     </div>
+    </SectionPageLayout>
   );
 }
