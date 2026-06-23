@@ -1,94 +1,87 @@
 ## Alcance
 
-1. **Logo en header**: reemplazar el texto "Leonorapp" del `AppShell` por el SVG subido (`leonorapp-logo-horizontal.svg`).
-2. **Bottom nav**: sin cambios (Lucide se queda — no hay icono per-sección y se acepta así).
-3. **Activity tiles del `RoomLanding`**: cada tile muestra el ícono normal de `room-icons/`; cuando esa ruta está activa (o en hover) se intercambia por la variante `icono-hover-…` de `room-icons-svg/`.
-4. **Esquema de color invertido**: el fondo sólido de sección queda solo en `RoomLanding`. Todas las sub-vistas hijas pasan a fondo blanco con textura `room-bg/bg_<seccion>.svg` al 40 % y headers/títulos en `var(--<seccion>)`.
+1. Agregar campo `mapsUrl: ""` a cada punto de `src/data/rutasData.json` (16 puntos en 3 rutas: CDMX, San Luis Potosí, Chiapas). Placeholder vacío — el usuario los llena después.
+2. Nuevo componente `src/components/RouteTimeline.tsx` — timeline vertical ilustrado: paradas numeradas con pin, conectadas por línea punteada en `var(--comedor)`, cada parada tappable abre `mapsUrl` en nueva pestaña; si vacío, queda visualmente deshabilitada (opacity reducida, cursor default, sin handler).
+3. Reemplazar el render actual de `src/routes/comedor/mapas.tsx` por una sección por ruta, cada una con su título/descripción + un `<RouteTimeline puntos={r.puntos} />`.
 
-## Assets
+## Estructura JSON añadida
 
-**Logo (uploaded):** copiar `user-uploads://leonorapp-logo-horizontal.svg` a `src/assets/leonorapp-logo.svg` (SVG pequeño, va al repo, import directo Vite).
+Cada objeto en `puntos[]` recibe un campo nuevo manteniendo el orden existente:
 
-**Desde el repo `leonorapp2.0` vía `raw.githubusercontent.com`:**
-
-```
-src/assets/img/room-icons/             (8 PNG, 300 KB–1.5 MB c/u)
-src/assets/img/room-icons-svg/         (8 PNG con prefijo "icono-hover-")
-src/assets/img/room-bg/                (5 SVG ≤45 KB)
-```
-
-Los 16 PNG de `room-icons*` pesan ~12 MB en total → se suben como **Lovable Assets** (`lovable-assets create` por archivo → `.asset.json` pointer). Los 5 SVG de `room-bg` van al repo directo.
-
-## Mapeo ícono → activity tile
-
-```
-room      | tile           | icon key            | route
-----------|----------------|---------------------|----------------------------
-cocina    | Recetario      | cocina-libro        | /cocina/recetario
-cocina    | Realidad Aum.  | cocina-tetera       | /cocina/ra-instrucciones
-biblioteca| Estante        | biblioteca-libro    | /biblioteca/estante
-biblioteca| Realidad Aum.  | biblioteca-mascara  | /biblioteca/ra-instrucciones
-comedor   | Amigos         | comedor-amigos      | /comedor/amigos
-comedor   | Rutas / Mapas  | comedor-rutas       | /comedor/mapas
-about     | El proyecto    | proyecto-libro      | /about/proyecto
-about     | Las autoras    | proyecto-autores    | /about/autoras
+```json
+{
+  "estado": "...",
+  "nombre_pin_es": "...",
+  "nombre_pin_en": "...",
+  "direccion_pin": "...",
+  "coord_pin": "...",
+  "es": "...",
+  "en": "...",
+  "imagen": "...",
+  "mapsUrl": ""
+}
 ```
 
-## Nuevos archivos
+No se generan URLs desde `coord_pin` automáticamente — el plan exige placeholder vacío para llenado manual.
 
-- `src/lib/room-icons.ts` — record `key → { normal, active }` con URLs de los `.asset.json` pointers, + helper `tileIcon(sectionId, tileKey)`.
-- `src/lib/room-backgrounds.ts` — importa los 5 SVG de `room-bg/` y exporta `roomBg[sectionId]`.
-- `src/lib/use-section-theme.ts` — hook: dado un `sectionId` devuelve `{ color: "var(--cocina)", bgUrl }`. Si no recibe prop, deriva de `useRouterState().location.pathname`.
-- `src/components/SectionPageLayout.tsx` — wrapper para sub-vistas:
-  - Root `relative bg-white min-h-[...]`, expone CSS var `--section-color: var(--<seccion>)` al subtree.
-  - Capa textura: `absolute inset-0 z-0 pointer-events-none opacity-40` con `background-image: url(roomBg[section])`, `background-size: cover`, `background-position: center`.
-  - Header opcional con `h1` en `var(--section-color)` + botón back (flecha) hacia `/<seccion>`.
-  - `<div className="relative z-10">` envuelve children.
-  - Props: `sectionId`, `title?`, `back?`, `bare?` (omite header/padding para vistas full-bleed como AR camera), `children`.
+## RouteTimeline.tsx — comportamiento
 
-## Edits
+Props:
 
-### `src/components/AppShell.tsx`
-- Header: reemplazar `<Link>Leonorapp</Link>` por `<Link to="/"><img src={logo} alt="Leonorapp" className="h-7 w-auto" /></Link>` (importando `@/assets/leonorapp-logo.svg`). Mantener el resto del header igual.
-- Bottom nav: sin cambios.
+```ts
+interface Punto {
+  nombre_pin_es?: string;
+  nombre_pin_en?: string;
+  direccion_pin?: string;
+  mapsUrl?: string;
+}
+interface Props {
+  puntos: Punto[];
+}
+```
 
-### `src/components/RoomLanding.tsx`
-- Extender `RoomLink` con `iconKey: string`. Cada tile renderiza:
-  - `<img src={roomIcons[iconKey].normal}>` por defecto, swap a `.active` cuando `pathname.startsWith(link.to)` (visualmente solo se ve en hover; el route activo navega y desmonta el landing).
-  - Tamaño ~56 px, a la izquierda del título; tile sigue siendo el card cream actual sobre fondo sólido de sección.
-  - Hover swap con dos `<img>` superpuestos (`opacity-0 group-hover:opacity-100`) para feedback inmediato.
+Render:
 
-### Rutas que pasan `links` a `RoomLanding`
-`src/routes/cocina/index.tsx`, `comedor/index.tsx`, `biblioteca/index.tsx`, `about/index.tsx` → agregar `iconKey` a cada link. Sin otros cambios (siguen con fondo sólido de sección).
+```text
+┌─ (1) ─ Casa Estudio Leonora Carrington        [Abrir en Maps ↗]
+│ ┊
+│ ┊  (línea punteada en var(--comedor))
+│ ┊
+├─ (2) ─ Casa de Remedios Varo                  [Abrir en Maps ↗]
+│ ┊
+...
+```
 
-### Sub-vistas hijas → envueltas en `SectionPageLayout`
-Cada una pierde su `<div>` wrapper actual + el `style={{ color: "var(--<seccion>)" }}` hardcodeado en `h1`, y delega al layout:
+- Lista `<ol>` con `relative` y un pseudo-elemento / `<div>` izquierdo de 2px punteado vertical (`border-l-2 border-dashed`) en color `var(--comedor)`, posicionado detrás de los marcadores.
+- Cada parada: badge circular numerado (fondo `var(--comedor)`, número blanco, `MapPin` lucide opcionalmente al lado), nombre traducido según `language`, dirección como subtítulo opcional pequeño, y un botón "Abrir en Maps" (texto traducido ES/EN) con icono `ExternalLink`.
+- Click handler: `onClick={() => mapsUrl && window.open(mapsUrl, '_blank', 'noopener,noreferrer')}`.
+- Estado deshabilitado cuando `!mapsUrl`: `aria-disabled`, `opacity-50`, `cursor-default`, sin onClick efectivo. El nombre sigue visible.
+- Toda la parada es un `<button>` para ser tappable en móvil (no sólo el botón Maps).
 
-- `src/routes/cocina/recetario.tsx`
-- `src/routes/cocina/receta.$recetaId.tsx`
-- `src/routes/cocina/ra-instrucciones.tsx` (`bare`)
-- `src/routes/biblioteca/estante.tsx`
-- `src/routes/biblioteca/libro.$libroId.tsx`
-- `src/routes/biblioteca/ra-instrucciones.tsx` (`bare`)
-- `src/routes/comedor/amigos.index.tsx`
-- `src/routes/comedor/amigos.$amigoId.tsx`
-- `src/routes/comedor/mapas.tsx`
-- `src/routes/about/proyecto.tsx`
-- `src/routes/about/autoras.tsx`
+## Edición de `/comedor/mapas`
 
-Listas internas (recetas, libros, amigos) NO reciben los room-icons — su markup interno queda como está; solo el wrapper y header cambian.
+Estructura actual (un `<article>` por ruta con `<ol>` interno) se reemplaza por:
 
-## Notas técnicas
+```tsx
+<SectionPageLayout sectionId="comedor">
+  <div className="px-5 py-8">
+    <h1>Rutas Gastronómicas</h1>
+    {rutas.map((r) => (
+      <section>
+        <h2 style={{ color: 'var(--comedor)' }}>{title}</h2>
+        <p className="text-muted-foreground">{descripcion}</p>
+        <RouteTimeline puntos={r.puntos} />
+      </section>
+    ))}
+  </div>
+</SectionPageLayout>
+```
 
-- PNG de `room-icons*` se referencian vía `import iconJson from "@/assets/img/room-icons/icono-cocina-tetera.png.asset.json"` → `iconJson.url`. `room-icons.ts` centraliza imports y arma el record.
-- Active state en tiles: comparar `pathname.startsWith(link.to)` dentro de `RoomLanding`; CSS `:hover` swap adicional via dos `<img>` apilados.
-- Textura `room-bg`: `background-size: cover`, `background-position: center` por default. Si algún SVG es claramente tileable se ajusta a `repeat` (decisión al ver el archivo; default `cover`).
-- Token `--section-color`: `style={{ ['--section-color' as string]: `var(--${sectionId})` }}` en el root de `SectionPageLayout`; descendientes usan `style={{ color: "var(--section-color)" }}`.
-- z-index dentro de `SectionPageLayout`: textura `z-0`, contenido `relative z-10`.
-- Sin cambios en `leonor-icons.ts`, `roomData.json`, tokens de `styles.css`, `RoomDialogueCard`, ni componentes UI compartidos.
+Cada ruta del JSON ya corresponde a un estado (CDMX, SLP, Chiapas), así que el `title_es/en` actúa como encabezado de sección. No se reagrupa por `estado` del punto — sería redundante.
 
 ## Out of scope
 
-- Bottom nav (sigue con Lucide por decisión del usuario).
-- Reemplazar `itemIcon.receta` / `itemIcon.libro` en listas internas.
-- Cambios visuales en `RoomDialogueCard` y demás componentes UI compartidos.
+- Generar URLs desde `coord_pin` (placeholder vacío exigido).
+- Mapa embebido o librería de mapas.
+- Cambiar copy, imágenes o descripciones existentes.
+- Tocar otras rutas/componentes fuera de mapas.
