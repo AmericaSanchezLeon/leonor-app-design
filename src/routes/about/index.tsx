@@ -14,8 +14,8 @@ export const Route = createFileRoute("/about/")({
       icon={<Info className="h-10 w-10" strokeWidth={1.5} />}
       sectionId="about"
       links={[
-        { to: "/about/proyecto", title_es: "Sobre el proyecto", title_en: "About the project" },
-        { to: "/about/autoras", title_es: "Las Autoras", title_en: "The Authors" },
+        { to: "/about/proyecto", title_es: "Sobre el proyecto", title_en: "About the project", iconKey: "proyecto-libro" },
+        { to: "/about/autoras", title_es: "Las Autoras", title_en: "The Authors", iconKey: "proyecto-autores" },
       ]}
     />
   ),
