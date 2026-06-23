@@ -3,6 +3,7 @@ import amigos from "@/data/amigosData.json";
 import { amigoImg } from "@/lib/leonor-images";
 import { useLeonor } from "@/lib/leonor-context";
 import { ArrowLeft } from "lucide-react";
+import { SectionPageLayout } from "@/components/SectionPageLayout";
 
 export const Route = createFileRoute("/comedor/amigos/$amigoId")({
   component: AmigoDetalle,
@@ -15,6 +16,7 @@ function AmigoDetalle() {
   const a = amigos[Number(amigoId)];
   if (!a) throw notFound();
   return (
+    <SectionPageLayout sectionId="comedor" bare>
     <div className="pb-10">
       <div
         className="aspect-square w-full bg-cover bg-center"
@@ -30,5 +32,6 @@ function AmigoDetalle() {
         <p className="mt-4 text-sm leading-relaxed">{language === "es" ? a.es : a.en}</p>
       </div>
     </div>
+    </SectionPageLayout>
   );
 }

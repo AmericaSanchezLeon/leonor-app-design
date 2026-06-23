@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import rutas from "@/data/rutasData.json";
 import { useLeonor } from "@/lib/leonor-context";
 import { MapPin } from "lucide-react";
+import { SectionPageLayout } from "@/components/SectionPageLayout";
 
 export const Route = createFileRoute("/comedor/mapas")({
   head: () => ({ meta: [{ title: "Rutas — Leonorapp" }] }),
@@ -19,6 +20,7 @@ interface Punto {
 function MapasPage() {
   const { language } = useLeonor();
   return (
+    <SectionPageLayout sectionId="comedor">
     <div className="px-5 py-8">
       <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--comedor)" }}>
         Rutas Gastronómicas
@@ -52,5 +54,6 @@ function MapasPage() {
         ))}
       </div>
     </div>
+    </SectionPageLayout>
   );
 }
