@@ -3,6 +3,7 @@ import recetas from "@/data/recetas.json";
 import { useLeonor } from "@/lib/leonor-context";
 import { recetaImg } from "@/lib/leonor-images";
 import { itemIcon } from "@/lib/leonor-icons";
+import { SectionPageLayout } from "@/components/SectionPageLayout";
 
 const RecetaIcon = itemIcon.receta;
 
@@ -19,7 +20,8 @@ export const Route = createFileRoute("/cocina/recetario")({
 function Recetario() {
   const { language } = useLeonor();
   return (
-    <div className="px-5 py-8" style={{ minHeight: "calc(100vh - 104px)" }}>
+    <SectionPageLayout sectionId="cocina">
+      <div className="px-5 py-8">
       <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--cocina)" }}>
         {language === "es" ? "Recetario" : "Recipes"}
       </h1>
@@ -44,6 +46,7 @@ function Recetario() {
           </Link>
         ))}
       </div>
-    </div>
+      </div>
+    </SectionPageLayout>
   );
 }

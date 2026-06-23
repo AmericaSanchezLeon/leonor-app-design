@@ -1,12 +1,14 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useLeonor, t, type Lang } from "@/lib/leonor-context";
 import { RoomDialogueCard } from "@/components/RoomDialogueCard";
+import { roomIcons, type RoomIconKey } from "@/lib/room-icons";
 import type { ReactNode } from "react";
 
 interface RoomLink {
   to: string;
   title_es: string;
   title_en: string;
+  iconKey?: RoomIconKey;
 }
 
 export function RoomLanding({
@@ -30,6 +32,8 @@ export function RoomLanding({
 }) {
   const { language } = useLeonor();
   const lang: Lang = language;
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
   return (
     <div
       className="relative min-h-[calc(100vh-104px)] pb-48"
@@ -48,17 +52,39 @@ export function RoomLanding({
       </div>
 
       <div className="space-y-3 px-6 pb-10">
-        {links.map((l) => (
-          <Link
-            key={l.to}
-            to={l.to as "/cocina"}
-            className="block rounded-2xl bg-[var(--leonor-cream)] px-5 py-5 shadow-md transition-transform hover:scale-[1.01]"
-          >
-            <span className="font-serif text-xl" style={{ color }}>
-              {t(l.title_es, l.title_en, lang)} →
-            </span>
-          </Link>
-        ))}
+        {links.map((l) => {
+          const active = pathname.startsWith(l.to);
+          const pair = l.iconKey ? roomIcons[l.iconKey] : null;
+          return (
+            <Link
+              key={l.to}
+              to={l.to as "/cocina"}
+              className="group flex items-center gap-4 rounded-2xl bg-[var(--leonor-cream)] px-5 py-5 shadow-md transition-transform hover:scale-[1.01]"
+            >
+              {pair && (
+                <span className="relative h-14 w-14 flex-shrink-0">
+                  <img
+                    src={pair.normal}
+                    alt=""
+                    className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-200 ${
+                      active ? "opacity-0" : "opacity-100 group-hover:opacity-0"
+                    }`}
+                  />
+                  <img
+                    src={pair.active}
+                    alt=""
+                    className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-200 ${
+                      active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                    }`}
+                  />
+                </span>
+              )}
+              <span className="font-serif text-xl" style={{ color }}>
+                {t(l.title_es, l.title_en, lang)} →
+              </span>
+            </Link>
+          );
+        })}
       </div>
 
       {sectionId && (

@@ -1,110 +1,94 @@
-# AR Camera Filter — biblioteca + cocina
+## Alcance
 
-Convertir las dos páginas `ra-instrucciones` (mockup actual) en una experiencia de cámara con overlays, swipe para cambiar, captura de foto y share/download. Biblioteca usa face tracking (MediaPipe); cocina usa un sticker fijo anclado al borde inferior (sin tracking).
+1. **Logo en header**: reemplazar el texto "Leonorapp" del `AppShell` por el SVG subido (`leonorapp-logo-horizontal.svg`).
+2. **Bottom nav**: sin cambios (Lucide se queda — no hay icono per-sección y se acepta así).
+3. **Activity tiles del `RoomLanding`**: cada tile muestra el ícono normal de `room-icons/`; cuando esa ruta está activa (o en hover) se intercambia por la variante `icono-hover-…` de `room-icons-svg/`.
+4. **Esquema de color invertido**: el fondo sólido de sección queda solo en `RoomLanding`. Todas las sub-vistas hijas pasan a fondo blanco con textura `room-bg/bg_<seccion>.svg` al 40 % y headers/títulos en `var(--<seccion>)`.
 
 ## Assets
 
-Las 7 imágenes subidas se copian al repo en `src/assets/ar/`:
+**Logo (uploaded):** copiar `user-uploads://leonorapp-logo-horizontal.svg` a `src/assets/leonorapp-logo.svg` (SVG pequeño, va al repo, import directo Vite).
+
+**Desde el repo `leonorapp2.0` vía `raw.githubusercontent.com`:**
 
 ```
-src/assets/ar/biblioteca/mascara0.png   (azul, manos)
-src/assets/ar/biblioteca/mascara1.png   (verde, ceja alta)
-src/assets/ar/biblioteca/mascara2.png   (rosa, triangular)
-src/assets/ar/biblioteca/mascara3.png   (naranja, cuernos)
-src/assets/ar/cocina/sticker1.png       (tetera — "A Leonora le encantaba el té")
-src/assets/ar/cocina/sticker2.png       (latas — "3 tazas de té negro")
-src/assets/ar/cocina/sticker3.png       (taza — "uno herbal")
+src/assets/img/room-icons/             (8 PNG, 300 KB–1.5 MB c/u)
+src/assets/img/room-icons-svg/         (8 PNG con prefijo "icono-hover-")
+src/assets/img/room-bg/                (5 SVG ≤45 KB)
 ```
 
-Se importan vía Vite (`import mask0 from "@/assets/ar/biblioteca/mascara0.png"`) y se agrupan en arrays `bibliotecaMasks` / `cocinaStickers` exportados desde `src/lib/ar-assets.ts`.
+Los 16 PNG de `room-icons*` pesan ~12 MB en total → se suben como **Lovable Assets** (`lovable-assets create` por archivo → `.asset.json` pointer). Los 5 SVG de `room-bg` van al repo directo.
 
-## Arquitectura
+## Mapeo ícono → activity tile
 
 ```
-src/
-  lib/
-    ar-assets.ts                 ← arrays { id, image, anchor? } por room
-    use-face-tracking.ts         ← hook MediaPipe Face Landmarker
-  components/
-    ar/
-      ARCamera.tsx               ← shell común: getUserMedia, video, canvas, swipe, captura, share, errores
-      FaceMaskOverlay.tsx        ← biblioteca: posiciona máscara según landmarks
-      SurfaceStickerOverlay.tsx  ← cocina: sticker anclado bottom-center, escala responsive
-  routes/
-    biblioteca/ra-instrucciones.tsx  ← <ARCamera mode="face" items={bibliotecaMasks} />
-    cocina/ra-instrucciones.tsx      ← <ARCamera mode="surface" items={cocinaStickers} />
+room      | tile           | icon key            | route
+----------|----------------|---------------------|----------------------------
+cocina    | Recetario      | cocina-libro        | /cocina/recetario
+cocina    | Realidad Aum.  | cocina-tetera       | /cocina/ra-instrucciones
+biblioteca| Estante        | biblioteca-libro    | /biblioteca/estante
+biblioteca| Realidad Aum.  | biblioteca-mascara  | /biblioteca/ra-instrucciones
+comedor   | Amigos         | comedor-amigos      | /comedor/amigos
+comedor   | Rutas / Mapas  | comedor-rutas       | /comedor/mapas
+about     | El proyecto    | proyecto-libro      | /about/proyecto
+about     | Las autoras    | proyecto-autores    | /about/autoras
 ```
 
-## Componentes
+## Nuevos archivos
 
-### `ARCamera` (shell)
-- Props: `mode: "face" | "surface"`, `items: ARItem[]`, `sectionColor: string`.
-- Estado: `currentIndex`, `facingMode` (`"user" | "environment"`), `permissionState` (`prompt | granted | denied | error`), `isCapturing`.
-- `useEffect`: abre `getUserMedia({ video: { facingMode } })`, asigna a `videoRef.current.srcObject`. Re-ejecuta al cambiar `facingMode`. Cleanup detiene tracks.
-- Swipe horizontal sobre el viewport: `onPointerDown/Move/Up`, threshold 50px, wrap-around con `(i + n) % n`. No interfiere con tap en botones.
-- Botones overlay (estilo room color):
-  - Flip cámara (`SwitchCamera` lucide)
-  - Capturar (`Circle` grande centrado abajo)
-  - Cerrar / volver (`X` arriba izq → `useNavigate`)
-  - Dots de paginación abajo (igual patrón que `RoomDialogueCard`)
-- Renderiza el overlay según `mode`: `<FaceMaskOverlay>` o `<SurfaceStickerOverlay>`, pasándole `videoRef`, `item`, `facingMode`.
-- Captura: crea canvas offscreen del tamaño del video, dibuja `videoEl` (con `scale(-1,1)` si front), luego dibuja el overlay actual con las mismas transforms que el render en vivo, exporta `toBlob("image/png")`. Abre modal post-captura con preview + botones Share / Download / Retomar.
-- Share: si `navigator.canShare?.({ files: [file] })` → `navigator.share`. Si no → link `download="leonor-ar-<timestamp>.png"`.
+- `src/lib/room-icons.ts` — record `key → { normal, active }` con URLs de los `.asset.json` pointers, + helper `tileIcon(sectionId, tileKey)`.
+- `src/lib/room-backgrounds.ts` — importa los 5 SVG de `room-bg/` y exporta `roomBg[sectionId]`.
+- `src/lib/use-section-theme.ts` — hook: dado un `sectionId` devuelve `{ color: "var(--cocina)", bgUrl }`. Si no recibe prop, deriva de `useRouterState().location.pathname`.
+- `src/components/SectionPageLayout.tsx` — wrapper para sub-vistas:
+  - Root `relative bg-white min-h-[...]`, expone CSS var `--section-color: var(--<seccion>)` al subtree.
+  - Capa textura: `absolute inset-0 z-0 pointer-events-none opacity-40` con `background-image: url(roomBg[section])`, `background-size: cover`, `background-position: center`.
+  - Header opcional con `h1` en `var(--section-color)` + botón back (flecha) hacia `/<seccion>`.
+  - `<div className="relative z-10">` envuelve children.
+  - Props: `sectionId`, `title?`, `back?`, `bare?` (omite header/padding para vistas full-bleed como AR camera), `children`.
 
-### `useFaceTracking(videoRef, enabled)`
-- Carga `FaceLandmarker` de `@mediapipe/tasks-vision` con WASM desde CDN (`https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@<version>/wasm`) y el modelo `face_landmarker.task` (también CDN). `runningMode: "VIDEO"`, `numFaces: 1`.
-- Loop con `requestAnimationFrame`: llama `detectForVideo(video, performance.now())`, guarda landmarks en una `useRef` (no state) para evitar re-render por frame; expone un `subscribe(cb)` que el overlay usa para repintar su propio canvas/transform.
-- `enabled=false` cuando `facingMode === "environment"` → pausa loop, libera nada (mantiene landmarker para resume rápido).
-- Devuelve `{ ready, error, subscribe }`.
+## Edits
 
-### `FaceMaskOverlay`
-- Canvas absoluto sobre el video, mismo tamaño (resize observer).
-- Cada frame: lee landmarks vía `subscribe`. Si hay cara:
-  - `leftEye = lm[33]`, `rightEye = lm[263]`, `noseTip = lm[1]`, `chin = lm[152]`, `foreheadTop ≈ lm[10]`.
-  - Centro = midpoint ojos. Ancho = `distance(leftEye, rightEye) * k` (k≈2.6). Alto proporcional al aspect ratio nativo de la imagen.
-  - Rotación = `atan2(rightEye.y - leftEye.y, rightEye.x - leftEye.x)`.
-  - `ctx.translate(cx, cy); ctx.rotate(angle); ctx.drawImage(maskImg, -w/2, -h/2, w, h)`.
-- Si front camera: el canvas se transforma con `scaleX(-1)` (mismo flip que video) para que el mirror sea consistente.
-- Sin cara detectada: no dibuja (cara desaparece → mask desaparece).
+### `src/components/AppShell.tsx`
+- Header: reemplazar `<Link>Leonorapp</Link>` por `<Link to="/"><img src={logo} alt="Leonorapp" className="h-7 w-auto" /></Link>` (importando `@/assets/leonorapp-logo.svg`). Mantener el resto del header igual.
+- Bottom nav: sin cambios.
 
-### `SurfaceStickerOverlay`
-- Solo CSS: `<img>` posicionado `absolute bottom-[8%] left-1/2 -translate-x-1/2`, `max-w-[60%] max-h-[45%] object-contain pointer-events-none select-none`.
-- Sin tracking, sin canvas. Para la captura: el `ARCamera` lo redibuja sobre el canvas con las mismas coordenadas calculadas a partir del tamaño del video.
+### `src/components/RoomLanding.tsx`
+- Extender `RoomLink` con `iconKey: string`. Cada tile renderiza:
+  - `<img src={roomIcons[iconKey].normal}>` por defecto, swap a `.active` cuando `pathname.startsWith(link.to)` (visualmente solo se ve en hover; el route activo navega y desmonta el landing).
+  - Tamaño ~56 px, a la izquierda del título; tile sigue siendo el card cream actual sobre fondo sólido de sección.
+  - Hover swap con dos `<img>` superpuestos (`opacity-0 group-hover:opacity-100`) para feedback inmediato.
 
-## Manejo de permisos / errores
+### Rutas que pasan `links` a `RoomLanding`
+`src/routes/cocina/index.tsx`, `comedor/index.tsx`, `biblioteca/index.tsx`, `about/index.tsx` → agregar `iconKey` a cada link. Sin otros cambios (siguen con fondo sólido de sección).
 
-`permissionState` se setea en el `catch` de `getUserMedia`:
-- `NotAllowedError` → UI con icono `CameraOff`, mensaje "Necesitamos acceso a tu cámara" + botón "Reintentar" (re-llama getUserMedia).
-- `NotFoundError` / `OverconstrainedError` → "No encontramos cámara disponible".
-- Cualquier otro error → mensaje genérico + `Reintentar`.
+### Sub-vistas hijas → envueltas en `SectionPageLayout`
+Cada una pierde su `<div>` wrapper actual + el `style={{ color: "var(--<seccion>)" }}` hardcodeado en `h1`, y delega al layout:
 
-Toda la UI de error usa `sectionColor` como acento y respeta el theme actual.
+- `src/routes/cocina/recetario.tsx`
+- `src/routes/cocina/receta.$recetaId.tsx`
+- `src/routes/cocina/ra-instrucciones.tsx` (`bare`)
+- `src/routes/biblioteca/estante.tsx`
+- `src/routes/biblioteca/libro.$libroId.tsx`
+- `src/routes/biblioteca/ra-instrucciones.tsx` (`bare`)
+- `src/routes/comedor/amigos.index.tsx`
+- `src/routes/comedor/amigos.$amigoId.tsx`
+- `src/routes/comedor/mapas.tsx`
+- `src/routes/about/proyecto.tsx`
+- `src/routes/about/autoras.tsx`
 
-## Edits a rutas
-
-`src/routes/biblioteca/ra-instrucciones.tsx` y `src/routes/cocina/ra-instrucciones.tsx`: reemplazar el mockup actual (icono + texto "Próximamente") por:
-
-```tsx
-<ARCamera mode="face" items={bibliotecaMasks} sectionColor="var(--biblioteca)" />
-```
-
-Mantener el `Route = createFileRoute(...)` y el `head` actual (solo cambia `component`).
-
-## Dependencias
-
-`bun add @mediapipe/tasks-vision` (solo eso; no se agrega gesture lib — swipe con `pointer*` nativos).
+Listas internas (recetas, libros, amigos) NO reciben los room-icons — su markup interno queda como está; solo el wrapper y header cambian.
 
 ## Notas técnicas
 
-- MediaPipe WASM se carga desde CDN para evitar configurar `assetsInclude` o servir desde `/public`. Si en runtime falla por CORS/CSP, fallback: copiar wasm + .task a `public/mediapipe/` (no se hace por defecto).
-- Captura sobre canvas respeta `videoWidth/videoHeight` reales (no el tamaño CSS), para que la foto exportada sea de calidad nativa.
-- Loop de tracking corre fuera de React (rAF + refs); React solo re-renderiza al cambiar `currentIndex` / `facingMode` / `permissionState`.
-- Scope: `comedor` y `about` no se tocan. No se modifica routing ni layout global.
-- Si MediaPipe falla al cargar (offline, bloqueado): la cámara y el flip siguen funcionando, los overlays no aparecen, se muestra un toast suave "Tracking facial no disponible".
+- PNG de `room-icons*` se referencian vía `import iconJson from "@/assets/img/room-icons/icono-cocina-tetera.png.asset.json"` → `iconJson.url`. `room-icons.ts` centraliza imports y arma el record.
+- Active state en tiles: comparar `pathname.startsWith(link.to)` dentro de `RoomLanding`; CSS `:hover` swap adicional via dos `<img>` apilados.
+- Textura `room-bg`: `background-size: cover`, `background-position: center` por default. Si algún SVG es claramente tileable se ajusta a `repeat` (decisión al ver el archivo; default `cover`).
+- Token `--section-color`: `style={{ ['--section-color' as string]: `var(--${sectionId})` }}` en el root de `SectionPageLayout`; descendientes usan `style={{ color: "var(--section-color)" }}`.
+- z-index dentro de `SectionPageLayout`: textura `z-0`, contenido `relative z-10`.
+- Sin cambios en `leonor-icons.ts`, `roomData.json`, tokens de `styles.css`, `RoomDialogueCard`, ni componentes UI compartidos.
 
 ## Out of scope
 
-- Posteo directo a redes (solo `navigator.share` + download).
-- Grabación de video.
-- Multiface.
-- Surface tracking real (cocina es overlay fijo, decidido).
+- Bottom nav (sigue con Lucide por decisión del usuario).
+- Reemplazar `itemIcon.receta` / `itemIcon.libro` en listas internas.
+- Cambios visuales en `RoomDialogueCard` y demás componentes UI compartidos.

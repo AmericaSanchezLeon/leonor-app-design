@@ -17,8 +17,8 @@ export const Route = createFileRoute("/cocina/")({
       icon={<ChefHat className="h-10 w-10" strokeWidth={1.5} />}
       sectionId="cocina"
       links={[
-        { to: "/cocina/recetario", title_es: "Recetario", title_en: "Recipes" },
-        { to: "/cocina/ra-instrucciones", title_es: "Realidad Aumentada", title_en: "Augmented Reality" },
+        { to: "/cocina/recetario", title_es: "Recetario", title_en: "Recipes", iconKey: "cocina-libro" },
+        { to: "/cocina/ra-instrucciones", title_es: "Realidad Aumentada", title_en: "Augmented Reality", iconKey: "cocina-tetera" },
       ]}
     />
   ),

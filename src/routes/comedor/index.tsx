@@ -12,8 +12,8 @@ export const Route = createFileRoute("/comedor/")({
       icon={<Utensils className="h-10 w-10" strokeWidth={1.5} />}
       sectionId="comedor"
       links={[
-        { to: "/comedor/amigos", title_es: "Nuestros Amigos", title_en: "Our Friends" },
-        { to: "/comedor/mapas", title_es: "Rutas Gastronómicas", title_en: "Gastronomic Routes" },
+        { to: "/comedor/amigos", title_es: "Nuestros Amigos", title_en: "Our Friends", iconKey: "comedor-amigos" },
+        { to: "/comedor/mapas", title_es: "Rutas Gastronómicas", title_en: "Gastronomic Routes", iconKey: "comedor-rutas" },
       ]}
     />
   ),

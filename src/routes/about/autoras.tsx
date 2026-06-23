@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import about from "@/data/aboutData.json";
 import { useLeonor } from "@/lib/leonor-context";
+import { SectionPageLayout } from "@/components/SectionPageLayout";
 
 export const Route = createFileRoute("/about/autoras")({
   head: () => ({ meta: [{ title: "Las Autoras — Leonorapp" }] }),
@@ -21,6 +22,7 @@ function AutorasPage() {
   const autoras: Autora[] = (data?.autoras as Autora[]) ?? [];
 
   return (
+    <SectionPageLayout sectionId="about">
     <div className="px-5 py-8">
       <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--about)" }}>
         {language === "es" ? "Las Autoras" : "The Authors"}
@@ -46,5 +48,6 @@ function AutorasPage() {
         ))}
       </ul>
     </div>
+    </SectionPageLayout>
   );
 }

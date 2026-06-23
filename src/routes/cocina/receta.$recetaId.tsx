@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import recetas from "@/data/recetas.json";
 import { recetaImg } from "@/lib/leonor-images";
 import { ArrowLeft } from "lucide-react";
+import { SectionPageLayout } from "@/components/SectionPageLayout";
 
 export const Route = createFileRoute("/cocina/receta/$recetaId")({
   component: RecetaPage,
@@ -16,6 +17,7 @@ function RecetaPage() {
   if (!r) throw notFound();
 
   return (
+    <SectionPageLayout sectionId="cocina" bare>
     <div className="pb-10">
       <div
         className="aspect-[4/3] w-full bg-cover bg-center"
@@ -38,5 +40,6 @@ function RecetaPage() {
         <pre className="mt-2 whitespace-pre-wrap font-sans text-sm leading-relaxed">{r.preparacion}</pre>
       </div>
     </div>
+    </SectionPageLayout>
   );
 }
