@@ -4,6 +4,7 @@ import { X, Settings } from "lucide-react";
 import { useLeonor, t } from "@/lib/leonor-context";
 import { sectionIcon, type SectionId } from "@/lib/leonor-icons";
 import { useSectionBackground } from "@/lib/use-section-background";
+import logoUrl from "@/assets/leonorapp-logo.svg";
 
 const navItems = [
   { path: "/cocina", id: "cocina", label_es: "Cocina", label_en: "Kitchen", color: "var(--cocina)" },
@@ -36,8 +37,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           className="fixed top-0 left-1/2 z-30 flex h-12 w-full max-w-[500px] -translate-x-1/2 items-center justify-between px-5 backdrop-blur-md"
           style={{ backgroundColor: "color-mix(in oklab, var(--leonor-amber) 92%, transparent)" }}
         >
-          <Link to="/" className="font-serif text-xl tracking-wide" style={{ color: "var(--leonor-cream)" }}>
-            Leonorapp
+          <Link to="/" aria-label="Leonorapp" className="flex items-center">
+            <img src={logoUrl} alt="Leonorapp" className="h-7 w-auto" />
           </Link>
           <button
             onClick={() => setShowSettings(true)}
