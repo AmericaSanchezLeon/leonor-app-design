@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "leonorapp-mcp",
+      "version": "0.1.0",
+      "title": "Leonorapp — Casa Estudio Leonora Carrington"
+    },
+    "tools": [
+      {
+        "name": "list_rooms",
+        "title": "List rooms",
+        "description": "List the rooms (sections) of the Casa Estudio Leonora Carrington app: cocina, comedor, biblioteca, and about.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_books",
+        "title": "List library books",
+        "description": "List the books available in the Biblioteca (library) of the Casa Estudio Leonora Carrington.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_recipes",
+        "title": "List recipes",
+        "description": "List the recipes from the Cocina (kitchen) section of the Casa Estudio Leonora Carrington.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_friends",
+        "title": "List Leonora's friends",
+        "description": "List the friends (amigos) featured in the Comedor section of the Casa Estudio Leonora Carrington.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_routes",
+        "title": "List map routes",
+        "description": "List the walking/travel routes (rutas) featured in the Comedor > Mapas section, grouped by state.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_about",
+        "title": "About the project",
+        "description": "Get the About content for the Casa Estudio Leonora Carrington project (project info and authors).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
