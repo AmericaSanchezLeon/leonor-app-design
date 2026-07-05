@@ -1,8 +1,15 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useLeonor, t, type Lang } from "@/lib/leonor-context";
 import { RoomDialogueCard } from "@/components/RoomDialogueCard";
+import { RoomSvgPattern } from "@/components/RoomSvgPattern";
 import { roomIcons, type RoomIconKey } from "@/lib/room-icons";
+import { roomBg, type SectionBgId } from "@/lib/room-backgrounds";
+import { roomScatterAssets } from "@/lib/room-scatter";
 import type { ReactNode } from "react";
+
+const PATTERN_SECTIONS: SectionBgId[] = ["home", "cocina", "comedor", "biblioteca", "about"];
+const isPatternSection = (id?: string): id is SectionBgId =>
+  !!id && (PATTERN_SECTIONS as string[]).includes(id);
 
 interface RoomLink {
   to: string;
@@ -34,12 +41,22 @@ export function RoomLanding({
   const lang: Lang = language;
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
+  const patternId = isPatternSection(sectionId) ? sectionId : null;
+
   return (
     <div
-      className="relative min-h-[calc(100vh-104px)] pb-48"
+      className="relative min-h-[calc(100vh-104px)] overflow-hidden pb-48"
       style={{ backgroundColor: color }}
     >
-      <div className="px-6 py-10 text-center" style={{ color: "var(--leonor-cream)" }}>
+      {patternId && (
+        <RoomSvgPattern
+          sectionId={patternId}
+          tileUrl={roomBg[patternId]}
+          svgUrls={roomScatterAssets[patternId]}
+        />
+      )}
+
+      <div className="relative z-[2] px-6 py-10 text-center" style={{ color: "var(--leonor-cream)" }}>
         {icon && <div className="mb-4 flex justify-center opacity-90">{icon}</div>}
         <h1 className="font-serif text-4xl leading-tight">
           {t(title_es, title_en, lang)}
@@ -51,7 +68,7 @@ export function RoomLanding({
         )}
       </div>
 
-      <div className="space-y-3 px-6 pb-10">
+      <div className="relative z-[2] space-y-3 px-6 pb-10">
         {links.map((l) => {
           const active = pathname.startsWith(l.to);
           const pair = l.iconKey ? roomIcons[l.iconKey] : null;
@@ -88,7 +105,7 @@ export function RoomLanding({
       </div>
 
       {sectionId && (
-        <div className="absolute inset-x-0 bottom-0 px-4 pb-4">
+        <div className="absolute inset-x-0 bottom-0 z-[2] px-4 pb-4">
           <RoomDialogueCard sectionId={sectionId} color={color} />
         </div>
       )}
