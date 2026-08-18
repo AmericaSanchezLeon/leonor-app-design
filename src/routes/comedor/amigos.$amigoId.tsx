@@ -17,7 +17,7 @@ function AmigoDetalle() {
   if (!a) throw notFound();
   return (
     <SectionPageLayout sectionId="comedor" bare>
-    <div className="pb-10">
+    <div className="pb-24">
       <img
         src={amigoImg(a.imagen, "full")}
         alt={`Retrato de ${a.amigo}`}
