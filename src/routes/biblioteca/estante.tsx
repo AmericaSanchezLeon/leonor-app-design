@@ -33,7 +33,7 @@ function EstantePage() {
                   style={{ ["--tw-ring-color" as string]: "var(--section-color)" }}
                 >
                   <img
-                    src={bookImg(i, "thumb")}
+                    src={bookImg(b.slug, "thumb")}
                     alt=""
                     width={400}
                     height={600}

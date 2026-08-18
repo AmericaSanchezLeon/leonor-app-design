@@ -26,7 +26,7 @@ function LibroDetalle() {
       </div>
       <div className="px-5">
         <img
-          src={bookImg(i, "full")}
+          src={bookImg(b.slug, "full")}
           alt={`Portada de ${language === "es" ? b.nombre_es : b.nombre}`}
           width={1000}
           height={1500}
