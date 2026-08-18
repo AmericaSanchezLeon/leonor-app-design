@@ -1,135 +1,134 @@
 [
-    {
-      "amigo": "Alan Glass",
-      "es": "A través del dibujo y el arte objeto, Alan expresa su fascinación por lo maravilloso. Motivado por su arte dejó Canadá para residir con los surrealistas en Francia. Un día quedó encantado con una calaverita de azúcar y decidió vivir en México. Conoció a Leonora y se hicieron grandes amigos, compartiendo viajes y coincidencias mágicas. Vivía cerca de ella y cada sábado, llegaba con un postre para tomar el té.",
-      "en": "Through drawing and found object, Alan expresses his fascination with the wonderful. Motivated by his art, he left Canada to reside with the Surrealists in France. One day he was delighted with a sugar skull and decided to live in Mexico. He met Leonora and they became great friends, sharing trips and magical coincidences. He lived near her and every Saturday, he would come with a dessert for tea.",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-alan-glass.jpg"
-    },
-    {
-      "amigo": "Yolanda Gudiño Alvarado",
-      "es": "La señora Yolanda asistió a Leonora en la vida diaria en sus últimos años...",
-      "en": "Mrs. Yolanda assisted Leonora in daily life in her later years...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-yolanda-gudino-alvarado.jpg"
-    },
-    {
-      "amigo": "Joanna Moorhead",
-      "es": "Cuando esta periodista inglesa supo que Leonora era la prima rebelde...",
-      "en": "When this English journalist learned that Leonora was the rebellious cousin...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-joanna-moorhead.jpg"
-    },
-    {
-      "amigo": "Gloria Orenstein",
-      "es": "Gloria es pionera en la investigación de las mujeres artistas...",
-      "en": "Gloria is a pioneer in the research of women artists...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-gloria-orenstein.jpg"
-    },
-    {
-      "amigo": "Remedios Varo",
-      "es": "Al llegar a México, el encuentro de Leonora con la artista Remedios...",
-      "en": "Upon arriving in Mexico, Leonora's encounter with the artist Remedios...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-remedios-varo.jpg"
-    },
-    {
-      "amigo": "Kati Horna",
-      "es": "Kati fotografiaba relatos: periodísticos, de artistas...",
-      "en": "Kati photographed stories: journalistic, of artists...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-kati-horna.jpg"
-    },
-    {
-      "amigo": "Benjamin Péret",
-      "es": "Aunque fue activista político, el surrealismo lo inspiró...",
-      "en": "Although he was a political activist, he was inspired by surrealism...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-benjamin-peret.jpg"
-    },
-    {
-      "amigo": "Imre Emerico \"Chiki\" Weisz",
-      "es": "Escapando del odio contra los judíos...",
-      "en": "Escaping hatred against Jews...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-chiki-weisz.jpg"
-    },
-    {
-      "amigo": "Gerardo Lizárraga",
-      "es": "Su talento como pintor y dibujante brilló...",
-      "en": "His talent as a painter and draftsman shone...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-gerardo-lizarraga.jpg"
-    },
-    {
-      "amigo": "José Horna",
-      "es": "Atravesó la Guerra Civil Española...",
-      "en": "He went through the Spanish Civil War...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-jose-horna.jpg"
-    },
-    {
-      "amigo": "Inés Amor",
-      "es": "Abrió la Galería de Arte Mexicano...",
-      "en": "She opened the Mexican Art Gallery...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-ines-amor.jpg"
-    },
-    {
-      "amigo": "Edward James",
-      "es": "La personalidad y el universo de Leonora convencieron...",
-      "en": "Leonora's personality and universe convinced...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-edward-james.jpg"
-    },
-    {
-      "amigo": "Betty Friedan",
-      "es": "Esta pensadora y escritora feminista creó la Organización Nacional...",
-      "en": "This feminist thinker and writer created the National Organization...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-betty-friedan.jpg"
-    },
-    {
-      "amigo": "Alice Rahon",
-      "es": "Los accidentes la siguieron toda su vida...",
-      "en": "Accidents followed her all her life...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-alice-rahon.jpg"
-    },
-    {
-      "amigo": "Ignacio Bernal",
-      "es": "En exploraciones de sitios arqueológicos dirigidas...",
-      "en": "In explorations of archaeological sites...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-ignacio-bernal.jpg"
-    },
-    {
-      "amigo": "Carlos Fuentes",
-      "es": "Vivió sus primeros años en diferentes países...",
-      "en": "He lived his early years in different countries...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-carlos-fuentes.jpg"
-    },
-    {
-      "amigo": "Susan L. Aberth",
-      "es": "Esta historiadora de arte ha redescubierto...",
-      "en": "This art historian has rediscovered...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-susan-aberth.jpg"
-    },
-    {
-      "amigo": "Wolfgang Paalen",
-      "es": "Recorrió Europa explorando diferentes vanguardias...",
-      "en": "He toured Europe exploring different avant-gardes...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-wolfgang-paalen.jpg"
-    },
-    {
-      "amigo": "André Breton",
-      "es": "Poeta y ensayista, definió una época...",
-      "en": "Poet and essayist, he defined an era...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-andre-breton.jpg"
-    },
-    {
-      "amigo": "Gunther Gerzso",
-      "es": "El talento que desarrolló en Europa...",
-      "en": "The talent that he developed in Europe...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-gunther-gerzso.jpg"
-    },
-    {
-      "amigo": "Isaac Masri",
-      "es": "Cuando los años pesaron sobre el ánimo...",
-      "en": "As the years weighed on the artist...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-isaac-masri.jpg"
-    },
-    {
-      "amigo": "Gibrán Bazán",
-      "es": "En una tienda de la colonia Roma...",
-      "en": "In a store in the Roma neighborhood...",
-      "imagen": "src/assets/img/comedor-imagenes/amigos-gibran-bazan.jpg"
-    }
-  ]
-  
+  {
+    "amigo": "Alan Glass",
+    "es": "A través del dibujo y el arte objeto, Alan expresa su fascinación por lo maravilloso. Motivado por su arte dejó Canadá para residir con los surrealistas en Francia. Un día quedó encantado con una calaverita de azúcar y decidió vivir en México. Conoció a Leonora y se hicieron grandes amigos, compartiendo viajes y coincidencias mágicas. Vivía cerca de ella y cada sábado, llegaba con un postre para tomar el té.",
+    "en": "Through drawing and found object, Alan expresses his fascination with the wonderful. Motivated by his art, he left Canada to reside with the Surrealists in France. One day he was delighted with a sugar skull and decided to live in Mexico. He met Leonora and they became great friends, sharing trips and magical coincidences. He lived near her and every Saturday, he would come with a dessert for tea.",
+    "imagen": "Polaroids_AlanGlass.svg"
+  },
+  {
+    "amigo": "Yolanda Gudiño Alvarado",
+    "es": "La señora Yolanda asistió a Leonora en la vida diaria en sus últimos años. Juntas hacían los quehaceres, el súper y por las tardes paseaban a la perra Yeti. Guarda un diario de esa época y la imagen de Leonora como una persona muy humana, sencilla, honesta y de carácter firme. La señora Yolanda cuidó de la casa hasta que fue destinada como museo. Yeti quedó bajo su cuidado.",
+    "en": "Mrs. Yolanda assisted Leonora in daily life in her later years. Together they did their chores, the grocery shopping, and in the afternoons they walked the dog Yeti. She keeps a journal from that time and the image of Leonora as a very human, simple, honest and firm person. Mrs. Yolanda looked after the house until it was designated as a museum. Yeti came under his care.",
+    "imagen": "Polaroids_YolandaGudiño.svg"
+  },
+  {
+    "amigo": "Joanna Moorhead",
+    "es": "Cuando esta periodista inglesa supo que Leonora era la prima rebelde de la que poco se hablaba en su familia, decidió viajar a México para conocerla. Su primer encuentro fue en 2006 y desde entonces Joanna la visitó dos veces por año. Entre caminatas, té y tardes pacíficas, descubrió en Leonora a una contadora de historias, con carácter amable y buen humor.",
+    "en": "When this English journalist learned that Leonora was the rebellious cousin of whom little was said in her family, she decided to travel to Mexico to meet her. Their first meeting was in 2006 and since then Joanna visited her twice a year. Between walks, tea and peaceful afternoons, she discovered in Leonora a storyteller, with a friendly character and good humor.",
+    "imagen": "Polaroids_JoannaMoorhead.svg"
+  },
+  {
+    "amigo": "Gloria Orenstein",
+    "es": "Gloria es pionera en la investigación de las mujeres artistas y fundadora del Salón de Literatura para Mujeres en Nueva York. El surrealismo y el feminismo, la llevaron a conocer a Leonora. En las visitas a la Organización Nacional de las Mujeres (NOW) y los veranos que compartieron en México, surgió entre ellas un vínculo mágico de admiración y amistad.",
+    "en": "Gloria is a pioneer in the research of women artists and founder of the Hall of Literature for Women in New York. Surrealism and feminism led her to meet Leonora. During the visits to the National Organization of Women (NOW) and the summers they shared in Mexico, a magical bond of admiration and friendship emerged between them.",
+    "imagen": "Polaroids_GloriaOrenstein.svg"
+  },
+  {
+    "amigo": "Remedios Varo",
+    "es": "Al llegar a México, el encuentro de Leonora con la artista Remedios cambió su vida. Aunque tenían en común el exilio y los surrealistas, las unía la libertad creativa. Quebraban las formas preestablecidas con la pintura onírica, las letras, el esoterismo o los platillos singulares. Vivían cerca y aunque se vieron casi a diario junto con Kati Horna, la complicidad entre ellas nunca se agotó.",
+    "en": "Upon arriving in Mexico, Leonora's encounter with the artist Remedios changed her life. Although they had exile and the Surrealists in common, they were united by creative freedom. They broke the pre-established forms with dream painting, writing, esotericism or singular dishes. They lived close by and although they saw each other almost daily together with Kati Horna, the complicity between them was never exhausted.",
+    "imagen": "Polaroids_RemediosVaro.svg"
+  },
+  {
+    "amigo": "Kati Horna",
+    "es": "Kati fotografiaba relatos: periodísticos, de artistas y la magia en lo cotidiano. Exiliada en México, ella y José Horna hicieron de sus amigos de la Roma una familia. Las fotos de la boda entre Leonora y \"Chiki\" las tomó en su casa y nombró a su hija Norah por su amiga inglesa. A través de su cámara, proyectos y charlas interminables, Kati estableció con Leonora y Remedios una conexión fascinante.",
+    "en": "Kati photographed stories: journalistic, of artists and magic in everyday life. Exiled in Mexico, she and José Horna made a family of their friends from Roma. The photos of the wedding between Leonora and \"Chiki\" were taken at her home and named her daughter Norah after her English friend. Through her camera, projects and endless talks, Kati established a fascinating connection with Leonora and Remedios.",
+    "imagen": "Polaroids_KatiHorna.svg"
+  },
+  {
+    "amigo": "Benjamin Péret",
+    "es": "Aunque fue activista político, el surrealismo lo inspiró como poeta y ensayista. En México vivió en los años 40 junto a Remedios Varo con quien impulsó entre Leonora, los Horna y otros artistas, la actividad surrealista y amistades duraderas. En su casa en la colonia San Rafael, Leonora conoció a \"Chiki\". Benjamin asistió a su boda y tiempo después, les encontró la casa en la colonia Roma.",
+    "en": "Although he was a political activist, he was inspired by surrealism as a poet and essayist. In Mexico he lived in the 1940s with Remedios Varo with whom he promoted between Leonora, the Horna and other artists, surrealist activity and lasting friendships. At her home in the San Rafael neighborhood, Leonora met \"Chiki\". Benjamin attended their wedding and later found their home in the Roma neighborhood.",
+    "imagen": "Polaroids_BenjaminPeret.svg"
+  },
+  {
+    "amigo": "Imre Emerico \"Chiki\" Weisz",
+    "es": "Escapando del odio contra los judíos, fotografió la guerra con su amigo Robert Capa, quien facilitó su llegada a México, país que transformó hasta su apodo: Csiki (cosquilla, en húngaro) a \"Chiki\". Conoció a Leonora y decidió casarse: amaba su autenticidad. Con ella y sus amigos, \"Chiki\" hizo un hogar para Gabriel y Pablo, que visitaban el estudio de mamá tanto como el cuarto oscuro de papá. La casa guarda los negativos de su obra, varios aún desconocidos.",
+    "en": "Escaping hatred against Jews, he photographed the war with his friend Robert Capa, who facilitated his arrival in Mexico, a country that even transformed his nickname: Csiki (tickle, in Hungarian) to \"Chiki\". He met Leonora and decided to get married: he loved her authenticity. With her and her friends, \"Chiki\" made a home for Gabriel and Pablo, who visited mom's study as much as dad's darkroom. The house keeps the negatives of his work, several still unknown.",
+    "imagen": "Polaroids_Chiki.svg"
+  },
+  {
+    "amigo": "Gerardo Lizárraga",
+    "es": "Su talento como pintor y dibujante brilló en películas e ilustraciones perdidas en la Guerra Civil Española. En los campos de concentración, dibujar salvó su vida: años después, puso palabras a la crudeza surrealista de sus ilustraciones. Remedios Varo, su primer amor, fue una amiga de por vida y por ella conoció a Leonora y a otros exiliados. Con algunos de ellos fundó en México el Círculo de Bellas Artes y el Ateneo Español.",
+    "en": "His talent as a painter and draftsman shone in films and illustrations lost in the Spanish Civil War. In the concentration camps, drawing saved his life: years later, he put words to the surreal starkness of his illustrations. Remedios Varo, her first love, was a lifelong friend and through her she met Leonora and other exiles. With some of them he founded the Circle of Fine Arts and the Spanish Athenaeum in Mexico.",
+    "imagen": "Polaroids_GerardoLizarraga.svg"
+  },
+  {
+    "amigo": "José Horna",
+    "es": "Atravesó la Guerra Civil Española y un campo de concentración. México fue parteaguas y con Kati Horna se instaló en la colonia Roma. Creó en madera piezas de ensueño; también juguetes para su hija Norah, como la cuna navegante que Leonora pintó. Como dibujante y cartelista colaboró con Remedios Varo. Su sentido del humor y generosidad cobijaron a sus amigos en su casa llena de objetos mágicos.",
+    "en": "He went through the Spanish Civil War and a concentration camp. Mexico was a watershed and with Kati Horna he settled in the Roma neighborhood. He created dream pieces in wood; also toys for her daughter Norah, like the sailing crib that Leonora painted. As a draftsman and poster artist he collaborated with Remedios Varo. His sense of humor and generosity sheltered his friends in his house full of magical objects.",
+    "imagen": "Polaroids_JoseHorna.svg"
+  },
+  {
+    "amigo": "Inés Amor",
+    "es": "Abrió la Galería de Arte Mexicano cuando eran pocos los espacios para exhibir arte en México. Con la colaboración del pintor Diego Rivera o el escritor André Bretón, entre otros, Inés ayudó a difundir diferentes miradas artísticas. Su galería fue una de las primeras en mostrar la obra de Leonora e introducirla en colecciones privadas, cuando su arte se consideraba aún desconocido.",
+    "en": "She opened the Mexican Art Gallery when there were few spaces to exhibit art in Mexico. With the collaboration of the painter Diego Rivera or the writer André Bretón, among others, Inés helped spread different artistic views. Her gallery was one of the first to show Leonora's work and introduce it into private collections, when her art was still considered unknown.",
+    "imagen": "Polaroids_InesAmor.svg"
+  },
+  {
+    "amigo": "Edward James",
+    "es": "La personalidad y el universo de Leonora convencieron a este mecenas y poeta surrealista de apoyarla durante décadas. También fueron amigos y compartieron origen inglés, correspondencia, sentido del humor y hasta animales: él llevó al patio de Leonora fauna exótica y ella, al muro de su casa a la Hija del Minotauro. Este regalo está en Xilitla, donde Edward creó esculturas y pasadizos fascinantes durante más de 20 años.",
+    "en": "Leonora's personality and universe convinced this surrealist patron and poet to support her for decades. They were also friends and shared English origin, correspondence, a sense of humor and even animals: he brought exotic fauna to Leonora's patio and she took the Minotaur's Daughter to the wall of her house. This gift is in Xilitla, where Edward created fascinating sculptures and passageways for more than 20 years.",
+    "imagen": "Polaroids_EdwardJames.svg"
+  },
+  {
+    "amigo": "Betty Friedan",
+    "es": "Esta pensadora y escritora feminista creó la Organización Nacional de Mujeres (NOW) en Nueva York, después de escribir La mística de la feminidad que encendió conciencias en Estados Unidos y más allá. Fue en estas reuniones que Leonora la conoció a través de su amiga e historiadora de arte Gloria Orenstein. Las ideas compartidas por Betty en NOW motivaron a Leonora a involucrarse más en el movimiento feminista en México.",
+    "en": "This feminist thinker and writer created the National Organization for Women (NOW) in New York, after writing The Mystique of Femininity that ignited consciences in the United States and beyond. It was at these meetings that Leonora met her through her friend and art historian Gloria Orenstein. The ideas shared by Betty on NOW motivated Leonora to become more involved in the feminist movement in Mexico.",
+    "imagen": "Polaroids_BettyFriedan.svg"
+  },
+  {
+    "amigo": "Alice Rahon",
+    "es": "Los accidentes la siguieron toda su vida: en la soledad de la recuperación desarrolló la pintura y la escritura. Entre los surrealistas de Francia, antes de la Segunda Guerra Mundial, conoció a la pintora Frida Kahlo quien la invitó a México. Se relacionó con la comunidad de artistas exiliados, como Leonora, Remedios Varo, Benjamin Péret y otros, con quienes compartió la tarea de hacer de México su nuevo hogar.",
+    "en": "Accidents followed her all her life: in the solitude of recovery she developed painting and writing. Among the surrealists in France, before the Second World War, she met the painter Frida Kahlo who invited her to Mexico. Alice related to the community of exiled artists, such as Leonora, Remedios Varo, Benjamin Péret and others, with whom she shared the task of making Mexico her new home.",
+    "imagen": "Polaroids_AliceRahon.svg"
+  },
+  {
+    "amigo": "Ignacio Bernal",
+    "es": "En exploraciones de sitios arqueológicos dirigidas por el antropólogo Ignacio Bernal, Leonora conoció el pasado y la mitología del país que la había recibido. Como director del Instituto de Antropología, le pidió que pintara una obra para el Museo Nacional de Antropología. Así nació el único mural que Leonora creó en la Ciudad de México, titulado El mundo mágico de los mayas.",
+    "en": "In explorations of archaeological sites led by the anthropologist Ignacio Bernal, Leonora learned about the past and the mythology of the country that had received her. As director of the Institute of Anthropology, he asked her to paint a work for the National Museum of Anthropology. Thus was born the only mural that Leonora created in Mexico City, entitled The Magic World of the Mayans.",
+    "imagen": "Polaroids_IgnacioBernal.svg"
+  },
+  {
+    "amigo": "Carlos Fuentes",
+    "es": "Vivió sus primeros años en diferentes países: esa perspectiva cosmopolita lo hizo reflexionar en la historia y el poder en México a través de la ficción. Junto con otros escritores, como Octavio Paz y Elena Poniatowska, se hizo gran amigo de Leonora y expresó su admiración hacia ella cada ocasión que podía. Incluso le dedicó un ensayo titulado Leonora Carrington o la hechicera irónica.",
+    "en": "He lived his early years in different countries: that cosmopolitan perspective made him reflect on history and power in Mexico through fiction. Along with other writers, such as Octavio Paz and Elena Poniatowska, he became close friends with Leonora and expressed his admiration for her every chance he could. He even dedicated an essay to her called Leonora Carrington or the Ironic Sorceress.",
+    "imagen": "Polaroids_CarlosFuentes.svg"
+  },
+  {
+    "amigo": "Susan L. Aberth",
+    "es": "Esta historiadora de arte ha redescubierto lo divino femenino de las prácticas religiosas y artísticas. En Nueva York conoció la obra Leonora y vio en sus trazos algo de su propia mirada del mundo, por lo que decidió hacer su doctorado acerca ella. Entre tazas de té y charlas con ella en la cocina, surgió su amistad y una de las primeras obras exhaustivas acerca de la artista Leonora Carrington: surrealismo, alquimia y arte.",
+    "en": "This art historian has rediscovered the divine feminine of religious and artistic practices. In New York she met Leonora's work and saw in her strokes something of her own view of the world, so she decided to do her doctorate on her. Between cups of tea and chats with her in the kitchen, emerged their friendship and one of the first comprehensive works on the artist, Leonora Carrington: Surrealism, Alchemy and Art.",
+    "imagen": "Polaroids_SusanAberth.svg"
+  },
+  {
+    "amigo": "Wolfgang Paalen",
+    "es": "Recorrió Europa explorando diferentes vanguardias hasta que fue invitado por la pintora Frida Kahlo a visitar México. Aquí vivió el resto de su vida y exploró pintura, etnografía, ensayo e instalación. Con su esposa, la artista Alice Rahon, echó raíces a través de reuniones y proyectos gracias a los que conoció a Leonora.",
+    "en": "He toured Europe exploring different avant-gardes until he was invited by the painter Frida Kahlo to visit Mexico. Here he lived the rest of his life and explored painting, ethnography, essay, and installation. With his wife, artist Alice Rahon, he put down roots through meetings and projects through which he met Leonora.",
+    "imagen": "Polaroids_WolfgangPaleen.svg"
+  },
+  {
+    "amigo": "André Breton",
+    "es": "Poeta y ensayista, definió una época con su Manifiesto del Surrealismo, vanguardia con la que Leonora se identificó gracias a la exposición que él y otros montaron en Londres. Su amistad creció: en las buenas, cuando él impulsó su arte en exposiciones y su revista vvv, y en las malas, cuando en Nueva York sobrellevaron el exilio. André siempre mostró su admiración hacia el arte y la personalidad de Leonora.",
+    "en": "Poet and essayist, he defined an era with his Manifesto of Surrealism, an avant-garde with which Leonora identified thanks to the exhibition that he and others mounted in London. Their friendship grew: in good times, when he promoted her art in exhibitions and his magazine vvv, and in bad times, when in New York they endured exile. André always showed his admiration for Leonora's art and personality.",
+    "imagen": "Polaroids_AndreBreton.svg"
+  },
+  {
+    "amigo": "Gunther Gerzso",
+    "es": "El talento que desarrolló en Europa para crear escenografías de cine y teatro, se enriqueció a su regreso a México, el país en que nació y donde se volvió pintor abstracto. Solía visitar la casa que el poeta Benjamin Péret y la pintora Remedios Varo compartían: hasta pintó esas reuniones. Ahí conoció a Leonora con quien mantuvo una amistad y admiración mutuas, por el resto de su vida.",
+    "en": "The talent that he developed in Europe to create film and theater sets was enriched upon his return to Mexico, the country where he was born and became an abstract painter. He used to visit the house that the poet Benjamin Péret and the painter Remedios Varo shared: he even painted those meetings. There he met Leonora with whom he maintained a mutual friendship and admiration for the rest of his life.",
+    "imagen": "Polaroids_GuntherGerzso.svg"
+  },
+  {
+    "amigo": "Isaac Masri",
+    "es": "Cuando los años pesaron sobre el ánimo de la artista, este promotor de arte y médico encontró formas para alentarla. Agarrar el pincel se volvió complicado por lo que Isaac la motivó a expresarse en la escultura. El tiempo también se llevó a Ramona y Monsieur, los gatos de Leonora, pero Isaac decidió alegrar a su amiga con una perra maltés que recibió el nombre de Yeti. Ella fue la última compañía animal de Leonora.",
+    "en": "As the years weighed on the artist's spirit, this art promoter and physician found ways to encourage her. Holding the brush became complicated so Isaac motivated her to express herself in sculpture. Time also took Ramona and Monsieur, Leonora's cats, but Isaac decided to cheer up his friend with a Maltese dog named Yeti. She was Leonora's last animal company.",
+    "imagen": "Polaroids_IsaacMasri.svg"
+  },
+  {
+    "amigo": "Gibrán Bazán",
+    "es": "En una tienda de la colonia Roma, este realizador de cine y su niño solían platicar con una señora afable llamada Leonora. Hablaban de la vida cotidiana, la crianza de los hijos o el cine. Un día, gracias a un amigo periodista, supo que ella era la reconocida artista. Aunque se sorprendió, continuó su amistad con la vecina amable de la Roma y, años después, hizo un documental en su memoria, Territorio Leonora.",
+    "en": "In a store in the Roma neighborhood, this filmmaker and his boy used to chat with an affable lady named Leonora. They talked about everyday life, parenting, or movies. One day, thanks to a journalist friend, he learned that she was the renowned artist. Although he was surprised, he continued his friendship with the friendly neighbor of Roma and, years later, made a documentary in her memory, Territorio Leonora.",
+    "imagen": "Polaroids_GibranBazan.svg"
+  }
+]

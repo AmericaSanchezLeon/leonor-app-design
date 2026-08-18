@@ -1,19 +1,18 @@
 [
-    {
-      "nombre": "Pollo, salchicha italiana y arroz",
-      "dato": "De los recuerdos de Pablo Weisz-Carrington.",
-      "ingredientes": "1 pechuga de pollo.\n250 gramos de salchicha italiana.\n2 cebollas pequeñas.\n1 taza de arroz.\n1 cucharadita de sal.\n1 onza de aceite de oliva.\n1 pizca de azafrán.\n1 pizca de paprika.\n1 pizca de sal de ajo.",
-      "preparacion": "Corta el pollo crudo en cubos de aproximadamente 2 centímetros por lado. Corta la salchicha italiana cruda en trozos y la cebolla en cubos.\nCalienta un sartén, agrega el aceite de oliva, la cebolla, la sal de ajo y paprika. Incorpora el pollo, sofríe y reserva.\nEn una olla hierve tres tazas de agua con la sal y una cucharadita de aceite de oliva. Durante el hervor agrega la taza de arroz, la salchicha italiana cortada, el pollo y el azafrán. Tapa la olla y cocina a fuego fuerte durante los primeros 8 minutos, baja a fuego medio y deja cocinar por 6 minutos y luego a fuego bajo por 4 minutos más, cuida que el arroz no se adhiera al fondo del sartén.\nDeja reposar antes de comer.",
-      "chef": "Emelia Xóchitl Loranca Lara.",
-      "imagen": "azafran.JPG"
-    },
-    {
-      "nombre": "Caldo de pollo con peras",
-      "dato": "De la entrevista con Yolanda Gudiño: “Hacía un caldo de pollo, ponía de todas las hierbas (...) le ponía peras pequeñas, papa y zanahoria. La gente venía a probar ese caldo”.",
-      "ingredientes": "2 litros de agua.\n1 pollo.\n200 gramos de zanahoria (2).\n100 gramos de peras pequeñas (3).\n200 gramos de papa.\n100 gramos de apio (1 vara).\n1 pizca de orégano.\n1 pizca de pimienta.\n1 pizca de sal.\n200 gramos de ajo.\n100 gramos de cebolla.\n30 gramos de cilantro.\n3 piezas de clavo de olor.",
-      "preparacion": "Pela y corta en cubos las zanahorias, peras y papas.\nPon a hervir en una olla todos los ingredientes. Retira las especias con ayuda de un colador y sirve.",
-      "chef": "Maria Antonia Rosas Juárez y Lucio Herber Reyes.",
-      "imagen": "pera.JPG"
-    }
-  ]
-  
+  {
+    "nombre": "Pollo, salchicha italiana y arroz",
+    "dato": "De los recuerdos de Pablo Weisz-Carrington.",
+    "ingredientes": "1 pechuga de pollo.\n250 gramos de salchicha italiana.\n2 cebollas pequeñas.\n1 taza de arroz.\n1 cucharadita de sal.\n1 onza de aceite de oliva.\n1 pizca de azafrán.\n1 pizca de paprika.\n1 pizca de sal de ajo.",
+    "preparacion": "Corta el pollo crudo en cubos de aproximadamente 2 centímetros por lado.\nCorta la salchicha italiana cruda en trozos y la cebolla en cubos.\nCalienta un sartén, agrega el aceite de oliva, la cebolla, la sal de ajo y paprika.\nIncorpora el pollo, sofríe y reserva.\nEn una olla hierve tres tazas de agua con la sal y una cucharadita de aceite de oliva.\nDurante el hervor agrega la taza de arroz, la salchicha italiana cortada, el pollo y el azafrán.\nTapa la olla y cocina a fuego fuerte durante los primeros 8 minutos, baja a fuego medio y deja cocinar por 6 minutos y luego a fuego bajo por 4 minutos más, cuida que el arroz no se adhiera al fondo del sartén.\nDeja reposar antes de comer.",
+    "chef": "Emelia Xóchitl Loranca Lara.",
+    "imagen": "azafran.JPG"
+  },
+  {
+    "nombre": "Caldo de pollo con peras",
+    "dato": "De la entrevista con Yolanda Gudiño: “Hacía un caldo de pollo, ponía de todas las hierbas (...) le ponía peras pequeñas, papa y zanahoria. La gente venía a probar ese caldo”.",
+    "ingredientes": "2 litros de agua.\n1 pollo.\n200 gramos de zanahoria (2).\n100 gramos de peras pequeñas (3).\n200 gramos de papa.\n100 gramos de apio (1 vara).\n1 pizca de orégano.\n1 pizca de pimienta.\n1 pizca de sal.\n200 gramos de ajo.\n100 gramos de cebolla.\n30 gramos de cilantro.\n3 piezas de clavo de olor.",
+    "preparacion": "Pela y corta en cubos las zanahorias, peras y papas.\nPon a hervir en una olla todos los ingredientes.\nRetira las especias con ayuda de un colador y sirve.",
+    "chef": "Maria Antonia Rosas Juárez y Lucio Herber Reyes.",
+    "imagen": "pera.JPG"
+  }
+]

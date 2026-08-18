@@ -1,155 +1,162 @@
 {
-    "lobby":  [
-        {
-          "es": "¡Hola! Mi nombre es Yeti. Aquí viví con Leonora. En una casa tan fría, su regazo era el mejor abrigo.",
-          "en": "Hello! My name is Yeti. Here I lived with Leonora. In such a cold house, her lap was the best shelter."
-        },
-        {
-          "es": "Leonora salió. Mientras regresa, seré tu anfitriona en esta casa estudio.",
-          "en": "Leonora went out. While she returns, I will be your host in this house study."
-        },
-        {
-          "es": "Mis amigos y yo aún recordamos cómo era la vida en esta casa.",
-          "en": "My friends and I still remember what life was like in this house."
-        },
-        {
-          "es": "Si necesitas ayuda, estaré por aquí.",
-          "en": "If you need help, I'll be around."
-        }
-      ]
-,
-    "comedor": [
-        {
-          "es": "¡Bienvenido! Me llamo Ramona. ¿Puedes creer que esta estufa pudo ser chatarra?",
-          "en": "Welcome! My name is Ramona. Can you believe this stove could be junk?"
-        },
-        {
-          "es": "Lo bueno es que la regalaron a Leonora. Aquí colocaba en notas los teléfonos de personas significativas.",
-          "en": "The good thing is that they gave it to Leonora. Here she put the phone numbers of significant people in notes."
-        },
-        {
-          "es": "Toca las notas adhesivas para conocer a algunas de sus amistades.",
-          "en": "Touch the sticky notes to know some of her friends."
-        },
-        {
-          "es": "Si estás en el comedor de la casa estudio, toca el libro de rutas y descubre una historia oculta.",
-          "en": "If you are in the dining room of the study house, touch the route book and discover a hidden story."
-        }
-      ],
-      "comedor_amigos": [
-        {
-          "personaje": "ramona",
-          "es": "Leonora se relacionó con varios artistas e intelectuales que compartieron té o un buen tequila en este lugar.",
-          "en": "Leonora related to different artists and intellectuals who shared a tea or a good tequila in this place."
-        },
-        {
-          "personaje": "ramona",
-          "es": "Aquí encontrarás algunos de esos amigos especiales en la vida de Leonora.",
-          "en": "Here you will find some of those special friends in Leonora's life."
-        },
-        {
-          "personaje": "ramona",
-          "es": "Toca las notas adhesivas para encontrar información sobre algunas de sus amistades.",
-          "en": "Tap on the sticky notes to find information about some of Leonora's friends."
-        }
-      ],
-      "comedor_rutas": [
-        {
-          "personaje": "ramona",
-          "es": "A Leonora le gustaba pasear por las tardes en la colonia Roma y en ocasiones especiales viajó a otros lugares de México.",
-          "en": "Leonora liked to walk in the afternoons in the Roma neighborhood and on special occasions she traveled to other parts of Mexico."
-        },
-        {
-          "personaje": "ramona",
-          "es": "Toca el nombre de los estados para descubrir lugares que Leonora frecuentaba fuera de la casa.",
-          "en": "Touch the names of the states to discover places that Leonora frequented outside the house."
-        },
-        {
-          "personaje": "ramona",
-          "es": "Te recomiendo que un día los visites siguiendo el mapa.",
-          "en": "I recommend that one day you visit them following the map."
-        }
-      ],
-    
-    "cocina": [
-        {
-          "es": "Hola. Soy Monsieur. Pasaba mucho tiempo escuchando historias y oliendo comida deliciosa.",
-          "en": "Hello. I am Monsieur. I spent a lot of time listening to stories and smelling delicious food."
-        },
-        {
-          "es": "Este lugar calientito ha servido para magia, mole y pláticas entre Leonora y sus amigos.",
-          "en": "This warm place has served for magic, mole, and conversations between Leonora and her friends."
-        },
-        {
-          "es": "Toca la tetera y descubre una de las memorias que guarda esta habitación.",
-          "en": "Touch the kettle and discover one of the memories this room keeps."
-        },
-        {
-          "es": "Si estás en la cocina de la casa estudio, toca los libros y descubre una historia oculta.",
-          "en": "If you are in the kitchen of the study house, touch the books and discover a hidden story."
-        }
-      ],
-      "cocina_recetario": [
-        {
-          "personaje": "monsieur",
-          "es": "Toca el recetario o el botón \"Descubrir\" para algunas recetas.",
-          "en": "Touch the recipe book or the “Discover” button for some recipes."
-        }
-      ],
-      "cocina_recetas": [
-        {
-          "personaje": "monsieur",
-          "es": "Puedes conseguir el recetario completo en la colección de libros de la Casa Estudio Leonora Carrington.",
-          "en": "You can get the complete recipe book in the book collection of the Casa Estudio Leonora Carrington."
-        }
-      ],
-    
-    "biblioteca":  [
-        {
-          "es": "Soy la Hija del Minotauro y esta es la biblioteca de la familia Weisz-Carrington.",
-          "en": "I am the Daughter of the Minotaur and this is the Weisz-Carrington family library."
-        },
-        {
-          "es": "Toca el librero y descubre algunos de los libros que guarda esta habitación.",
-          "en": "Touch the bookcase and discover information about some of the books in this room."
-        },
-        {
-          "es": "Si estás en la biblioteca de la casa estudio, toca el caldero y descubre una historia oculta.",
-          "en": "If you are in the library of the study house, touch the cauldron and discover a hidden story."
-        }
-      ],
-      "biblioteca_libros": [
-        {
-          "personaje": "hija_minotauro",
-          "es": "Nací mucho antes de que Leonora me dejara con Edward James en Xilitla.",
-          "en": "I was born long before Leonora left me with Edward James in Xilitla."
-        },
-        {
-          "personaje": "hija_minotauro",
-          "es": "Desde joven ella descubrió mi mundo con los libros que leía. Toca los libros para conocer de dónde vengo.",
-          "en": "From a young age she discovered my world with the books she read. Touch the books to know where I come from."
-        }
-      ],
-      "biblioteca_caldero": [
-        {
-          "personaje": "hija_minotauro",
-          "es": "Como yo, también puedes ser parte del mundo de Leonora. Toca el caldero o el botón \"Descubrir\" y pruébate sus máscaras.",
-          "en": "Like me, you can also be part of Leonora’s world. Touch the cauldron or the “Discover” button and try on her masks."
-        }
-      ],
-    "errores": {
-      "page404": {
-        "yeti": {
-          "es": "No te preocupes, te acompañaré de regreso al Inicio.",
-          "en": "Don't worry, I'll walk you back Home."
-        }
-      },
-      "monsieurDuerme": {
-        "yeti": {
-          "es": "No te preocupes, te acompañaré de regreso al Inicio.",
-          "en": "Don't worry, I'll walk you back Home."
-        }
-      }
+  "idioma": [
+    {
+      "es": "Elige tu idioma.",
+      "en": "Choose your language."
     }
-  }
-  
+  ],
+  "instrucciones": [
+    {
+      "es": "¡Hola! Mi nombre es Yeti. Aquí viví con Leonora. En una casa tan fría, su regazo era el mejor abrigo.",
+      "en": "Hello! My name is Yeti. Here I lived with Leonora. In such a cold house, her lap was the best shelter."
+    },
+    {
+      "es": "Leonora salió. Mientras regresa, seré tu anfitriona en esta casa estudio.",
+      "en": "Leonora went out. While she returns, I will be your host in this house study."
+    },
+    {
+      "es": "Durante tu visita toca los elementos dorados para conocer más sobre la vida de Leonora.",
+      "en": "During your visit, touch the golden elements to learn more about Leonora's life."
+    },
+    {
+      "es": "En cada habitación, sincroniza un elemento para descubrir una historia oculta.",
+      "en": "In each room, sync an item to uncover a hidden story."
+    },
+    {
+      "es": "Si necesitas ayuda, estaré por aquí.",
+      "en": "If you need help, I'll be around."
+    }
+  ],
+  "lobby": [
+    {
+      "es": "Mis amigos y yo aún recordamos cómo era la vida en esta casa.",
+      "en": "My friends and I still remember what life was like in this house."
+    },
+    {
+      "es": "Toca una mano para entrar a una habitación y conocer nuestras historias.",
+      "en": "Touch a hand to enter a room and know our histories."
+    }
+  ],
+  "comedor": [
+    {
+      "es": "¡Bienvenido! Me llamo Ramona. ¿Puedes creer que esta estufa pudo ser chatarra?",
+      "en": "Welcome! My name is Ramona. Can you believe this stove could be junk?"
+    },
+    {
+      "es": "Lo bueno es que la regalaron a Leonora. Aquí colocaba en notas los teléfonos de personas significativas.",
+      "en": "The good thing is that they gave it to Leonora. Here she put the phone numbers of significant people in notes."
+    },
+    {
+      "es": "Toca las notas adhesivas para conocer a algunas de sus amistades.",
+      "en": "Touch the sticky notes to know some of her friends."
+    },
+    {
+      "es": "Si estás en el comedor de la casa estudio, toca el libro de rutas y descubre una historia oculta.",
+      "en": "If you are in the dining room of the study house, touch the route book and discover a hidden story."
+    }
+  ],
+  "comedor_amigos": [
+    {
+      "es": "Leonora se relacionó con varios artistas e intelectuales que compartieron té o un buen tequila en este lugar.",
+      "en": "Leonora related to different artists and intellectuals who shared a tea or a good tequila in this place."
+    },
+    {
+      "es": "Aquí encontrarás algunos de esos amigos especiales en la vida de Leonora.",
+      "en": "Here you will find some of those special friends in Leonora's life."
+    },
+    {
+      "es": "Toca las notas adhesivas para encontrar información sobre algunas de sus amistades.",
+      "en": "Tap on the sticky notes to find information about some of Leonora's friends."
+    }
+  ],
+  "comedor_rutas": [
+    {
+      "es": "A Leonora le gustaba pasear por las tardes en la colonia Roma y en ocasiones especiales viajó a otros lugares de México.",
+      "en": "Leonora liked to walk in the afternoons in the Roma neighborhood and on special occasions she traveled to other parts of Mexico."
+    },
+    {
+      "es": "Toca el nombre de los estados para descubrir lugares que Leonora frecuentaba fuera de la casa.",
+      "en": "Touch the names of the states to discover places that Leonora frequented outside the house."
+    },
+    {
+      "es": "Te recomiendo que un día los visites siguiendo el mapa.",
+      "en": "I recommend that one day you visit them following the map."
+    }
+  ],
+  "comedor_mapa": [
+    {
+      "es": "Te mostraré sitios que frecuentaba Leonora. Toca el mapa o el botón \"Descubrir\" para acompañarme.",
+      "en": "Te mostraré sitios que frecuentaba Leonora. Toca el mapa o el botón \"Descubrir\" para acompañarme."
+    }
+  ],
+  "cocina": [
+    {
+      "es": "Hola. Soy Monsieur. Pasaba mucho tiempo escuchando historias y oliendo comida deliciosa.",
+      "en": "Hola. Soy Monsieur. Pasaba mucho tiempo escuchando historias y oliendo comida deliciosa."
+    },
+    {
+      "es": "Este lugar calientito ha servido para magia, mole y pláticas entre Leonora y sus amigos.",
+      "en": "Este lugar calientito ha servido para magia, mole y pláticas entre Leonora y sus amigos."
+    },
+    {
+      "es": "Toca la tetera y descubre una de las memorias que guarda esta habitación.",
+      "en": "Toca la tetera y descubre una de las memorias que guarda esta habitación."
+    },
+    {
+      "es": "Si estás en la cocina de la casa estudio, toca los libros y descubre una historia oculta.",
+      "en": "Si estás en la cocina de la casa estudio, toca los libros y descubre una historia oculta."
+    }
+  ],
+  "cocina_recetario": [
+    {
+      "es": "Toca el recetario o el botón \"Descubrir\" para algunas recetas.",
+      "en": "Toca el recetario o el botón \"Descubrir\" para algunas recetas."
+    }
+  ],
+  "cocina_recetas": [
+    {
+      "es": "Puedes conseguir el recetario completo en la colección de libros de la Casa Estudio Leonora Carrington.",
+      "en": "Puedes conseguir el recetario completo en la colección de libros de la Casa Estudio Leonora Carrington."
+    }
+  ],
+  "biblioteca": [
+    {
+      "es": "Soy la Hija del Minotauro y esta es la biblioteca de la familia Weisz-Carrington.",
+      "en": "I am the Daughter of the Minotaur and this is the Weisz-Carrington family library."
+    },
+    {
+      "es": "Toca el librero y descubre algunos de los libros que guarda esta habitación.",
+      "en": "Touch the bookcase and discover information about some of the books in this room."
+    },
+    {
+      "es": "Si estás en la biblioteca de la casa estudio, toca el caldero y descubre una historia oculta.",
+      "en": "If you are in the library of the study house, touch the cauldron and discover a hidden story."
+    }
+  ],
+  "biblioteca_libros": [
+    {
+      "es": "Nací mucho antes de que Leonora me dejara con Edward James en Xilitla.",
+      "en": "I was born long before Leonora left me with Edward James in Xilitla."
+    },
+    {
+      "es": "Desde joven ella descubrió mi mundo con los libros que leía. Toca los libros para conocer de dónde vengo.",
+      "en": "From a young age she discovered my world with the books she read. Touch the books to know where I come from."
+    }
+  ],
+  "biblioteca_caldero": [
+    {
+      "es": "Como yo, también puedes ser parte del mundo de Leonora. Toca el caldero o el botón \"Descubrir\" y pruébate sus máscaras.",
+      "en": "Como yo, también puedes ser parte del mundo de Leonora. Toca el caldero o el botón \"Descubrir\" y pruébate sus máscaras."
+    }
+  ],
+  "errores": [
+    {
+      "es": "No te preocupes, te acompañaré de regreso al Inicio.",
+      "en": "Don't worry, I'll walk you back Home."
+    },
+    {
+      "es": "No te preocupes, te acompañaré de regreso al Inicio.",
+      "en": "Don't worry, I'll walk you back Home."
+    }
+  ]
+}
