@@ -18,7 +18,7 @@ function LibroDetalle() {
   if (!b) throw notFound();
   return (
     <SectionPageLayout sectionId="biblioteca" bare>
-    <div className="pb-10">
+    <div className="pb-24">
       <div className="px-5 pt-8">
         <Link to="/biblioteca/estante" className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
           <ArrowLeft className="h-3 w-3" /> Estante
