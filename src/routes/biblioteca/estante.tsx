@@ -2,9 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import books from "@/data/booksData.json";
 import { useLeonor } from "@/lib/leonor-context";
 import { bookImg } from "@/lib/leonor-images";
-import { itemIcon } from "@/lib/leonor-icons";
 import { SectionPageLayout } from "@/components/SectionPageLayout";
-const LibroIcon = itemIcon.libro;
 
 export const Route = createFileRoute("/biblioteca/estante")({
   head: () => ({ meta: [{ title: "Estante — Leonorapp" }] }),
@@ -15,40 +13,37 @@ function EstantePage() {
   const { language } = useLeonor();
   return (
     <SectionPageLayout sectionId="biblioteca">
-    <div className="px-5 py-8">
-      <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
-        Estante de libros
-      </h1>
-      <p className="mb-6 text-sm text-muted-foreground">
-        Lecturas que habitaron la biblioteca de la familia Weisz-Carrington.
-      </p>
-      <div className="grid grid-cols-2 gap-4">
-        {books.map((b, i) => (
-          <Link
-            key={i}
-            to="/biblioteca/libro/$libroId"
-            params={{ libroId: String(i) }}
-            className="overflow-hidden rounded-xl bg-card shadow-md transition-transform hover:scale-[1.02]"
-          >
-            <div
-              className="aspect-[2/3] w-full bg-cover bg-center"
-              style={{ backgroundImage: `url(${bookImg(i)})` }}
-            />
-            <div className="p-3">
-              <div className="flex items-start gap-2" style={{ color: "var(--section-color)" }}>
-                <LibroIcon size={14} strokeWidth={1.75} className="mt-0.5 flex-shrink-0" />
-                <p className="font-serif text-sm leading-tight text-foreground">
-                  {language === "es" ? b.nombre_es : b.nombre}
-                </p>
-              </div>
-              <p className="mt-1 text-[10px] uppercase tracking-wide text-muted-foreground">
-                {b.autor}
-              </p>
-            </div>
-          </Link>
-        ))}
+      <div className="py-8">
+        <h1
+          className="mb-6 px-5 font-serif text-3xl"
+          style={{ color: "var(--section-color)" }}
+        >
+          Estante de libros
+        </h1>
+        <ul className="grid grid-cols-3 gap-0">
+          {books.map((b, i) => {
+            const title = language === "es" ? b.nombre_es : b.nombre;
+            return (
+              <li key={i}>
+                <Link
+                  to="/biblioteca/libro/$libroId"
+                  params={{ libroId: String(i) }}
+                  aria-label={`${title} — ${b.autor}`}
+                  className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                  style={{ ["--tw-ring-color" as string]: "var(--section-color)" }}
+                >
+                  <img
+                    src={bookImg(i)}
+                    alt=""
+                    loading="lazy"
+                    className="block aspect-[2/3] w-full object-cover"
+                  />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
-    </div>
     </SectionPageLayout>
   );
 }
