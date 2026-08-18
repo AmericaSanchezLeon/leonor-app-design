@@ -67,6 +67,11 @@ export function RouteTimeline({ puntos }: Props) {
                   {p.direccion_pin && (
                     <p className="mt-1 text-xs text-muted-foreground">{p.direccion_pin}</p>
                   )}
+                  {(language === "es" ? p.es : p.en) && (
+                    <p className="mt-2 text-sm leading-relaxed">
+                      {language === "es" ? p.es : p.en}
+                    </p>
+                  )}
                 </div>
               </div>
 
