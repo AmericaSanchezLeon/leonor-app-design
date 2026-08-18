@@ -22,20 +22,9 @@ const RECETA_MAP: Record<string, string> = {
 export const recetaImg = (name: string, variant: ImgVariant = "thumb") =>
   url(`${RECETA_MAP[name] ?? baseName(name)}-${variant}`);
 
-// booksData.json usa nombres placeholder; las portadas se mapean por índice.
-const BOOK_COVERS = [
-  "libro-tibetano-muertos",
-  "libro-english-ghost",
-  "libro-gnostic-scriptures",
-  "libro-gothic-painting",
-  "libro-goddesses-gods",
-  "libro-fountain-age",
-  "libro-folktales-hungary",
-  "libro-magister-ludi",
-];
-
-export const bookImg = (i: number, variant: ImgVariant = "thumb") =>
-  url(`${BOOK_COVERS[i % BOOK_COVERS.length]}-${variant}`);
+// Cada libro trae su `slug` de portada en booksData.json.
+export const bookImg = (slug: string, variant: ImgVariant = "thumb") =>
+  url(`${slug}-${variant}`);
 
 // Ilustraciones de mascota por sección (rasterizadas y optimizadas).
 export const mascotImg: Record<string, string> = {
