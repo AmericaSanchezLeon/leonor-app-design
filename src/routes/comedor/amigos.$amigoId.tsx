@@ -26,7 +26,7 @@ function AmigoDetalle() {
         <Link to="/comedor/amigos" className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
           <ArrowLeft className="h-3 w-3" /> Amigos
         </Link>
-        <h1 className="font-serif text-3xl leading-tight" style={{ color: "var(--comedor)" }}>
+        <h1 className="font-serif text-3xl leading-tight" style={{ color: "var(--section-color)" }}>
           {a.amigo}
         </h1>
         <p className="mt-4 text-sm leading-relaxed">{language === "es" ? a.es : a.en}</p>

@@ -14,7 +14,7 @@ function AmigosPage() {
   return (
     <SectionPageLayout sectionId="comedor">
     <div className="px-5 py-8">
-      <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--comedor)" }}>
+      <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
         Nuestros Amigos
       </h1>
       <p className="mb-6 text-sm text-muted-foreground">
@@ -33,7 +33,7 @@ function AmigosPage() {
                 style={{ backgroundImage: `url(${amigoImg(a.imagen)})` }}
               />
               <div className="min-w-0">
-                <div className="flex items-center gap-1.5" style={{ color: "var(--comedor)" }}>
+                <div className="flex items-center gap-1.5" style={{ color: "var(--section-color)" }}>
                   <AmigoIcon size={14} strokeWidth={1.75} className="flex-shrink-0" />
                   <p className="font-serif text-lg leading-tight text-foreground">{a.amigo}</p>
                 </div>

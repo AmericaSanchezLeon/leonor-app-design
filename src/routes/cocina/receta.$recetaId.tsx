@@ -27,16 +27,16 @@ function RecetaPage() {
         <Link to="/cocina/recetario" className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
           <ArrowLeft className="h-3 w-3" /> Recetario
         </Link>
-        <h1 className="font-serif text-3xl leading-tight" style={{ color: "var(--cocina)" }}>
+        <h1 className="font-serif text-3xl leading-tight" style={{ color: "var(--section-color)" }}>
           {r.nombre}
         </h1>
         {r.chef && <p className="mt-1 text-sm text-muted-foreground">por {r.chef}</p>}
         {r.dato && (
           <p className="mt-3 rounded-lg bg-muted p-3 font-serif text-sm italic">{r.dato}</p>
         )}
-        <h2 className="mt-6 font-serif text-xl" style={{ color: "var(--cocina)" }}>Ingredientes</h2>
+        <h2 className="mt-6 font-serif text-xl" style={{ color: "var(--section-color)" }}>Ingredientes</h2>
         <pre className="mt-2 whitespace-pre-wrap font-sans text-sm leading-relaxed">{r.ingredientes}</pre>
-        <h2 className="mt-6 font-serif text-xl" style={{ color: "var(--cocina)" }}>Preparación</h2>
+        <h2 className="mt-6 font-serif text-xl" style={{ color: "var(--section-color)" }}>Preparación</h2>
         <pre className="mt-2 whitespace-pre-wrap font-sans text-sm leading-relaxed">{r.preparacion}</pre>
       </div>
     </div>

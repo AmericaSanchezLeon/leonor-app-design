@@ -24,7 +24,7 @@ function AutorasPage() {
   return (
     <SectionPageLayout sectionId="about">
     <div className="px-5 py-8">
-      <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--about)" }}>
+      <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
         {language === "es" ? "Las Autoras" : "The Authors"}
       </h1>
       {data && (
@@ -35,7 +35,7 @@ function AutorasPage() {
       <ul className="space-y-5">
         {autoras.map((a, i) => (
           <li key={i} className="rounded-2xl bg-card p-5 shadow-sm">
-            <p className="font-serif text-lg" style={{ color: "var(--about)" }}>{a.nombre}</p>
+            <p className="font-serif text-lg" style={{ color: "var(--section-color)" }}>{a.nombre}</p>
             {(a.rol_es || a.rol_en) && (
               <p className="text-xs uppercase tracking-wider text-muted-foreground">
                 {language === "es" ? a.rol_es : a.rol_en}

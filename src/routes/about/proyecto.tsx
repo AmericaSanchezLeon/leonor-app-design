@@ -14,13 +14,13 @@ function ProyectoPage() {
   return (
     <SectionPageLayout sectionId="about">
     <div className="px-5 py-8">
-      <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--about)" }}>
+      <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
         {language === "es" ? "Sobre el proyecto" : "About the project"}
       </h1>
       <div className="space-y-8">
         {sections.map((s, i) => (
           <section key={i}>
-            <h2 className="font-serif text-xl leading-tight" style={{ color: "var(--about)" }}>
+            <h2 className="font-serif text-xl leading-tight" style={{ color: "var(--section-color)" }}>
               {language === "es" ? s.title_es : s.title_en}
             </h2>
             <p className="mt-2 text-sm leading-relaxed">

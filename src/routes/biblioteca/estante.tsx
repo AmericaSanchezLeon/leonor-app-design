@@ -16,7 +16,7 @@ function EstantePage() {
   return (
     <SectionPageLayout sectionId="biblioteca">
     <div className="px-5 py-8">
-      <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--biblioteca)" }}>
+      <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
         Estante de libros
       </h1>
       <p className="mb-6 text-sm text-muted-foreground">
@@ -35,7 +35,7 @@ function EstantePage() {
               style={{ backgroundImage: `url(${bookImg(i)})` }}
             />
             <div className="p-3">
-              <div className="flex items-start gap-2" style={{ color: "var(--biblioteca)" }}>
+              <div className="flex items-start gap-2" style={{ color: "var(--section-color)" }}>
                 <LibroIcon size={14} strokeWidth={1.75} className="mt-0.5 flex-shrink-0" />
                 <p className="font-serif text-sm leading-tight text-foreground">
                   {language === "es" ? b.nombre_es : b.nombre}

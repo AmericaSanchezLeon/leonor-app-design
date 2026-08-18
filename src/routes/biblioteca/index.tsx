@@ -6,7 +6,6 @@ export const Route = createFileRoute("/biblioteca/")({
   head: () => ({ meta: [{ title: "Biblioteca — Leonorapp" }] }),
   component: () => (
     <RoomLanding
-      color="var(--biblioteca)"
       title_es="La Biblioteca"
       title_en="The Library"
       icon={<BookOpen className="h-10 w-10" strokeWidth={1.5} />}
