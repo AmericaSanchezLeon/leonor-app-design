@@ -2,8 +2,9 @@
   {
     "title_es": "Ruta de Leonora Carrington en Ciudad de México",
     "title_en": "Route of Leonora Carrington in Mexico City",
-    "descripcion_es": "Leonora Carrington vivió casi 60 años en la Roma Norte. Aquí creó muchas de sus obras, caminó entre sus calles arboladas y construyó amistades profundas con Remedios Varo y Kati Horna. Esta ruta sigue sus pasos cotidianos.",
-    "descripcion_en": "Leonora Carrington lived for almost 60 years in Roma Norte. Here she created many of her works, walked through its tree-lined streets and built deep friendships with Remedios Varo and Kati Horna. This route follows her everyday steps.",
+    "descripcion_es": "Leonora Carrington vivió casi 60 años en la colonia Roma. Paseaba por sus plazas arboladas, visitaba a sus amigas y con los años se volvió un rostro conocido para algunos locales de la zona.",
+    "descripcion_en": "Leonora Carrington lived almost 60 years in the Roma neighborhood. She walked through its wooded squares, visited her friends and over the years she became a familiar face for some locals in the area.",
+    "estado": "Ciudad de México",
     "puntos": [
       {
         "estado": "Ciudad de México",
@@ -14,7 +15,7 @@
         "es": "Aquí vivió casi 60 años ¿imaginas los cambios que vio desde su ventana o en sus paseos? Leonora se ponía su sombrero y salía a caminar por la Roma. Le gustaban las plazas arboladas: le recordaban a Inglaterra.",
         "en": "She lived here for almost 60 years. Can you imagine the changes she saw from her window or on her walks? Leonora would put on her hat and go out for a walk in Roma neighborhood. She liked the wooded parks: they reminded her of England.",
         "imagen": "https://drive.google.com/file/d/1tm3lg_p8ntgBpmZ8wrUJ4j-SxQsG_dgt/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=19.4165182,-99.1611726"
       },
       {
         "estado": "Ciudad de México",
@@ -25,7 +26,7 @@
         "es": "Cuando Remedios partió, su obra fue protegida por su pareja Walter Gruen y su vida, atesorada por sus mejores amigas, Leonora y la fotógrafa Kati Horna. Su casa, cascarón vacío, fue demolida.",
         "en": "When Remedios left, her work was protected by her partner Walter Gruen and her life, treasured by her best friends, Leonora and the photographer Kati Horna. His house, an empty shell, was demolished.",
         "imagen": "https://drive.google.com/file/d/1Wkbwzi6jn8X6Y7D5sncS0shL7G6Qnc5x/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=19.418450,-99.157873"
       },
       {
         "estado": "Ciudad de México",
@@ -36,7 +37,7 @@
         "es": "Kati vivía tan cerca de Leonora que caminaban en la Roma por horas, a veces hasta las 2 de la mañana. Al otro día, volvían a verse para seguir caminando la vida.",
         "en": "Kati lived so close to Leonora that they walked in Roma neighborhood for hours, sometimes until 2 in the morning. The next day, they met again to continue walking life.",
         "imagen": "https://drive.google.com/file/d/1BhFxCwUREG-47huR42CiLyWXoSC9sC1f/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=19.418626,-99.162011"
       },
       {
         "estado": "Ciudad de México",
@@ -47,7 +48,7 @@
         "es": "Del menú, a Leonora le encantaban los huevos a la mexicana. Iba frecuentemente: a veces, a desayunar con su hijo Gabriel o para almorzar y tomar té con su prima Joanna Moorhead.",
         "en": "From the menu, Leonora loved mexican style scrambled eggs. She went frequently: sometimes for breakfast with her son Gabriel or for lunch and tea with her cousin Joanna Moorhead.",
         "imagen": "https://drive.google.com/file/d/1Tl58M4UkQGAztkAp5BMY7njIHsDq5Kef/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=19.418276,-99.164768"
       },
       {
         "estado": "Ciudad de México",
@@ -58,7 +59,7 @@
         "es": "Vamos al mercado ¿puedes imaginar el olor de los chiles secos? ¿o el sabor de gusanos de maguey y chapulines? Piensa en los colores y las texturas diferentes. Para Leonora, ir al mercado era encontrar lo maravilloso.",
         "en": "Let's go to the market. Can you imagine the smell of dried chili peppers? Or the taste of maguey worms and grasshoppers? Think about the different colors and textures. For Leonora, going to the market was finding the wonderful.",
         "imagen": "https://drive.google.com/file/d/119JbxaDfUHmgCsw1olDi9tS_5luULv5G/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=19.410435,-99.163384"
       },
       {
         "estado": "Ciudad de México",
@@ -69,18 +70,18 @@
         "es": "Suenan las rueditas del carrito de Leonora por la banqueta. Llega al súper y en los pasillos, a veces, platica con los vecinos. Pocos saben que es una artista que recibió la Orden del Imperio Británico. Para todos es la amable señora del carrito de súper rojo.",
         "en": "The wheels of Leonora's shopping trolley ring on the sidewalk. She goes to the supermarket and in the hallways, sometimes, she talks with the neighbors. Few know that she is an artist who received the Order of the British Empire. For everyone, she is the kind lady with the wheeled red shopping trolley.",
         "imagen": "https://drive.google.com/file/d/1DETPJRDD160IS7baD2EAj6UPfMi7QFCP/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=19.416899,-99.168720"
       },
       {
         "estado": "Ciudad de México",
         "nombre_pin_es": "Casa del poeta (Galería El Estudio)",
-        "nombre_pin_en": "House of the Poet (Gallery El Estudio)",
+        "nombre_pin_en": "House of the Poet (Gallery El Estudio )",
         "direccion_pin": "Av. Álvaro Obregón 73, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX",
         "coord_pin": "19.418857, -99.158233",
         "es": "En esta galería, las historiadoras de arte Rita Alazraki y Eva Marcovich promovieron las pinturas de Leonora. La galería cerró en 2009, pero su amistad con ella duró muchos años más.",
         "en": "In this gallery, art historians Rita Alazraki and Eva Marcovich promoted Leonora's paintings. The gallery closed in 2009, but his friendship with her lasted for many more years.",
         "imagen": "https://drive.google.com/file/d/19zoXedL64U5mbT80ASRJHWx4K7bfSi3t/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=19.418857,-99.158233"
       },
       {
         "estado": "Ciudad de México",
@@ -91,15 +92,16 @@
         "es": "Todos los martes, a la 1 de la tarde, su hijo Gabriel pasaba por Leonora para ir a almorzar y, en ocasiones, iban a este restaurante.",
         "en": "Every Tuesday at 1 in the afternoon, her son Gabriel would pick up Leonora to go to lunch and, on occasions, they would go to this restaurant.",
         "imagen": "https://drive.google.com/file/d/1nVHKihTmz3ZYqjqovpexTIHcWJ0t3nri/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=19.411712,-99.167817"
       }
     ]
   },
   {
     "title_es": "Ruta de Leonora Carrington en San Luis Potosí",
-    "title_en": "Route of Leonora Carrington in San Luis Potosí",
+    "title_en": "Route of Leonora Carrington in San Luis Potosi",
     "descripcion_es": "Leonora y sus hijos visitaron en varias ocasiones a su amigo y mecenas, Edward James, mientras este creaba un laberíntico jardín resguardado por la selva del pueblo de Xilita.",
     "descripcion_en": "Leonora and her children visited her friend and patron, Edward James, on several occasions while he created a labyrinthine garden sheltered by the jungle of the town of Xilita.",
+    "estado": "San Luis Potosí",
     "puntos": [
       {
         "estado": "San Luis Potosí",
@@ -110,7 +112,7 @@
         "es": "Leonora no visitó este sitio. Pero es uno de los dos museos de arte en México dedicados enteramente a su variada obra.",
         "en": "Leonora did not visit this site. But it is one of only two art museums in Mexico dedicated entirely to his varied work.",
         "imagen": "https://drive.google.com/file/d/190c-Nbadu-dLC4CHCH03zuLbmA1N9QlJ/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=22.138546,-100.970570"
       },
       {
         "estado": "San Luis Potosí",
@@ -121,7 +123,7 @@
         "es": "Leonora no visitó este sitio. Pero es uno de los dos museos de arte en México dedicados enteramente a su variada obra.",
         "en": "Leonora did not visit this site. But it is one of only two art museums in Mexico dedicated entirely to his varied work.",
         "imagen": "https://drive.google.com/file/d/1wjNx6yaHXbBI9cAr1nLN7Od8edY77oqN/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=21.385379,-98.990678"
       },
       {
         "estado": "San Luis Potosí",
@@ -132,7 +134,7 @@
         "es": "En México, Edward James, amigo y mecenas de Leonora, tenía su habitación entre los muros surrealistas de la casa de su amigo Plutarco Gastelum. En uno de sus arcos, Leonora pintó el fresco La hija del minotauro.",
         "en": "In Mexico, Edward James, Leonora´s friend and patron, had his room within the surreal walls of the house of his friend Plutarco Gastelum. In one of its arches, Leonora painted the fresco The Minotaur's Daughter.",
         "imagen": "https://drive.google.com/file/d/1BT1m4jPxnnoQtFrV7NK8rpQTzp2vXvnZ/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=21.386047,-98.990087"
       },
       {
         "estado": "San Luis Potosí",
@@ -143,7 +145,7 @@
         "es": "Leonora recomendó a Edward James que visitara la huasteca potosina. Él se enamoró de la naturaleza viva del lugar y visualizó el maravilloso jardín surrealista que construyó por más de 20 años.",
         "en": "Leonora recommended Edward James to visit the Huasteca Potosina. He fell in love with the living nature of the place and envisioned the wonderful surreal garden that he built for more than 20 years.",
         "imagen": "https://drive.google.com/file/d/1ROsiGL8zx1Wn7jeJUIbq_ugZFqOhCtNL/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=21.396665,-98.996670"
       }
     ]
   },
@@ -151,7 +153,8 @@
     "title_es": "Ruta de Leonora Carrington en Chiapas",
     "title_en": "Route of Leonora Carrington in Chiapas",
     "descripcion_es": "Leonora caminó la selva Lacandona, libreta y lápiz en mano, para conocer el misticismo del lugar y sus habitantes, los hach winik. Su viaje resultó en el mural El mundo mágico de los mayas del Museo Nacional de Antropología.",
-    "descripcion_en": "Leonora walked the Lacandon jungle, notebook and pencil in hand, to learn about the mysticism of the place and its inhabitants, the Hach Winik. His trip resulted in in the mural  The Magic World of the Mayans at the National Museum of Anthropology.",
+    "descripcion_en": "Leonora walked the Lacandon jungle, notebook and pencil in hand, to learn about the mysticism of the place and its inhabitants, the Hach Winik. His trip resulted in in the mural The Magic World of the Mayans at the National Museum of Anthropology.",
+    "estado": "Chiapas",
     "puntos": [
       {
         "estado": "Chiapas",
@@ -162,7 +165,7 @@
         "es": "Para crear el mural El mundo mágico de los mayas, Leonora vivió con la fotógrafa Gertrude Duby y el investigador Frans Blom. Ellos la acompañaron a conocer la selva Lacandona y sus habitantes, los hach winik.",
         "en": "To create the mural The Magical World of the Maya, Leonora lived with photographer Gertrude Duby and researcher Frans Blom. They accompanied her to know the Lacandon jungle and its inhabitants, the Hach Winik.",
         "imagen": "https://drive.google.com/file/d/12iTq8c7tJKsgXX-axNNh9TeZiI8SGNFh/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=16.741663,-92.629931"
       },
       {
         "estado": "Chiapas",
@@ -173,7 +176,7 @@
         "es": "Esta es la iglesia colonial que aparece en el centro del mural. Leonora reprodujo varios detalles de la fachada real, pero si observas de cerca verás que dejó una criatura mítica al frente.",
         "en": "This is the colonial church that appears in the center of the mural. Leonora reproduced several details of the real facade, but if you look closely you will see that she left a mythical creature in front of it.",
         "imagen": "https://drive.google.com/file/d/1N-LgKuYb8eoaDMVQBbflYMnJtCNZKFA1/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=16.741694,-92.637957"
       },
       {
         "estado": "Chiapas",
@@ -184,7 +187,7 @@
         "es": "Leonora descubría lo místico en todas partes y en Chiapas, gracias a Gertrude Duby, la gente de Zinacantán aceptó que participara en los rituales de los curanderos.",
         "en": "Leonora discovered the mystical everywhere and in Chiapas, thanks to Gertrude Duby, the people of Zinacantán accepted her to participate in the rituals of the folk healers.",
         "imagen": "https://drive.google.com/file/d/1UN8R1Rv06TrHK8yh53iqzVihPPsSg0YY/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=16.760552,-92.724503"
       },
       {
         "estado": "Chiapas",
@@ -195,7 +198,7 @@
         "es": "En este zoológico, Leonora dibujó faisanes, jabalíes y tortugas. Esos trazos mezclados con su imaginación originaron los animales que viven en el mural.",
         "en": "In this zoo, Leonora drew pheasants, wild boars, and turtles. Those strokes mixed with her imagination originated the animals that live in the mural.",
         "imagen": "https://drive.google.com/file/d/1Csn-3UoQ6aLdrMWaqxQgni8DuL3gx7zO/view?usp=sharing",
-        "mapsUrl": ""
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=16.725090,-93.093609"
       }
     ]
   }

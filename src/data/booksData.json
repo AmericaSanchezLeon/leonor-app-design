@@ -1,74 +1,452 @@
 [
-    {
-      "nombre": "Tibetan book of the dead",
-      "nombre_es": "El libro tibetano de los muertos",
-      "autor": "Padmasambhava",
-      "tema": "Envejecimiento y muerte",
-      "reseña": "Basado en la sabiduría del budismo tibetano...",
-      "dato": "Originalmente, está escrito en dialecto de Lhasa. Su primera traducción al inglés se realizó en 1927.",
-      "imagen": "LibroTibetano_1.jpg"
-    },
-    {
-      "nombre": "The Oxford Book of English Ghost Stories",
-      "nombre_es": "El libro de Oxford de relatos ingleses de fantasmas",
-      "autor": "Michael Cox",
-      "tema": "Fantasmas",
-      "reseña": "Incluye historias de fantasmas desde el siglo XIX hasta la década de 1960...",
-      "dato": "",
-      "imagen": "LibroOxford_2.jpg"
-    },
-    {
-      "nombre": "The Gnostic Scriptures",
-      "nombre_es": "The Gnostic Scriptures",
-      "autor": "Bentley Layton",
-      "tema": "Espiritualidad",
-      "reseña": "Presenta una introducción a la literatura del cristianismo gnóstico...",
-      "dato": "Este libro solo se encuentra en inglés y en portugués.",
-      "imagen": "LibroGnostico_3.jpg"
-    },
-    {
-      "nombre": "Gothic Painting",
-      "nombre_es": "Gothic Painting",
-      "autor": "Jacques Dupont- Cesare Gnudi",
-      "tema": "Arte",
-      "reseña": "Parte de la colección de Los grandes siglos de la pintura...",
-      "dato": "El idioma original de esta obra es el francés.",
-      "imagen": "LibroGotico_4.jpg"
-    },
-    {
-      "nombre": "The Goddesses and Gods of Old Europe",
-      "nombre_es": "Las diosas y los dioses de la vieja Europa",
-      "autor": "Marija Gimbutas",
-      "tema": "Mitología y cuentos",
-      "reseña": "Se presentan fuentes arqueológicas sobre la cultura de la vieja Europa...",
-      "dato": "",
-      "imagen": "LibroGimbutas_5.jpg"
-    },
-    {
-      "nombre": "The Fountain of Age",
-      "nombre_es": "La fuente de la edad",
-      "autor": "Betty Friedan",
-      "tema": "Envejecimiento y muerte",
-      "reseña": "Presenta un estudio sobre cómo las personas enfrentan el envejecimiento...",
-      "dato": "Betty Friedan y Leonora Carrington se conocieron en persona.",
-      "imagen": "LibroFuente_6.jpg"
-    },
-    {
-      "nombre": "Folktales of Hungary",
-      "nombre_es": "Folktales of Hungary",
-      "autor": "Linda Dégh",
-      "tema": "Mitología y cuentos",
-      "reseña": "Una colección de cuentos de hadas del folclor húngaro...",
-      "dato": "",
-      "imagen": "LibroHungria_7.jpg"
-    },
-    {
-      "nombre": "Magister Ludi: The Glass Bead Game",
-      "nombre_es": "El juego de los abalorios",
-      "autor": "Herman Hesse",
-      "tema": "Novelas",
-      "reseña": "Narra la historia de Joseph Knecht...",
-      "dato": "Las lecturas de Leonora Carrington también abarcaban numerosas obras de ciencia ficción.",
-      "imagen": "LibroMagister_8.jpg"
-    }
-  ]
+  {
+    "nombre": "Tibetan book of the dead",
+    "nombre_es": "El libro tibetano de los muertos",
+    "autor": "Padmasambhava",
+    "tema": "Envejecimiento y muerte",
+    "reseña": "Basado en la sabiduría del budismo tibetano, se enfoca en los procesos psicológicos relacionados con la muerte y duelo. Tiene un mensaje del arte de morir y la importancia de la vida. Se descubrió en el siglo VIII y es atribuido a Padmasambhava, el fundador de la escuela Nyimapa.",
+    "dato": "Originalmente, está escrito en dialecto de Lhasa. Su primera traducción al inglés se realizó en 1927.",
+    "imagen": "LibroTibetano_1.jpg",
+    "slug": "libro-tibetano-muertos"
+  },
+  {
+    "nombre": "The Oxford Book of English Ghost Stories",
+    "nombre_es": "El libro de Oxford de relatos ingleses de fantasmas",
+    "autor": "Michael Cox",
+    "tema": "Fantasmas",
+    "reseña": "Incluye historias de fantasmas desde el siglo XIX hasta la década de 1960. Contempla escritores como Sir Walter Scott, H.G. Wells y Elizabeth Bowen, del Reino Unido, y Edith Wharton, de Estados Unidos. Estos representan los cuentos de fantasmas que fueron populares durante las guerras mundiales.",
+    "dato": "",
+    "imagen": "LibroOxford_2.jpg",
+    "slug": "libro-english-ghost"
+  },
+  {
+    "nombre": "The Gnostic Scriptures",
+    "nombre_es": "The Gnostic Scriptures",
+    "autor": "Bentley Layton",
+    "tema": "Espiritualidad",
+    "reseña": "Presenta una introducción a la literatura del cristianismo gnóstico que el académico Bentley Layton tradujo de los manuscritos de Nag Hammadi. Trata teología, las tradiciones literarias del cristianismo antiguo y el judaísmo helenístico.",
+    "dato": "Este libro solo se encuentra en inglés y en portugués.",
+    "imagen": "LibroGnostico_3.jpg",
+    "slug": "libro-gnostic-scriptures"
+  },
+  {
+    "nombre": "Gothic Painting",
+    "nombre_es": "Gothic Painting",
+    "autor": "Jacques Dupont- Cesare Gnudi",
+    "tema": "Arte",
+    "reseña": "Parte de la colección de Los grandes siglos de la pintura. Trata sobre los pintores italianos del periodo gótico. Contiene ilustraciones en color.",
+    "dato": "El idioma original de esta obra es el francés. Su título es La Peinture Gothique.",
+    "imagen": "LibroGotico_4.jpg",
+    "slug": "libro-gothic-painting"
+  },
+  {
+    "nombre": "The Goddesses and Gods of Old Europe: Myths and Cult Images",
+    "nombre_es": "Las diosas y los dioses de la vieja Europa: mitos e imágenes de culto",
+    "autor": "Marija Gimbutas",
+    "tema": "Mitología y cuentos",
+    "reseña": "Se presentan fuentes arqueológicas sobre la cultura de la vieja Europa (7,000-3,500 a. C.) para contrastar la cultura preindoeuropea, que era matrifocal, agrícola y sedentaria, y la cultura protoindoeuropea, patriarcal, pastoral y nómada. La autora pone de manifiesto el culto a la diosa y la supremacía del poder de generar vida y del poder de la fertilidad.",
+    "dato": "",
+    "imagen": "LibroGimbutas_5.jpg",
+    "slug": "libro-goddesses-gods"
+  },
+  {
+    "nombre": "The Fountain of Age",
+    "nombre_es": "La fuente de la edad",
+    "autor": "Betty Friedan",
+    "tema": "Envejecimiento y muerte",
+    "reseña": "Presenta un estudio sobre como las personas enfrentan el envejecimiento, así como misterios y prejuicios que rodean este tema.",
+    "dato": "Betty Friedan y Leonora Carrington se conocieron en persona.",
+    "imagen": "LibroFuente_6.jpg",
+    "slug": "libro-fountain-age"
+  },
+  {
+    "nombre": "Folktales of Hungary",
+    "nombre_es": "Folktales of Hungary",
+    "autor": "Linda Dégh",
+    "tema": "Mitología y cuentos",
+    "reseña": "Una colección de cuentos de hadas del folclor húngaro. Incluye bromas, leyendas y notas sobre los orígenes de los cuentos.",
+    "dato": "",
+    "imagen": "LibroHungria_7.jpg",
+    "slug": "libro-folktales-hungary"
+  },
+  {
+    "nombre": "Magister Ludi: The Glass Bead Game",
+    "nombre_es": "El juego de los abalorios",
+    "autor": "Herman Hesse",
+    "tema": "Novelas",
+    "reseña": "Narra la historia de Joseph Knecht, un habitante de la mítica Castalia hacia el año 2400, quien consigue el título de Magister Ludi al dominar el Juego de los Abalorios: una extraña proeza que requiere asociar entre sí todos los saberes de la humanidad.",
+    "dato": "Las lecturas de Leonora Carrington también abarcaban numerosas obras de ciencia ficción.",
+    "imagen": "LibroMagister_8.jpg",
+    "slug": "libro-magister-ludi"
+  },
+  {
+    "nombre": "Best ghost stories",
+    "nombre_es": "Best ghost stories",
+    "autor": "Algernon Blackwood",
+    "tema": "Fantasmas",
+    "reseña": "Presenta 13 historias del escritor inglés Algernon Blackwood. Estos relatos definieron aspectos del género de horror, por lo que ha sido considerado una influencia importante en escritores como H. P. Lovecraft.",
+    "dato": "El interés de Algernon Blackwood (1869-1951) en el misticismo y órdenes secretas, como la Golden Dawn, determinó varios elementos de sus relatos.",
+    "imagen": "LibroFantasmas_9.jpg",
+    "slug": "libro-ghost-stories"
+  },
+  {
+    "nombre": "The Art of the Ancient Near East",
+    "nombre_es": "El arte del Antiguo Medio Oriente",
+    "autor": "Seton Lloyd",
+    "tema": "Arte",
+    "reseña": "El Medio Oriente dio nacimiento culturas como la egipcia y la mesopotámica. En este libro se recopilan datos sobre las artes del Medio Oriente.",
+    "dato": "Leonora, al parecer, estaba muy interesada en el arte y la cultura de las primeras civilizaciones. El toro de esta portada es una de las postales ubicadas en la cocina.",
+    "imagen": "LibroOriente_10.jpg",
+    "slug": "libro-art-east"
+  },
+  {
+    "nombre": "The Teachings of Don Juan: A Yaqui Way of Knowledge",
+    "nombre_es": "Las enseñanzas de Don Juan: una forma yaqui de conocimiento",
+    "autor": "Carlos Castaneda",
+    "tema": "Magia y misticismo",
+    "reseña": "Publicado en inglés, es el primero de una saga. En este, el antropólogo Carlos Castaneda narra su travesía para convertirse en un chamán nahual tolteca, guiado por el sabio yaqui Juan Matus.",
+    "dato": "Leonora Carrington tenía, ordenadas según el año de publicación, estas obras de Castaneda: Journey to Ixtlan, Tales of Power, The Second Ring of Power, The Eagle ´s Gift, The Power of Silence y El arte de ensoñar.",
+    "imagen": "LibroJuan_11.jpg",
+    "slug": "libro-teachings"
+  },
+  {
+    "nombre": "The Witch's Dream: A Healer's Way of Knowledge",
+    "nombre_es": "El sueño de la bruja",
+    "autor": "Florinda Donner-Grau",
+    "tema": "Magia y misticismo",
+    "reseña": "La autora relata su iniciación al curanderismo, la brujería, la magia y las fuerzas psíquicas. De la mano de Mercedes Peralta, una curandera de Venezuela, es adiestrada en el intercambio entre curandero y paciente a través del lenguaje de la magia y de los sueños.",
+    "dato": "Florinda Donner era discípula de Don Juan Matus y compañera de Carlos Castaneda.",
+    "imagen": "LibroSueño_12.jpg",
+    "slug": "libro-witch-dream"
+  },
+  {
+    "nombre": "The Dreaming Jewels",
+    "nombre_es": "Los cristales soñadores",
+    "autor": "Theodore Sturgeon",
+    "tema": "Novelas",
+    "reseña": "Cuenta la historia de un huérfano que huye de sus malvados padres adoptivos para refugiarse en un circo. Lleva consigo un muñeco de misteriosos ojos de cristal, con el que tendrá que enfrentar a las fuerzas del mal.",
+    "dato": "Theodore Sturgeon es considerado uno de los escritores de la Edad de Oro de la Ciencia Ficción.",
+    "imagen": "LibroCristales_13.jpg",
+    "slug": "libro-dreaming-jewels"
+  },
+  {
+    "nombre": "In Search of Ancient Mysteries",
+    "nombre_es": "En busca de antiguos misterios",
+    "autor": "Alan y Sally Landsburg",
+    "tema": "Misterios",
+    "reseña": "Presenta hallazgos relacionados con el Triángulo de las Bermudas, las pirámides egipcias y otros descubrimientos. Plantea que la vida no se originó en la Tierra, sino en el espacio: la hipótesis de los antiguos astronautas.",
+    "dato": "Además de obras de divulgación científica, en el librero de Leonora Carrington también hay obras como esta, que muestra la variedad de perspectivas que recorrió con la lectura.",
+    "imagen": "LibroMisterios_14.jpg",
+    "slug": "libro-search-ancient-mysteries"
+  },
+  {
+    "nombre": "Goddesses in everywoman",
+    "nombre_es": "Las diosas de cada mujer: Una nueva psicología femenina",
+    "autor": "Jean Shinoda Bolen",
+    "tema": "Feminismo",
+    "reseña": "La autora relaciona la complejidad de cada mujer con diferentes diosas. A manera de guía, ayuda a las lectoras a saber cuál de ellas cultivar y cuál superar, entendiendo sus propios misterios, patrones internos y dicotomías restrictivas.",
+    "dato": "",
+    "imagen": "LibroDiosas_15.jpg",
+    "slug": "libro-goddesses-woman"
+  },
+  {
+    "nombre": "Victorian Ghost Stories",
+    "nombre_es": "Escritoras del siglo XX: Relatos de fantasmas",
+    "autor": "Richard Dalby",
+    "tema": "Fantasmas",
+    "reseña": "Colección de cuentos del siglo XX escritos por mujeres de los años veinte y treinta, considerados la \"Época dorada de los cuentos de fantasmas\". Estas entretenidas y perturbadoras historias tratan temas sobrenaturales y fantasmagóricos.",
+    "dato": "",
+    "imagen": "LibroFantasmas_16.jpg",
+    "slug": "libro-victorian-ghost"
+  },
+  {
+    "nombre": "Magic and Mysticism: studies in bygone beliefs",
+    "nombre_es": "Magic and Mysticism: studies in bygone beliefs",
+    "autor": "Stanley Redgrove",
+    "tema": "Magia y misticismo",
+    "reseña": "",
+    "dato": "Redgrove es un químico inglés que ayudó a formar la Sociedad Alquímica de Londres (1912), una sociedad secreta dedicada a explorar la relevancia espiritual de la alquimia antigua para la ciencia atómica moderna.",
+    "imagen": "LibroMisticismo_17.jpg",
+    "slug": "libro-magic-mystery"
+  },
+  {
+    "nombre": "Lexicon of Alchemy or Alchemical Dictionary",
+    "nombre_es": "Léxico de alquimia o diccionario alquímico",
+    "autor": "Martin Ruland the Elder",
+    "tema": "Magia y misticismo",
+    "reseña": "Es una guía para los buscadores de las obras herméticas y la alquimia. Busca ser un auxiliar en la interpretación de jeroglíficos y símbolos, con información comentada de las prácticas, lenguas y química de este arte.",
+    "dato": "Martin Ruland the Elder tuvo un hijo y los dos se dedicaron a la alquimia, escribieron cientos de libros, muchos de ellos perdidos hasta ahora",
+    "imagen": "LibroAlquimia_18.jpg",
+    "slug": "libro-lexicon"
+  },
+  {
+    "nombre": "Foundations of Tibetan Mysticism",
+    "nombre_es": "Fundamentos del misticismo tibetano",
+    "autor": "Lama Anagarika Govinda",
+    "tema": "Espiritualidad",
+    "reseña": "Esta obra clásica del misticismo tibetano, recupera las enseñanzas y vivencias que este académico de Oxford recibió de importantes Lamas y Kazi Daza-Samdup durante tres años.",
+    "dato": "Leonora Carrington estudió con maestros tibetanos y fue a varias conferencias del Dalai Lama, cuya sencillez le impactó. En entrevista con Silvia Cherem dijo <<Estaba muy atraída a este mundo místico, ajeno al dogma de las religiones>>.",
+    "imagen": "LibroTibetano_19.jpg",
+    "slug": "libro-tibetan-mysticism"
+  },
+  {
+    "nombre": "Three Halves of Ino Moxo : Teachings of the Wizard of the Upper Amazon",
+    "nombre_es": "Las tres mitades de Ino Moxo y otros brujos de la Amazonía",
+    "autor": "César Calvo",
+    "tema": "Novelas",
+    "reseña": "El brujo de la Amazonia, Ino Moxo, muestra desde su perspectiva la relación que tiene con el entorno, y divide su identidad en tres partes: amazónica, andina y costeña.",
+    "dato": "",
+    "imagen": "LibroInomoxo_20.jpg",
+    "slug": "libro-three-halves"
+  },
+  {
+    "nombre": "Lewd Women and Wicked Witches: A Study of the Dynamics of Male Domination",
+    "nombre_es": "Lewd Women and Wicked Witches: A Study of the Dynamics of Male Domination",
+    "autor": "Marianne Hester",
+    "tema": "Feminismo",
+    "reseña": "En los siglos XVI y XVII, las mujeres fueron perseguidas como brujas. En este libro la caza de brujas es sometida a un análisis feminista, demostrando que las brujas son víctimas de una sociedad dominada por los hombres.",
+    "dato": "",
+    "imagen": "LibroBrujas_21.jpg",
+    "slug": "libro-lewd-women"
+  },
+  {
+    "nombre": "The art and practice of the occult",
+    "nombre_es": "Arte y práctica del ocultismo",
+    "autor": "Ophiel",
+    "tema": "Magia y misticismo",
+    "reseña": "Basándose en conocimientos como el árbol de la vida y el estudio de fuerzas elementales, el autor demuestra cómo el estudio de las fuerzas de nuestro interior y alrededor, pueden conducir a la comprensión de la vida.",
+    "dato": "",
+    "imagen": "LibroOcultismo_22.jpg",
+    "slug": "libro-art-practice-occult"
+  },
+  {
+    "nombre": "Four Centuries of Jewish Women’s Spirituality: A Sourcebook",
+    "nombre_es": "No disponible en español",
+    "autor": "Ellen M. Umansky",
+    "tema": "Espiritualidad",
+    "reseña": "Reúne las oraciones, poemas, mensajes, minutas de reuniones y extractos de manuales de organizaciones de mujeres judías, a lo largo de cuatro siglos, con énfasis en las últimas décadas.",
+    "dato": "Cuando vivía con los surrealistas en París, Leonora Carrington fue introducida por el médico Pierre Mabille al estudio de la cábala y el gnosticismo judío.",
+    "imagen": "LibroJudias_23.jpg",
+    "slug": "libro-jewish-women"
+  },
+  {
+    "nombre": "Dancing in the flames: The Dark Goddess in the Transformation of Consciousness",
+    "nombre_es": "Bailando entre llamas: la diosa negra en la transformación de la conciencia",
+    "autor": "Marion Woodman",
+    "tema": "Feminismo",
+    "reseña": "La autora explora el poder de la Diosa Negra y su importancia en las culturas ancestrales como símbolo de energía del caos, creatividad y fuerza vital. Además, muestra cómo se relaciona con la energía que se comunica durante los sueños desde el subconsciente.",
+    "dato": "",
+    "imagen": "LibroLlamas_24.jpg",
+    "slug": "libro-dancing-flames"
+  },
+  {
+    "nombre": "Women of the Celts",
+    "nombre_es": "Mujeres de los celtas",
+    "autor": "Jean Markale",
+    "tema": "Mitología y cuentos",
+    "reseña": "Se explica la figura femenina oculta entre mitos y leyendas celtas. Una princesa engullida por el progreso del mundo paternalista, la Doncella del grial portadora de la copa libertadora, hoy aparecen como una fuente de luz transformadora al sobrevivir a lo largo de los siglos.",
+    "dato": "",
+    "imagen": "LibroCeltas_25.jpg",
+    "slug": "libro-women-celts"
+  },
+  {
+    "nombre": "The web of life: a new scientific understanding of living systems",
+    "nombre_es": "La trama de la vida: una nueva perspectiva de los sistemas vivos",
+    "autor": "Fritjof Capra",
+    "tema": "Divulgación científica",
+    "reseña": "Propone que la vida se constituye por redes dentro de redes: la trama de la vida. Para ello, reúne hallazgos y discusiones de destacados científicos alrededor del mundo, con un pensamiento interdisciplinario.",
+    "dato": "Leonora Carrington disfrutaba de los libros de ciencia, aunque, como dijo a Silvia Cherem en entrevista, a veces resultaban tan densos que leía dos líneas por día.",
+    "imagen": "LibroTrama_26.jpg",
+    "slug": "libro-web-life"
+  },
+  {
+    "nombre": "The Occult: A History",
+    "nombre_es": "Lo oculto",
+    "autor": "Colin Wilson",
+    "tema": "Magia y misticismo",
+    "reseña": "El autor presenta un trabajo comprehensivo de la historia de la magia y el misticismo, así como su teoría de la \"Facultad X\", propiedad mental que permite la percepción de otros lugares y tiempos.",
+    "dato": "",
+    "imagen": "LibroOculto_27.jpg",
+    "slug": "libro-occult"
+  },
+  {
+    "nombre": "The Time Falling Bodies Take to Light: Mythology, Sexuality and the Origins of Culture",
+    "nombre_es": "The Time Falling Bodies Take to Light: Mythology, Sexuality and the Origins of Culture",
+    "autor": "William Irwin Thompson",
+    "tema": "Mitología y cuentos",
+    "reseña": "Presenta una crítica a las concepciones tradicionales de antropólogos e historiadores acerca de los mitos de las primeras civilizaciones. Replantea la tarea del historiador y busca lecturas alternativas relacionadas con formas masculinas y femeninas de poder.",
+    "dato": "",
+    "imagen": "LibroBodies_28.jpg",
+    "slug": "libro-time-falling-bodies"
+  },
+  {
+    "nombre": "The Mystery and Lore of Monsters. With Accounts Of Some Giants, Dwarfs And Prodigies",
+    "nombre_es": "The Mystery and Lore of Monsters. With Accounts Of Some Giants, Dwarfs And Prodigies",
+    "autor": "Charles John Samuel Thompson",
+    "tema": "Mitología y cuentos",
+    "reseña": "El autor examina el universo de monstruos: desde leyendas antiguas hasta algunas conocidas anomalias genéticas.",
+    "dato": "",
+    "imagen": "LibroMonsters_29.jpg",
+    "slug": "libro-mystery-lore-monsters"
+  },
+  {
+    "nombre": "The Oxford Book of Aging: Reflections on the Journey of Life",
+    "nombre_es": "The Oxford Book of Aging: Reflections on the Journey of Life",
+    "autor": "Thomas R. Cole & Mary G. Winkler",
+    "tema": "Envejecimiento y muerte",
+    "reseña": "Contiene 250 fragmentos de cuentos, leyendas, memorias, ensayos, poesía y reflexiones acerca del envejecimiento, provenientes de diferentes épocas y culturas de la humanidad.",
+    "dato": "Leonora Carrington atraviesa el envejecimiento con una mirada hacia su interior. Tras entrevistas en 1998 y 2003, Silvia Cherem describe que ella <<siente que ahora está en “el proceso de aprender a morir\">>.",
+    "imagen": "LibroOxford_30.jpg",
+    "slug": "libro-aging"
+  },
+  {
+    "nombre": "The Woman of Wyrrd: The Arousal of the Inner Fire",
+    "nombre_es": "The Woman of Wyrrd: The Arousal of the Inner Fire",
+    "autor": "Lynn V. Andrews",
+    "tema": "Magia y misticismo",
+    "reseña": "Relata la regresión de la autora a una vida anterior en la época medieval. En ella, una anciana, a quien ella llama abuela, le enseña sobre las mujeres del Wyrrd, quienes adoran la \"primeracidad de la mujer\".",
+    "dato": "",
+    "imagen": "LibroMujeres_31.jpg",
+    "slug": "libro-woman-wyrrd"
+  },
+  {
+    "nombre": "Woman's Evolution from Matriarchal Clan to Patriarchal Family",
+    "nombre_es": "Evolución de la mujer del clan matriarcal a la familia patriarcal",
+    "autor": "Evelyn Reed",
+    "tema": "Feminismo",
+    "reseña": "La investigadora cuenta la estructura de una sociedad en la que encontró un sistema tribunal y de clanes basado en el parentesco materno. En esta, las relaciones son igualitarias, la producción y posesión es colectiva, y el lugar de una mujer es honorable.",
+    "dato": "",
+    "imagen": "LibroEvolucion_32.jpg",
+    "slug": "libro-woman-evolution"
+  },
+  {
+    "nombre": "The Tree of Life: An Illustrated Study in Magic",
+    "nombre_es": "El árbol de la vida: un estudio sobre la magia",
+    "autor": "Israel Regardie",
+    "tema": "Magia y misticismo",
+    "reseña": "Compendio de la magia y sus prácticas, en el que autor plantea el árbol del misticismo. Describe las herramientas de los magos y propone ejercicios prácticos para desarrollar la voluntad y la imaginación.",
+    "dato": "Israel Regardie fue discípulo de Aleister Crowley y miembro de varias órdenes secretas. Sus obras tratan de psicoanálisis y magia práctica.",
+    "imagen": "LibroArbol_33.jpg",
+    "slug": "libro-tree-life"
+  },
+  {
+    "nombre": "The Hole in the Universe: How Scientists Peered Over the Edge of Emptiness and Found Everything",
+    "nombre_es": "The Hole in the Universe: How Scientists Peered Over the Edge of Emptiness and Found Everything",
+    "autor": "K. C. Cole",
+    "tema": "Divulgación científica",
+    "reseña": "Explora la ciencia de la nada a través de hallazgos científicos y matemáticos. En cada intento por hallar el vacío absoluto en los confines del universo, siempre algo nuevo es encontrado.",
+    "dato": "",
+    "imagen": "LibroHoyo_34.jpg",
+    "slug": "libro-hole-universe"
+  },
+  {
+    "nombre": "The Secret Life of Plants: A Fascinating Account of the Physical, Emotional, and Spiritual Relations Between Plants and Man",
+    "nombre_es": "La vida secreta de las plantas",
+    "autor": "Peter Tompkins",
+    "tema": "Divulgación científica",
+    "reseña": "Muestra el mundo interior de las plantas y las relaciones físicas, emocionales y espirituales entre las plantas y la humanidad. Para ello, presenta hallazgos y logros de la ciencia durante los años 60.",
+    "dato": "Aunque la obra fue rechazada por la comunidad científica, influenció a la contracultura de los años 60 y fue inspiración de un documental (1979).",
+    "imagen": "LibroPlantas_35.jpg",
+    "slug": "libro-secret-life-plants"
+  },
+  {
+    "nombre": "Tibetan Yoga and Secret Doctrines: Seven Books of Wisdom of the Great Path, According to the Late Lama Kazi Dawa-Samdup's",
+    "nombre_es": "Yoga tibetano y doctrinas secretas: siete libros de sabiduría del Gran Sendero",
+    "autor": "Evans-Wentz",
+    "tema": "Espiritualidad",
+    "reseña": "El autor comparte las vivencias, aprendizajes y pensamientos que recibió de importantes Lamas y Kazi Daza-Samdup, para entender el budismo, la práctica mental, el Yoga y el Tantrismo.",
+    "dato": "Evans-Wentz fue un académico de Oxford, que recorrió el cercano oriente y la India en el siglo XX. Vivió como un asceta por tres años, donde se inició en las disciplinas yóguicas.",
+    "imagen": "LibroTibetano_36.jpg",
+    "slug": "libro-tibetan-yoga"
+  },
+  {
+    "nombre": "The woman warrior: Memoirs of a Girlhood Among Ghosts",
+    "nombre_es": "La mujer guerrera",
+    "autor": "Maxine Hong Kingston",
+    "tema": "Novelas",
+    "reseña": "Una mujer de ascendencia china narra los mitos chinos, las historias familiares y los eventos de su vida en Estados Unidos que formaron su identidad.",
+    "dato": "",
+    "imagen": "LibroGuerrera_37.jpg",
+    "slug": "libro-woman-warrior"
+  },
+  {
+    "nombre": "⽿ラッパ―幻の聖杯物語",
+    "nombre_es": "La trompetilla acústica",
+    "autor": "Leonora Carrngton. Traducido por Masayo Nonaka",
+    "tema": "Novelas",
+    "reseña": "Marion Leatherby es una mujer de 92 años que vive en un asilo. Ella se enfrenta a situaciones singulares después de recibir la trompetilla acústica, gracias a la cuál su percepción del mundo cambia.",
+    "dato": "Este libro escrito por Leonora Carrington fue traducido al francés, español y japonés. Leonora tenía cuatro ejemplares de la edición japonesa.",
+    "imagen": "LibroJapones_38.jpg",
+    "slug": "libro-trompetilla-japones"
+  },
+  {
+    "nombre": "Jezzamatáticas or introduction to the wonderful process of painting (satyr essay)",
+    "nombre_es": "Jezzamatáticas o introducción al maravilloso proceso de pintar (Ensayo satiro)",
+    "autor": "Leonora Carrington",
+    "tema": "Arte",
+    "reseña": "La autora se expone a sí misma como una máquina para pintar, a la que se le puede enseñar diferentes técnicas, como a una computadora. Entre palabras que parecen no tener sentido, se descubre el surrealismo de una mente creativa.",
+    "dato": "Esta obra fue publicada en 1965, en la Ciudad de México, durante una exposición de su obra. La matética se aplica en el aprendizaje heurístico en las matemáticas.",
+    "imagen": "LibroLeonora_39.jpg",
+    "slug": "libro-jezzamataticas"
+  },
+  {
+    "nombre": "Mystics & Magicians in Tibet",
+    "nombre_es": "Iniciaciones e iniciados del Tibet",
+    "autor": "Alexandra David-Neel",
+    "tema": "Espiritualidad",
+    "reseña": "Muestra datos precisos sobre la naturaleza de los ritos de iniciación lamaicos, doctrinas y actividades, antes y después, de ceremonias de iniciación a la espiritualidad oriental.",
+    "dato": "",
+    "imagen": "LibroTibetano_40.jpg",
+    "slug": "libro-mysctics-tibet"
+  },
+  {
+    "nombre": "The History of Magic",
+    "nombre_es": "La historia de la magia",
+    "autor": "Arthur Edward Waite",
+    "tema": "Magia y misticismo",
+    "reseña": "Es una obra ilustrada que compila la magia en diferentes épocas. Contiene información de simbolismos primitivos, la antigua Grecia, cábala, oráculos, masonería, emblemas sagrados, entre otros temas.",
+    "dato": "",
+    "imagen": "LibroHistoria_41.jpg",
+    "slug": "libro-history-magic"
+  },
+  {
+    "nombre": "Surrealism",
+    "nombre_es": "Surrealism",
+    "autor": "Herbert Read",
+    "tema": "Arte",
+    "reseña": "La primera edición se realizó en 1937 e incluyó un capítulo de André Bretón, tres ensayos del movimiento surrealista, escritos por Hugh Sykes Davies, Paul Eluard y Georges Hugnet, y diversas placas fotográficas en blanco y negro.",
+    "dato": "Este libro fue regalado a Leonora Carrington en su juventud por su madre. Gracias a él se identificó con los surrealistas.",
+    "imagen": "LibroSurrealismo_42.JPG",
+    "slug": "libro-surrealism"
+  },
+  {
+    "nombre": "The Golden Bough",
+    "nombre_es": "La rama dorada",
+    "autor": "Sir James George Frazer",
+    "tema": "Magia y misticismo",
+    "reseña": "Publicado por primera vez en 1890, recorre las creencias, instituciones y el progreso de la humanidad, desde la magia y la religión hasta el pensamiento científico. Es una obra destacada de la antropología y literatura modernas.",
+    "dato": "",
+    "imagen": "LibroRama_43.jpg",
+    "slug": "libro-golden-bough"
+  },
+  {
+    "nombre": "The White Goddess",
+    "nombre_es": "La diosa blanca",
+    "autor": "Robert Graves",
+    "tema": "Mitología y cuentos",
+    "reseña": "Este ensayo describe las ceremonias de Europa en honor a la diosa de la Luna y las culturas matriarcales que la adoraban. Sostiene que fueron eliminadas por la irrupción del patriarcado, que hasta nuestros días ha reconstruido mitos y rituales para ocultar el pasado.",
+    "dato": "<<La más grande revelación de mi vida>> así describió Leonora la lectura de esta obra, la cual adquirió en 1948, justo el año de su publicación.",
+    "imagen": "LibroBlanca_44.jpg",
+    "slug": "libro-white-goddess"
+  },
+  {
+    "nombre": "Best Black Magic Stories",
+    "nombre_es": "Best Black Magic Stories",
+    "autor": "John Keir Cross",
+    "tema": "Mitología y cuentos",
+    "reseña": "Reúne 13 historias de lo sobrenatural y fantasía escritas por autores como Ray Bradbury, Margaret Irwin, entre otros.",
+    "dato": "John Keir Cross (1914-1967) fue un célebre escritor escocés de ciencia ficción y fantasía. Desde hace décadas, esta obra se encuentra fuera de circulación.",
+    "imagen": "LibroBlack_45.jpg",
+    "slug": "libro-black-magic"
+  }
+]
