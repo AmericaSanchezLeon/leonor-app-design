@@ -14,13 +14,13 @@ function MapasPage() {
   return (
     <SectionPageLayout sectionId="comedor">
       <div className="px-5 py-8">
-        <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--comedor)" }}>
+        <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
           {language === "es" ? "Rutas Gastronómicas" : "Gastronomic Routes"}
         </h1>
         <div className="space-y-10">
           {rutas.map((r, i) => (
             <section key={i}>
-              <h2 className="font-serif text-xl leading-tight" style={{ color: "var(--comedor)" }}>
+              <h2 className="font-serif text-xl leading-tight" style={{ color: "var(--section-color)" }}>
                 {language === "es" ? r.title_es : r.title_en}
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">

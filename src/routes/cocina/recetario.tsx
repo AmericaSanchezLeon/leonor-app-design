@@ -22,7 +22,7 @@ function Recetario() {
   return (
     <SectionPageLayout sectionId="cocina">
       <div className="px-5 py-8">
-      <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--cocina)" }}>
+      <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
         {language === "es" ? "Recetario" : "Recipes"}
       </h1>
       <div className="grid grid-cols-2 gap-4">
@@ -38,7 +38,7 @@ function Recetario() {
               style={{ backgroundImage: `url(${recetaImg(r.imagen)})` }}
             />
             <div className="p-3">
-              <div className="flex items-start gap-2" style={{ color: "var(--cocina)" }}>
+              <div className="flex items-start gap-2" style={{ color: "var(--section-color)" }}>
                 <itemIcon.receta size={14} strokeWidth={1.75} className="mt-0.5 flex-shrink-0" />
                 <p className="font-serif text-sm leading-tight text-foreground">{r.nombre}</p>
               </div>

@@ -5,9 +5,9 @@ import mascotData from "@/data/mascotData.json";
 
 type Phrase = { es: string; en: string };
 
-function Dots({ n, active, color }: { n: number; active: number; color: string }) {
+function Dots({ n, active }: { n: number; active: number }) {
   return (
-    <div className="mt-3 flex items-center gap-1.5" style={{ color }}>
+    <div className="mt-3 flex items-center gap-1.5">
       {Array.from({ length: n }).map((_, i) => (
         <span
           key={i}
@@ -20,13 +20,7 @@ function Dots({ n, active, color }: { n: number; active: number; color: string }
   );
 }
 
-export function RoomDialogueCard({
-  sectionId,
-  color,
-}: {
-  sectionId: string;
-  color: string;
-}) {
+export function RoomDialogueCard({ sectionId }: { sectionId: string }) {
   const { language } = useLeonor();
   const lang: Lang = language;
   const [index, setIndex] = useState(0);
@@ -64,14 +58,14 @@ export function RoomDialogueCard({
         if (e.key === "Enter" || e.key === " ") next();
       }}
       className="cursor-pointer select-none rounded-3xl bg-[var(--leonor-cream)]/95 px-5 py-4 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] backdrop-blur-sm"
-      style={{ color, touchAction: "pan-y" }}
+      style={{ color: "var(--section-color)", touchAction: "pan-y" }}
     >
       <div className="flex flex-row items-end justify-between gap-3">
         <div className="flex-1">
           <p className="font-serif text-sm italic leading-relaxed">
             “{t(current.es, current.en, lang)}”
           </p>
-          <Dots n={n} active={index} color={color} />
+          <Dots n={n} active={index} />
         </div>
         {mascot && (
           <img

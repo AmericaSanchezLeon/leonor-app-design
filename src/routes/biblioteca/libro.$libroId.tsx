@@ -30,11 +30,11 @@ function LibroDetalle() {
         />
       </div>
       <div className="px-5 pt-6 text-center">
-        <h1 className="font-serif text-2xl leading-tight" style={{ color: "var(--biblioteca)" }}>
+        <h1 className="font-serif text-2xl leading-tight" style={{ color: "var(--section-color)" }}>
           {language === "es" ? b.nombre_es : b.nombre}
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">{b.autor}</p>
-        <p className="mt-3 text-xs uppercase tracking-wider" style={{ color: "var(--biblioteca)" }}>
+        <p className="mt-3 text-xs uppercase tracking-wider" style={{ color: "var(--section-color)" }}>
           {b.tema}
         </p>
       </div>

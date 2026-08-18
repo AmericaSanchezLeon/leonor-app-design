@@ -22,7 +22,7 @@ export function RouteTimeline({ puntos }: Props) {
       <div
         aria-hidden
         className="pointer-events-none absolute left-4 top-3 bottom-3 border-l-2 border-dashed"
-        style={{ borderColor: "var(--comedor)" }}
+        style={{ borderColor: "var(--section-color)" }}
       />
       {puntos.map((p, i) => {
         const nombre = language === "es" ? p.nombre_pin_es : p.nombre_pin_en;
@@ -38,7 +38,7 @@ export function RouteTimeline({ puntos }: Props) {
             {/* badge numerado */}
             <div
               className="absolute -left-12 top-0 z-10 flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-white shadow-sm ring-4 ring-white"
-              style={{ backgroundColor: "var(--comedor)" }}
+              style={{ backgroundColor: "var(--section-color)" }}
             >
               {i + 1}
             </div>
@@ -53,12 +53,12 @@ export function RouteTimeline({ puntos }: Props) {
                   ? "hover:shadow-md active:scale-[0.99] cursor-pointer"
                   : "opacity-50 cursor-default"
               }`}
-              style={{ borderColor: "color-mix(in srgb, var(--comedor) 30%, transparent)" }}
+              style={{ borderColor: "color-mix(in srgb, var(--section-color) 30%, transparent)" }}
             >
               <div className="flex items-start gap-2">
                 <MapPin
                   className="mt-0.5 h-4 w-4 shrink-0"
-                  style={{ color: "var(--comedor)" }}
+                  style={{ color: "var(--section-color)" }}
                 />
                 <div className="min-w-0 flex-1">
                   <p className="font-serif text-base leading-tight">{nombre}</p>
@@ -70,7 +70,7 @@ export function RouteTimeline({ puntos }: Props) {
 
               <div
                 className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium"
-                style={{ color: enabled ? "var(--comedor)" : undefined }}
+                style={{ color: enabled ? "var(--section-color)" : undefined }}
               >
                 <ExternalLink className="h-3.5 w-3.5" />
                 {openLabel}
