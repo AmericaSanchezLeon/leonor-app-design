@@ -6,7 +6,6 @@ export const Route = createFileRoute("/about/")({
   head: () => ({ meta: [{ title: "Sobre el proyecto — Leonorapp" }] }),
   component: () => (
     <RoomLanding
-      color="var(--about)"
       title_es="Sobre"
       title_en="About"
       intro_es="Conoce el proyecto y a las autoras detrás de esta museografía interactiva."

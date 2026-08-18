@@ -6,7 +6,6 @@ export const Route = createFileRoute("/comedor/")({
   head: () => ({ meta: [{ title: "Comedor — Leonorapp" }] }),
   component: () => (
     <RoomLanding
-      color="var(--comedor)"
       title_es="El Comedor"
       title_en="The Dining Room"
       icon={<Utensils className="h-10 w-10" strokeWidth={1.5} />}

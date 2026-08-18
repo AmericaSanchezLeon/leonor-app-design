@@ -11,7 +11,6 @@ export const Route = createFileRoute("/cocina/")({
   }),
   component: () => (
     <RoomLanding
-      color="var(--cocina)"
       title_es="La Cocina"
       title_en="The Kitchen"
       icon={<ChefHat className="h-10 w-10" strokeWidth={1.5} />}
