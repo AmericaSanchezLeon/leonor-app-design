@@ -1,15 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useLeonor, t, type Lang } from "@/lib/leonor-context";
-import { RoomDialogueCard } from "@/components/RoomDialogueCard";
-import { RoomSvgPattern } from "@/components/RoomSvgPattern";
+import { RoomLandingLayout } from "@/components/RoomLandingLayout";
 import { roomIcons, type RoomIconKey } from "@/lib/room-icons";
-import { roomBg, type SectionBgId } from "@/lib/room-backgrounds";
-import { roomScatterAssets } from "@/lib/room-scatter";
+import type { SectionContextId } from "@/lib/use-section-context";
 import type { ReactNode } from "react";
-
-const PATTERN_SECTIONS: SectionBgId[] = ["home", "cocina", "comedor", "biblioteca", "about"];
-const isPatternSection = (id?: string): id is SectionBgId =>
-  !!id && (PATTERN_SECTIONS as string[]).includes(id);
 
 interface RoomLink {
   to: string;
@@ -19,7 +13,6 @@ interface RoomLink {
 }
 
 export function RoomLanding({
-  color,
   title_es,
   title_en,
   intro_es,
@@ -28,12 +21,13 @@ export function RoomLanding({
   links,
   icon,
 }: {
-  color: string;
+  /** @deprecated color now comes from the section context */
+  color?: string;
   title_es: string;
   title_en: string;
   intro_es?: string;
   intro_en?: string;
-  sectionId?: string;
+  sectionId?: SectionContextId;
   links: RoomLink[];
   icon?: ReactNode;
 }) {
@@ -41,26 +35,11 @@ export function RoomLanding({
   const lang: Lang = language;
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  const patternId = isPatternSection(sectionId) ? sectionId : null;
-
   return (
-    <div
-      className="relative min-h-[calc(100vh-104px)] overflow-hidden pb-48"
-      style={{ backgroundColor: color }}
-    >
-      {patternId && (
-        <RoomSvgPattern
-          sectionId={patternId}
-          tileUrl={roomBg[patternId]}
-          svgUrls={roomScatterAssets[patternId]}
-        />
-      )}
-
-      <div className="relative z-[2] px-6 py-10 text-center" style={{ color: "var(--leonor-cream)" }}>
+    <RoomLandingLayout sectionId={sectionId}>
+      <div className="px-6 py-10 text-center">
         {icon && <div className="mb-4 flex justify-center opacity-90">{icon}</div>}
-        <h1 className="font-serif text-4xl leading-tight">
-          {t(title_es, title_en, lang)}
-        </h1>
+        <h1 className="font-serif text-4xl leading-tight">{t(title_es, title_en, lang)}</h1>
         {(intro_es || intro_en) && (
           <p className="mx-auto mt-4 max-w-xs text-sm opacity-90">
             {t(intro_es ?? "", intro_en ?? "", lang)}
@@ -68,7 +47,7 @@ export function RoomLanding({
         )}
       </div>
 
-      <div className="relative z-[2] space-y-3 px-6 pb-10">
+      <div className="space-y-3 px-6 pb-10">
         {links.map((l) => {
           const active = pathname.startsWith(l.to);
           const pair = l.iconKey ? roomIcons[l.iconKey] : null;
@@ -96,19 +75,13 @@ export function RoomLanding({
                   />
                 </span>
               )}
-              <span className="font-serif text-xl" style={{ color }}>
+              <span className="font-serif text-xl" style={{ color: "var(--section-color)" }}>
                 {t(l.title_es, l.title_en, lang)} →
               </span>
             </Link>
           );
         })}
       </div>
-
-      {sectionId && (
-        <div className="absolute inset-x-0 bottom-0 z-[2] px-4 pb-4">
-          <RoomDialogueCard sectionId={sectionId} color={color} />
-        </div>
-      )}
-    </div>
+    </RoomLandingLayout>
   );
 }
