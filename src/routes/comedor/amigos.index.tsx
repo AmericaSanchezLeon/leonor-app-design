@@ -28,9 +28,14 @@ function AmigosPage() {
               params={{ amigoId: String(i) }}
               className="flex items-center gap-4 rounded-2xl bg-card p-3 shadow-sm transition-transform hover:scale-[1.01]"
             >
-              <div
-                className="h-16 w-16 flex-shrink-0 rounded-full bg-muted bg-cover bg-center"
-                style={{ backgroundImage: `url(${amigoImg(a.imagen)})` }}
+              <img
+                src={amigoImg(a.imagen, "thumb")}
+                alt=""
+                width={64}
+                height={64}
+                loading={i < 6 ? "eager" : "lazy"}
+                decoding="async"
+                className="h-16 w-16 flex-shrink-0 rounded-full bg-muted object-cover"
               />
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5" style={{ color: "var(--section-color)" }}>

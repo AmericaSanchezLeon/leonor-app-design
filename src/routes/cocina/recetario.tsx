@@ -33,9 +33,14 @@ function Recetario() {
             params={{ recetaId: String(i) }}
             className="overflow-hidden rounded-2xl bg-card shadow-md transition-transform hover:scale-[1.02]"
           >
-            <div
-              className="aspect-square w-full bg-cover bg-center"
-              style={{ backgroundImage: `url(${recetaImg(r.imagen)})` }}
+            <img
+              src={recetaImg(r.imagen, "thumb")}
+              alt=""
+              width={400}
+              height={400}
+              loading="eager"
+              decoding="async"
+              className="aspect-square w-full bg-[var(--section-color)]/10 object-cover"
             />
             <div className="p-3">
               <div className="flex items-start gap-2" style={{ color: "var(--section-color)" }}>

@@ -1,38 +1,48 @@
-// Helper to resolve image URLs for the leonorapp2.0 repo (raw GitHub).
-const RAW_BASE = "https://raw.githubusercontent.com/AmericaSanchezLeon/leonorapp2.0/main";
+// Resolución de imágenes: todas viven optimizadas (WebP) en el CDN de Lovable.
+// Ya no se descarga nada desde raw.githubusercontent.com.
+import { imageUrls } from "./leonor-image-urls";
 
-export const amigoImg = (path: string) =>
-  path.startsWith("http") ? path : `${RAW_BASE}/${path}`;
+export type ImgVariant = "thumb" | "full";
 
-// Maps recipe filenames in JSON to actual repo paths.
-export const recetaImg = (name: string) => {
-  const map: Record<string, string> = {
-    "azafran.JPG": "src/assets/img/cocina-recetas/receta_1.jpg",
-    "pera.JPG": "src/assets/img/cocina-recetas/receta_2.jpg",
-  };
-  return `${RAW_BASE}/${map[name] ?? `src/assets/img/cocina-recetas/${name}`}`;
+const url = (key: string) => imageUrls[key] ?? "";
+
+const baseName = (path: string) =>
+  path.split("/").pop()?.replace(/\.[^.]+$/, "") ?? path;
+
+/** Retrato de amigo. `path` es el valor `imagen` del JSON. */
+export const amigoImg = (path: string, variant: ImgVariant = "thumb") =>
+  url(`${baseName(path)}-${variant}`);
+
+// Los nombres en recetas.json son placeholders; se mapean a los archivos reales.
+const RECETA_MAP: Record<string, string> = {
+  "azafran.JPG": "receta_1",
+  "pera.JPG": "receta_2",
 };
 
-// Books data uses placeholder filenames; map to real cover images by index.
+export const recetaImg = (name: string, variant: ImgVariant = "thumb") =>
+  url(`${RECETA_MAP[name] ?? baseName(name)}-${variant}`);
+
+// booksData.json usa nombres placeholder; las portadas se mapean por índice.
 const BOOK_COVERS = [
-  "libro-tibetano-muertos.jpg",
-  "libro-english-ghost.jpg",
-  "libro-gnostic-scriptures.jpg",
-  "libro-gothic-painting.jpg",
-  "libro-goddesses-gods.jpg",
-  "libro-fountain-age.jpg",
-  "libro-folktales-hungary.jpg",
-  "libro-magister-ludi.jpg",
+  "libro-tibetano-muertos",
+  "libro-english-ghost",
+  "libro-gnostic-scriptures",
+  "libro-gothic-painting",
+  "libro-goddesses-gods",
+  "libro-fountain-age",
+  "libro-folktales-hungary",
+  "libro-magister-ludi",
 ];
 
-export const bookImg = (i: number) =>
-  `${RAW_BASE}/src/assets/img/biblioteca-libros/${BOOK_COVERS[i % BOOK_COVERS.length]}`;
+export const bookImg = (i: number, variant: ImgVariant = "thumb") =>
+  url(`${BOOK_COVERS[i % BOOK_COVERS.length]}-${variant}`);
 
-// Mascot illustrations per section (verified against repo tree).
+// Ilustraciones de mascota por sección (rasterizadas y optimizadas).
 export const mascotImg: Record<string, string> = {
-  lobby: `${RAW_BASE}/src/assets/img/mascotas/mascotas_yeti.svg`,
-  cocina: `${RAW_BASE}/src/assets/img/mascotas/mascotas_monseur.svg`,
-  comedor: `${RAW_BASE}/src/assets/img/mascotas/mascotas_ramona.svg`,
-  biblioteca: `${RAW_BASE}/src/assets/img/mascotas/mascotas_minotaura.svg`,
-  about: `${RAW_BASE}/src/assets/img/mascotas/mascotas_yeti.svg`,
+  lobby: url("mascotas_yeti"),
+  home: url("mascotas_yeti"),
+  cocina: url("mascotas_monseur"),
+  comedor: url("mascotas_ramona"),
+  biblioteca: url("mascotas_minotaura"),
+  about: url("mascotas_yeti"),
 };

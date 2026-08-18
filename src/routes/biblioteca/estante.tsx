@@ -33,10 +33,14 @@ function EstantePage() {
                   style={{ ["--tw-ring-color" as string]: "var(--section-color)" }}
                 >
                   <img
-                    src={bookImg(i)}
+                    src={bookImg(i, "thumb")}
                     alt=""
-                    loading="lazy"
-                    className="block aspect-[2/3] w-full object-cover"
+                    width={400}
+                    height={600}
+                    loading={i < 6 ? "eager" : "lazy"}
+                    fetchPriority={i < 3 ? "high" : "auto"}
+                    decoding="async"
+                    className="block aspect-[2/3] w-full bg-[var(--section-color)]/10 object-cover"
                   />
                 </Link>
               </li>
