@@ -18,9 +18,14 @@ function AmigoDetalle() {
   return (
     <SectionPageLayout sectionId="comedor" bare>
     <div className="pb-10">
-      <div
-        className="aspect-square w-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${amigoImg(a.imagen)})` }}
+      <img
+        src={amigoImg(a.imagen, "full")}
+        alt={`Retrato de ${a.amigo}`}
+        width={1000}
+        height={1000}
+        fetchPriority="high"
+        decoding="async"
+        className="aspect-square w-full bg-[var(--section-color)]/10 object-cover"
       />
       <div className="px-5 pt-6">
         <Link to="/comedor/amigos" className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground">

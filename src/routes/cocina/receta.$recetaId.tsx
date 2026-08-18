@@ -19,9 +19,14 @@ function RecetaPage() {
   return (
     <SectionPageLayout sectionId="cocina" bare>
     <div className="pb-10">
-      <div
-        className="aspect-[4/3] w-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${recetaImg(r.imagen)})` }}
+      <img
+        src={recetaImg(r.imagen, "full")}
+        alt={`Platillo: ${r.nombre}`}
+        width={1000}
+        height={750}
+        fetchPriority="high"
+        decoding="async"
+        className="aspect-[4/3] w-full bg-[var(--section-color)]/10 object-cover"
       />
       <div className="px-5 pt-6">
         <Link to="/cocina/recetario" className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground">

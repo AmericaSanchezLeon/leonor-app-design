@@ -25,8 +25,14 @@ function LibroDetalle() {
         </Link>
       </div>
       <div className="px-5">
-        <div className="mx-auto aspect-[2/3] w-44 overflow-hidden rounded-lg bg-cover bg-center shadow-xl"
-          style={{ backgroundImage: `url(${bookImg(i)})` }}
+        <img
+          src={bookImg(i, "full")}
+          alt={`Portada de ${language === "es" ? b.nombre_es : b.nombre}`}
+          width={1000}
+          height={1500}
+          fetchPriority="high"
+          decoding="async"
+          className="mx-auto aspect-[2/3] w-44 overflow-hidden rounded-lg bg-[var(--section-color)]/10 object-cover shadow-xl"
         />
       </div>
       <div className="px-5 pt-6 text-center">
