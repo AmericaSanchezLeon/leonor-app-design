@@ -1,30 +1,35 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLeonor, t } from "@/lib/leonor-context";
 import rooms from "@/data/roomData.json";
-import { ChefHat, Utensils, BookOpen, Info } from "lucide-react";
+import { RoomLandingLayout } from "@/components/RoomLandingLayout";
+import { roomIcons, type RoomIconKey } from "@/lib/room-icons";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Leonorapp — Casa Estudio Leonora Carrington" },
-      { name: "description", content: "Recorre la casa de Leonora Carrington: cocina, comedor, biblioteca y la historia del proyecto." },
+      {
+        name: "description",
+        content:
+          "Recorre la casa de Leonora Carrington: cocina, comedor, biblioteca y la historia del proyecto.",
+      },
+      { property: "og:title", content: "Leonorapp — Casa Estudio Leonora Carrington" },
+      {
+        property: "og:description",
+        content: "Una museografía interactiva del universo doméstico y simbólico de Leonora Carrington.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: HomePage,
 });
 
-const ICONS: Record<string, typeof ChefHat> = {
-  cocina: ChefHat,
-  comedor: Utensils,
-  biblioteca: BookOpen,
-  about: Info,
-};
-
-const COLOR: Record<string, string> = {
-  cocina: "var(--cocina)",
-  comedor: "var(--comedor)",
-  biblioteca: "var(--biblioteca)",
-  about: "var(--about)",
+const ROOM_ICON: Record<string, RoomIconKey> = {
+  cocina: "cocina-libro",
+  comedor: "comedor-amigos",
+  biblioteca: "biblioteca-libro",
+  about: "proyecto-libro",
 };
 
 function HomePage() {
@@ -32,17 +37,17 @@ function HomePage() {
   const sections = rooms.filter((r) => r.id !== "home");
 
   return (
-    <div className="px-5 py-8">
-      <div className="mb-8 text-center">
-        <p className="font-sans text-xs uppercase tracking-[0.3em] text-muted-foreground">
+    <RoomLandingLayout sectionId="home">
+      <div className="px-5 py-10 text-center">
+        <p className="font-sans text-xs uppercase tracking-[0.3em] opacity-80">
           {t("Bienvenida a", "Welcome to", language)}
         </p>
-        <h1 className="mt-2 font-serif text-4xl leading-tight" style={{ color: "var(--leonor-amber)" }}>
+        <h1 className="mt-2 font-serif text-4xl leading-tight">
           {t("Casa Estudio", "House Studio", language)}
           <br />
           Leonora Carrington
         </h1>
-        <p className="mx-auto mt-4 max-w-xs text-sm text-muted-foreground">
+        <p className="mx-auto mt-4 max-w-xs text-sm opacity-90">
           {t(
             "Una museografía interactiva de su universo doméstico y simbólico.",
             "An interactive museography of her domestic and symbolic universe.",
@@ -51,29 +56,36 @@ function HomePage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <nav aria-label={t("Habitaciones", "Rooms", language)} className="grid grid-cols-2 gap-3 px-5 pb-10">
         {sections.map((r) => {
-          const Icon = ICONS[r.id] ?? Info;
-          const color = COLOR[r.id] ?? "var(--leonor-amber)";
+          const pair = roomIcons[ROOM_ICON[r.id] ?? "proyecto-libro"];
           return (
             <Link
               key={r.id}
               to={`/${r.id}` as "/cocina"}
-              className="group relative flex aspect-square flex-col items-center justify-center overflow-hidden rounded-2xl p-5 text-center transition-transform hover:scale-[1.02]"
-              style={{ backgroundColor: color, color: "var(--leonor-cream)" }}
+              className="group flex aspect-square flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[var(--leonor-cream)] p-5 text-center shadow-md transition-transform hover:scale-[1.02]"
             >
-              <Icon className="mb-3 h-8 w-8 opacity-90" strokeWidth={1.5} />
-              <h2 className="font-serif text-2xl leading-tight">
+              {pair && (
+                <span className="relative h-16 w-16 flex-shrink-0">
+                  <img
+                    src={pair.normal}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-contain transition-opacity duration-200 group-hover:opacity-0"
+                  />
+                  <img
+                    src={pair.active}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-contain opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                  />
+                </span>
+              )}
+              <h2 className="font-serif text-xl leading-tight" style={{ color: `var(--${r.color})` }}>
                 {t(r["es-id"], r["en-id"], language)}
               </h2>
             </Link>
           );
         })}
-      </div>
-
-      <p className="mt-10 text-center font-serif text-xs italic text-muted-foreground">
-        “{t("La pintura es como cocinar — un acto de magia.", "Painting is like cooking — an act of magic.", language)}”
-      </p>
-    </div>
+      </nav>
+    </RoomLandingLayout>
   );
 }
