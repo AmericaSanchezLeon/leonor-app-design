@@ -41,6 +41,8 @@
   --color-comedor: var(--comedor);
   --color-biblioteca: var(--biblioteca);
   --color-about: var(--about);
+  --color-neutral-lighter: var(--neutral-lighter);
+  --color-neutral-dark: var(--neutral-dark);
 }
 
 :root {
@@ -54,8 +56,10 @@
   --comedor: #c42718;
   --biblioteca: #03667c;
   --about: #a61b37;
+  --neutral-lighter: #faf9f7;
+  --neutral-dark: #343131;
 
-  --background: #faf9f7;
+  --background: var(--neutral-lighter);
   --foreground: #2e2a2a;
   --card: #ffffff;
   --card-foreground: #2e2a2a;
@@ -72,7 +76,7 @@
 }
 
 .dark {
-  --background: #1a1612;
+  --background: var(--neutral-dark);
   --foreground: #faf9f7;
   --card: #2a231d;
   --card-foreground: #faf9f7;
