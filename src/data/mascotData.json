@@ -29,6 +29,26 @@
   ],
   "lobby": [
     {
+      "es": "¡Hola! Mi nombre es Yeti. Aquí viví con Leonora. En una casa tan fría, su regazo era el mejor abrigo.",
+      "en": "Hello! My name is Yeti. Here I lived with Leonora. In such a cold house, her lap was the best shelter."
+    },
+    {
+      "es": "Leonora salió. Mientras regresa, seré tu anfitriona en esta casa estudio.",
+      "en": "Leonora went out. While she returns, I will be your host in this house study."
+    },
+    {
+      "es": "Durante tu visita toca los elementos dorados para conocer más sobre la vida de Leonora.",
+      "en": "During your visit, touch the golden elements to learn more about Leonora's life."
+    },
+    {
+      "es": "En cada habitación, sincroniza un elemento para descubrir una historia oculta.",
+      "en": "In each room, sync an item to uncover a hidden story."
+    },
+    {
+      "es": "Si necesitas ayuda, estaré por aquí.",
+      "en": "If you need help, I'll be around."
+    },
+    {
       "es": "Mis amigos y yo aún recordamos cómo era la vida en esta casa.",
       "en": "My friends and I still remember what life was like in this house."
     },
