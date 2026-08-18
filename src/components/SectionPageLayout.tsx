@@ -1,22 +1,26 @@
 import type { CSSProperties, ReactNode } from "react";
 import { roomBg, type SectionBgId } from "@/lib/room-backgrounds";
-
-type SectionId = Exclude<SectionBgId, "home">;
+import { useSectionContext, sectionTokenFor, type SectionContextId } from "@/lib/use-section-context";
 
 interface Props {
-  sectionId: SectionId;
+  /** Defaults to the active route's section. */
+  sectionId?: SectionContextId | Exclude<SectionBgId, "home">;
   bare?: boolean;
   className?: string;
   children: ReactNode;
 }
 
 /**
- * Wraps sub-views with a white background, the section texture overlay,
- * and exposes `--section-color` for descendants.
+ * Level 2 wrapper: white background, section texture overlay,
+ * and `--section-color` exposed to all descendants for accents.
  */
 export function SectionPageLayout({ sectionId, bare = false, className, children }: Props) {
-  const bgUrl = roomBg[sectionId];
-  const style = { ["--section-color" as string]: `var(--${sectionId})` } as CSSProperties;
+  const ctx = useSectionContext();
+  const id = (sectionId ?? ctx.sectionId) as SectionBgId;
+  const bgUrl = roomBg[id];
+  const style = {
+    ["--section-color" as string]: `var(${sectionTokenFor(id as SectionContextId)})`,
+  } as CSSProperties;
 
   return (
     <div
