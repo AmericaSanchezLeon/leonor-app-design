@@ -2,16 +2,10 @@ import { useEffect, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import { useLeonor } from "@/lib/leonor-context";
 import { generateSectionGradient } from "@/lib/section-gradient";
+import { sectionIdFromPath, sectionTokenFor } from "@/lib/use-section-context";
 
 export function pathToSectionToken(pathname: string): string {
-  const seg = pathname.split("/")[1] || "";
-  switch (seg) {
-    case "cocina": return "--cocina";
-    case "comedor": return "--comedor";
-    case "biblioteca": return "--biblioteca";
-    case "about": return "--about";
-    default: return "--leonor-amber";
-  }
+  return sectionTokenFor(sectionIdFromPath(pathname));
 }
 
 export function useSectionBackground() {
