@@ -6,6 +6,8 @@ export interface TimelinePunto {
   nombre_pin_en?: string;
   direccion_pin?: string;
   mapsUrl?: string;
+  es?: string;
+  en?: string;
 }
 
 interface Props {
