@@ -71,6 +71,10 @@ export function RoomDialogueCard({ sectionId }: { sectionId: string }) {
           <img
             src={mascot}
             alt=""
+            width={80}
+            height={80}
+            loading="eager"
+            decoding="async"
             draggable={false}
             className="h-auto w-20 shrink-0 select-none"
           />
