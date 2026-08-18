@@ -50,7 +50,7 @@ export function RoomLandingLayout({
 
       {withDialogue && (
         <div className="absolute inset-x-0 bottom-0 z-[2] px-4 pb-4">
-          <RoomDialogueCard sectionId={id} />
+          <RoomDialogueCard sectionId={id === "home" ? "lobby" : id} />
         </div>
       )}
     </div>
