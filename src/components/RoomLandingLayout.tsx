@@ -39,7 +39,7 @@ export function RoomLandingLayout({
 
   return (
     <div
-      className={`relative min-h-[calc(100vh-104px)] overflow-hidden pb-48 ${className ?? ""}`}
+      className={`relative min-h-[calc(100vh-104px)] overflow-hidden ${withDialogue ? "pb-40" : ""} ${className ?? ""}`}
       style={style}
     >
       {isPatternSection(id) && (
@@ -48,11 +48,7 @@ export function RoomLandingLayout({
 
       <div className="relative z-[2]">{children}</div>
 
-      {withDialogue && (
-        <div className="absolute inset-x-0 bottom-0 z-[2] px-4 pb-4">
-          <RoomDialogueCard sectionId={id === "home" ? "lobby" : id} />
-        </div>
-      )}
+      {withDialogue && <RoomDialogueCard sectionId={id === "home" ? "lobby" : id} />}
     </div>
   );
 }

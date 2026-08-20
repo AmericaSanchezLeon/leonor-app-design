@@ -32,16 +32,12 @@ export function SectionPageLayout({
 
   return (
     <div
-      className={`relative min-h-[calc(100vh-112px)] bg-neutral-lighter text-foreground dark:bg-neutral-dark ${className ?? ""}`}
+      className={`relative min-h-[calc(100vh-112px)] bg-neutral-lighter text-foreground dark:bg-neutral-dark ${dialogueSectionId ? "pb-40" : ""} ${className ?? ""}`}
       style={style}
     >
       <div className={`relative z-10 ${bare ? "" : ""}`}>{children}</div>
 
-      {dialogueSectionId && (
-        <div className="relative z-10 px-4 pb-4 pt-2">
-          <RoomDialogueCard sectionId={dialogueSectionId} variant="internal" />
-        </div>
-      )}
+      {dialogueSectionId && <RoomDialogueCard sectionId={dialogueSectionId} variant="internal" />}
     </div>
   );
 }
