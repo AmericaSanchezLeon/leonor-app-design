@@ -39,7 +39,7 @@ export function RoomLandingLayout({
 
   return (
     <div
-      className={`relative min-h-[calc(100vh-104px)] overflow-hidden ${withDialogue ? "pb-40" : ""} ${className ?? ""}`}
+      className={`relative min-h-[calc(100vh-104px)] overflow-hidden ${withDialogue ? "pb-52" : ""} ${className ?? ""}`}
       style={style}
     >
       {isPatternSection(id) && (
