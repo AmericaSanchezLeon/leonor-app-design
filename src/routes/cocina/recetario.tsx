@@ -20,7 +20,7 @@ export const Route = createFileRoute("/cocina/recetario")({
 function Recetario() {
   const { language } = useLeonor();
   return (
-    <SectionPageLayout sectionId="cocina">
+    <SectionPageLayout sectionId="cocina" dialogueSectionId="cocina_recetario">
       <div className="px-5 py-8">
       <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
         {language === "es" ? "Recetario" : "Recipes"}
