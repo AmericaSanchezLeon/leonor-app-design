@@ -26,7 +26,9 @@ function RecetaPage() {
         height={750}
         fetchPriority="high"
         decoding="async"
-        className="aspect-[4/3] w-full bg-[var(--section-color)]/10 object-cover"
+        className={`aspect-[4/3] w-full bg-[var(--section-color)]/10 object-cover ${
+          r.imagenRotada180 ? "rotate-180" : ""
+        }`}
       />
       <div className="px-5 pt-6">
         <Link to="/cocina/recetario" className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
