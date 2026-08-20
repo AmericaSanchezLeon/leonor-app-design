@@ -40,7 +40,9 @@ function Recetario() {
               height={400}
               loading="eager"
               decoding="async"
-              className="aspect-square w-full bg-[var(--section-color)]/10 object-cover"
+              className={`aspect-square w-full bg-[var(--section-color)]/10 object-cover ${
+                r.imagenRotada180 ? "rotate-180" : ""
+              }`}
             />
             <div className="p-3">
               <div className="flex items-start gap-2" style={{ color: "var(--section-color)" }}>

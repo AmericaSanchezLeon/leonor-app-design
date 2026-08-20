@@ -47,7 +47,7 @@ export function RoomLanding({
         )}
       </div>
 
-      <div className="space-y-3 px-6 pb-10">
+      <div className="flex justify-center gap-6 px-6 pb-10">
         {links.map((l) => {
           const active = pathname.startsWith(l.to);
           const pair = l.iconKey ? roomIcons[l.iconKey] : null;
@@ -55,10 +55,10 @@ export function RoomLanding({
             <Link
               key={l.to}
               to={l.to as "/cocina"}
-              className="group flex items-center gap-4 rounded-2xl bg-[var(--leonor-cream)] px-5 py-5 shadow-md transition-transform hover:scale-[1.01]"
+              className="group flex flex-1 flex-col items-center gap-3 text-center transition-transform hover:scale-[1.02]"
             >
               {pair && (
-                <span className="relative h-14 w-14 flex-shrink-0">
+                <span className="relative h-20 w-20 flex-shrink-0">
                   <img
                     src={pair.normal}
                     alt=""
@@ -75,8 +75,8 @@ export function RoomLanding({
                   />
                 </span>
               )}
-              <span className="font-serif text-xl" style={{ color: "var(--section-color)" }}>
-                {t(l.title_es, l.title_en, lang)} →
+              <span className="font-serif text-lg leading-tight" style={{ color: "var(--leonor-cream)" }}>
+                {t(l.title_es, l.title_en, lang)}
               </span>
             </Link>
           );

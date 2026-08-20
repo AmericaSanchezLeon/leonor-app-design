@@ -1,11 +1,12 @@
 [
   {
-    "nombre": "Pollo, salchicha italiana y arroz",
-    "dato": "De los recuerdos de Pablo Weisz-Carrington.",
-    "ingredientes": "1 pechuga de pollo.\n250 gramos de salchicha italiana.\n2 cebollas pequeñas.\n1 taza de arroz.\n1 cucharadita de sal.\n1 onza de aceite de oliva.\n1 pizca de azafrán.\n1 pizca de paprika.\n1 pizca de sal de ajo.",
-    "preparacion": "Corta el pollo crudo en cubos de aproximadamente 2 centímetros por lado.\nCorta la salchicha italiana cruda en trozos y la cebolla en cubos.\nCalienta un sartén, agrega el aceite de oliva, la cebolla, la sal de ajo y paprika.\nIncorpora el pollo, sofríe y reserva.\nEn una olla hierve tres tazas de agua con la sal y una cucharadita de aceite de oliva.\nDurante el hervor agrega la taza de arroz, la salchicha italiana cortada, el pollo y el azafrán.\nTapa la olla y cocina a fuego fuerte durante los primeros 8 minutos, baja a fuego medio y deja cocinar por 6 minutos y luego a fuego bajo por 4 minutos más, cuida que el arroz no se adhiera al fondo del sartén.\nDeja reposar antes de comer.",
-    "chef": "Emelia Xóchitl Loranca Lara.",
-    "imagen": "azafran.JPG"
+    "nombre": "Pastel surrealista para tiempos de austeridad",
+    "dato": "Del libro “Leonora Carrington una vida surrealista” (2017): “En una carta a Leonor Fini, escrita en enero de 1940, Leonora informa de que ha preparado un ‘plato muy rico’ a base de arroz, cebolla troceada, aceitunas negras, dos huevos batidos, pimienta negra y atún en lata y terminado con una salsa hecha de tomates, cebollitas enteras, aceitunas y nata”. P. 64-65.",
+    "ingredientes": "40 gramos de cebolla.\n20 gramos de nata (crema).\n2 huevos.\n25 gramos de aceitunas negras.\n5 gramos de pimienta.\n200 gramos de jitomates (3 jitomates).\n200 gramos de arroz precocido.\n2 hojas de laurel.\n1 lata de atún.\n10 gramos de ajo.\n1 onza de aceite vegetal.",
+    "preparacion": "Para el pastel:\nCorta en rodajas las aceitunas negras.\nEn un bowl mezcla la lata de atún, 2 huevos, las aceitunas en rodajas, arroz precocido y pimienta.\nEn un sartén agrega aceite vegetal. Cuando el sartén esté caliente agrega la mezcla de atún.\nEspera 8 minutos para que esté cocinada la mezcla.\nDale la vuelta al pastel de la siguiente forma: coloca un plato plano como tapa del sartén y voltea el pastel en el plato, luego desliza el pastel del plato al sartén y deja cocinar el otro lado por 8 minutos más.\n\nPara la salsa:\nCorta por la mitad los jitomates. Corta en trozos grandes la cebolla y el ajo. En una olla pequeña pon a cocer los jitomates, cebolla y ajo por 10 minutos.\nLicua el ajo, cebolla y jitomates cocidos.\nEn una olla pequeña hierve y sazona la mezcla de ajo, cebolla y jitomates, agrega la nata (o crema) y 2 hojas de laurel.\nIncorpora los ingredientes por 5 minutos.",
+    "chef": "Maria Antonia Rosas Juárez & Lucio Herber Reyes.",
+    "imagen": "azafran.JPG",
+    "imagenRotada180": true
   },
   {
     "nombre": "Caldo de pollo con peras",
