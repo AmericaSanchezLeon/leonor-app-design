@@ -12,7 +12,7 @@ export const Route = createFileRoute("/comedor/mapas")({
 function MapasPage() {
   const { language } = useLeonor();
   return (
-    <SectionPageLayout sectionId="comedor">
+    <SectionPageLayout sectionId="comedor" dialogueSectionId="comedor_rutas">
       <div className="px-5 py-8">
         <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
           {language === "es" ? "Rutas de Leonora" : "Leonora's Routes"}

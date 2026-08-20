@@ -1,12 +1,15 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { SectionBgId } from "@/lib/room-backgrounds";
 import { useSectionContext, sectionTokenFor, type SectionContextId } from "@/lib/use-section-context";
+import { RoomDialogueCard } from "@/components/RoomDialogueCard";
 
 interface Props {
   /** Defaults to the active route's section. */
   sectionId?: SectionContextId | Exclude<SectionBgId, "home">;
   bare?: boolean;
   className?: string;
+  /** Renders the mascot dialogue card, colored with the room's section color, anchored to the bottom. */
+  dialogueSectionId?: string;
   children: ReactNode;
 }
 
@@ -14,7 +17,13 @@ interface Props {
  * Level 2 wrapper: flat neutral background (light/dark),
  * and `--section-color` exposed to all descendants for accents.
  */
-export function SectionPageLayout({ sectionId, bare = false, className, children }: Props) {
+export function SectionPageLayout({
+  sectionId,
+  bare = false,
+  className,
+  dialogueSectionId,
+  children,
+}: Props) {
   const ctx = useSectionContext();
   const id = (sectionId ?? ctx.sectionId) as SectionBgId;
   const style = {
@@ -27,6 +36,12 @@ export function SectionPageLayout({ sectionId, bare = false, className, children
       style={style}
     >
       <div className={`relative z-10 ${bare ? "" : ""}`}>{children}</div>
+
+      {dialogueSectionId && (
+        <div className="relative z-10 px-4 pb-4 pt-2">
+          <RoomDialogueCard sectionId={dialogueSectionId} variant="internal" />
+        </div>
+      )}
     </div>
   );
 }

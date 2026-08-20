@@ -12,7 +12,7 @@ export const Route = createFileRoute("/biblioteca/estante")({
 function EstantePage() {
   const { language } = useLeonor();
   return (
-    <SectionPageLayout sectionId="biblioteca">
+    <SectionPageLayout sectionId="biblioteca" dialogueSectionId="biblioteca_libros">
       <div className="py-8">
         <h1
           className="mb-6 px-5 font-serif text-3xl"

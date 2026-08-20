@@ -20,7 +20,15 @@ function Dots({ n, active }: { n: number; active: number }) {
   );
 }
 
-export function RoomDialogueCard({ sectionId }: { sectionId: string }) {
+type Variant = "room" | "internal";
+
+export function RoomDialogueCard({
+  sectionId,
+  variant = "room",
+}: {
+  sectionId: string;
+  variant?: Variant;
+}) {
   const { language } = useLeonor();
   const lang: Lang = language;
   const [index, setIndex] = useState(0);
@@ -31,7 +39,7 @@ export function RoomDialogueCard({ sectionId }: { sectionId: string }) {
   const phrases = raw as Phrase[];
   const n = phrases.length;
   const current = phrases[index];
-  const mascot = mascotImg[sectionId];
+  const mascot = mascotImg[sectionId] ?? mascotImg[sectionId.split("_")[0]];
 
   const next = () => setIndex((i) => (i + 1) % n);
   const prev = () => setIndex((i) => (i - 1 + n) % n);
@@ -57,8 +65,15 @@ export function RoomDialogueCard({ sectionId }: { sectionId: string }) {
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") next();
       }}
-      className="cursor-pointer select-none rounded-3xl bg-[var(--leonor-cream)]/95 px-5 py-4 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] backdrop-blur-sm"
-      style={{ color: "var(--section-color)", touchAction: "pan-y" }}
+      className={`cursor-pointer select-none rounded-3xl px-5 py-4 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] backdrop-blur-sm ${
+        variant === "internal"
+          ? "bg-[var(--section-color)]"
+          : "bg-[var(--leonor-cream)]/95"
+      }`}
+      style={{
+        color: variant === "internal" ? "var(--leonor-cream)" : "var(--section-color)",
+        touchAction: "pan-y",
+      }}
     >
       <div className="flex flex-row items-end justify-between gap-3">
         <div className="flex-1">

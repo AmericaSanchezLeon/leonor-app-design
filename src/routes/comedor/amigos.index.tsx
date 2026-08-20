@@ -26,7 +26,7 @@ export const Route = createFileRoute("/comedor/amigos/")({
 
 function AmigosPage() {
   return (
-    <SectionPageLayout sectionId="comedor">
+    <SectionPageLayout sectionId="comedor" dialogueSectionId="comedor_amigos">
       <div className="py-8">
         <h1 className="mb-6 px-5 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
           Nuestros Amigos
