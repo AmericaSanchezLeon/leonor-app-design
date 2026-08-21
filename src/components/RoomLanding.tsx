@@ -34,53 +34,57 @@ export function RoomLanding({
   const { language } = useLeonor();
   const lang: Lang = language;
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [leftLink, rightLink] = links;
+
+  const renderButton = (l: RoomLink) => {
+    const active = pathname.startsWith(l.to);
+    const pair = l.iconKey ? roomIcons[l.iconKey] : null;
+    return (
+      <Link
+        to={l.to as "/cocina"}
+        className="group flex w-24 flex-col items-center gap-2 text-center transition-transform hover:scale-[1.02]"
+      >
+        {pair && (
+          <span className="relative h-16 w-16 flex-shrink-0">
+            <img
+              src={pair.normal}
+              alt=""
+              className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-200 ${
+                active ? "opacity-0" : "opacity-100 group-hover:opacity-0"
+              }`}
+            />
+            <img
+              src={pair.active}
+              alt=""
+              className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-200 ${
+                active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+              }`}
+            />
+          </span>
+        )}
+        <span className="font-serif text-sm leading-tight" style={{ color: "var(--leonor-cream)" }}>
+          {t(l.title_es, l.title_en, lang)}
+        </span>
+      </Link>
+    );
+  };
 
   return (
     <RoomLandingLayout sectionId={sectionId}>
-      <div className="px-6 py-10 text-center">
-        {icon && <div className="mb-4 flex justify-center opacity-90">{icon}</div>}
-        <h1 className="font-serif text-4xl leading-tight">{t(title_es, title_en, lang)}</h1>
-        {(intro_es || intro_en) && (
-          <p className="mx-auto mt-4 max-w-xs text-sm opacity-90">
-            {t(intro_es ?? "", intro_en ?? "", lang)}
-          </p>
-        )}
-      </div>
+      <div className="flex items-center justify-between gap-2 px-4 py-10">
+        {leftLink ? renderButton(leftLink) : <div className="w-24" />}
 
-      <div className="flex justify-center gap-6 px-6 pb-10">
-        {links.map((l) => {
-          const active = pathname.startsWith(l.to);
-          const pair = l.iconKey ? roomIcons[l.iconKey] : null;
-          return (
-            <Link
-              key={l.to}
-              to={l.to as "/cocina"}
-              className="group flex flex-1 flex-col items-center gap-3 text-center transition-transform hover:scale-[1.02]"
-            >
-              {pair && (
-                <span className="relative h-20 w-20 flex-shrink-0">
-                  <img
-                    src={pair.normal}
-                    alt=""
-                    className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-200 ${
-                      active ? "opacity-0" : "opacity-100 group-hover:opacity-0"
-                    }`}
-                  />
-                  <img
-                    src={pair.active}
-                    alt=""
-                    className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-200 ${
-                      active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                    }`}
-                  />
-                </span>
-              )}
-              <span className="font-serif text-lg leading-tight" style={{ color: "var(--leonor-cream)" }}>
-                {t(l.title_es, l.title_en, lang)}
-              </span>
-            </Link>
-          );
-        })}
+        <div className="flex-1 text-center">
+          {icon && <div className="mb-3 flex justify-center opacity-90">{icon}</div>}
+          <h1 className="font-serif text-4xl leading-tight">{t(title_es, title_en, lang)}</h1>
+          {(intro_es || intro_en) && (
+            <p className="mx-auto mt-4 max-w-xs text-sm opacity-90">
+              {t(intro_es ?? "", intro_en ?? "", lang)}
+            </p>
+          )}
+        </div>
+
+        {rightLink ? renderButton(rightLink) : <div className="w-24" />}
       </div>
     </RoomLandingLayout>
   );
