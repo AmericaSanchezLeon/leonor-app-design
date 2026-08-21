@@ -68,7 +68,7 @@
   --neutral-dark: #343131;
 
   --background: var(--neutral-lighter);
-  --header-bg: transparent;
+  --header-bg: var(--neutral-lighter);
   --foreground: #2e2a2a;
   --card: #ffffff;
   --card-foreground: #2e2a2a;
