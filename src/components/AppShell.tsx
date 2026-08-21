@@ -35,7 +35,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         {/* Header */}
         <header
           className="fixed top-0 left-1/2 z-30 flex h-12 w-full max-w-[500px] -translate-x-1/2 items-center justify-between border-b border-[var(--border)] px-5 backdrop-blur-md"
-          style={{ backgroundColor: "color-mix(in oklab, var(--background) 92%, transparent)" }}
+          style={{ backgroundColor: "var(--header-bg)" }}
         >
           <Link to="/" aria-label="Leonorapp" className="flex items-center">
             <img src={logoUrl} alt="Leonorapp" className="h-7 w-auto" />
