@@ -71,10 +71,10 @@ export function RoomLanding({
 
   return (
     <RoomLandingLayout sectionId={sectionId}>
-      <div className="flex items-center justify-between gap-2 px-4 py-10">
-        {leftLink ? renderButton(leftLink) : <div className="w-24" />}
+      <div className="flex flex-col items-center gap-6 px-4 py-10">
+        <div>{leftLink && renderButton(leftLink)}</div>
 
-        <div className="flex-1 text-center">
+        <div className="text-center">
           <h1 className="font-serif text-4xl leading-tight">{t(title_es, title_en, lang)}</h1>
           {(intro_es || intro_en) && (
             <p className="mx-auto mt-4 max-w-xs text-sm opacity-90">
@@ -83,7 +83,7 @@ export function RoomLanding({
           )}
         </div>
 
-        {rightLink ? renderButton(rightLink) : <div className="w-24" />}
+        <div>{rightLink && renderButton(rightLink)}</div>
       </div>
     </RoomLandingLayout>
   );
