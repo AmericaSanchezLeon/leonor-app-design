@@ -28,7 +28,7 @@ function Recetario() {
             key={i}
             to="/cocina/receta/$recetaId"
             params={{ recetaId: String(i) }}
-            className="relative block overflow-hidden rounded-2xl shadow-md transition-transform hover:scale-[1.01]"
+            className="relative block"
           >
             <img
               src={recetaImg(r.imagen, "thumb")}
@@ -42,10 +42,10 @@ function Recetario() {
               }`}
             />
             <div
-              className="absolute inset-x-0 bottom-0 px-4 py-3"
-              style={{ backgroundColor: "color-mix(in oklab, var(--section-color) 80%, transparent)" }}
+              className="absolute inset-0 flex items-center justify-center px-6"
+              style={{ backgroundColor: "color-mix(in oklab, var(--section-color) 45%, transparent)" }}
             >
-              <p className="text-center font-serif text-lg leading-tight text-[var(--leonor-cream)]">
+              <p className="text-center font-serif text-2xl leading-tight text-[var(--leonor-cream)]">
                 {r.nombre}
               </p>
             </div>
