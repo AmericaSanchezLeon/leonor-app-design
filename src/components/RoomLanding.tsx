@@ -75,7 +75,6 @@ export function RoomLanding({
         {leftLink ? renderButton(leftLink) : <div className="w-24" />}
 
         <div className="flex-1 text-center">
-          {icon && <div className="mb-3 flex justify-center opacity-90">{icon}</div>}
           <h1 className="font-serif text-4xl leading-tight">{t(title_es, title_en, lang)}</h1>
           {(intro_es || intro_en) && (
             <p className="mx-auto mt-4 max-w-xs text-sm opacity-90">
