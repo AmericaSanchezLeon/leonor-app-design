@@ -2,10 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import recetas from "@/data/recetas.json";
 import { useLeonor } from "@/lib/leonor-context";
 import { recetaImg } from "@/lib/leonor-images";
-import { itemIcon } from "@/lib/leonor-icons";
 import { SectionPageLayout } from "@/components/SectionPageLayout";
-
-const RecetaIcon = itemIcon.receta;
 
 export const Route = createFileRoute("/cocina/recetario")({
   head: () => ({
@@ -25,30 +22,32 @@ function Recetario() {
       <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
         {language === "es" ? "Recetario" : "Recipes"}
       </h1>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="space-y-5">
         {recetas.map((r, i) => (
           <Link
             key={i}
             to="/cocina/receta/$recetaId"
             params={{ recetaId: String(i) }}
-            className="overflow-hidden rounded-2xl bg-card shadow-md transition-transform hover:scale-[1.02]"
+            className="relative block overflow-hidden rounded-2xl shadow-md transition-transform hover:scale-[1.01]"
           >
             <img
               src={recetaImg(r.imagen, "thumb")}
               alt=""
-              width={400}
-              height={400}
+              width={800}
+              height={600}
               loading="eager"
               decoding="async"
-              className={`aspect-square w-full bg-[var(--section-color)]/10 object-cover ${
+              className={`aspect-[4/3] w-full bg-[var(--section-color)]/10 object-cover ${
                 r.imagenRotada180 ? "rotate-180" : ""
               }`}
             />
-            <div className="p-3">
-              <div className="flex items-start gap-2" style={{ color: "var(--section-color)" }}>
-                <itemIcon.receta size={14} strokeWidth={1.75} className="mt-0.5 flex-shrink-0" />
-                <p className="font-serif text-sm leading-tight text-foreground">{r.nombre}</p>
-              </div>
+            <div
+              className="absolute inset-x-0 bottom-0 px-4 py-3"
+              style={{ backgroundColor: "color-mix(in oklab, var(--section-color) 80%, transparent)" }}
+            >
+              <p className="text-center font-serif text-lg leading-tight text-[var(--leonor-cream)]">
+                {r.nombre}
+              </p>
             </div>
           </Link>
         ))}
