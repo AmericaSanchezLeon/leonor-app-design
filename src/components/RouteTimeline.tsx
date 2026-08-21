@@ -1,4 +1,4 @@
-import { MapPin, ExternalLink } from "lucide-react";
+import { MapPin, ExternalLink, ImageIcon } from "lucide-react";
 import { useLeonor } from "@/lib/leonor-context";
 
 export interface TimelinePunto {
@@ -8,6 +8,7 @@ export interface TimelinePunto {
   mapsUrl?: string;
   es?: string;
   en?: string;
+  imagen?: string;
 }
 
 interface Props {
@@ -57,13 +58,25 @@ export function RouteTimeline({ puntos }: Props) {
               }`}
               style={{ borderColor: "color-mix(in srgb, var(--section-color) 30%, transparent)" }}
             >
-              <div className="flex items-start gap-2">
-                <MapPin
-                  className="mt-0.5 h-4 w-4 shrink-0"
-                  style={{ color: "var(--section-color)" }}
-                />
+              <div className="flex items-start gap-3">
+                {/* Placeholder de thumbnail — se reemplaza cuando llegue la imagen del lugar. */}
+                <div
+                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-dashed"
+                  style={{
+                    borderColor: "color-mix(in srgb, var(--section-color) 40%, transparent)",
+                    color: "var(--section-color)",
+                  }}
+                >
+                  <ImageIcon className="h-5 w-5 opacity-50" />
+                </div>
                 <div className="min-w-0 flex-1">
-                  <p className="font-serif text-base leading-tight">{nombre}</p>
+                  <div className="flex items-start gap-1.5">
+                    <MapPin
+                      className="mt-0.5 h-4 w-4 shrink-0"
+                      style={{ color: "var(--section-color)" }}
+                    />
+                    <p className="font-serif text-base leading-tight">{nombre}</p>
+                  </div>
                   {p.direccion_pin && (
                     <p className="mt-1 text-xs text-muted-foreground">{p.direccion_pin}</p>
                   )}
