@@ -17,20 +17,11 @@ export const Route = createFileRoute("/cocina/recetario")({
 
 function RecetarioBookCard() {
   return (
-    <Link
-      to="/cocina/recetario-libro"
-      className="mt-8 block overflow-hidden rounded-2xl shadow-md transition-transform hover:scale-[1.01]"
-    >
+    <Link to="/cocina/recetario-libro" className="block" aria-label={RECETARIO_BOOK.titulo}>
       <div
-        className="flex aspect-[3/2] w-full flex-col items-center justify-center px-6 text-center"
-        style={{ backgroundColor: RECETARIO_BOOK.color, color: "var(--leonor-cream)" }}
-      >
-        <p className="font-serif text-2xl leading-tight">{RECETARIO_BOOK.titulo}</p>
-        <p className="mt-2 font-serif text-sm leading-relaxed">{RECETARIO_BOOK.subtitulo}</p>
-      </div>
-      <div className="bg-card p-4">
-        <p className="text-sm leading-relaxed text-foreground">{RECETARIO_BOOK.parrafos[0]}</p>
-      </div>
+        className="aspect-square w-full"
+        style={{ backgroundColor: RECETARIO_BOOK.color }}
+      />
     </Link>
   );
 }
@@ -43,7 +34,7 @@ function Recetario() {
       <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
         {language === "es" ? "Recetario" : "Recipes"}
       </h1>
-      <div className="grid grid-cols-2 gap-0">
+      <div className="flex flex-col">
         {recetas.map((r, i) => (
           <Link
             key={i}
