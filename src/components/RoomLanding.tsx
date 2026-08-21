@@ -42,10 +42,10 @@ export function RoomLanding({
     return (
       <Link
         to={l.to as "/cocina"}
-        className="group flex w-24 flex-col items-center gap-2 text-center transition-transform hover:scale-[1.02]"
+        className="group flex w-32 flex-col items-center gap-2 text-center transition-transform hover:scale-[1.02]"
       >
         {pair && (
-          <span className="relative h-16 w-16 flex-shrink-0">
+          <span className="relative h-28 w-28 flex-shrink-0">
             <img
               src={pair.normal}
               alt=""
@@ -62,7 +62,7 @@ export function RoomLanding({
             />
           </span>
         )}
-        <span className="font-serif text-sm leading-tight" style={{ color: "var(--leonor-cream)" }}>
+        <span className="font-serif text-lg leading-tight" style={{ color: "var(--leonor-cream)" }}>
           {t(l.title_es, l.title_en, lang)}
         </span>
       </Link>
@@ -71,13 +71,13 @@ export function RoomLanding({
 
   return (
     <RoomLandingLayout sectionId={sectionId}>
-      <div className="flex flex-col items-center gap-6 px-4 py-10">
+      <div className="flex flex-1 flex-col items-center justify-between px-4 py-10">
         <div>{leftLink && renderButton(leftLink)}</div>
 
         <div className="text-center">
-          <h1 className="font-serif text-4xl leading-tight">{t(title_es, title_en, lang)}</h1>
+          <h1 className="text-6xl leading-tight">{t(title_es, title_en, lang)}</h1>
           {(intro_es || intro_en) && (
-            <p className="mx-auto mt-4 max-w-xs text-sm opacity-90">
+            <p className="mx-auto mt-4 max-w-xs text-base opacity-90">
               {t(intro_es ?? "", intro_en ?? "", lang)}
             </p>
           )}

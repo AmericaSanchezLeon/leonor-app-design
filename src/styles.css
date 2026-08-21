@@ -2,6 +2,14 @@
 @source "../src";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Shagaina";
+  src: url("./assets/fonts/Shagaina.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -100,4 +108,9 @@
     font-family: var(--font-sans);
   }
   h1, h2, h3, h4 { font-family: var(--font-display); }
+}
+
+/* Unlayered on purpose: wins over the font-serif utility some h1s carry. */
+h1 {
+  font-family: "Shagaina", var(--font-display);
 }

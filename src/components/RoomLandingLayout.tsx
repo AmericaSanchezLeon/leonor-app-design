@@ -39,14 +39,14 @@ export function RoomLandingLayout({
 
   return (
     <div
-      className={`relative min-h-[calc(100vh-104px)] overflow-hidden ${withDialogue ? "pb-52" : ""} ${className ?? ""}`}
+      className={`relative flex min-h-[calc(100vh-104px)] flex-col overflow-hidden ${withDialogue ? "pb-52" : ""} ${className ?? ""}`}
       style={style}
     >
       {isPatternSection(id) && (
         <RoomSvgPattern sectionId={id} tileUrl={roomBg[id]} svgUrls={roomScatterAssets[id]} />
       )}
 
-      <div className="relative z-[2]">{children}</div>
+      <div className="relative z-[2] flex flex-1 flex-col">{children}</div>
 
       {withDialogue && <RoomDialogueCard sectionId={id === "home" ? "lobby" : id} />}
     </div>
