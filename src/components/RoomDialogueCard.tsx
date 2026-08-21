@@ -61,7 +61,7 @@ export function RoomDialogueCard({
       <div
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
-        className={`flex select-none items-center gap-1 overflow-hidden rounded-3xl px-3 pt-4 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] backdrop-blur-sm ${
+        className={`flex select-none items-end gap-1 overflow-hidden rounded-3xl pb-0 pl-3 pr-1 pt-4 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] backdrop-blur-sm ${
           variant === "internal"
             ? "bg-[var(--section-color)]"
             : "bg-[var(--leonor-cream)]/95"
@@ -76,37 +76,40 @@ export function RoomDialogueCard({
             type="button"
             onClick={prev}
             aria-label={t("Anterior", "Previous", lang)}
-            className="shrink-0 self-center rounded-full p-1 opacity-70 transition-opacity hover:opacity-100"
+            className="mb-1 shrink-0 self-center rounded-full p-1 opacity-70 transition-opacity hover:opacity-100"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
         )}
 
-        <div className="flex flex-1 flex-col items-center gap-2 pb-1">
+        {/* info */}
+        <div className="flex flex-1 flex-col items-center gap-2 pb-4">
           <p className="text-center font-serif text-sm not-italic leading-relaxed">
             {t(current.es, current.en, lang)}
           </p>
           {n > 1 && <Dots n={n} active={index} />}
-          {mascot && (
-            <img
-              src={mascot}
-              alt=""
-              width={96}
-              height={96}
-              loading="eager"
-              decoding="async"
-              draggable={false}
-              className="h-24 w-24 shrink-0 select-none"
-            />
-          )}
         </div>
+
+        {/* mascot img */}
+        {mascot && (
+          <img
+            src={mascot}
+            alt=""
+            width={96}
+            height={96}
+            loading="eager"
+            decoding="async"
+            draggable={false}
+            className="h-24 w-24 shrink-0 select-none"
+          />
+        )}
 
         {n > 1 && (
           <button
             type="button"
             onClick={next}
             aria-label={t("Siguiente", "Next", lang)}
-            className="shrink-0 self-center rounded-full p-1 opacity-70 transition-opacity hover:opacity-100"
+            className="mb-1 shrink-0 self-center rounded-full p-1 opacity-70 transition-opacity hover:opacity-100"
           >
             <ChevronRight className="h-5 w-5" />
           </button>

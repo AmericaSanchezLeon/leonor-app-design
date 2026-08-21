@@ -32,7 +32,7 @@ function LibroDetalle() {
           height={1500}
           fetchPriority="high"
           decoding="async"
-          className="mx-auto aspect-[2/3] w-44 overflow-hidden rounded-lg bg-[var(--section-color)]/10 object-cover shadow-xl"
+          className="mx-auto aspect-[2/3] w-64 overflow-hidden rounded-lg bg-[var(--section-color)]/10 object-cover shadow-xl"
         />
       </div>
       <div className="px-5 pt-6 text-center">
@@ -40,9 +40,12 @@ function LibroDetalle() {
           {language === "es" ? b.nombre_es : b.nombre}
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">{b.autor}</p>
-        <p className="mt-3 text-xs uppercase tracking-wider" style={{ color: "var(--section-color)" }}>
+        <span
+          className="mt-3 inline-block rounded-full px-4 py-1 text-xs font-medium uppercase tracking-wider text-[var(--leonor-cream)]"
+          style={{ backgroundColor: "var(--section-color)" }}
+        >
           {b.tema}
-        </p>
+        </span>
       </div>
       <div className="mt-6 px-5">
         <p className="text-sm leading-relaxed">{b["reseña"]}</p>

@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import recetas from "@/data/recetas.json";
 import { recetaImg } from "@/lib/leonor-images";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Quote } from "lucide-react";
 import { SectionPageLayout } from "@/components/SectionPageLayout";
 
 export const Route = createFileRoute("/cocina/receta/$recetaId")({
@@ -39,10 +39,22 @@ function RecetaPage() {
         </h1>
         {r.chef && <p className="mt-1 text-sm text-muted-foreground">por {r.chef}</p>}
         {r.dato && (
-          <p className="mt-3 rounded-lg bg-muted p-3 font-serif text-sm italic">{r.dato}</p>
+          <div className="mt-3 flex items-start gap-3 rounded-lg bg-muted p-4">
+            <Quote
+              className="h-8 w-8 shrink-0 -scale-x-100"
+              style={{ color: "var(--section-color)" }}
+              fill="currentColor"
+              strokeWidth={0}
+            />
+            <p className="pt-1 font-serif text-sm italic leading-relaxed">{r.dato}</p>
+          </div>
         )}
         <h2 className="mt-6 font-serif text-xl" style={{ color: "var(--section-color)" }}>Ingredientes</h2>
-        <pre className="mt-2 whitespace-pre-wrap font-sans text-sm leading-relaxed">{r.ingredientes}</pre>
+        <ul className="mt-2 list-disc space-y-1 pl-5 font-sans text-sm leading-relaxed">
+          {r.ingredientes.split("\n").filter(Boolean).map((linea, i) => (
+            <li key={i}>{linea}</li>
+          ))}
+        </ul>
         <h2 className="mt-6 font-serif text-xl" style={{ color: "var(--section-color)" }}>Preparación</h2>
         <pre className="mt-2 whitespace-pre-wrap font-sans text-sm leading-relaxed">{r.preparacion}</pre>
       </div>
