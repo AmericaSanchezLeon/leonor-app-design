@@ -50,7 +50,11 @@ function RecetaPage() {
           </div>
         )}
         <h2 className="mt-6 font-serif text-xl" style={{ color: "var(--section-color)" }}>Ingredientes</h2>
-        <pre className="mt-2 whitespace-pre-wrap font-sans text-sm leading-relaxed">{r.ingredientes}</pre>
+        <ul className="mt-2 list-disc space-y-1 pl-5 font-sans text-sm leading-relaxed">
+          {r.ingredientes.split("\n").filter(Boolean).map((linea, i) => (
+            <li key={i}>{linea}</li>
+          ))}
+        </ul>
         <h2 className="mt-6 font-serif text-xl" style={{ color: "var(--section-color)" }}>Preparación</h2>
         <pre className="mt-2 whitespace-pre-wrap font-sans text-sm leading-relaxed">{r.preparacion}</pre>
       </div>
