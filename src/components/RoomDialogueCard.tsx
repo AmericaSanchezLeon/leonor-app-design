@@ -33,6 +33,7 @@ export function RoomDialogueCard({
   const { language } = useLeonor();
   const lang: Lang = language;
   const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(false);
   const startX = useRef<number | null>(null);
 
   const raw = (mascotData as Record<string, unknown>)[sectionId];
@@ -55,6 +56,34 @@ export function RoomDialogueCard({
     if (dx > 40) prev();
     else if (dx < -40) next();
   };
+
+  if (!open) {
+    return (
+      <div className="fixed inset-x-0 bottom-20 left-1/2 z-20 flex w-full max-w-[500px] -translate-x-1/2 justify-end px-4">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label={t("Abrir mensaje", "Open message", lang)}
+          className={`flex h-16 w-16 items-center justify-center overflow-hidden rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-transform hover:scale-105 ${
+            variant === "internal" ? "bg-[var(--section-color)]" : "bg-[var(--leonor-cream)]"
+          }`}
+        >
+          {mascot && (
+            <img
+              src={mascot}
+              alt=""
+              width={96}
+              height={96}
+              loading="eager"
+              decoding="async"
+              draggable={false}
+              className="h-20 w-20 shrink-0 translate-y-2 select-none"
+            />
+          )}
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-x-0 bottom-20 left-1/2 z-20 w-full max-w-[500px] -translate-x-1/2 px-4">
@@ -90,18 +119,25 @@ export function RoomDialogueCard({
           {n > 1 && <Dots n={n} active={index} />}
         </div>
 
-        {/* mascot img */}
+        {/* mascot img — tap to close */}
         {mascot && (
-          <img
-            src={mascot}
-            alt=""
-            width={96}
-            height={96}
-            loading="eager"
-            decoding="async"
-            draggable={false}
-            className="h-24 w-24 shrink-0 select-none"
-          />
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label={t("Cerrar mensaje", "Close message", lang)}
+            className="shrink-0"
+          >
+            <img
+              src={mascot}
+              alt=""
+              width={96}
+              height={96}
+              loading="eager"
+              decoding="async"
+              draggable={false}
+              className="h-24 w-24 select-none"
+            />
+          </button>
         )}
 
         {n > 1 && (
