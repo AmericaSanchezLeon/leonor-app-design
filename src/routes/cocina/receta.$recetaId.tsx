@@ -1,10 +1,14 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import recetas from "@/data/recetas.json";
 import { recetaImg } from "@/lib/leonor-images";
-import { ArrowLeft, Quote } from "lucide-react";
+import { ArrowLeft, Quote, ScrollText, Camera } from "lucide-react";
 import { SectionPageLayout } from "@/components/SectionPageLayout";
 
 export const Route = createFileRoute("/cocina/receta/$recetaId")({
+  head: ({ params }) => {
+    const r = recetas[Number(params.recetaId)];
+    return { meta: r ? [{ title: `${r.nombre} — Leonorapp` }] : [] };
+  },
   component: RecetaPage,
   notFoundComponent: () => (
     <div className="p-8 text-center">Receta no encontrada.</div>
@@ -19,44 +23,63 @@ function RecetaPage() {
   return (
     <SectionPageLayout sectionId="cocina" bare>
     <div className="pb-10">
-      <img
-        src={recetaImg(r.imagen, "full")}
-        alt={`Platillo: ${r.nombre}`}
-        width={1000}
-        height={750}
-        fetchPriority="high"
-        decoding="async"
-        className={`aspect-[4/3] w-full bg-[var(--section-color)]/10 object-cover ${
-          r.imagenRotada180 ? "rotate-180" : ""
-        }`}
-      />
-      <div className="px-5 pt-6">
-        <Link to="/cocina/recetario" className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
+      <div className="relative">
+        <img
+          src={recetaImg(r.imagen, "full")}
+          alt={`Platillo: ${r.nombre}`}
+          width={1000}
+          height={750}
+          fetchPriority="high"
+          decoding="async"
+          className={`aspect-[4/3] w-full bg-[var(--section-color)]/10 object-cover ${
+            r.imagenRotada180 ? "rotate-180" : ""
+          }`}
+        />
+        <Link
+          to="/cocina/recetario"
+          className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/40 px-2.5 py-1 text-xs text-white backdrop-blur-sm"
+        >
           <ArrowLeft className="h-3 w-3" /> Recetario
         </Link>
-        <h1 className="font-serif text-3xl leading-tight" style={{ color: "var(--section-color)" }}>
-          {r.nombre}
-        </h1>
-        {r.chef && <p className="mt-1 text-sm text-muted-foreground">por {r.chef}</p>}
+      </div>
+      <div className="px-5 pt-6">
         {r.dato && (
-          <div className="mt-3 flex items-start gap-3 rounded-lg bg-muted p-4">
-            <Quote
-              className="h-8 w-8 shrink-0 -scale-x-100"
-              style={{ color: "var(--section-color)" }}
-              fill="currentColor"
-              strokeWidth={0}
-            />
-            <p className="pt-1 font-serif text-sm italic leading-relaxed">{r.dato}</p>
+          <div className="flex items-start gap-3 rounded-lg bg-muted p-4">
+            <Quote className="h-8 w-8 shrink-0" fill="currentColor" strokeWidth={0} />
+            <p className="pt-1 text-center font-serif text-sm italic leading-relaxed">{r.dato}</p>
           </div>
         )}
-        <h2 className="mt-6 font-serif text-xl" style={{ color: "var(--section-color)" }}>Ingredientes</h2>
-        <ul className="mt-2 list-disc space-y-1 pl-5 font-sans text-sm leading-relaxed">
+
+        <h2 className="mt-8 text-xl font-bold">Ingredientes</h2>
+        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed">
           {r.ingredientes.split("\n").filter(Boolean).map((linea, i) => (
             <li key={i}>{linea}</li>
           ))}
         </ul>
-        <h2 className="mt-6 font-serif text-xl" style={{ color: "var(--section-color)" }}>Preparación</h2>
-        <pre className="mt-2 whitespace-pre-wrap font-sans text-sm leading-relaxed">{r.preparacion}</pre>
+
+        <hr className="my-6 border-border" />
+
+        <h2 className="text-xl font-bold">Preparación</h2>
+        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed">
+          {r.preparacion.split("\n").filter(Boolean).map((linea, i) => (
+            <li key={i}>{linea}</li>
+          ))}
+        </ul>
+
+        <div className="mt-8 space-y-2 text-xs text-muted-foreground">
+          {r.chef && (
+            <p className="flex items-center gap-2">
+              <ScrollText className="h-4 w-4 shrink-0" />
+              Receta por: {r.chef}
+            </p>
+          )}
+          {r.fotografia && (
+            <p className="flex items-center gap-2">
+              <Camera className="h-4 w-4 shrink-0" />
+              Fotografía por: {r.fotografia}
+            </p>
+          )}
+        </div>
       </div>
     </div>
     </SectionPageLayout>
