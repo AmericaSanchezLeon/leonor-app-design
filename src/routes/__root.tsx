@@ -11,26 +11,27 @@ import {
 import appCss from "../styles.css?url";
 import { LeonorProvider } from "@/lib/leonor-context";
 import { AppShell } from "@/components/AppShell";
+import { RoomLandingLayout } from "@/components/RoomLandingLayout";
+import { SleepingCat } from "@/components/SleepingCat";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <RoomLandingLayout sectionId="home">
+      <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6 py-10 text-center">
+        <h1 className="text-6xl leading-tight">¡Shh!</h1>
+        <p className="max-w-xs text-base leading-relaxed opacity-90">
+          Monsieur está dormido, por favor sal de esta habitación para no despertarlo
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+        <SleepingCat className="h-40 w-auto" />
+        <Link
+          to="/"
+          className="mt-2 rounded-full px-8 py-3 text-sm font-semibold shadow-lg transition-transform hover:scale-[1.02]"
+          style={{ backgroundColor: "var(--leonor-cream)", color: "var(--section-color)" }}
+        >
+          Volver al inicio
+        </Link>
       </div>
-    </div>
+    </RoomLandingLayout>
   );
 }
 
