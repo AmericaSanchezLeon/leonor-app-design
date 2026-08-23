@@ -10,6 +10,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Mestika";
+  src: url("./assets/fonts/Mestika.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -114,7 +122,7 @@
 
 /* Unlayered on purpose: wins over the font-serif utility some h1s carry. */
 h1 {
-  font-family: "Nomaden Demo", var(--font-display);
+  font-family: "Mestika", var(--font-display);
 }
 
 @keyframes room-gradient-move {
