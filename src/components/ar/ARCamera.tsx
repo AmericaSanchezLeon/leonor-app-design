@@ -171,20 +171,29 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
             const dy = h - dh - h * 0.12;
             ctx.drawImage(img, dx, dy, dw, dh);
           } else {
-            // face mode: paint current face overlay canvas if available
+            // face mode: paint current face overlay canvas, mapping its
+            // object-cover geometry back to the raw video frame.
             const overlayCanvas = containerRef.current?.querySelector(
               "canvas[data-face-canvas]",
             ) as HTMLCanvasElement | null;
             if (overlayCanvas && overlayCanvas.width > 0) {
+              const s = Number(overlayCanvas.dataset["arScale"] ?? "0");
+              const ox = Number(overlayCanvas.dataset["arOx"] ?? "0");
+              const oy = Number(overlayCanvas.dataset["arOy"] ?? "0");
               ctx.save();
               if (facingMode === "user") {
                 ctx.translate(w, 0);
                 ctx.scale(-1, 1);
               }
-              ctx.drawImage(overlayCanvas, 0, 0, w, h);
+              if (s > 0) {
+                ctx.drawImage(overlayCanvas, ox, oy, w * s, h * s, 0, 0, w, h);
+              } else {
+                ctx.drawImage(overlayCanvas, 0, 0, w, h);
+              }
               ctx.restore();
             }
           }
+
           resolve();
         };
         img.onerror = () => resolve();
