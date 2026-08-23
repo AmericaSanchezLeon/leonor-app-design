@@ -1,20 +1,18 @@
 import { roomBg, type SectionBgId } from "@/lib/room-backgrounds";
+import { roomGradientColors, type RoomGradientId } from "@/lib/room-gradient-colors";
 
-// Two-tone gradient per room, matching the color pair baked into each
-// illustration's original fill so the moving gradient reads as the same palette.
-const roomGradient: Record<SectionBgId, [string, string]> = {
-  about: ["#A71D35", "#A62387"],
-  biblioteca: ["#0E748E", "#114D8B"],
-  cocina: ["#36A852", "#096050"],
-  comedor: ["#D83227", "#D96E27"],
-  home: ["#D88328", "#D8BA28"],
+const gradientKeyFor: Record<SectionBgId, RoomGradientId> = {
+  cocina: "cocina",
+  comedor: "comedor",
+  biblioteca: "biblioteca",
+  about: "about",
+  home: "lobby",
 };
 
 export function RoomIllustrationBg({ sectionId }: { sectionId: SectionBgId }) {
   const svg = roomBg[sectionId];
-  const colors = roomGradient[sectionId];
-  if (!svg || !colors) return null;
-  const [from, to] = colors;
+  const { dark, light } = roomGradientColors[gradientKeyFor[sectionId]];
+  if (!svg) return null;
 
   return (
     <div
@@ -29,7 +27,7 @@ export function RoomIllustrationBg({ sectionId }: { sectionId: SectionBgId }) {
         maskPosition: "top center",
         WebkitMaskSize: "cover",
         maskSize: "cover",
-        backgroundImage: `linear-gradient(120deg, ${from}, ${to}, ${from})`,
+        backgroundImage: `linear-gradient(120deg, ${dark}, ${light}, ${dark})`,
         backgroundSize: "220% 220%",
         animation: "room-gradient-move 14s ease-in-out infinite",
         opacity: 0.55,

@@ -1,8 +1,10 @@
+import type { CSSProperties } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLeonor, t } from "@/lib/leonor-context";
 import rooms from "@/data/roomData.json";
 import { RoomLandingLayout } from "@/components/RoomLandingLayout";
 import { roomIcons, type RoomIconKey } from "@/lib/room-icons";
+import { roomGradientColors, roomGradientCss, type RoomGradientId } from "@/lib/room-gradient-colors";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -59,11 +61,17 @@ function HomePage() {
       <nav aria-label={t("Habitaciones", "Rooms", language)} className="grid grid-cols-2 gap-3 px-5 pb-10">
         {sections.map((r) => {
           const pair = roomIcons[ROOM_ICON[r.id] ?? "proyecto-libro"];
+          const gradientId = r.color in roomGradientColors ? (r.color as RoomGradientId) : undefined;
           return (
             <Link
               key={r.id}
               to={`/${r.id}` as "/cocina"}
-              className="group flex aspect-square flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[var(--leonor-cream)] p-5 text-center shadow-md transition-transform hover:scale-[1.02]"
+              className="room-gradient-btn group flex aspect-square flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[var(--leonor-cream)] p-5 text-center shadow-md transition-transform hover:scale-[1.02]"
+              style={
+                gradientId
+                  ? ({ ["--btn-gradient" as string]: roomGradientCss(gradientId) } as CSSProperties)
+                  : undefined
+              }
             >
               {pair && (
                 <span className="relative h-16 w-16 flex-shrink-0">
