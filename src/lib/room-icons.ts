@@ -13,7 +13,7 @@ import cocinaTeteraA from "@/assets/img/room-icons-svg/icono-hover-cocina-tetera
 import bibliotecaLibroA from "@/assets/img/room-icons-svg/icono-hover-biblioteca-libro.png.asset.json";
 import bibliotecaMascaraA from "@/assets/img/room-icons-svg/icono-hover-biblioteca-mascara.png.asset.json";
 import comedorAmigosA from "@/assets/img/room-icons-svg/icono-hover-comedor-amigos.png.asset.json";
-import comedorRutasA from "@/assets/img/room-icons-svg/icono-hover-comedor-rutas.png.asset.json";
+import comedorRutasA from "@/assets/img/room-icons-hover/comedor-rutas.png";
 import proyectoLibroA from "@/assets/img/room-icons-svg/icono-hover-proyecto-libro.png.asset.json";
 import proyectoAutoresA from "@/assets/img/room-icons-svg/icono-hover-proyecto-autores.png.asset.json";
 
@@ -33,7 +33,7 @@ export const roomIcons: Record<RoomIconKey, { normal: string; active: string }> 
   "biblioteca-libro": { normal: bibliotecaLibroN.url, active: bibliotecaLibroA.url },
   "biblioteca-mascara": { normal: bibliotecaMascaraN.url, active: bibliotecaMascaraA.url },
   "comedor-amigos": { normal: comedorAmigosN.url, active: comedorAmigosA.url },
-  "comedor-rutas": { normal: comedorRutasN.url, active: comedorRutasA.url },
+  "comedor-rutas": { normal: comedorRutasN.url, active: comedorRutasA },
   "proyecto-libro": { normal: proyectoLibroN.url, active: proyectoLibroA.url },
   "proyecto-autores": { normal: proyectoAutoresN.url, active: proyectoAutoresA.url },
 };

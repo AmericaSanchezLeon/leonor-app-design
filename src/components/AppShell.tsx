@@ -4,15 +4,15 @@ import { X, Settings } from "lucide-react";
 import { useLeonor, t } from "@/lib/leonor-context";
 import { sectionIcon, type SectionId } from "@/lib/leonor-icons";
 import { useSectionBackground } from "@/lib/use-section-background";
-import { roomGradientCss, type RoomGradientId } from "@/lib/room-gradient-colors";
+import { sectionTokenFor, type SectionContextId } from "@/lib/use-section-context";
 import logoUrl from "@/assets/leonorapp-logo.svg";
 
-const navItems: { path: string; id: string; label_es: string; label_en: string; gradientId: RoomGradientId }[] = [
-  { path: "/cocina", id: "cocina", label_es: "Cocina", label_en: "Kitchen", gradientId: "cocina" },
-  { path: "/comedor", id: "comedor", label_es: "Comedor", label_en: "Dining", gradientId: "comedor" },
-  { path: "/", id: "home", label_es: "Home", label_en: "Home", gradientId: "lobby" },
-  { path: "/biblioteca", id: "biblioteca", label_es: "Biblioteca", label_en: "Library", gradientId: "biblioteca" },
-  { path: "/about", id: "about", label_es: "About", label_en: "About", gradientId: "about" },
+const navItems: { path: string; id: SectionContextId; label_es: string; label_en: string }[] = [
+  { path: "/cocina", id: "cocina", label_es: "Cocina", label_en: "Kitchen" },
+  { path: "/comedor", id: "comedor", label_es: "Comedor", label_en: "Dining" },
+  { path: "/", id: "home", label_es: "Home", label_en: "Home" },
+  { path: "/biblioteca", id: "biblioteca", label_es: "Biblioteca", label_en: "Library" },
+  { path: "/about", id: "about", label_es: "About", label_en: "About" },
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -72,9 +72,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <Link
                 key={item.path}
                 to={item.path}
-                className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px] transition-all duration-200"
+                className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px] transition-colors duration-200"
                 style={{
-                  backgroundImage: active ? roomGradientCss(item.gradientId) : "none",
+                  backgroundColor: active ? `var(${sectionTokenFor(item.id)})` : "transparent",
                   color: active ? "var(--leonor-cream)" : "#2e2a2a",
                   fontWeight: active ? 600 : 400,
                 }}
