@@ -4,15 +4,16 @@ import { X, Settings } from "lucide-react";
 import { useLeonor, t } from "@/lib/leonor-context";
 import { sectionIcon, type SectionId } from "@/lib/leonor-icons";
 import { useSectionBackground } from "@/lib/use-section-background";
+import { roomGradientCss, type RoomGradientId } from "@/lib/room-gradient-colors";
 import logoUrl from "@/assets/leonorapp-logo.svg";
 
-const navItems = [
-  { path: "/cocina", id: "cocina", label_es: "Cocina", label_en: "Kitchen", color: "var(--cocina)" },
-  { path: "/comedor", id: "comedor", label_es: "Comedor", label_en: "Dining", color: "var(--comedor)" },
-  { path: "/", id: "home", label_es: "Home", label_en: "Home", color: "var(--leonor-amber)" },
-  { path: "/biblioteca", id: "biblioteca", label_es: "Biblioteca", label_en: "Library", color: "var(--biblioteca)" },
-  { path: "/about", id: "about", label_es: "About", label_en: "About", color: "var(--about)" },
-] as const;
+const navItems: { path: string; id: string; label_es: string; label_en: string; gradientId: RoomGradientId }[] = [
+  { path: "/cocina", id: "cocina", label_es: "Cocina", label_en: "Kitchen", gradientId: "cocina" },
+  { path: "/comedor", id: "comedor", label_es: "Comedor", label_en: "Dining", gradientId: "comedor" },
+  { path: "/", id: "home", label_es: "Home", label_en: "Home", gradientId: "lobby" },
+  { path: "/biblioteca", id: "biblioteca", label_es: "Biblioteca", label_en: "Library", gradientId: "biblioteca" },
+  { path: "/about", id: "about", label_es: "About", label_en: "About", gradientId: "about" },
+];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [showSettings, setShowSettings] = useState(false);
@@ -37,8 +38,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           className="fixed top-0 left-1/2 z-30 flex h-12 w-full max-w-[500px] -translate-x-1/2 items-center justify-between border-b border-[var(--border)] px-5 backdrop-blur-md"
           style={{ backgroundColor: "var(--header-bg)" }}
         >
-          <Link to="/" aria-label="Leonorapp" className="flex items-center">
-            <img src={logoUrl} alt="Leonorapp" className="h-7 w-auto" />
+          <Link to="/" aria-label="Leonorapp" className="flex items-center gap-2">
+            <img src={logoUrl} alt="" className="h-7 w-auto" />
+            <span
+              className="text-xl leading-none"
+              style={{ fontFamily: '"Nomaden Demo", var(--font-display)', color: "var(--foreground)" }}
+            >
+              Leonorapp
+            </span>
           </Link>
           <button
             onClick={() => setShowSettings(true)}
@@ -67,7 +74,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 to={item.path}
                 className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px] transition-all duration-200"
                 style={{
-                  backgroundColor: active ? item.color : "transparent",
+                  backgroundImage: active ? roomGradientCss(item.gradientId) : "none",
                   color: active ? "var(--leonor-cream)" : "#2e2a2a",
                   fontWeight: active ? 600 : 400,
                 }}

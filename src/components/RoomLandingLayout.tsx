@@ -1,8 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { RoomDialogueCard } from "@/components/RoomDialogueCard";
-import { RoomSvgPattern } from "@/components/RoomSvgPattern";
-import { roomBg, type SectionBgId } from "@/lib/room-backgrounds";
-import { roomScatterAssets } from "@/lib/room-scatter";
+import { RoomIllustrationBg } from "@/components/RoomIllustrationBg";
+import { type SectionBgId } from "@/lib/room-backgrounds";
 import { useSectionContext, sectionTokenFor, type SectionContextId } from "@/lib/use-section-context";
 
 const PATTERN_SECTIONS: SectionBgId[] = ["home", "cocina", "comedor", "biblioteca", "about"];
@@ -42,9 +41,7 @@ export function RoomLandingLayout({
       className={`relative flex min-h-[calc(100vh-104px)] flex-col overflow-hidden ${withDialogue ? "pb-52" : ""} ${className ?? ""}`}
       style={style}
     >
-      {isPatternSection(id) && (
-        <RoomSvgPattern sectionId={id} tileUrl={roomBg[id]} svgUrls={roomScatterAssets[id]} />
-      )}
+      {isPatternSection(id) && <RoomIllustrationBg sectionId={id} />}
 
       <div className="relative z-[2] flex flex-1 flex-col">{children}</div>
 
