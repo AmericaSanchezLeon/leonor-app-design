@@ -8,7 +8,7 @@ import monitasOllin from "@/assets/img/autoras/monitas-ollin.svg";
 import monitasItzel from "@/assets/img/autoras/monitas-itzel.svg";
 
 export const Route = createFileRoute("/about/autoras")({
-  head: () => ({ meta: [{ title: "Las Autoras — Leonorapp" }] }),
+  head: () => ({ meta: [{ title: "Las Tres Brujas — Leonorapp" }] }),
   component: AutorasPage,
 });
 
@@ -37,7 +37,7 @@ function AutorasPage() {
     <SectionPageLayout sectionId="about">
     <div className="px-5 py-8">
       <h1 className="mb-2 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
-        {language === "es" ? "Las Autoras" : "The Authors"}
+        {language === "es" ? "Las Tres Brujas (de MADIC)" : "The Three Witches (of MADIC)"}
       </h1>
       {data && (
         <p className="mb-6 text-sm text-muted-foreground">

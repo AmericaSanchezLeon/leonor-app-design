@@ -28,6 +28,22 @@ function ProyectoPage() {
             </p>
           </section>
         ))}
+        <div
+          className="overflow-hidden rounded-2xl border shadow-sm"
+          style={{ borderColor: "color-mix(in srgb, var(--section-color) 30%, transparent)" }}
+        >
+          <div className="relative w-full" style={{ aspectRatio: "700 / 400" }}>
+            <iframe
+              className="absolute inset-0 h-full w-full border-0"
+              src="https://online.fliphtml5.com/AmericaSanchez/lmbw/"
+              title="Alquimia, tecnología y vida cotidiana"
+              seamless
+              scrolling="no"
+              allowTransparency
+              allowFullScreen
+            />
+          </div>
+        </div>
       </div>
     </div>
     </SectionPageLayout>
