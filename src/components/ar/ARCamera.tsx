@@ -45,7 +45,14 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
   const [retryNonce, setRetryNonce] = useState(0);
 
   const enableFace = mode === "face" && facingMode === "user" && perm === "granted";
-  const { subscribe, ready: faceReady, error: faceError } = useFaceTracking(videoRef, enableFace);
+  const {
+    subscribe,
+    ready: faceReady,
+    error: faceError,
+    hasFace,
+    retry: retryFace,
+  } = useFaceTracking(videoRef, enableFace);
+
 
   const item = items[index];
 
