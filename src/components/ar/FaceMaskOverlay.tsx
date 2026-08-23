@@ -16,50 +16,70 @@ export function FaceMaskOverlay({ videoRef, maskImage, mirror, subscribe }: Prop
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const imgReadyRef = useRef(false);
+  const lastRef = useRef<FaceLandmarks | null>(null);
+  const drawRef = useRef<((lm: FaceLandmarks | null) => void) | null>(null);
 
-  // Preload mask image
+  // Preload mask image, repaint as soon as it's decoded / when it changes
   useEffect(() => {
     imgReadyRef.current = false;
     const img = new Image();
     img.crossOrigin = "anonymous";
     img.onload = () => {
       imgReadyRef.current = true;
+      drawRef.current?.(lastRef.current);
     };
     img.src = maskImage;
     imgRef.current = img;
+    drawRef.current?.(lastRef.current);
   }, [maskImage]);
 
   // Subscribe to landmarks → redraw
   useEffect(() => {
     const canvas = canvasRef.current;
-    const video = videoRef.current;
-    if (!canvas || !video) return;
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const draw = (lm: FaceLandmarks | null) => {
+      lastRef.current = lm;
+      const video = videoRef.current;
+      if (!video) return;
       const vw = video.videoWidth;
       const vh = video.videoHeight;
-      if (!vw || !vh) return;
-      if (canvas.width !== vw) canvas.width = vw;
-      if (canvas.height !== vh) canvas.height = vh;
 
-      ctx.clearRect(0, 0, vw, vh);
+      // Canvas matches its own CSS box so the overlay lines up with the
+      // object-cover video, whatever the screen ratio is.
+      const cw = canvas.clientWidth;
+      const ch = canvas.clientHeight;
+      if (!cw || !ch) return;
+      if (canvas.width !== cw) canvas.width = cw;
+      if (canvas.height !== ch) canvas.height = ch;
+
+      ctx.clearRect(0, 0, cw, ch);
       const img = imgRef.current;
-      if (!lm || !imgReadyRef.current || !img) return;
+      if (!vw || !vh || !lm || !imgReadyRef.current || !img) return;
+
+      // Replicate object-cover mapping: scale up, center, crop overflow.
+      const scale = Math.max(cw / vw, ch / vh);
+      const ox = (cw - vw * scale) / 2;
+      const oy = (ch - vh * scale) / 2;
+      canvas.dataset["arOx"] = String(ox);
+      canvas.dataset["arOy"] = String(oy);
+      canvas.dataset["arScale"] = String(scale);
 
       const le = lm[LEFT_EYE];
       const re = lm[RIGHT_EYE];
       if (!le || !re) return;
 
-      const lex = le.x * vw;
-      const ley = le.y * vh;
-      const rex = re.x * vw;
-      const rey = re.y * vh;
+      const lex = ox + le.x * vw * scale;
+      const ley = oy + le.y * vh * scale;
+      const rex = ox + re.x * vw * scale;
+      const rey = oy + re.y * vh * scale;
 
       const eyeDx = rex - lex;
       const eyeDy = rey - ley;
       const eyeDist = Math.hypot(eyeDx, eyeDy);
+      if (!eyeDist) return;
 
       const width = eyeDist * 2.8;
       const aspect = img.naturalHeight / img.naturalWidth || 1;
@@ -76,14 +96,19 @@ export function FaceMaskOverlay({ videoRef, maskImage, mirror, subscribe }: Prop
       ctx.restore();
     };
 
+    drawRef.current = draw;
     const unsub = subscribe(draw);
-    return unsub;
+    return () => {
+      unsub();
+      drawRef.current = null;
+    };
   }, [subscribe, videoRef]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 h-full w-full"
       style={{ transform: mirror ? "scaleX(-1)" : undefined }}
     />
   );
