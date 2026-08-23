@@ -3,8 +3,8 @@
 @import "tw-animate-css";
 
 @font-face {
-  font-family: "Shagaina";
-  src: url("./assets/fonts/Shagaina.ttf") format("truetype");
+  font-family: "Nomaden Demo";
+  src: url("./assets/fonts/NomadenDemo-Regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -114,7 +114,7 @@
 
 /* Unlayered on purpose: wins over the font-serif utility some h1s carry. */
 h1 {
-  font-family: "Shagaina", var(--font-display);
+  font-family: "Nomaden Demo", var(--font-display);
 }
 
 @keyframes room-gradient-move {
