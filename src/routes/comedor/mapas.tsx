@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Map } from "lucide-react";
 import rutas from "@/data/rutasData.json";
-import { useLeonor, t } from "@/lib/leonor-context";
+import { useLeonor } from "@/lib/leonor-context";
 import { SectionPageLayout } from "@/components/SectionPageLayout";
 import { RouteTimeline, type TimelinePunto } from "@/components/RouteTimeline";
 import { rutasPinesByEstado } from "@/lib/rutas-pines";
@@ -24,22 +23,8 @@ function MapasPage() {
           {language === "es" ? "Rutas de Leonora" : "Leonora's Routes"}
         </h1>
 
-        {/* Placeholder: mapa de México — se reemplaza cuando llegue el asset real. */}
-        <div
-          className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed"
-          style={{
-            borderColor: "color-mix(in srgb, var(--section-color) 40%, transparent)",
-            color: "var(--section-color)",
-          }}
-        >
-          <Map className="h-8 w-8 opacity-60" />
-          <p className="text-xs uppercase tracking-wider opacity-70">
-            {t("Mapa de México (próximamente)", "Map of Mexico (coming soon)", language)}
-          </p>
-        </div>
-
         {/* Tabs de estado */}
-        <div className="mt-4 flex border-b" style={{ borderColor: "color-mix(in srgb, var(--section-color) 30%, transparent)" }}>
+        <div className="flex border-b" style={{ borderColor: "color-mix(in srgb, var(--section-color) 30%, transparent)" }}>
           {rutas.map((r) => {
             const active = r.estado === estadoActivo;
             return (
