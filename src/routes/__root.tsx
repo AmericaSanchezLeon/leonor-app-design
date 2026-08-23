@@ -7,12 +7,16 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 
 import appCss from "../styles.css?url";
 import { LeonorProvider } from "@/lib/leonor-context";
 import { AppShell } from "@/components/AppShell";
 import { RoomLandingLayout } from "@/components/RoomLandingLayout";
+import { DoorIntro } from "@/components/DoorIntro";
 import sleepingCatImg from "@/assets/gato-dormido.png";
+
+const DOOR_INTRO_KEY = "leonor-door-intro-shown";
 
 function NotFoundComponent() {
   return (
@@ -119,6 +123,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const [showIntro, setShowIntro] = useState(false);
+
+  useEffect(() => {
+    try {
+      // sessionStorage persists across in-app navigation but clears when the
+      // tab/app is actually closed and reopened — that's our "restart" signal.
+      if (sessionStorage.getItem(DOOR_INTRO_KEY) !== "1") {
+        setShowIntro(true);
+        sessionStorage.setItem(DOOR_INTRO_KEY, "1");
+      }
+    } catch {
+      // sessionStorage unavailable (e.g. private mode) — skip the intro.
+    }
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -126,6 +144,7 @@ function RootComponent() {
         <AppShell>
           <Outlet />
         </AppShell>
+        {showIntro && <DoorIntro onDone={() => setShowIntro(false)} />}
       </LeonorProvider>
     </QueryClientProvider>
   );
