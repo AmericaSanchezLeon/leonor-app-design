@@ -5,7 +5,7 @@ import doorVideoMp4 from "@/assets/anim/puerta-entrada.mp4";
 export function DoorIntro({ onDone }: { onDone: () => void }) {
   useEffect(() => {
     // Fallback in case the video fails to load or "ended" never fires.
-    const fallback = setTimeout(onDone, 5000);
+    const fallback = setTimeout(onDone, 8000);
     return () => clearTimeout(fallback);
   }, [onDone]);
 

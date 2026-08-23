@@ -9,7 +9,14 @@ const gradientKeyFor: Record<SectionBgId, RoomGradientId> = {
   home: "lobby",
 };
 
-export function RoomIllustrationBg({ sectionId }: { sectionId: SectionBgId }) {
+export function RoomIllustrationBg({
+  sectionId,
+  opacity = 0.55,
+}: {
+  sectionId: SectionBgId;
+  /** Overall opacity of the textured pattern; defaults to the full-strength room look. */
+  opacity?: number;
+}) {
   const svg = roomBg[sectionId];
   const { dark, light } = roomGradientColors[gradientKeyFor[sectionId]];
   if (!svg) return null;
@@ -30,7 +37,7 @@ export function RoomIllustrationBg({ sectionId }: { sectionId: SectionBgId }) {
         backgroundImage: `linear-gradient(120deg, ${dark}, ${light}, ${dark})`,
         backgroundSize: "220% 220%",
         animation: "room-gradient-move 14s ease-in-out infinite",
-        opacity: 0.55,
+        opacity,
       }}
     />
   );

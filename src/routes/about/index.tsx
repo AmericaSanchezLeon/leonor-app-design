@@ -8,13 +8,13 @@ export const Route = createFileRoute("/about/")({
     <RoomLanding
       title_es="Sobre"
       title_en="About"
-      intro_es="Conoce el proyecto y a las autoras detrás de esta museografía interactiva."
-      intro_en="Learn about the project and the authors behind this interactive museography."
+      intro_es="Conoce el proyecto y a las tres brujas (de MADIC) detrás de esta museografía interactiva."
+      intro_en="Learn about the project and the three witches (of MADIC) behind this interactive museography."
       icon={<Info className="h-10 w-10" strokeWidth={1.5} />}
       sectionId="about"
       links={[
         { to: "/about/proyecto", title_es: "Sobre el proyecto", title_en: "About the project", iconKey: "proyecto-libro" },
-        { to: "/about/autoras", title_es: "Las Autoras", title_en: "The Authors", iconKey: "proyecto-autores" },
+        { to: "/about/autoras", title_es: "Las Tres Brujas (de MADIC)", title_en: "The Three Witches (of MADIC)", iconKey: "proyecto-autores" },
       ]}
     />
   ),

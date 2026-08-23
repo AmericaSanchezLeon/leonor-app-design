@@ -2,9 +2,8 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useLeonor, t, type Lang } from "@/lib/leonor-context";
 import { RoomLandingLayout } from "@/components/RoomLandingLayout";
 import { roomIcons, type RoomIconKey } from "@/lib/room-icons";
-import { roomGradientColors, roomGradientCss, type RoomGradientId } from "@/lib/room-gradient-colors";
 import type { SectionContextId } from "@/lib/use-section-context";
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface RoomLink {
   to: string;
@@ -37,18 +36,13 @@ export function RoomLanding({
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [leftLink, rightLink] = links;
 
-  const gradientId =
-    sectionId && sectionId in roomGradientColors ? (sectionId as RoomGradientId) : undefined;
-  const btnGradient = gradientId ? roomGradientCss(gradientId) : undefined;
-
   const renderButton = (l: RoomLink) => {
     const active = pathname.startsWith(l.to);
     const pair = l.iconKey ? roomIcons[l.iconKey] : null;
     return (
       <Link
         to={l.to as "/cocina"}
-        className="room-gradient-btn group flex w-32 flex-col items-center gap-2 rounded-2xl p-3 text-center transition-transform hover:scale-[1.02]"
-        style={btnGradient ? ({ ["--btn-gradient" as string]: btnGradient } as CSSProperties) : undefined}
+        className="group flex w-32 flex-col items-center gap-2 rounded-2xl p-3 text-center transition-transform hover:scale-[1.02]"
       >
         {pair && (
           <span className="relative h-28 w-28 flex-shrink-0">
