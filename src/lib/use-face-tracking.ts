@@ -25,11 +25,23 @@ export function useFaceTracking(
       try {
         const { FaceLandmarker, FilesetResolver } = await import("@mediapipe/tasks-vision");
         const fileset = await FilesetResolver.forVisionTasks(WASM_BASE);
-        const landmarker = await FaceLandmarker.createFromOptions(fileset, {
-          baseOptions: { modelAssetPath: MODEL_URL, delegate: "GPU" },
-          runningMode: "VIDEO",
-          numFaces: 1,
-        });
+        let landmarker: FLType;
+        try {
+          landmarker = await FaceLandmarker.createFromOptions(fileset, {
+            baseOptions: { modelAssetPath: MODEL_URL, delegate: "GPU" },
+            runningMode: "VIDEO",
+            numFaces: 1,
+          });
+        } catch (gpuErr) {
+          // GPU delegate isn't supported on every device/browser (common cause
+          // of masks silently never appearing) — fall back to CPU.
+          console.warn("[useFaceTracking] GPU delegate failed, retrying on CPU", gpuErr);
+          landmarker = await FaceLandmarker.createFromOptions(fileset, {
+            baseOptions: { modelAssetPath: MODEL_URL, delegate: "CPU" },
+            runningMode: "VIDEO",
+            numFaces: 1,
+          });
+        }
         if (cancelled) {
           landmarker.close();
           return;

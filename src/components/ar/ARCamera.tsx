@@ -1,5 +1,18 @@
 import { useNavigate } from "@tanstack/react-router";
-import { Camera, CameraOff, Download, Share2, SwitchCamera, X } from "lucide-react";
+import {
+  Camera,
+  CameraOff,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  Facebook,
+  Instagram,
+  MessageCircle,
+  Share2,
+  SwitchCamera,
+  Twitter,
+  X,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { FaceMaskOverlay } from "./FaceMaskOverlay";
 import { SurfaceStickerOverlay } from "./SurfaceStickerOverlay";
@@ -23,14 +36,16 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
   const streamRef = useRef<MediaStream | null>(null);
 
   const [index, setIndex] = useState(0);
-  const [facingMode, setFacingMode] = useState<"user" | "environment">("user");
+  const [facingMode, setFacingMode] = useState<"user" | "environment">(
+    mode === "surface" ? "environment" : "user",
+  );
   const [perm, setPerm] = useState<PermState>("prompt");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [capturedUrl, setCapturedUrl] = useState<string | null>(null);
   const [retryNonce, setRetryNonce] = useState(0);
 
   const enableFace = mode === "face" && facingMode === "user" && perm === "granted";
-  const { subscribe } = useFaceTracking(videoRef, enableFace);
+  const { subscribe, ready: faceReady, error: faceError } = useFaceTracking(videoRef, enableFace);
 
   const item = items[index];
 
@@ -111,6 +126,9 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
   const flipCamera = () => {
     setFacingMode((f) => (f === "user" ? "environment" : "user"));
   };
+
+  const goPrev = () => setIndex((i) => (i - 1 + items.length) % items.length);
+  const goNext = () => setIndex((i) => (i + 1) % items.length);
 
   const capture = async () => {
     const video = videoRef.current;
@@ -301,29 +319,81 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
         </button>
       </div>
 
-      {/* Bottom bar: dots + capture */}
+      {/* Current item preview — kept separate from the paginator dots below */}
+      {item && (
+        <div className="absolute inset-x-0 top-16 flex justify-center">
+          <div
+            className="flex h-16 w-16 items-center justify-center rounded-2xl bg-black/40 p-2 backdrop-blur"
+            style={{ outline: `2px solid ${sectionColor}`, outlineOffset: "-2px" }}
+          >
+            <img
+              src={item.image}
+              alt={item.label ?? ""}
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
+        </div>
+      )}
+
+      {enableFace && !faceReady && !faceError && (
+        <div className="absolute inset-x-0 top-36 flex justify-center">
+          <span className="rounded-full bg-black/50 px-3 py-1.5 text-xs text-white backdrop-blur">
+            Cargando reconocimiento facial…
+          </span>
+        </div>
+      )}
+      {enableFace && faceError && (
+        <div className="absolute inset-x-0 top-36 flex justify-center px-6">
+          <span className="rounded-full bg-black/50 px-3 py-1.5 text-center text-xs text-white backdrop-blur">
+            No se pudo activar el reconocimiento facial en este dispositivo. Puedes seguir
+            tomando fotos sin máscara.
+          </span>
+        </div>
+      )}
+
+      {/* Bottom bar: chevrons + dots (paginadores) + capture */}
       <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-4 p-6">
         {item?.label && (
           <span className="rounded-full bg-black/40 px-3 py-1 text-xs text-white backdrop-blur">
             {item.label}
           </span>
         )}
-        <div className="flex items-center gap-2">
-          {items.map((it, i) => (
+        {items.length > 1 ? (
+          <div className="flex items-center gap-3">
             <button
-              key={it.id}
               data-ar-control
-              onClick={() => setIndex(i)}
-              aria-label={`Ir a ${it.label ?? it.id}`}
-              className="h-2 w-2 rounded-full transition"
-              style={{
-                backgroundColor: i === index ? sectionColor : "rgba(255,255,255,0.4)",
-                outline: i === index ? "2px solid rgba(255,255,255,0.6)" : "none",
-                outlineOffset: "2px",
-              }}
-            />
-          ))}
-        </div>
+              onClick={goPrev}
+              aria-label="Anterior"
+              className="rounded-full bg-black/40 p-1.5 text-white backdrop-blur transition hover:bg-black/60"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <div className="flex items-center gap-2">
+              {items.map((it, i) => (
+                <button
+                  key={it.id}
+                  data-ar-control
+                  onClick={() => setIndex(i)}
+                  aria-label={`Ir a ${it.label ?? it.id}`}
+                  className="h-2 w-2 rounded-full transition"
+                  style={{
+                    backgroundColor: i === index ? sectionColor : "rgba(255,255,255,0.4)",
+                    outline: i === index ? "2px solid rgba(255,255,255,0.6)" : "none",
+                    outlineOffset: "2px",
+                  }}
+                />
+              ))}
+            </div>
+            <button
+              data-ar-control
+              onClick={goNext}
+              aria-label="Siguiente"
+              className="rounded-full bg-black/40 p-1.5 text-white backdrop-blur transition hover:bg-black/60"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        ) : null}
         <button
           data-ar-control
           onClick={capture}
@@ -363,6 +433,27 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
             >
               Tomar otra
             </button>
+          </div>
+
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-xs text-white/70">Compartir en redes</span>
+            <div className="flex items-center gap-3">
+              {[
+                { label: "WhatsApp", Icon: MessageCircle },
+                { label: "Instagram", Icon: Instagram },
+                { label: "Facebook", Icon: Facebook },
+                { label: "X", Icon: Twitter },
+              ].map(({ label, Icon }) => (
+                <button
+                  key={label}
+                  onClick={share}
+                  aria-label={`Compartir por ${label}`}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-white/25"
+                >
+                  <Icon className="h-4 w-4" />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}

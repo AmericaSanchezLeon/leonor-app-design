@@ -18,7 +18,7 @@ function CocinaRA() {
       <ArIntro
         sectionId="cocina"
         title="¡Prepárate!"
-        body="Vas a usar la cámara para descubrir objetos mágicos escondidos en la cocina de Leonora. Apunta la cámara hacia tu alrededor para revelar la sorpresa."
+        body="Vas a usar la cámara trasera de tu celular para descubrir objetos mágicos escondidos en la cocina de Leonora. Coloca tu celular sobre una superficie plana y apunta la cámara hacia ella para revelar la sorpresa."
         onStart={() => setStarted(true)}
       />
     );
