@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import { ARCamera } from "@/components/ar/ARCamera";
 import { ArIntro } from "@/components/ar/ArIntro";
 import { bibliotecaMasks } from "@/lib/ar-assets";
+import mascaraPrincipal from "@/assets/ar/biblioteca/mascara-principal.png";
 
 export const Route = createFileRoute("/biblioteca/ra-instrucciones")({
   head: () => ({ meta: [{ title: "Realidad Aumentada — Biblioteca" }] }),
@@ -17,8 +18,9 @@ function BibliotecaRA() {
     return (
       <ArIntro
         sectionId="biblioteca"
-        title="¡Prepárate!"
-        body="Vas a usar la cámara frontal para convertirte en una criatura del mundo de Leonora y ver tu nuevo rostro."
+        title="¡Hurra!"
+        body="Encontraste la máscara mágica de Leonora, al ponértela podrás convertirte en criatura del mundo de Leonora. Deberás abrir la cámara frontal y podrás ver tu nuevo rostro."
+        image={mascaraPrincipal}
         onStart={() => setStarted(true)}
       />
     );

@@ -12,7 +12,7 @@ import appCss from "../styles.css?url";
 import { LeonorProvider } from "@/lib/leonor-context";
 import { AppShell } from "@/components/AppShell";
 import { RoomLandingLayout } from "@/components/RoomLandingLayout";
-import { SleepingCat } from "@/components/SleepingCat";
+import sleepingCatImg from "@/assets/gato-dormido.png";
 
 function NotFoundComponent() {
   return (
@@ -22,7 +22,7 @@ function NotFoundComponent() {
         <p className="max-w-xs text-base leading-relaxed opacity-90">
           Monsieur está dormido, por favor sal de esta habitación para no despertarlo
         </p>
-        <SleepingCat className="h-40 w-auto" />
+        <img src={sleepingCatImg} alt="" className="h-40 w-auto" />
         <Link
           to="/"
           className="mt-2 rounded-full px-8 py-3 text-sm font-semibold shadow-lg transition-transform hover:scale-[1.02]"

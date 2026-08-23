@@ -2,7 +2,18 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLeonor, t } from "@/lib/leonor-context";
 import rooms from "@/data/roomData.json";
 import { RoomLandingLayout } from "@/components/RoomLandingLayout";
-import { roomGradientColors, roomGradientCss, type RoomGradientId } from "@/lib/room-gradient-colors";
+
+import cocinaInicio from "@/assets/img/home-rooms/cocina.png";
+import comedorInicio from "@/assets/img/home-rooms/comedor.png";
+import bibliotecaInicio from "@/assets/img/home-rooms/biblioteca.png";
+import aboutInicio from "@/assets/img/home-rooms/about.png";
+
+const HOME_ROOM_IMG: Record<string, string> = {
+  cocina: cocinaInicio,
+  comedor: comedorInicio,
+  biblioteca: bibliotecaInicio,
+  about: aboutInicio,
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,29 +53,31 @@ function HomePage() {
       </div>
 
       <nav aria-label={t("Habitaciones", "Rooms", language)} className="flex flex-col">
-        {sections.map((r) => {
-          const gradientId = r.color in roomGradientColors ? (r.color as RoomGradientId) : undefined;
-          return (
-            <Link
-              key={r.id}
-              to={`/${r.id}` as "/cocina"}
-              className="relative block aspect-[3/2] w-full border-4"
-              style={{
-                borderColor: `var(--${r.color})`,
-                backgroundImage: gradientId ? roomGradientCss(gradientId) : undefined,
-              }}
+        {sections.map((r) => (
+          <Link
+            key={r.id}
+            to={`/${r.id}` as "/cocina"}
+            className="relative block aspect-[3/2] w-full border-4"
+            style={{ borderColor: `var(--${r.color})` }}
+          >
+            <img
+              src={HOME_ROOM_IMG[r.id]}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div
+              className="absolute inset-0 flex items-center justify-center px-6"
+              style={{ backgroundColor: `color-mix(in oklab, var(--${r.color}) 55%, transparent)` }}
             >
-              <div className="absolute inset-0 flex items-center justify-center px-6">
-                <h2
-                  className="text-center text-3xl leading-tight text-[var(--leonor-cream)]"
-                  style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
-                >
-                  {t(r["es-id"], r["en-id"], language)}
-                </h2>
-              </div>
-            </Link>
-          );
-        })}
+              <h2
+                className="text-center text-3xl leading-tight text-[var(--leonor-cream)]"
+                style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
+              >
+                {t(r["es-id"], r["en-id"], language)}
+              </h2>
+            </div>
+          </Link>
+        ))}
       </nav>
     </RoomLandingLayout>
   );
