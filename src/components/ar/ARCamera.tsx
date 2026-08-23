@@ -351,21 +351,33 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
         </div>
       )}
 
-      {enableFace && !faceReady && !faceError && (
-        <div className="absolute inset-x-0 top-36 flex justify-center">
-          <span className="rounded-full bg-black/50 px-3 py-1.5 text-xs text-white backdrop-blur">
-            Cargando reconocimiento facial…
+      <div className="absolute inset-x-0 top-36 flex justify-center px-6" aria-live="polite">
+        {enableFace && !faceReady && !faceError && (
+          <span className="rounded-full bg-black/55 px-3 py-1.5 text-xs text-white backdrop-blur">
+            Preparando el filtro…
           </span>
-        </div>
-      )}
-      {enableFace && faceError && (
-        <div className="absolute inset-x-0 top-36 flex justify-center px-6">
-          <span className="rounded-full bg-black/50 px-3 py-1.5 text-center text-xs text-white backdrop-blur">
-            No se pudo activar el reconocimiento facial en este dispositivo. Puedes seguir
-            tomando fotos sin máscara.
+        )}
+        {enableFace && faceError && (
+          <div className="flex flex-col items-center gap-2 rounded-2xl bg-black/60 px-4 py-3 text-center backdrop-blur">
+            <span className="max-w-[16rem] text-xs text-white">
+              No pudimos activar el filtro facial. Revisa tu conexión e inténtalo de nuevo.
+            </span>
+            <button
+              data-ar-control
+              onClick={retryFace}
+              className="min-h-[44px] rounded-full bg-white/20 px-5 text-xs text-white transition hover:bg-white/30"
+            >
+              Reintentar
+            </button>
+          </div>
+        )}
+        {enableFace && faceReady && !faceError && !hasFace && (
+          <span className="rounded-full bg-black/55 px-3 py-1.5 text-center text-xs text-white backdrop-blur">
+            Acerca tu rostro y busca más luz
           </span>
-        </div>
-      )}
+        )}
+      </div>
+
 
       {/* Bottom bar: chevrons + dots (paginadores) + capture */}
       <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-4 p-6">
