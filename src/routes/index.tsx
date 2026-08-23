@@ -1,9 +1,7 @@
-import type { CSSProperties } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLeonor, t } from "@/lib/leonor-context";
 import rooms from "@/data/roomData.json";
 import { RoomLandingLayout } from "@/components/RoomLandingLayout";
-import { roomIcons, type RoomIconKey } from "@/lib/room-icons";
 import { roomGradientColors, roomGradientCss, type RoomGradientId } from "@/lib/room-gradient-colors";
 
 export const Route = createFileRoute("/")({
@@ -27,69 +25,43 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const ROOM_ICON: Record<string, RoomIconKey> = {
-  cocina: "cocina-libro",
-  comedor: "comedor-amigos",
-  biblioteca: "biblioteca-libro",
-  about: "proyecto-libro",
-};
-
 function HomePage() {
   const { language } = useLeonor();
   const sections = rooms.filter((r) => r.id !== "home");
 
   return (
     <RoomLandingLayout sectionId="home">
-      <div className="px-5 py-10 text-center">
-        <p className="font-sans text-xs uppercase tracking-[0.3em] opacity-80">
-          {t("Bienvenida a", "Welcome to", language)}
-        </p>
-        <h1 className="mt-2 font-serif text-4xl leading-tight">
-          {t("Casa Estudio", "House Studio", language)}
-          <br />
-          Leonora Carrington
-        </h1>
-        <p className="mx-auto mt-4 max-w-xs text-sm opacity-90">
+      <div className="flex flex-1 flex-col items-center justify-center px-6 py-10 text-center">
+        <h1 className="text-4xl leading-tight">
           {t(
-            "Una museografía interactiva de su universo doméstico y simbólico.",
-            "An interactive museography of her domestic and symbolic universe.",
+            "Bienvenido a la casa estudio Leonora Carrington",
+            "Welcome to the Leonora Carrington house studio",
             language,
           )}
-        </p>
+        </h1>
       </div>
 
-      <nav aria-label={t("Habitaciones", "Rooms", language)} className="grid grid-cols-2 gap-3 px-5 pb-10">
+      <nav aria-label={t("Habitaciones", "Rooms", language)} className="flex flex-col">
         {sections.map((r) => {
-          const pair = roomIcons[ROOM_ICON[r.id] ?? "proyecto-libro"];
           const gradientId = r.color in roomGradientColors ? (r.color as RoomGradientId) : undefined;
           return (
             <Link
               key={r.id}
               to={`/${r.id}` as "/cocina"}
-              className="room-gradient-btn group flex aspect-square flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[var(--leonor-cream)] p-5 text-center shadow-md transition-transform hover:scale-[1.02]"
-              style={
-                gradientId
-                  ? ({ ["--btn-gradient" as string]: roomGradientCss(gradientId) } as CSSProperties)
-                  : undefined
-              }
+              className="relative block aspect-[3/2] w-full border-4"
+              style={{
+                borderColor: `var(--${r.color})`,
+                backgroundImage: gradientId ? roomGradientCss(gradientId) : undefined,
+              }}
             >
-              {pair && (
-                <span className="relative h-16 w-16 flex-shrink-0">
-                  <img
-                    src={pair.normal}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-contain transition-opacity duration-200 group-hover:opacity-0"
-                  />
-                  <img
-                    src={pair.active}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-contain opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                  />
-                </span>
-              )}
-              <h2 className="font-serif text-xl leading-tight" style={{ color: `var(--${r.color})` }}>
-                {t(r["es-id"], r["en-id"], language)}
-              </h2>
+              <div className="absolute inset-0 flex items-center justify-center px-6">
+                <h2
+                  className="text-center text-3xl leading-tight text-[var(--leonor-cream)]"
+                  style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
+                >
+                  {t(r["es-id"], r["en-id"], language)}
+                </h2>
+              </div>
             </Link>
           );
         })}
