@@ -5,6 +5,7 @@ import rutas from "@/data/rutasData.json";
 import { useLeonor, t } from "@/lib/leonor-context";
 import { SectionPageLayout } from "@/components/SectionPageLayout";
 import { RouteTimeline, type TimelinePunto } from "@/components/RouteTimeline";
+import { rutasPinesByEstado } from "@/lib/rutas-pines";
 
 export const Route = createFileRoute("/comedor/mapas")({
   head: () => ({ meta: [{ title: "Rutas — Leonorapp" }] }),
@@ -37,8 +38,8 @@ function MapasPage() {
           </p>
         </div>
 
-        {/* Selector de estado */}
-        <div className="mt-4 flex flex-wrap gap-2">
+        {/* Tabs de estado */}
+        <div className="mt-4 flex border-b" style={{ borderColor: "color-mix(in srgb, var(--section-color) 30%, transparent)" }}>
           {rutas.map((r) => {
             const active = r.estado === estadoActivo;
             return (
@@ -46,11 +47,10 @@ function MapasPage() {
                 key={r.estado}
                 type="button"
                 onClick={() => setEstadoActivo(r.estado)}
-                className="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
+                className="flex-1 border-b-2 px-2 py-2.5 text-sm font-semibold transition-colors"
                 style={{
-                  backgroundColor: active ? "var(--section-color)" : "transparent",
-                  color: active ? "var(--leonor-cream)" : "var(--section-color)",
-                  border: "1px solid var(--section-color)",
+                  borderColor: active ? "var(--section-color)" : "transparent",
+                  color: active ? "var(--section-color)" : "var(--muted-foreground)",
                 }}
               >
                 {r.estado}
@@ -68,7 +68,10 @@ function MapasPage() {
               {language === "es" ? rutaActiva.descripcion_es : rutaActiva.descripcion_en}
             </p>
             {Array.isArray(rutaActiva.puntos) && rutaActiva.puntos.length > 0 && (
-              <RouteTimeline puntos={rutaActiva.puntos as TimelinePunto[]} />
+              <RouteTimeline
+                puntos={rutaActiva.puntos as TimelinePunto[]}
+                pinIcons={rutasPinesByEstado[rutaActiva.estado]}
+              />
             )}
           </section>
         )}
