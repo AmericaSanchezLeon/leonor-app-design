@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1" },
       { title: "Leonorapp — Casa Estudio Leonora Carrington" },
       { name: "description", content: "Aplicación interactiva de la Casa Estudio Leonora Carrington: cocina, comedor, biblioteca y más." },
-      { name: "theme-color", content: "#b56503" },
+      { name: "theme-color", content: "#faf9f7" },
       { property: "og:title", content: "Leonorapp" },
       { property: "og:description", content: "Casa Estudio Leonora Carrington — museografía interactiva." },
       { property: "og:type", content: "website" },

@@ -42,7 +42,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <img src={logoUrl} alt="" className="h-7 w-auto" />
             <span
               className="text-xl leading-none"
-              style={{ fontFamily: '"Nomaden Demo", var(--font-display)', color: "var(--foreground)" }}
+              style={{ fontFamily: "var(--font-h1)", color: "var(--foreground)" }}
             >
               Leonorapp
             </span>
