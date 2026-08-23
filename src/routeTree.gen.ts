@@ -9,63 +9,46 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
 import { Route as McpRouteImport } from './routes/mcp'
-import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
-import { Route as AboutIndexRouteImport } from './routes/about/index'
-import { Route as AboutAutorasRouteImport } from './routes/about/autoras'
-import { Route as AboutProyectoRouteImport } from './routes/about/proyecto'
-import { Route as BibliotecaIndexRouteImport } from './routes/biblioteca/index'
-import { Route as BibliotecaEstanteRouteImport } from './routes/biblioteca/estante'
-import { Route as BibliotecaRaInstruccionesRouteImport } from './routes/biblioteca/ra-instrucciones'
-import { Route as CocinaIndexRouteImport } from './routes/cocina/index'
-import { Route as CocinaRaInstruccionesRouteImport } from './routes/cocina/ra-instrucciones'
-import { Route as CocinaRecetarioRouteImport } from './routes/cocina/recetario'
-import { Route as CocinaRecetarioLibroRouteImport } from './routes/cocina/recetario-libro'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as ComedorIndexRouteImport } from './routes/comedor/index'
+import { Route as CocinaIndexRouteImport } from './routes/cocina/index'
+import { Route as BibliotecaIndexRouteImport } from './routes/biblioteca/index'
+import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as ComedorMapasRouteImport } from './routes/comedor/mapas'
-import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
-import { Route as BibliotecaLibroLibroIdRouteImport } from './routes/biblioteca/libro.$libroId'
-import { Route as CocinaRecetaRecetaIdRouteImport } from './routes/cocina/receta.$recetaId'
+import { Route as CocinaRecetarioLibroRouteImport } from './routes/cocina/recetario-libro'
+import { Route as CocinaRecetarioRouteImport } from './routes/cocina/recetario'
+import { Route as CocinaRaInstruccionesRouteImport } from './routes/cocina/ra-instrucciones'
+import { Route as BibliotecaRaInstruccionesRouteImport } from './routes/biblioteca/ra-instrucciones'
+import { Route as BibliotecaEstanteRouteImport } from './routes/biblioteca/estante'
+import { Route as AboutProyectoRouteImport } from './routes/about/proyecto'
+import { Route as AboutAutorasRouteImport } from './routes/about/autoras'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as ComedorAmigosIndexRouteImport } from './routes/comedor/amigos.index'
 import { Route as ComedorAmigosAmigoIdRouteImport } from './routes/comedor/amigos.$amigoId'
+import { Route as CocinaRecetaRecetaIdRouteImport } from './routes/cocina/receta.$recetaId'
+import { Route as BibliotecaLibroLibroIdRouteImport } from './routes/biblioteca/libro.$libroId'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const AboutIndexRoute = AboutIndexRouteImport.update({
-  id: '/about/',
-  path: '/about/',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutAutorasRoute = AboutAutorasRouteImport.update({
-  id: '/about/autoras',
-  path: '/about/autoras',
+const ComedorIndexRoute = ComedorIndexRouteImport.update({
+  id: '/comedor/',
+  path: '/comedor/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutProyectoRoute = AboutProyectoRouteImport.update({
-  id: '/about/proyecto',
-  path: '/about/proyecto',
+const CocinaIndexRoute = CocinaIndexRouteImport.update({
+  id: '/cocina/',
+  path: '/cocina/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BibliotecaIndexRoute = BibliotecaIndexRouteImport.update({
@@ -73,9 +56,29 @@ const BibliotecaIndexRoute = BibliotecaIndexRouteImport.update({
   path: '/biblioteca/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BibliotecaEstanteRoute = BibliotecaEstanteRouteImport.update({
-  id: '/biblioteca/estante',
-  path: '/biblioteca/estante',
+const AboutIndexRoute = AboutIndexRouteImport.update({
+  id: '/about/',
+  path: '/about/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComedorMapasRoute = ComedorMapasRouteImport.update({
+  id: '/comedor/mapas',
+  path: '/comedor/mapas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CocinaRecetarioLibroRoute = CocinaRecetarioLibroRouteImport.update({
+  id: '/cocina/recetario-libro',
+  path: '/cocina/recetario-libro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CocinaRecetarioRoute = CocinaRecetarioRouteImport.update({
+  id: '/cocina/recetario',
+  path: '/cocina/recetario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CocinaRaInstruccionesRoute = CocinaRaInstruccionesRouteImport.update({
+  id: '/cocina/ra-instrucciones',
+  path: '/cocina/ra-instrucciones',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BibliotecaRaInstruccionesRoute =
@@ -84,52 +87,33 @@ const BibliotecaRaInstruccionesRoute =
     path: '/biblioteca/ra-instrucciones',
     getParentRoute: () => rootRouteImport,
   } as any)
-const CocinaIndexRoute = CocinaIndexRouteImport.update({
-  id: '/cocina/',
-  path: '/cocina/',
+const BibliotecaEstanteRoute = BibliotecaEstanteRouteImport.update({
+  id: '/biblioteca/estante',
+  path: '/biblioteca/estante',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CocinaRaInstruccionesRoute = CocinaRaInstruccionesRouteImport.update({
-  id: '/cocina/ra-instrucciones',
-  path: '/cocina/ra-instrucciones',
+const AboutProyectoRoute = AboutProyectoRouteImport.update({
+  id: '/about/proyecto',
+  path: '/about/proyecto',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CocinaRecetarioRoute = CocinaRecetarioRouteImport.update({
-  id: '/cocina/recetario',
-  path: '/cocina/recetario',
+const AboutAutorasRoute = AboutAutorasRouteImport.update({
+  id: '/about/autoras',
+  path: '/about/autoras',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CocinaRecetarioLibroRoute = CocinaRecetarioLibroRouteImport.update({
-  id: '/cocina/recetario-libro',
-  path: '/cocina/recetario-libro',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ComedorIndexRoute = ComedorIndexRouteImport.update({
-  id: '/comedor/',
-  path: '/comedor/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ComedorMapasRoute = ComedorMapasRouteImport.update({
-  id: '/comedor/mapas',
-  path: '/comedor/mapas',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Char91DotmcpChar93InvokeToolToolRoute =
-  Char91DotmcpChar93InvokeToolToolRouteImport.update({
-    id: '/.mcp/invoke-tool/$tool',
-    path: '/.mcp/invoke-tool/$tool',
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
     getParentRoute: () => rootRouteImport,
   } as any)
-const BibliotecaLibroLibroIdRoute = BibliotecaLibroLibroIdRouteImport.update({
-  id: '/biblioteca/libro/$libroId',
-  path: '/biblioteca/libro/$libroId',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CocinaRecetaRecetaIdRoute = CocinaRecetaRecetaIdRouteImport.update({
-  id: '/cocina/receta/$recetaId',
-  path: '/cocina/receta/$recetaId',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ComedorAmigosIndexRoute = ComedorAmigosIndexRouteImport.update({
   id: '/comedor/amigos/',
   path: '/comedor/amigos/',
@@ -140,6 +124,22 @@ const ComedorAmigosAmigoIdRoute = ComedorAmigosAmigoIdRouteImport.update({
   path: '/comedor/amigos/$amigoId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CocinaRecetaRecetaIdRoute = CocinaRecetaRecetaIdRouteImport.update({
+  id: '/cocina/receta/$recetaId',
+  path: '/cocina/receta/$recetaId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BibliotecaLibroLibroIdRoute = BibliotecaLibroLibroIdRouteImport.update({
+  id: '/biblioteca/libro/$libroId',
+  path: '/biblioteca/libro/$libroId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Char91DotmcpChar93InvokeToolToolRoute =
+  Char91DotmcpChar93InvokeToolToolRouteImport.update({
+    id: '/.mcp/invoke-tool/$tool',
+    path: '/.mcp/invoke-tool/$tool',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -309,13 +309,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/mcp': {
       id: '/mcp'
       path: '/mcp'
@@ -323,88 +316,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about/': {
-      id: '/about/'
-      path: '/about'
-      fullPath: '/about/'
-      preLoaderRoute: typeof AboutIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about/autoras': {
-      id: '/about/autoras'
-      path: '/about/autoras'
-      fullPath: '/about/autoras'
-      preLoaderRoute: typeof AboutAutorasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about/proyecto': {
-      id: '/about/proyecto'
-      path: '/about/proyecto'
-      fullPath: '/about/proyecto'
-      preLoaderRoute: typeof AboutProyectoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/biblioteca/': {
-      id: '/biblioteca/'
-      path: '/biblioteca'
-      fullPath: '/biblioteca/'
-      preLoaderRoute: typeof BibliotecaIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/biblioteca/estante': {
-      id: '/biblioteca/estante'
-      path: '/biblioteca/estante'
-      fullPath: '/biblioteca/estante'
-      preLoaderRoute: typeof BibliotecaEstanteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/biblioteca/ra-instrucciones': {
-      id: '/biblioteca/ra-instrucciones'
-      path: '/biblioteca/ra-instrucciones'
-      fullPath: '/biblioteca/ra-instrucciones'
-      preLoaderRoute: typeof BibliotecaRaInstruccionesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cocina/': {
-      id: '/cocina/'
-      path: '/cocina'
-      fullPath: '/cocina/'
-      preLoaderRoute: typeof CocinaIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cocina/ra-instrucciones': {
-      id: '/cocina/ra-instrucciones'
-      path: '/cocina/ra-instrucciones'
-      fullPath: '/cocina/ra-instrucciones'
-      preLoaderRoute: typeof CocinaRaInstruccionesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cocina/recetario': {
-      id: '/cocina/recetario'
-      path: '/cocina/recetario'
-      fullPath: '/cocina/recetario'
-      preLoaderRoute: typeof CocinaRecetarioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cocina/recetario-libro': {
-      id: '/cocina/recetario-libro'
-      path: '/cocina/recetario-libro'
-      fullPath: '/cocina/recetario-libro'
-      preLoaderRoute: typeof CocinaRecetarioLibroRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/comedor/': {
@@ -414,6 +330,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComedorIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cocina/': {
+      id: '/cocina/'
+      path: '/cocina'
+      fullPath: '/cocina/'
+      preLoaderRoute: typeof CocinaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/biblioteca/': {
+      id: '/biblioteca/'
+      path: '/biblioteca'
+      fullPath: '/biblioteca/'
+      preLoaderRoute: typeof BibliotecaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/': {
+      id: '/about/'
+      path: '/about'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/comedor/mapas': {
       id: '/comedor/mapas'
       path: '/comedor/mapas'
@@ -421,25 +358,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComedorMapasRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.mcp/invoke-tool/$tool': {
-      id: '/.mcp/invoke-tool/$tool'
-      path: '/.mcp/invoke-tool/$tool'
-      fullPath: '/.mcp/invoke-tool/$tool'
-      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+    '/cocina/recetario-libro': {
+      id: '/cocina/recetario-libro'
+      path: '/cocina/recetario-libro'
+      fullPath: '/cocina/recetario-libro'
+      preLoaderRoute: typeof CocinaRecetarioLibroRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/biblioteca/libro/$libroId': {
-      id: '/biblioteca/libro/$libroId'
-      path: '/biblioteca/libro/$libroId'
-      fullPath: '/biblioteca/libro/$libroId'
-      preLoaderRoute: typeof BibliotecaLibroLibroIdRouteImport
+    '/cocina/recetario': {
+      id: '/cocina/recetario'
+      path: '/cocina/recetario'
+      fullPath: '/cocina/recetario'
+      preLoaderRoute: typeof CocinaRecetarioRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/cocina/receta/$recetaId': {
-      id: '/cocina/receta/$recetaId'
-      path: '/cocina/receta/$recetaId'
-      fullPath: '/cocina/receta/$recetaId'
-      preLoaderRoute: typeof CocinaRecetaRecetaIdRouteImport
+    '/cocina/ra-instrucciones': {
+      id: '/cocina/ra-instrucciones'
+      path: '/cocina/ra-instrucciones'
+      fullPath: '/cocina/ra-instrucciones'
+      preLoaderRoute: typeof CocinaRaInstruccionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/biblioteca/ra-instrucciones': {
+      id: '/biblioteca/ra-instrucciones'
+      path: '/biblioteca/ra-instrucciones'
+      fullPath: '/biblioteca/ra-instrucciones'
+      preLoaderRoute: typeof BibliotecaRaInstruccionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/biblioteca/estante': {
+      id: '/biblioteca/estante'
+      path: '/biblioteca/estante'
+      fullPath: '/biblioteca/estante'
+      preLoaderRoute: typeof BibliotecaEstanteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/proyecto': {
+      id: '/about/proyecto'
+      path: '/about/proyecto'
+      fullPath: '/about/proyecto'
+      preLoaderRoute: typeof AboutProyectoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/autoras': {
+      id: '/about/autoras'
+      path: '/about/autoras'
+      fullPath: '/about/autoras'
+      preLoaderRoute: typeof AboutAutorasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/comedor/amigos/': {
@@ -454,6 +433,27 @@ declare module '@tanstack/react-router' {
       path: '/comedor/amigos/$amigoId'
       fullPath: '/comedor/amigos/$amigoId'
       preLoaderRoute: typeof ComedorAmigosAmigoIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cocina/receta/$recetaId': {
+      id: '/cocina/receta/$recetaId'
+      path: '/cocina/receta/$recetaId'
+      fullPath: '/cocina/receta/$recetaId'
+      preLoaderRoute: typeof CocinaRecetaRecetaIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/biblioteca/libro/$libroId': {
+      id: '/biblioteca/libro/$libroId'
+      path: '/biblioteca/libro/$libroId'
+      fullPath: '/biblioteca/libro/$libroId'
+      preLoaderRoute: typeof BibliotecaLibroLibroIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
