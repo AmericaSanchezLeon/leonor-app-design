@@ -43,6 +43,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [capturedUrl, setCapturedUrl] = useState<string | null>(null);
   const [retryNonce, setRetryNonce] = useState(0);
+  const [noFaceStuck, setNoFaceStuck] = useState(false);
 
   const enableFace = mode === "face" && facingMode === "user" && perm === "granted";
   const {
@@ -52,6 +53,17 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
     hasFace,
     retry: retryFace,
   } = useFaceTracking(videoRef, enableFace);
+
+  // If nothing is ever detected, offer a manual retry instead of leaving the
+  // "acerca tu rostro" message up forever with no way out.
+  useEffect(() => {
+    if (!enableFace || !faceReady || faceError || hasFace) {
+      setNoFaceStuck(false);
+      return;
+    }
+    const t = setTimeout(() => setNoFaceStuck(true), 12000);
+    return () => clearTimeout(t);
+  }, [enableFace, faceReady, faceError, hasFace]);
 
 
   const item = items[index];
@@ -372,9 +384,20 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
           </div>
         )}
         {enableFace && faceReady && !faceError && !hasFace && (
-          <span className="rounded-full bg-black/55 px-3 py-1.5 text-center text-xs text-white backdrop-blur">
-            Acerca tu rostro y busca más luz
-          </span>
+          <div className="flex flex-col items-center gap-2">
+            <span className="rounded-full bg-black/55 px-3 py-1.5 text-center text-xs text-white backdrop-blur">
+              Acerca tu rostro y busca más luz
+            </span>
+            {noFaceStuck && (
+              <button
+                data-ar-control
+                onClick={retryFace}
+                className="min-h-[36px] rounded-full bg-white/20 px-4 text-xs text-white backdrop-blur transition hover:bg-white/30"
+              >
+                ¿Sigue sin funcionar? Reintentar
+              </button>
+            )}
+          </div>
         )}
       </div>
 

@@ -20,10 +20,7 @@ function ProyectoPage() {
       <div className="space-y-8">
         {sections.map((s, i) => (
           <section key={i}>
-            <h2 className="font-serif text-xl leading-tight" style={{ color: "var(--section-color)" }}>
-              {language === "es" ? s.title_es : s.title_en}
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed">
               {language === "es" ? s.descripcion_es : s.descripcion_en}
             </p>
           </section>
@@ -32,7 +29,7 @@ function ProyectoPage() {
           className="overflow-hidden rounded-2xl border shadow-sm"
           style={{ borderColor: "color-mix(in srgb, var(--section-color) 30%, transparent)" }}
         >
-          <div className="relative w-full" style={{ aspectRatio: "700 / 400" }}>
+          <div className="relative w-full" style={{ height: "75vh" }}>
             <iframe
               className="absolute inset-0 h-full w-full border-0"
               src="https://online.fliphtml5.com/AmericaSanchez/lmbw/"

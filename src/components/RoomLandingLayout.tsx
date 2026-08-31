@@ -38,7 +38,7 @@ export function RoomLandingLayout({
 
   return (
     <div
-      className={`relative flex h-[calc(100dvh-112px)] flex-col overflow-hidden ${withDialogue ? "pb-52" : ""} ${className ?? ""}`}
+      className={`relative flex h-[calc(100dvh-112px)] flex-col overflow-hidden ${className ?? ""}`}
       style={style}
     >
       {isPatternSection(id) && <RoomIllustrationBg sectionId={id} />}

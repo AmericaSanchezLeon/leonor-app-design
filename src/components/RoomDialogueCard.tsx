@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useLeonor, t, type Lang } from "@/lib/leonor-context";
 import { mascotImg } from "@/lib/leonor-images";
 import mascotData from "@/data/mascotData.json";
@@ -64,7 +64,7 @@ export function RoomDialogueCard({
           type="button"
           onClick={() => setOpen(true)}
           aria-label={t("Abrir mensaje", "Open message", lang)}
-          className={`flex h-16 w-16 items-center justify-center overflow-hidden rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-transform hover:scale-105 ${
+          className={`flex h-20 w-20 items-center justify-center overflow-hidden rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-transform hover:scale-105 ${
             variant === "internal" ? "bg-[var(--section-color)]" : "bg-[var(--leonor-cream)]"
           }`}
         >
@@ -77,7 +77,7 @@ export function RoomDialogueCard({
               loading="eager"
               decoding="async"
               draggable={false}
-              className="h-20 w-20 shrink-0 translate-y-2 select-none"
+              className="h-full w-full select-none object-cover object-top"
             />
           )}
         </button>
@@ -90,7 +90,7 @@ export function RoomDialogueCard({
       <div
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
-        className={`flex select-none items-end gap-1 overflow-hidden rounded-3xl pb-0 pl-3 pr-1 pt-4 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] backdrop-blur-sm ${
+        className={`relative flex select-none items-end gap-1 overflow-hidden rounded-3xl pb-0 pl-3 pr-1 pt-4 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] backdrop-blur-sm ${
           variant === "internal"
             ? "bg-[var(--section-color)]"
             : "bg-[var(--leonor-cream)]/95"
@@ -100,6 +100,15 @@ export function RoomDialogueCard({
           touchAction: "pan-y",
         }}
       >
+        <button
+          type="button"
+          onClick={() => setOpen(false)}
+          aria-label={t("Cerrar mensaje", "Close message", lang)}
+          className="absolute right-2 top-2 z-10 rounded-full p-1 opacity-70 transition-opacity hover:opacity-100"
+        >
+          <X className="h-4 w-4" />
+        </button>
+
         {n > 1 && (
           <button
             type="button"
@@ -119,25 +128,18 @@ export function RoomDialogueCard({
           {n > 1 && <Dots n={n} active={index} />}
         </div>
 
-        {/* mascot img — tap to close */}
+        {/* mascot img */}
         {mascot && (
-          <button
-            type="button"
-            onClick={() => setOpen(false)}
-            aria-label={t("Cerrar mensaje", "Close message", lang)}
-            className="shrink-0"
-          >
-            <img
-              src={mascot}
-              alt=""
-              width={96}
-              height={96}
-              loading="eager"
-              decoding="async"
-              draggable={false}
-              className="h-24 w-24 select-none"
-            />
-          </button>
+          <img
+            src={mascot}
+            alt=""
+            width={96}
+            height={96}
+            loading="eager"
+            decoding="async"
+            draggable={false}
+            className="h-24 w-auto shrink-0 select-none object-contain object-bottom"
+          />
         )}
 
         {n > 1 && (
