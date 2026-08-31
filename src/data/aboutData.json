@@ -18,8 +18,18 @@
       "descripcion_en": "This is the english description",
       "autoras": [
         {
+          "autora": "Itzel Alejandra Jiménez Loranca",
+          "rol": "Estrategias en Comunicación",
+          "descripcion": "Esta veracruzana, hija del río, es comunicadora y maestra en Diseño, Información y Comunicación; egresada de la Universidad Veracruzana y de la Universidad Autónoma Metropolitana Cuajimalpa. Ha recorrido senderos en periodismo, comunicación institucional y la sociedad civil: en todos ellos su brújula ha sido la de contar historias. Por eso, le entusiasmó descubrir los relatos de la vida y obra de Leonora Carrington para establecer en equipo la propuesta de museografía interactiva para la Casa Estudio de la artista.",
+          "imagen": "itzel",
+          "correo": "jimenezloranca@gmail.com",
+          "linkedin": "https://www.linkedin.com/in/itzel-jimenez-lrnc/",
+          "github": ""
+        },
+        {
           "autora": "América Fabiola Sánchez León",
           "rol": "Sistemas para la Interacción",
+          "descripcion": "Diseñadora, maestra en Diseño, Información y Comunicación por la Universidad Autónoma Metropolitana Cuajimalpa… y encantadora de gatos. Por su curiosidad felina se hizo de varias monerías: ilustración digital, programación, diseño editorial, fabricación aditiva, animación, UI… Mantiene una relación de asombro con Leonora Carrington por la cual participó en equipo para elaborar la propuesta de museografía interactiva para la Casa Estudio de la artista.",
           "imagen": "america",
           "correo": "americasanchezleon@gmail.com",
           "linkedin": "https://www.linkedin.com/in/americasanchezleon/",
@@ -28,19 +38,11 @@
         {
           "autora": "Ollintzin Mary Carmen Rosas Juárez",
           "rol": "Sistemas para la Interacción",
+          "descripcion": "Como su nombre náhuatl lo vaticinó, la vida de esta ingeniera en Computación ha sido movimiento. Entre vaivenes, se convirtió en maestra en Diseño, Información y Comunicación por la Universidad Autónoma Metropolitana Cuajimalpa; y en políglota de lenguajes de programación; y en gestora de metodologías de proyectos, desarrolladora web, ilustradora, escritora y pintora. En la magia de Leonora Carrington halló un eje creativo para orbitar en equipo hacia una propuesta de museografia interactiva para la Casa Estudio de la artista.",
           "imagen": "ollin",
           "correo": "Ollintzinrj@gmail.com",
           "linkedin": "https://www.linkedin.com/in/ollintzin-rosas-juarez/",
           "github": "https://github.com/ollintzinrj"
-        },
-        {
-          "autora": "Itzel Alejandra Jiménez Loranca",
-          "rol": "Estrategias en Comunicación",
-          "descripcion": "Esta minatitleca, hija del mar, es comunicadora y maestra en Diseño, Información y Comunicación, egresada de la Universidad Veracruzana y la Universidad Autónoma Metropolitana Cuajimalpa. Su experiencia incluye el periodismo en derechos humanos y conflictos socioambientales, la comunicación política y la sociedad civil. Aunque son diferentes entre sí, encontró que estos espacios viven de contar historias. Por eso, disfrutó mucho investigar y crear en equipo la propuesta de museografía interactiva que narra la historia de Leonora Carrington para la Casa Estudio de la artista.",
-          "imagen": "itzel",
-          "correo": "jimenezloranca@gmail.com",
-          "linkedin": "https://www.linkedin.com/in/itzel-jimenez-lrnc/",
-          "github": ""
         }
       ]
     }
