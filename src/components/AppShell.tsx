@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { X, Settings } from "lucide-react";
 import { useLeonor, t } from "@/lib/leonor-context";
@@ -23,6 +23,26 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   const isActive = (p: string) =>
     p === "/" ? pathname === "/" : pathname === p || pathname.startsWith(p + "/");
+
+  // CSS `dvh` doesn't always recompute reliably after a client-side route
+  // change on mobile browsers (the toolbar-driven viewport resize event that
+  // would normally trigger it doesn't fire on SPA navigation), which is what
+  // caused room screens to render with a stale/mismatched height depending
+  // on which page you came from. Recompute an explicit pixel value instead,
+  // on resize and on every navigation.
+  useEffect(() => {
+    const setVh = () => {
+      const h = window.visualViewport?.height ?? window.innerHeight;
+      document.documentElement.style.setProperty("--app-vh", `${h}px`);
+    };
+    setVh();
+    window.visualViewport?.addEventListener("resize", setVh);
+    window.addEventListener("resize", setVh);
+    return () => {
+      window.visualViewport?.removeEventListener("resize", setVh);
+      window.removeEventListener("resize", setVh);
+    };
+  }, [pathname]);
 
   return (
     <div

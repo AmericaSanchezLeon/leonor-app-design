@@ -272,7 +272,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
     const m = messages[perm];
     return (
       <div
-        className="flex min-h-[calc(100vh-104px)] flex-col items-center justify-center px-8 text-center"
+        className="flex h-[calc(var(--app-vh,100dvh)-112px)] flex-col items-center justify-center px-8 text-center"
         style={{ backgroundColor: sectionColor, color: "var(--leonor-cream)" }}
       >
         <CameraOff className="mb-6 h-16 w-16" strokeWidth={1.2} />
@@ -301,7 +301,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
   return (
     <div
       ref={containerRef}
-      className="relative h-[calc(100vh-104px)] w-full overflow-hidden bg-black touch-pan-y select-none"
+      className="relative h-[calc(var(--app-vh,100dvh)-112px)] w-full overflow-hidden bg-black touch-pan-y select-none"
       style={{ touchAction: "pan-y" }}
     >
       <video

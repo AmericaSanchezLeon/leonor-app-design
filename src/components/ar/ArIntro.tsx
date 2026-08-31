@@ -21,7 +21,7 @@ export function ArIntro({
 
   return (
     <div
-      className="relative flex min-h-[calc(100vh-104px)] flex-col overflow-hidden"
+      className="relative flex h-[calc(var(--app-vh,100dvh)-112px)] flex-col overflow-hidden"
       style={
         {
           ["--section-color" as string]: color,
