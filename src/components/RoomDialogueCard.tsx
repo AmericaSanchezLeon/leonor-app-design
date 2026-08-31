@@ -90,13 +90,9 @@ export function RoomDialogueCard({
       <div
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
-        className={`relative flex select-none items-end gap-1 overflow-hidden rounded-3xl pb-0 pl-3 pr-1 pt-4 shadow-[0_-8px_24px_rgba(0,0,0,0.15)] backdrop-blur-sm ${
-          variant === "internal"
-            ? "bg-[var(--section-color)]"
-            : "bg-[var(--leonor-cream)]/95"
-        }`}
+        className="relative flex h-40 select-none items-center gap-1 overflow-hidden rounded-3xl bg-white pl-3 pr-1 shadow-[0_-8px_24px_rgba(0,0,0,0.15)]"
         style={{
-          color: variant === "internal" ? "var(--leonor-cream)" : "var(--section-color)",
+          color: "var(--section-color)",
           touchAction: "pan-y",
         }}
       >
@@ -121,7 +117,7 @@ export function RoomDialogueCard({
         )}
 
         {/* info */}
-        <div className="flex flex-1 flex-col items-center gap-2 pb-4">
+        <div className="flex flex-1 flex-col items-center justify-center gap-2">
           <p className="text-center font-serif text-sm not-italic leading-relaxed">
             {t(current.es, current.en, lang)}
           </p>
@@ -138,7 +134,7 @@ export function RoomDialogueCard({
             loading="eager"
             decoding="async"
             draggable={false}
-            className="h-24 w-auto shrink-0 select-none object-contain object-bottom"
+            className="h-full w-auto shrink-0 select-none object-contain object-bottom"
           />
         )}
 
