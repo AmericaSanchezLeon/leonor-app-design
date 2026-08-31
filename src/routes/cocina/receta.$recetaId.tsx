@@ -44,8 +44,13 @@ function RecetaPage() {
       </div>
       <div className="px-5 pt-6">
         {r.dato && (
-          <div className="flex items-start gap-3 rounded-lg bg-muted p-4">
-            <Quote className="h-8 w-8 shrink-0" fill="currentColor" strokeWidth={0} />
+          <div className="flex items-start gap-3 p-4">
+            <Quote
+              className="h-8 w-8 shrink-0"
+              fill="currentColor"
+              strokeWidth={0}
+              style={{ color: "var(--section-color)" }}
+            />
             <p className="pt-1 text-center font-serif text-sm italic leading-relaxed">{r.dato}</p>
           </div>
         )}
