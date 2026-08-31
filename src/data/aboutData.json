@@ -18,6 +18,15 @@
       "descripcion_en": "This is the english description",
       "autoras": [
         {
+          "autora": "Itzel Alejandra Jiménez Loranca",
+          "rol": "Estrategias en Comunicación",
+          "descripcion": "Esta veracruzana, hija del río, es comunicadora y maestra en Diseño, Información y Comunicación; egresada de la Universidad Veracruzana y de la Universidad Autónoma Metropolitana Cuajimalpa. Ha recorrido senderos en periodismo, comunicación institucional y la sociedad civil: en todos ellos su brújula ha sido la de contar historias. Por eso, le entusiasmó descubrir los relatos de la vida y obra de Leonora Carrington para establecer en equipo la propuesta de museografía interactiva para la Casa Estudio de la artista.",
+          "imagen": "itzel",
+          "correo": "jimenezloranca@gmail.com",
+          "linkedin": "https://www.linkedin.com/in/itzel-jimenez-lrnc/",
+          "github": ""
+        },
+        {
           "autora": "América Fabiola Sánchez León",
           "rol": "Sistemas para la Interacción",
           "descripcion": "Diseñadora, maestra en Diseño, Información y Comunicación por la Universidad Autónoma Metropolitana Cuajimalpa… y encantadora de gatos. Por su curiosidad felina se hizo de varias monerías: ilustración digital, programación, diseño editorial, fabricación aditiva, animación, UI… Mantiene una relación de asombro con Leonora Carrington por la cual participó en equipo para elaborar la propuesta de museografía interactiva para la Casa Estudio de la artista.",
@@ -34,15 +43,6 @@
           "correo": "Ollintzinrj@gmail.com",
           "linkedin": "https://www.linkedin.com/in/ollintzin-rosas-juarez/",
           "github": "https://github.com/ollintzinrj"
-        },
-        {
-          "autora": "Itzel Alejandra Jiménez Loranca",
-          "rol": "Estrategias en Comunicación",
-          "descripcion": "Esta veracruzana, hija del río, es comunicadora y maestra en Diseño, Información y Comunicación; egresada de la Universidad Veracruzana y de la Universidad Autónoma Metropolitana Cuajimalpa. Ha recorrido senderos en periodismo, comunicación institucional y la sociedad civil: en todos ellos su brújula ha sido la de contar historias. Por eso, le entusiasmó descubrir los relatos de la vida y obra de Leonora Carrington para establecer en equipo la propuesta de museografía interactiva para la Casa Estudio de la artista.",
-          "imagen": "itzel",
-          "correo": "jimenezloranca@gmail.com",
-          "linkedin": "https://www.linkedin.com/in/itzel-jimenez-lrnc/",
-          "github": ""
         }
       ]
     }
