@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useLeonor, t, type Lang } from "@/lib/leonor-context";
 import { RoomLandingLayout } from "@/components/RoomLandingLayout";
@@ -11,6 +12,8 @@ interface RoomLink {
   title_en: string;
   iconKey?: RoomIconKey;
 }
+
+const randomTilt = () => Math.round((Math.random() * 30 - 15) * 10) / 10;
 
 export function RoomLanding({
   title_es,
@@ -36,16 +39,21 @@ export function RoomLanding({
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [leftLink, rightLink] = links;
 
-  const renderButton = (l: RoomLink) => {
+  // One random tilt per button, picked fresh on every mount (screen load).
+  const leftTilt = useMemo(randomTilt, [leftLink?.to]);
+  const rightTilt = useMemo(randomTilt, [rightLink?.to]);
+
+  const renderButton = (l: RoomLink, tilt: number) => {
     const active = pathname.startsWith(l.to);
     const pair = l.iconKey ? roomIcons[l.iconKey] : null;
     return (
       <Link
         to={l.to as "/cocina"}
-        className="group flex w-32 flex-col items-center gap-2 rounded-2xl p-3 text-center transition-transform hover:scale-[1.02]"
+        className="group flex w-36 flex-col items-center gap-1 rounded-2xl p-1 text-center transition-transform hover:scale-[1.02]"
+        style={{ transform: `rotate(${tilt}deg)` }}
       >
         {pair && (
-          <span className="relative h-28 w-28 flex-shrink-0">
+          <span className="relative h-32 w-32 flex-shrink-0">
             <img
               src={pair.normal}
               alt=""
@@ -71,8 +79,10 @@ export function RoomLanding({
 
   return (
     <RoomLandingLayout sectionId={sectionId}>
-      <div className="flex flex-1 flex-col items-center justify-between px-4 py-10">
-        <div>{leftLink && renderButton(leftLink)}</div>
+      <div className="relative flex flex-1 flex-col items-center justify-center px-4">
+        {leftLink && (
+          <div className="absolute left-2 top-[14%]">{renderButton(leftLink, leftTilt)}</div>
+        )}
 
         <div className="text-center">
           <h1 className="text-6xl leading-tight">{t(title_es, title_en, lang)}</h1>
@@ -83,7 +93,9 @@ export function RoomLanding({
           )}
         </div>
 
-        <div>{rightLink && renderButton(rightLink)}</div>
+        {rightLink && (
+          <div className="absolute right-2 bottom-[14%]">{renderButton(rightLink, rightTilt)}</div>
+        )}
       </div>
     </RoomLandingLayout>
   );
