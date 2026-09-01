@@ -14,8 +14,8 @@ export type ARItem = {
 
 export const bibliotecaMasks: ARItem[] = [
   { id: "mascara-0", image: mask0, label: "Mirando hacia adentro" },
-  { id: "mascara-1", image: mask1, label: "Abrazo" },
-  { id: "mascara-2", image: mask2, label: "La inventora del atole" },
+  { id: "mascara-1", image: mask1, label: "La inventora del atole" },
+  { id: "mascara-2", image: mask2, label: "Abrazo" },
   { id: "mascara-3", image: mask3, label: "Jaguar de la noche" },
 ];
 
