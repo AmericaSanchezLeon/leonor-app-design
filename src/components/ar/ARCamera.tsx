@@ -301,6 +301,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
   return (
     <div
       ref={containerRef}
+      aria-label={title}
       className="relative h-[calc(var(--app-vh,100dvh)-112px)] w-full overflow-hidden bg-black touch-pan-y select-none"
       style={{ touchAction: "pan-y" }}
     >
@@ -334,9 +335,6 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
         >
           <X className="h-5 w-5" />
         </button>
-        <span className="rounded-full bg-black/40 px-3 py-1 text-xs text-white backdrop-blur">
-          {title}
-        </span>
         <button
           data-ar-control
           onClick={flipCamera}
@@ -347,23 +345,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
         </button>
       </div>
 
-      {/* Current item preview — kept separate from the paginator dots below */}
-      {item && (
-        <div className="absolute inset-x-0 top-16 flex justify-center">
-          <div
-            className="flex h-16 w-16 items-center justify-center rounded-2xl bg-black/40 p-2 backdrop-blur"
-            style={{ outline: `2px solid ${sectionColor}`, outlineOffset: "-2px" }}
-          >
-            <img
-              src={item.image}
-              alt={item.label ?? ""}
-              className="max-h-full max-w-full object-contain"
-            />
-          </div>
-        </div>
-      )}
-
-      <div className="absolute inset-x-0 top-36 flex justify-center px-6" aria-live="polite">
+      <div className="absolute inset-x-0 top-16 flex justify-center px-6" aria-live="polite">
         {enableFace && !faceReady && !faceError && (
           <span className="rounded-full bg-black/55 px-3 py-1.5 text-xs text-white backdrop-blur">
             Preparando el filtro…
