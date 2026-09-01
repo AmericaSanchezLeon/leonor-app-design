@@ -15,7 +15,9 @@ function ProyectoPage() {
     <SectionPageLayout sectionId="about">
       <div className="px-5 py-8">
         <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
-          {language === "es" ? "Sobre el proyecto" : "About the project"}
+          {language === "es"
+            ? "Alquimia, tecnología y vida cotidiana"
+            : "Alchemy, technology and everyday life"}
         </h1>
         <div className="space-y-8">
           {sections.map((s, i) => (
@@ -25,11 +27,6 @@ function ProyectoPage() {
               </p>
             </section>
           ))}
-          <h2 className="font-serif text-xl" style={{ color: "var(--section-color)" }}>
-            {language === "es"
-              ? "Alquimia, tecnología y vida cotidiana"
-              : "Alchemy, technology and everyday life"}
-          </h2>
           <div
             className="overflow-hidden rounded-2xl border shadow-sm"
             style={{ borderColor: "color-mix(in srgb, var(--section-color) 30%, transparent)" }}

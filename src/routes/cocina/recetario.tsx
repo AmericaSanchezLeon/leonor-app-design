@@ -3,6 +3,7 @@ import recetas from "@/data/recetas.json";
 import { useLeonor } from "@/lib/leonor-context";
 import { recetaImg } from "@/lib/leonor-images";
 import { SectionPageLayout } from "@/components/SectionPageLayout";
+import { MosaicTileOverlay } from "@/components/MosaicTileOverlay";
 import { RECETARIO_BOOK } from "@/lib/recetario-book";
 import recetarioBookCover from "@/assets/img/recetario/cocina-alquimica-cover.png";
 
@@ -18,7 +19,11 @@ export const Route = createFileRoute("/cocina/recetario")({
 
 function RecetarioBookCard() {
   return (
-    <Link to="/cocina/recetario-libro" className="block" aria-label={RECETARIO_BOOK.titulo}>
+    <Link
+      to="/cocina/recetario-libro"
+      className="group relative block"
+      aria-label={RECETARIO_BOOK.titulo}
+    >
       <img
         src={recetarioBookCover}
         alt=""
@@ -26,8 +31,9 @@ function RecetarioBookCard() {
         height={685}
         loading="eager"
         decoding="async"
-        className="aspect-square w-full object-cover"
+        className="h-40 w-full object-cover"
       />
+      <MosaicTileOverlay title={RECETARIO_BOOK.titulo} colorVar="--cocina" />
     </Link>
   );
 }
@@ -37,33 +43,34 @@ function Recetario() {
   return (
     <SectionPageLayout sectionId="cocina" dialogueSectionId="cocina_recetario">
       <div className="py-8">
-      <h1 className="mb-6 px-5 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
-        {language === "es" ? "Recetario" : "Recipes"}
-      </h1>
-      <div className="grid grid-cols-1">
-        {recetas.map((r, i) => (
-          <Link
-            key={i}
-            to="/cocina/receta/$recetaId"
-            params={{ recetaId: String(i) }}
-            aria-label={r.nombre}
-            className="block"
-          >
-            <img
-              src={recetaImg(r.imagen, "thumb")}
-              alt=""
-              width={800}
-              height={800}
-              loading="eager"
-              decoding="async"
-              className={`aspect-square w-full bg-[var(--section-color)]/10 object-cover ${
-                r.imagenRotada180 ? "rotate-180" : ""
-              }`}
-            />
-          </Link>
-        ))}
-        <RecetarioBookCard />
-      </div>
+        <h1 className="mb-6 px-5 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
+          {language === "es" ? "Recetario" : "Recipes"}
+        </h1>
+        <div className="grid grid-cols-1">
+          {recetas.map((r, i) => (
+            <Link
+              key={i}
+              to="/cocina/receta/$recetaId"
+              params={{ recetaId: String(i) }}
+              aria-label={r.nombre}
+              className="group relative block"
+            >
+              <img
+                src={recetaImg(r.imagen, "thumb")}
+                alt=""
+                width={800}
+                height={450}
+                loading="eager"
+                decoding="async"
+                className={`h-40 w-full bg-[var(--section-color)]/10 object-cover ${
+                  r.imagenRotada180 ? "rotate-180" : ""
+                }`}
+              />
+              <MosaicTileOverlay title={r.nombre} colorVar="--cocina" />
+            </Link>
+          ))}
+          <RecetarioBookCard />
+        </div>
       </div>
     </SectionPageLayout>
   );

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import amigos from "@/data/amigosData.json";
 import { amigoImg } from "@/lib/leonor-images";
 import { SectionPageLayout } from "@/components/SectionPageLayout";
+import { MosaicTileOverlay } from "@/components/MosaicTileOverlay";
 
 export const Route = createFileRoute("/comedor/amigos/")({
   head: () => ({
@@ -38,7 +39,7 @@ function AmigosPage() {
                 to="/comedor/amigos/$amigoId"
                 params={{ amigoId: String(i) }}
                 aria-label={a.amigo}
-                className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                className="group relative block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
                 style={{ ["--tw-ring-color" as string]: "var(--section-color)" }}
               >
                 <img
@@ -51,6 +52,7 @@ function AmigosPage() {
                   decoding="async"
                   className="block aspect-[2/3] w-full bg-[var(--section-color)]/10 object-cover"
                 />
+                <MosaicTileOverlay title={a.amigo} colorVar="--comedor" />
               </Link>
             </li>
           ))}

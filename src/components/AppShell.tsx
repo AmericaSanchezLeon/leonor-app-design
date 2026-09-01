@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { X, Settings } from "lucide-react";
 import { useLeonor, t } from "@/lib/leonor-context";
 import { sectionIcon, type SectionId } from "@/lib/leonor-icons";
 import { useSectionBackground } from "@/lib/use-section-background";
@@ -16,8 +15,7 @@ const navItems: { path: string; id: SectionContextId; label_es: string; label_en
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const [showSettings, setShowSettings] = useState(false);
-  const { language, setLanguage, theme, setTheme } = useLeonor();
+  const { language, setLanguage } = useLeonor();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { gradient } = useSectionBackground();
 
@@ -68,12 +66,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             </span>
           </Link>
           <button
-            onClick={() => setShowSettings(true)}
-            aria-label={t("Configuración", "Settings", language)}
-            className="transition-opacity hover:opacity-70"
-            style={{ color: "var(--foreground)" }}
+            onClick={() => setLanguage(language === "es" ? "en" : "es")}
+            aria-label={t("Cambiar idioma", "Switch language", language)}
+            className="rounded-full border px-3 py-1 text-xs font-semibold tracking-wide transition-opacity hover:opacity-70"
+            style={{ color: "var(--foreground)", borderColor: "var(--border)" }}
           >
-            <Settings className="h-5 w-5" />
+            {language === "es" ? "EN" : "ES"}
           </button>
         </header>
 
@@ -105,70 +103,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             );
           })}
         </nav>
-
-        {/* Settings sidebar */}
-        {showSettings && (
-          <>
-            <button
-              className="fixed inset-0 z-40 bg-black/30"
-              onClick={() => setShowSettings(false)}
-              aria-label="Close"
-            />
-            <aside
-              className="fixed top-0 right-0 z-50 h-full w-[315px] max-w-[80vw] overflow-y-auto p-7 shadow-2xl"
-              style={{ backgroundColor: "color-mix(in oklab, var(--leonor-paper) 95%, transparent)" }}
-            >
-              <button onClick={() => setShowSettings(false)} className="mb-8 transition-opacity hover:opacity-70">
-                <X className="h-6 w-6" />
-              </button>
-              <h2 className="mb-12 font-serif text-3xl leading-tight">
-                {t("Configuración", "Settings", language)}
-              </h2>
-
-              <section className="mb-10 space-y-4">
-                <h3 className="font-serif text-xl">{t("Idioma", "Language", language)}</h3>
-                <div className="flex items-center gap-3 text-sm">
-                  <span>EN</span>
-                  <button
-                    onClick={() => setLanguage(language === "es" ? "en" : "es")}
-                    className="relative inline-flex h-9 w-14 items-center rounded-full transition-colors"
-                    style={{ backgroundColor: "color-mix(in oklab, var(--leonor-amber) 50%, transparent)" }}
-                  >
-                    <span
-                      className="inline-block h-5 w-5 transform rounded-full shadow transition-transform"
-                      style={{
-                        backgroundColor: "var(--leonor-amber)",
-                        transform: language === "es" ? "translateX(28px)" : "translateX(8px)",
-                      }}
-                    />
-                  </button>
-                  <span>ES</span>
-                </div>
-              </section>
-
-              <section className="space-y-4">
-                <h3 className="font-serif text-xl">{t("Modo color", "Color mode", language)}</h3>
-                <div className="flex items-center gap-3 text-sm">
-                  <span>{t("Oscuro", "Dark", language)}</span>
-                  <button
-                    onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                    className="relative inline-flex h-9 w-14 items-center rounded-full transition-colors"
-                    style={{ backgroundColor: "color-mix(in oklab, var(--leonor-amber) 50%, transparent)" }}
-                  >
-                    <span
-                      className="inline-block h-5 w-5 transform rounded-full shadow transition-transform"
-                      style={{
-                        backgroundColor: "var(--leonor-amber)",
-                        transform: theme === "light" ? "translateX(28px)" : "translateX(8px)",
-                      }}
-                    />
-                  </button>
-                  <span>{t("Claro", "Light", language)}</span>
-                </div>
-              </section>
-            </aside>
-          </>
-        )}
       </div>
     </div>
   );

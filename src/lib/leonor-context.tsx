@@ -1,30 +1,18 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 
 export type Lang = "es" | "en";
-export type Theme = "light" | "dark";
 
 interface LeonorCtx {
   language: Lang;
   setLanguage: (l: Lang) => void;
-  theme: Theme;
-  setTheme: (t: Theme) => void;
 }
 
 const Ctx = createContext<LeonorCtx | null>(null);
 
 export function LeonorProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Lang>("es");
-  const [theme, setTheme] = useState<Theme>("light");
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-  }, [theme]);
-
-  return (
-    <Ctx.Provider value={{ language, setLanguage, theme, setTheme }}>
-      {children}
-    </Ctx.Provider>
-  );
+  return <Ctx.Provider value={{ language, setLanguage }}>{children}</Ctx.Provider>;
 }
 
 export function useLeonor() {

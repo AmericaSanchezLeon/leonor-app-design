@@ -1,6 +1,10 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { SectionBgId } from "@/lib/room-backgrounds";
-import { useSectionContext, sectionTokenFor, type SectionContextId } from "@/lib/use-section-context";
+import {
+  useSectionContext,
+  sectionTokenFor,
+  type SectionContextId,
+} from "@/lib/use-section-context";
 import { RoomDialogueCard } from "@/components/RoomDialogueCard";
 
 interface Props {
@@ -32,7 +36,7 @@ export function SectionPageLayout({
 
   return (
     <div
-      className={`relative min-h-[calc(var(--app-vh,100dvh)-112px)] bg-neutral-lighter text-foreground dark:bg-neutral-dark ${dialogueSectionId ? "pb-52" : ""} ${className ?? ""}`}
+      className={`relative min-h-[calc(var(--app-vh,100dvh)-112px)] bg-neutral-lighter text-foreground ${dialogueSectionId ? "pb-52" : ""} ${className ?? ""}`}
       style={style}
     >
       <div className={`relative z-10 ${bare ? "" : ""}`}>{children}</div>
@@ -41,4 +45,3 @@ export function SectionPageLayout({
     </div>
   );
 }
-
