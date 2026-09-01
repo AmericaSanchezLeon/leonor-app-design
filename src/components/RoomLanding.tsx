@@ -4,6 +4,7 @@ import { useLeonor, t, type Lang } from "@/lib/leonor-context";
 import { RoomLandingLayout } from "@/components/RoomLandingLayout";
 import { roomIcons, type RoomIconKey } from "@/lib/room-icons";
 import type { SectionContextId } from "@/lib/use-section-context";
+import mascotData from "@/data/mascotData.json";
 import type { ReactNode } from "react";
 
 interface RoomLink {
@@ -39,6 +40,13 @@ export function RoomLanding({
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [leftLink, rightLink] = links;
 
+  // The mascot dialogue card only renders when this section has phrases; when it
+  // doesn't (e.g. About), the buttons can spread wider and lower without a card
+  // to leave clearance for.
+  const dialogueKey = sectionId === "home" ? "lobby" : sectionId;
+  const phrases = dialogueKey ? (mascotData as Record<string, unknown>)[dialogueKey] : undefined;
+  const hasCard = Array.isArray(phrases) && phrases.length > 0;
+
   // One random tilt per button, picked fresh on every mount (screen load).
   const leftTilt = useMemo(randomTilt, [leftLink?.to]);
   const rightTilt = useMemo(randomTilt, [rightLink?.to]);
@@ -49,7 +57,7 @@ export function RoomLanding({
     return (
       <Link
         to={l.to as "/cocina"}
-        className="group flex w-36 flex-col items-center gap-1 rounded-2xl p-1 text-center transition-transform hover:scale-[1.02]"
+        className={`group flex ${hasCard ? "w-36" : "w-44"} flex-col items-center gap-1 rounded-2xl p-1 text-center transition-transform hover:scale-[1.02]`}
         style={{ transform: `rotate(${tilt}deg)` }}
       >
         {pair && (
@@ -84,7 +92,7 @@ export function RoomLanding({
           <div className="absolute left-5 top-2">{renderButton(leftLink, leftTilt)}</div>
         )}
 
-        <div className="-mt-32 text-center">
+        <div className={hasCard ? "-mt-32 text-center" : "text-center"}>
           <h1 className="text-6xl leading-tight">{t(title_es, title_en, lang)}</h1>
           {(intro_es || intro_en) && (
             <p className="mx-auto mt-4 max-w-xs text-base">
@@ -94,7 +102,9 @@ export function RoomLanding({
         </div>
 
         {rightLink && (
-          <div className="absolute right-5 bottom-40">{renderButton(rightLink, rightTilt)}</div>
+          <div className={`absolute right-5 ${hasCard ? "bottom-40" : "bottom-16"}`}>
+            {renderButton(rightLink, rightTilt)}
+          </div>
         )}
       </div>
     </RoomLandingLayout>
