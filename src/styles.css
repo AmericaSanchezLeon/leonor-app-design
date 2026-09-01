@@ -26,8 +26,6 @@
   font-display: swap;
 }
 
-@custom-variant dark (&:is(.dark *));
-
 /*
  * Leonor App design system
  * Inspired by Leonora Carrington — warm earthy palette, serif display, hand-crafted feel.
@@ -101,32 +99,21 @@
   --ring: #b56503;
 }
 
-.dark {
-  --background: var(--neutral-dark);
-  --header-bg: var(--neutral-dark);
-  --foreground: #faf9f7;
-  --card: #2a231d;
-  --card-foreground: #faf9f7;
-  --primary: #d68f3a;
-  --primary-foreground: #1a1612;
-  --secondary: #3a322a;
-  --secondary-foreground: #faf9f7;
-  --muted: #2a231d;
-  --muted-foreground: #b8ad9c;
-  --accent: #3a322a;
-  --accent-foreground: #faf9f7;
-  --border: rgba(250, 249, 247, 0.12);
-  --ring: #d68f3a;
-}
-
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
 }
 
 /* Unlayered on purpose: wins over the font-serif utility some h1s carry. */
@@ -135,8 +122,13 @@ h1 {
 }
 
 @keyframes room-gradient-move {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
-
