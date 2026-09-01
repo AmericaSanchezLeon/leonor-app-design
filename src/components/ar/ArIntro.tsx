@@ -38,7 +38,7 @@ export function ArIntro({
         <h1 className="text-5xl leading-tight" style={{ color: "var(--section-color)" }}>
           {title}
         </h1>
-        <p className="max-w-xs text-base leading-relaxed opacity-80">{body}</p>
+        <p className="max-w-xs text-base leading-relaxed">{body}</p>
 
         {image && (
           <img

@@ -28,7 +28,7 @@ function SleepingMonsieurScreen({
     <RoomLandingLayout sectionId="home">
       <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6 py-10 text-center">
         <h1 className="text-6xl leading-tight">¡Shh!</h1>
-        <p className="max-w-xs text-base leading-relaxed opacity-90">
+        <p className="max-w-xs text-base leading-relaxed">
           Monsieur está dormido, por favor sal de esta habitación para no despertarlo
         </p>
         <img src={sleepingCatImg} alt="" className="h-40 w-auto" />

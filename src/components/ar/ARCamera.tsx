@@ -311,10 +311,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
         >
           {t("Reintentar", "Retry", lang)}
         </button>
-        <button
-          onClick={() => navigate({ to: ".." })}
-          className="mt-3 text-xs opacity-70 underline"
-        >
+        <button onClick={() => navigate({ to: ".." })} className="mt-3 text-xs underline">
           {t("Volver", "Back", lang)}
         </button>
       </div>
