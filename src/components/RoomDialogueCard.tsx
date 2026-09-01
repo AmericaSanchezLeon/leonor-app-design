@@ -60,27 +60,34 @@ export function RoomDialogueCard({
   if (!open) {
     return (
       <div className="fixed inset-x-0 bottom-20 left-1/2 z-20 flex w-full max-w-[500px] -translate-x-1/2 justify-end px-4">
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          aria-label={t("Abrir mensaje", "Open message", lang)}
-          className={`flex h-20 w-20 items-center justify-center overflow-hidden rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-transform hover:scale-105 ${
-            variant === "internal" ? "bg-[var(--section-color)]" : "bg-[var(--leonor-cream)]"
-          }`}
-        >
-          {mascot && (
-            <img
-              src={mascot}
-              alt=""
-              width={96}
-              height={96}
-              loading="eager"
-              decoding="async"
-              draggable={false}
-              className="h-full w-full select-none object-cover object-top"
-            />
-          )}
-        </button>
+        <div className="relative h-20 w-20">
+          <span
+            aria-hidden
+            className="absolute inset-0 animate-ping rounded-full"
+            style={{ backgroundColor: "var(--leonor-cream)", opacity: 0.6 }}
+          />
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label={t("Abrir mensaje", "Open message", lang)}
+            className={`relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-transform hover:scale-105 ${
+              variant === "internal" ? "bg-[var(--section-color)]" : "bg-[var(--leonor-cream)]"
+            }`}
+          >
+            {mascot && (
+              <img
+                src={mascot}
+                alt=""
+                width={96}
+                height={96}
+                loading="eager"
+                decoding="async"
+                draggable={false}
+                className="h-full w-full select-none object-cover object-top"
+              />
+            )}
+          </button>
+        </div>
       </div>
     );
   }
