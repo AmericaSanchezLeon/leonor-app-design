@@ -81,7 +81,7 @@ export function FaceMaskOverlay({ videoRef, maskImage, mirror, subscribe }: Prop
       const eyeDist = Math.hypot(eyeDx, eyeDy);
       if (!eyeDist) return;
 
-      const width = eyeDist * 2.8;
+      const width = eyeDist * 3.8;
       const aspect = img.naturalHeight / img.naturalWidth || 1;
       const height = width * aspect;
 

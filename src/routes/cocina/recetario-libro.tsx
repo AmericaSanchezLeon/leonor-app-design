@@ -20,7 +20,7 @@ function RecetarioLibro() {
           <ArrowLeft className="h-3 w-3" /> Recetario
         </Link>
         <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
-          Recetario
+          {RECETARIO_BOOK.titulo}
         </h1>
 
         <img
