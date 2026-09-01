@@ -42,7 +42,7 @@ export function ArIntro({
           <img
             src={image}
             alt=""
-            className="mx-auto w-56 max-w-full flex-1 object-contain"
+            className="mx-auto min-h-0 w-56 max-w-full flex-1 object-contain"
           />
         )}
 
