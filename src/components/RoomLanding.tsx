@@ -81,7 +81,7 @@ export function RoomLanding({
     <RoomLandingLayout sectionId={sectionId}>
       <div className="relative flex flex-1 flex-col items-center justify-center px-4">
         {leftLink && (
-          <div className="absolute left-2 top-2">{renderButton(leftLink, leftTilt)}</div>
+          <div className="absolute left-5 top-2">{renderButton(leftLink, leftTilt)}</div>
         )}
 
         <div className="-mt-32 text-center">
@@ -94,7 +94,7 @@ export function RoomLanding({
         </div>
 
         {rightLink && (
-          <div className="absolute right-2 bottom-40">{renderButton(rightLink, rightTilt)}</div>
+          <div className="absolute right-5 bottom-40">{renderButton(rightLink, rightTilt)}</div>
         )}
       </div>
     </RoomLandingLayout>
