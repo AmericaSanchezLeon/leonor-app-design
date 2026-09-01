@@ -125,17 +125,17 @@ export function RoomDialogueCard({
           </button>
         )}
 
-        {/* info — 3/5 of the card's width */}
-        <div className="flex w-3/5 flex-col items-center justify-center gap-2 px-9">
+        {/* info — grows to fill whatever space the mascot doesn't need */}
+        <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2 px-9">
           <p className="text-center font-serif text-sm not-italic leading-relaxed">
             {t(current.es, current.en, lang)}
           </p>
           {n > 1 && <Dots n={n} active={index} />}
         </div>
 
-        {/* mascot img — 2/5 of the card's width */}
+        {/* mascot img — sized to its own aspect ratio, no leftover box padding */}
         {mascot && (
-          <div className="flex w-2/5 shrink-0 items-end justify-center overflow-hidden pr-9">
+          <div className="flex shrink-0 items-end overflow-hidden pr-9">
             <img
               src={mascot}
               alt=""
@@ -144,7 +144,7 @@ export function RoomDialogueCard({
               loading="eager"
               decoding="async"
               draggable={false}
-              className="h-full w-full select-none object-contain object-bottom"
+              className="h-full w-auto select-none object-contain object-bottom"
             />
           </div>
         )}
