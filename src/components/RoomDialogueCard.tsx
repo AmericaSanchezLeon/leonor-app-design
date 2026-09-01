@@ -98,7 +98,7 @@ export function RoomDialogueCard({
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
         className={`relative flex h-40 select-none items-stretch overflow-hidden rounded-3xl shadow-[0_-8px_24px_rgba(0,0,0,0.15)] ${
-          variant === "internal" ? "bg-[var(--section-color)]" : "bg-white"
+          variant === "internal" ? "bg-[var(--section-color)]" : "bg-[var(--neutral-lighter)]"
         }`}
         style={{
           color: variant === "internal" ? "var(--leonor-cream)" : "var(--section-color)",
@@ -119,23 +119,23 @@ export function RoomDialogueCard({
             type="button"
             onClick={prev}
             aria-label={t("Anterior", "Previous", lang)}
-            className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 opacity-85 transition-opacity hover:opacity-100"
+            className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 opacity-85 transition-opacity hover:opacity-100"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
         )}
 
-        {/* info — 2/3 of the card's width */}
-        <div className="flex w-2/3 flex-col items-center justify-center gap-2 px-9">
+        {/* info — 3/5 of the card's width */}
+        <div className="flex w-3/5 flex-col items-center justify-center gap-2 px-9">
           <p className="text-center font-serif text-sm not-italic leading-relaxed">
             {t(current.es, current.en, lang)}
           </p>
           {n > 1 && <Dots n={n} active={index} />}
         </div>
 
-        {/* mascot img — 1/3 of the card's width */}
+        {/* mascot img — 2/5 of the card's width */}
         {mascot && (
-          <div className="flex w-1/3 shrink-0 items-end justify-center overflow-hidden pr-9">
+          <div className="flex w-2/5 shrink-0 items-end justify-center overflow-hidden pr-9">
             <img
               src={mascot}
               alt=""
@@ -154,7 +154,7 @@ export function RoomDialogueCard({
             type="button"
             onClick={next}
             aria-label={t("Siguiente", "Next", lang)}
-            className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 opacity-85 transition-opacity hover:opacity-100"
+            className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 opacity-85 transition-opacity hover:opacity-100"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
