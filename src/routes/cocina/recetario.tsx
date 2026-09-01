@@ -26,7 +26,7 @@ function RecetarioBookCard() {
         height={685}
         loading="eager"
         decoding="async"
-        className="aspect-square w-full object-cover"
+        className="h-40 w-full object-cover"
       />
     </Link>
   );
@@ -37,33 +37,33 @@ function Recetario() {
   return (
     <SectionPageLayout sectionId="cocina" dialogueSectionId="cocina_recetario">
       <div className="py-8">
-      <h1 className="mb-6 px-5 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
-        {language === "es" ? "Recetario" : "Recipes"}
-      </h1>
-      <div className="grid grid-cols-1">
-        {recetas.map((r, i) => (
-          <Link
-            key={i}
-            to="/cocina/receta/$recetaId"
-            params={{ recetaId: String(i) }}
-            aria-label={r.nombre}
-            className="block"
-          >
-            <img
-              src={recetaImg(r.imagen, "thumb")}
-              alt=""
-              width={800}
-              height={800}
-              loading="eager"
-              decoding="async"
-              className={`aspect-square w-full bg-[var(--section-color)]/10 object-cover ${
-                r.imagenRotada180 ? "rotate-180" : ""
-              }`}
-            />
-          </Link>
-        ))}
-        <RecetarioBookCard />
-      </div>
+        <h1 className="mb-6 px-5 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
+          {language === "es" ? "Recetario" : "Recipes"}
+        </h1>
+        <div className="grid grid-cols-1">
+          {recetas.map((r, i) => (
+            <Link
+              key={i}
+              to="/cocina/receta/$recetaId"
+              params={{ recetaId: String(i) }}
+              aria-label={r.nombre}
+              className="block"
+            >
+              <img
+                src={recetaImg(r.imagen, "thumb")}
+                alt=""
+                width={800}
+                height={450}
+                loading="eager"
+                decoding="async"
+                className={`h-40 w-full bg-[var(--section-color)]/10 object-cover ${
+                  r.imagenRotada180 ? "rotate-180" : ""
+                }`}
+              />
+            </Link>
+          ))}
+          <RecetarioBookCard />
+        </div>
       </div>
     </SectionPageLayout>
   );
