@@ -3,6 +3,7 @@ import recetas from "@/data/recetas.json";
 import { useLeonor } from "@/lib/leonor-context";
 import { recetaImg } from "@/lib/leonor-images";
 import { SectionPageLayout } from "@/components/SectionPageLayout";
+import { MosaicTileOverlay } from "@/components/MosaicTileOverlay";
 import { RECETARIO_BOOK } from "@/lib/recetario-book";
 import recetarioBookCover from "@/assets/img/recetario/cocina-alquimica-cover.png";
 
@@ -18,7 +19,11 @@ export const Route = createFileRoute("/cocina/recetario")({
 
 function RecetarioBookCard() {
   return (
-    <Link to="/cocina/recetario-libro" className="block" aria-label={RECETARIO_BOOK.titulo}>
+    <Link
+      to="/cocina/recetario-libro"
+      className="group relative block"
+      aria-label={RECETARIO_BOOK.titulo}
+    >
       <img
         src={recetarioBookCover}
         alt=""
@@ -28,6 +33,7 @@ function RecetarioBookCard() {
         decoding="async"
         className="h-40 w-full object-cover"
       />
+      <MosaicTileOverlay title={RECETARIO_BOOK.titulo} colorVar="--cocina" />
     </Link>
   );
 }
@@ -47,7 +53,7 @@ function Recetario() {
               to="/cocina/receta/$recetaId"
               params={{ recetaId: String(i) }}
               aria-label={r.nombre}
-              className="block"
+              className="group relative block"
             >
               <img
                 src={recetaImg(r.imagen, "thumb")}
@@ -60,6 +66,7 @@ function Recetario() {
                   r.imagenRotada180 ? "rotate-180" : ""
                 }`}
               />
+              <MosaicTileOverlay title={r.nombre} colorVar="--cocina" />
             </Link>
           ))}
           <RecetarioBookCard />

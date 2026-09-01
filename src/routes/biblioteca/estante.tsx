@@ -3,6 +3,7 @@ import books from "@/data/booksData.json";
 import { useLeonor } from "@/lib/leonor-context";
 import { bookImg } from "@/lib/leonor-images";
 import { SectionPageLayout } from "@/components/SectionPageLayout";
+import { MosaicTileOverlay } from "@/components/MosaicTileOverlay";
 
 export const Route = createFileRoute("/biblioteca/estante")({
   head: () => ({ meta: [{ title: "Estante — Leonorapp" }] }),
@@ -14,10 +15,7 @@ function EstantePage() {
   return (
     <SectionPageLayout sectionId="biblioteca" dialogueSectionId="biblioteca_libros">
       <div className="py-8">
-        <h1
-          className="mb-6 px-5 font-serif text-3xl"
-          style={{ color: "var(--section-color)" }}
-        >
+        <h1 className="mb-6 px-5 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
           Estante de libros
         </h1>
         <ul className="grid grid-cols-3 gap-0">
@@ -29,7 +27,7 @@ function EstantePage() {
                   to="/biblioteca/libro/$libroId"
                   params={{ libroId: String(i) }}
                   aria-label={`${title} — ${b.autor}`}
-                  className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                  className="group relative block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
                   style={{ ["--tw-ring-color" as string]: "var(--section-color)" }}
                 >
                   <img
@@ -42,6 +40,7 @@ function EstantePage() {
                     decoding="async"
                     className="block aspect-[2/3] w-full bg-[var(--section-color)]/10 object-cover"
                   />
+                  <MosaicTileOverlay title={title} colorVar="--biblioteca" />
                 </Link>
               </li>
             );
