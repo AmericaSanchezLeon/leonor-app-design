@@ -29,7 +29,7 @@ function ProyectoPage() {
           className="overflow-hidden rounded-2xl border shadow-sm"
           style={{ borderColor: "color-mix(in srgb, var(--section-color) 30%, transparent)" }}
         >
-          <div className="relative w-full" style={{ height: "75vh" }}>
+          <div className="relative w-full" style={{ height: "calc(var(--app-vh, 100vh) * 0.9)" }}>
             <iframe
               className="absolute inset-0 h-full w-full border-0"
               src="https://online.fliphtml5.com/AmericaSanchez/lmbw/"
