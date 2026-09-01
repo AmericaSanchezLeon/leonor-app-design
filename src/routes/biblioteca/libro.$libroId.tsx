@@ -18,49 +18,55 @@ function LibroDetalle() {
   if (!b) throw notFound();
   return (
     <SectionPageLayout sectionId="biblioteca" bare>
-    <div className="pb-24">
-      <div className="px-5 pt-8">
-        <Link to="/biblioteca/estante" className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
-          <ArrowLeft className="h-3 w-3" /> Estante
-        </Link>
-        <h1 className="text-3xl leading-tight">
-          {language === "es" ? b.nombre_es : b.nombre}
-        </h1>
-      </div>
-
-      <img
-        src={bookImg(b.slug, "full")}
-        alt={`Portada de ${language === "es" ? b.nombre_es : b.nombre}`}
-        width={1000}
-        height={1500}
-        fetchPriority="high"
-        decoding="async"
-        className="mt-5 aspect-[2/3] w-full bg-[var(--section-color)]/10 object-cover"
-      />
-
-      <div className="px-5 pt-6 text-center">
-        <span
-          className="inline-block rounded-full px-4 py-1 text-xs font-medium uppercase tracking-wider text-[var(--leonor-cream)]"
-          style={{ backgroundColor: "var(--section-color)" }}
-        >
-          {b.tema}
-        </span>
-        <p className="mt-3 font-semibold">{b.autor}</p>
-      </div>
-
-      <div className="mt-6 px-5">
-        <p className="text-sm leading-relaxed">{b["reseña"]}</p>
-        {b.dato && (
-          <div
-            className="mt-4 flex items-start gap-3 rounded-2xl border-2 p-4"
-            style={{ borderColor: "var(--section-color)" }}
+      <div className="pb-24">
+        <div className="px-5 pt-8">
+          <Link
+            to="/biblioteca/estante"
+            className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground"
           >
-            <BookOpen className="h-6 w-6 shrink-0" style={{ color: "var(--section-color)" }} />
-            <p className="text-sm leading-relaxed">{b.dato}</p>
-          </div>
-        )}
+            <ArrowLeft className="h-3 w-3" /> Estante
+          </Link>
+          <h1
+            className="font-serif text-3xl leading-tight"
+            style={{ color: "var(--section-color)" }}
+          >
+            {language === "es" ? b.nombre_es : b.nombre}
+          </h1>
+        </div>
+
+        <img
+          src={bookImg(b.slug, "full")}
+          alt={`Portada de ${language === "es" ? b.nombre_es : b.nombre}`}
+          width={1000}
+          height={1500}
+          fetchPriority="high"
+          decoding="async"
+          className="mt-5 aspect-[2/3] w-full bg-[var(--section-color)]/10 object-cover"
+        />
+
+        <div className="px-5 pt-6 text-center">
+          <span
+            className="inline-block rounded-full px-4 py-1 text-xs font-medium uppercase tracking-wider text-[var(--leonor-cream)]"
+            style={{ backgroundColor: "var(--section-color)" }}
+          >
+            {b.tema}
+          </span>
+          <p className="mt-3 font-semibold">{b.autor}</p>
+        </div>
+
+        <div className="mt-6 px-5">
+          <p className="text-sm leading-relaxed">{b["reseña"]}</p>
+          {b.dato && (
+            <div
+              className="mt-4 flex items-start gap-3 rounded-2xl border-2 p-4"
+              style={{ borderColor: "var(--section-color)" }}
+            >
+              <BookOpen className="h-6 w-6 shrink-0" style={{ color: "var(--section-color)" }} />
+              <p className="text-sm leading-relaxed">{b.dato}</p>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
     </SectionPageLayout>
   );
 }
