@@ -84,7 +84,7 @@ export function RoomLanding({
           <div className="absolute left-2 top-2">{renderButton(leftLink, leftTilt)}</div>
         )}
 
-        <div className="-mt-16 text-center">
+        <div className="-mt-32 text-center">
           <h1 className="text-6xl leading-tight">{t(title_es, title_en, lang)}</h1>
           {(intro_es || intro_en) && (
             <p className="mx-auto mt-4 max-w-xs text-base opacity-90">
@@ -94,7 +94,7 @@ export function RoomLanding({
         </div>
 
         {rightLink && (
-          <div className="absolute right-2 bottom-44">{renderButton(rightLink, rightTilt)}</div>
+          <div className="absolute right-2 bottom-40">{renderButton(rightLink, rightTilt)}</div>
         )}
       </div>
     </RoomLandingLayout>

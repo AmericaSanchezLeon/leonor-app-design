@@ -8,7 +8,7 @@ export function SurfaceStickerOverlay({ stickerImage }: Props) {
       src={stickerImage}
       alt=""
       draggable={false}
-      className="pointer-events-none absolute bottom-[12%] left-1/2 max-h-[45%] max-w-[65%] -translate-x-1/2 select-none object-contain drop-shadow-lg"
+      className="pointer-events-none absolute left-1/2 top-1/2 max-h-[38%] max-w-[65%] -translate-x-1/2 -translate-y-1/2 select-none object-contain drop-shadow-lg"
     />
   );
 }
