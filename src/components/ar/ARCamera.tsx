@@ -386,11 +386,6 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
 
       {/* Bottom bar: chevrons + dots (paginadores) + capture */}
       <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-4 p-6">
-        {item?.label && (
-          <span className="rounded-full bg-black/40 px-3 py-1 text-xs text-white backdrop-blur">
-            {item.label}
-          </span>
-        )}
         {items.length > 1 ? (
           <div className="flex items-center gap-3">
             <button
