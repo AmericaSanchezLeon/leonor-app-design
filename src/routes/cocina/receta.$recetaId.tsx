@@ -23,26 +23,25 @@ function RecetaPage() {
   return (
     <SectionPageLayout sectionId="cocina" bare>
     <div className="pb-10">
-      <div className="relative">
-        <img
-          src={recetaImg(r.imagen, "full")}
-          alt={`Platillo: ${r.nombre}`}
-          width={1000}
-          height={750}
-          fetchPriority="high"
-          decoding="async"
-          className={`aspect-[4/3] w-full bg-[var(--section-color)]/10 object-cover ${
-            r.imagenRotada180 ? "rotate-180" : ""
-          }`}
-        />
+      <img
+        src={recetaImg(r.imagen, "full")}
+        alt={`Platillo: ${r.nombre}`}
+        width={1000}
+        height={750}
+        fetchPriority="high"
+        decoding="async"
+        className={`aspect-[4/3] w-full bg-[var(--section-color)]/10 object-cover ${
+          r.imagenRotada180 ? "rotate-180" : ""
+        }`}
+      />
+      <div className="px-5 pt-6">
         <Link
           to="/cocina/recetario"
-          className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/40 px-2.5 py-1 text-xs text-white backdrop-blur-sm"
+          className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground"
         >
           <ArrowLeft className="h-3 w-3" /> Recetario
         </Link>
-      </div>
-      <div className="px-5 pt-6">
+
         {r.dato && (
           <div className="flex items-start gap-3 p-4">
             <Quote
