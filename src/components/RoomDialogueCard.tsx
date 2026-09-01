@@ -97,7 +97,7 @@ export function RoomDialogueCard({
       <div
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
-        className="relative flex h-40 select-none items-center gap-1 overflow-hidden rounded-3xl bg-white pl-3 pr-1 shadow-[0_-8px_24px_rgba(0,0,0,0.15)]"
+        className="relative flex h-40 select-none items-stretch overflow-hidden rounded-3xl bg-white shadow-[0_-8px_24px_rgba(0,0,0,0.15)]"
         style={{
           color: "var(--section-color)",
           touchAction: "pan-y",
@@ -117,32 +117,34 @@ export function RoomDialogueCard({
             type="button"
             onClick={prev}
             aria-label={t("Anterior", "Previous", lang)}
-            className="mb-1 shrink-0 self-center rounded-full p-1 opacity-70 transition-opacity hover:opacity-100"
+            className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 opacity-70 transition-opacity hover:opacity-100"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
         )}
 
-        {/* info */}
-        <div className="flex flex-1 flex-col items-center justify-center gap-2">
+        {/* info — 2/3 of the card's width */}
+        <div className="flex w-2/3 flex-col items-center justify-center gap-2 px-9">
           <p className="text-center font-serif text-sm not-italic leading-relaxed">
             {t(current.es, current.en, lang)}
           </p>
           {n > 1 && <Dots n={n} active={index} />}
         </div>
 
-        {/* mascot img */}
+        {/* mascot img — 1/3 of the card's width */}
         {mascot && (
-          <img
-            src={mascot}
-            alt=""
-            width={96}
-            height={96}
-            loading="eager"
-            decoding="async"
-            draggable={false}
-            className="h-full w-auto shrink-0 select-none object-contain object-bottom"
-          />
+          <div className="flex w-1/3 shrink-0 items-end justify-center overflow-hidden">
+            <img
+              src={mascot}
+              alt=""
+              width={96}
+              height={96}
+              loading="eager"
+              decoding="async"
+              draggable={false}
+              className="h-full w-full select-none object-contain object-bottom"
+            />
+          </div>
         )}
 
         {n > 1 && (
@@ -150,7 +152,7 @@ export function RoomDialogueCard({
             type="button"
             onClick={next}
             aria-label={t("Siguiente", "Next", lang)}
-            className="mb-1 shrink-0 self-center rounded-full p-1 opacity-70 transition-opacity hover:opacity-100"
+            className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 opacity-70 transition-opacity hover:opacity-100"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
