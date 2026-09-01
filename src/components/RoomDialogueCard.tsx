@@ -97,9 +97,11 @@ export function RoomDialogueCard({
       <div
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
-        className="relative flex h-40 select-none items-stretch overflow-hidden rounded-3xl bg-white shadow-[0_-8px_24px_rgba(0,0,0,0.15)]"
+        className={`relative flex h-40 select-none items-stretch overflow-hidden rounded-3xl shadow-[0_-8px_24px_rgba(0,0,0,0.15)] ${
+          variant === "internal" ? "bg-[var(--section-color)]" : "bg-white"
+        }`}
         style={{
-          color: "var(--section-color)",
+          color: variant === "internal" ? "var(--leonor-cream)" : "var(--section-color)",
           touchAction: "pan-y",
         }}
       >
@@ -133,7 +135,7 @@ export function RoomDialogueCard({
 
         {/* mascot img — 1/3 of the card's width */}
         {mascot && (
-          <div className="flex w-1/3 shrink-0 items-end justify-center overflow-hidden">
+          <div className="flex w-1/3 shrink-0 items-end justify-center overflow-hidden pr-9">
             <img
               src={mascot}
               alt=""
