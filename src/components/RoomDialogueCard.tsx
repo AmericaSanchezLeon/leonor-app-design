@@ -97,9 +97,11 @@ export function RoomDialogueCard({
       <div
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
-        className="relative flex h-40 select-none items-stretch overflow-hidden rounded-3xl bg-white shadow-[0_-8px_24px_rgba(0,0,0,0.15)]"
+        className={`relative flex h-40 select-none items-stretch overflow-hidden rounded-3xl shadow-[0_-8px_24px_rgba(0,0,0,0.15)] ${
+          variant === "internal" ? "bg-[var(--section-color)]" : "bg-white"
+        }`}
         style={{
-          color: "var(--section-color)",
+          color: variant === "internal" ? "var(--leonor-cream)" : "var(--section-color)",
           touchAction: "pan-y",
         }}
       >
@@ -107,7 +109,7 @@ export function RoomDialogueCard({
           type="button"
           onClick={() => setOpen(false)}
           aria-label={t("Cerrar mensaje", "Close message", lang)}
-          className="absolute right-2 top-2 z-10 rounded-full p-1 opacity-70 transition-opacity hover:opacity-100"
+          className="absolute right-2 top-2 z-10 rounded-full p-1 opacity-85 transition-opacity hover:opacity-100"
         >
           <X className="h-4 w-4" />
         </button>
@@ -117,7 +119,7 @@ export function RoomDialogueCard({
             type="button"
             onClick={prev}
             aria-label={t("Anterior", "Previous", lang)}
-            className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 opacity-70 transition-opacity hover:opacity-100"
+            className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 opacity-85 transition-opacity hover:opacity-100"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -133,7 +135,7 @@ export function RoomDialogueCard({
 
         {/* mascot img — 1/3 of the card's width */}
         {mascot && (
-          <div className="flex w-1/3 shrink-0 items-end justify-center overflow-hidden">
+          <div className="flex w-1/3 shrink-0 items-end justify-center overflow-hidden pr-9">
             <img
               src={mascot}
               alt=""
@@ -152,7 +154,7 @@ export function RoomDialogueCard({
             type="button"
             onClick={next}
             aria-label={t("Siguiente", "Next", lang)}
-            className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 opacity-70 transition-opacity hover:opacity-100"
+            className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 opacity-85 transition-opacity hover:opacity-100"
           >
             <ChevronRight className="h-5 w-5" />
           </button>

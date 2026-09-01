@@ -40,7 +40,7 @@ function Recetario() {
       <h1 className="mb-6 px-5 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
         {language === "es" ? "Recetario" : "Recipes"}
       </h1>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-1">
         {recetas.map((r, i) => (
           <Link
             key={i}
