@@ -17,7 +17,10 @@ import { useEffect, useRef, useState } from "react";
 import { FaceMaskOverlay } from "./FaceMaskOverlay";
 import { SurfaceStickerOverlay } from "./SurfaceStickerOverlay";
 import { useFaceTracking } from "@/lib/use-face-tracking";
+import { useLeonor, t, type Lang } from "@/lib/leonor-context";
 import type { ARItem } from "@/lib/ar-assets";
+
+const itemLabel = (item: ARItem, lang: Lang) => t(item.label_es, item.label_en, lang) ?? item.id;
 
 type Mode = "face" | "surface";
 type PermState = "prompt" | "granted" | "denied" | "notfound" | "error";
@@ -31,6 +34,8 @@ type Props = {
 
 export function ARCamera({ mode, items, sectionColor, title }: Props) {
   const navigate = useNavigate();
+  const { language } = useLeonor();
+  const lang: Lang = language;
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -65,7 +70,6 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
     return () => clearTimeout(t);
   }, [enableFace, faceReady, faceError, hasFace]);
 
-
   const item = items[index];
 
   // Camera lifecycle
@@ -75,7 +79,13 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
       try {
         if (!navigator.mediaDevices?.getUserMedia) {
           setPerm("error");
-          setErrorMsg("Tu navegador no soporta cámara.");
+          setErrorMsg(
+            t(
+              "Tu navegador no soporta cámara.",
+              "Your browser doesn't support camera access.",
+              lang,
+            ),
+          );
           return;
         }
         const stream = await navigator.mediaDevices.getUserMedia({
@@ -101,7 +111,9 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
           setPerm("notfound");
         } else {
           setPerm("error");
-          setErrorMsg(err.message ?? "Error al abrir la cámara");
+          setErrorMsg(
+            err.message ?? t("Error al abrir la cámara", "Couldn't open the camera", lang),
+          );
         }
       }
     };
@@ -260,14 +272,25 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
   if (perm === "denied" || perm === "notfound" || perm === "error") {
     const messages: Record<string, { t: string; s: string }> = {
       denied: {
-        t: "Necesitamos acceso a tu cámara",
-        s: "Activa el permiso de cámara en tu navegador y vuelve a intentar.",
+        t: t("Necesitamos acceso a tu cámara", "We need access to your camera", lang),
+        s: t(
+          "Activa el permiso de cámara en tu navegador y vuelve a intentar.",
+          "Enable camera permission in your browser and try again.",
+          lang,
+        ),
       },
       notfound: {
-        t: "No encontramos una cámara",
-        s: "Conecta una cámara o prueba en otro dispositivo.",
+        t: t("No encontramos una cámara", "We couldn't find a camera", lang),
+        s: t(
+          "Conecta una cámara o prueba en otro dispositivo.",
+          "Connect a camera or try another device.",
+          lang,
+        ),
       },
-      error: { t: "No pudimos abrir la cámara", s: errorMsg ?? "Intenta de nuevo." },
+      error: {
+        t: t("No pudimos abrir la cámara", "We couldn't open the camera", lang),
+        s: errorMsg ?? t("Intenta de nuevo.", "Try again.", lang),
+      },
     };
     const m = messages[perm];
     return (
@@ -286,13 +309,13 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
           }}
           className="mt-8 rounded-full bg-white/20 px-6 py-2 text-sm transition hover:bg-white/30"
         >
-          Reintentar
+          {t("Reintentar", "Retry", lang)}
         </button>
         <button
           onClick={() => navigate({ to: ".." })}
           className="mt-3 text-xs opacity-70 underline"
         >
-          Volver
+          {t("Volver", "Back", lang)}
         </button>
       </div>
     );
@@ -331,7 +354,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
           data-ar-control
           onClick={() => navigate({ to: ".." })}
           className="rounded-full bg-black/40 p-2 text-white backdrop-blur transition hover:bg-black/60"
-          aria-label="Cerrar"
+          aria-label={t("Cerrar", "Close", lang)}
         >
           <X className="h-5 w-5" />
         </button>
@@ -339,7 +362,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
           data-ar-control
           onClick={flipCamera}
           className="rounded-full bg-black/40 p-2 text-white backdrop-blur transition hover:bg-black/60"
-          aria-label="Cambiar cámara"
+          aria-label={t("Cambiar cámara", "Switch camera", lang)}
         >
           <SwitchCamera className="h-5 w-5" />
         </button>
@@ -348,27 +371,35 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
       <div className="absolute inset-x-0 top-16 flex justify-center px-6" aria-live="polite">
         {enableFace && !faceReady && !faceError && (
           <span className="rounded-full bg-black/55 px-3 py-1.5 text-xs text-white backdrop-blur">
-            Preparando el filtro…
+            {t("Preparando el filtro…", "Getting the filter ready…", lang)}
           </span>
         )}
         {enableFace && faceError && (
           <div className="flex flex-col items-center gap-2 rounded-2xl bg-black/60 px-4 py-3 text-center backdrop-blur">
             <span className="max-w-[16rem] text-xs text-white">
-              No pudimos activar el filtro facial. Revisa tu conexión e inténtalo de nuevo.
+              {t(
+                "No pudimos activar el filtro facial. Revisa tu conexión e inténtalo de nuevo.",
+                "We couldn't turn on the face filter. Check your connection and try again.",
+                lang,
+              )}
             </span>
             <button
               data-ar-control
               onClick={retryFace}
               className="min-h-[44px] rounded-full bg-white/20 px-5 text-xs text-white transition hover:bg-white/30"
             >
-              Reintentar
+              {t("Reintentar", "Retry", lang)}
             </button>
           </div>
         )}
         {enableFace && faceReady && !faceError && !hasFace && (
           <div className="flex flex-col items-center gap-2">
             <span className="rounded-full bg-black/55 px-3 py-1.5 text-center text-xs text-white backdrop-blur">
-              Acerca tu rostro y busca más luz
+              {t(
+                "Acerca tu rostro y busca más luz",
+                "Bring your face closer and find more light",
+                lang,
+              )}
             </span>
             {noFaceStuck && (
               <button
@@ -376,13 +407,12 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
                 onClick={retryFace}
                 className="min-h-[36px] rounded-full bg-white/20 px-4 text-xs text-white backdrop-blur transition hover:bg-white/30"
               >
-                ¿Sigue sin funcionar? Reintentar
+                {t("¿Sigue sin funcionar? Reintentar", "Still not working? Retry", lang)}
               </button>
             )}
           </div>
         )}
       </div>
-
 
       {/* Bottom bar: chevrons + dots (paginadores) + capture */}
       <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-4 p-6">
@@ -391,7 +421,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
             <button
               data-ar-control
               onClick={goPrev}
-              aria-label="Anterior"
+              aria-label={t("Anterior", "Previous", lang)}
               className="rounded-full bg-black/40 p-1.5 text-white backdrop-blur transition hover:bg-black/60"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -402,7 +432,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
                   key={it.id}
                   data-ar-control
                   onClick={() => setIndex(i)}
-                  aria-label={`Ir a ${it.label ?? it.id}`}
+                  aria-label={`${t("Ir a", "Go to", lang)} ${itemLabel(it, lang)}`}
                   className="h-2 w-2 rounded-full transition"
                   style={{
                     backgroundColor: i === index ? sectionColor : "rgba(255,255,255,0.4)",
@@ -415,7 +445,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
             <button
               data-ar-control
               onClick={goNext}
-              aria-label="Siguiente"
+              aria-label={t("Siguiente", "Next", lang)}
               className="rounded-full bg-black/40 p-1.5 text-white backdrop-blur transition hover:bg-black/60"
             >
               <ChevronRight className="h-4 w-4" />
@@ -425,7 +455,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
         <button
           data-ar-control
           onClick={capture}
-          aria-label="Capturar foto"
+          aria-label={t("Capturar foto", "Take photo", lang)}
           className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-white/20 backdrop-blur transition active:scale-95"
           style={{ boxShadow: `0 0 0 4px ${sectionColor}` }}
         >
@@ -438,7 +468,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
         <div className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-black/90 p-6">
           <img
             src={capturedUrl}
-            alt="Captura"
+            alt={t("Captura", "Capture", lang)}
             className="max-h-[70%] max-w-full rounded-lg object-contain"
           />
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -447,24 +477,26 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
               className="flex items-center gap-2 rounded-full px-5 py-2 text-sm text-white"
               style={{ backgroundColor: sectionColor }}
             >
-              <Share2 className="h-4 w-4" /> Compartir
+              <Share2 className="h-4 w-4" /> {t("Compartir", "Share", lang)}
             </button>
             <button
               onClick={download}
               className="flex items-center gap-2 rounded-full bg-white/20 px-5 py-2 text-sm text-white backdrop-blur"
             >
-              <Download className="h-4 w-4" /> Descargar
+              <Download className="h-4 w-4" /> {t("Descargar", "Download", lang)}
             </button>
             <button
               onClick={retake}
               className="rounded-full bg-white/10 px-5 py-2 text-sm text-white backdrop-blur"
             >
-              Tomar otra
+              {t("Tomar otra", "Take another", lang)}
             </button>
           </div>
 
           <div className="flex flex-col items-center gap-2">
-            <span className="text-xs text-white/70">Compartir en redes</span>
+            <span className="text-xs text-white/70">
+              {t("Compartir en redes", "Share on social", lang)}
+            </span>
             <div className="flex items-center gap-3">
               {[
                 { label: "WhatsApp", Icon: MessageCircle },
@@ -475,7 +507,7 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
                 <button
                   key={label}
                   onClick={share}
-                  aria-label={`Compartir por ${label}`}
+                  aria-label={`${t("Compartir por", "Share via", lang)} ${label}`}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-white/25"
                 >
                   <Icon className="h-4 w-4" />

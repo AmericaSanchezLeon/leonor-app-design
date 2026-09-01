@@ -1,13 +1,14 @@
 import type { CSSProperties } from "react";
 import { RoomIllustrationBg } from "@/components/RoomIllustrationBg";
 import { sectionTokenFor, type SectionContextId } from "@/lib/use-section-context";
+import { useLeonor, t } from "@/lib/leonor-context";
 
 export function ArIntro({
   sectionId,
   title,
   body,
   image,
-  buttonLabel = "Comenzar",
+  buttonLabel,
   onStart,
 }: {
   sectionId: SectionContextId;
@@ -17,6 +18,7 @@ export function ArIntro({
   buttonLabel?: string;
   onStart: () => void;
 }) {
+  const { language } = useLeonor();
   const color = `var(${sectionTokenFor(sectionId)})`;
 
   return (
@@ -52,7 +54,7 @@ export function ArIntro({
           className="mb-4 shrink-0 rounded-full px-8 py-3 text-sm font-semibold shadow-lg transition-transform hover:scale-[1.02]"
           style={{ backgroundColor: "var(--section-color)", color: "var(--leonor-cream)" }}
         >
-          {buttonLabel}
+          {buttonLabel ?? t("Comenzar", "Start", language)}
         </button>
       </div>
     </div>
