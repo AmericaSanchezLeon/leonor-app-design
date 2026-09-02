@@ -21,7 +21,7 @@ function RecetarioBookCard() {
   return (
     <Link
       to="/cocina/recetario-libro"
-      className="group relative block"
+      className="group relative flex-1 block"
       aria-label={RECETARIO_BOOK.titulo}
     >
       <img
@@ -31,7 +31,7 @@ function RecetarioBookCard() {
         height={685}
         loading="eager"
         decoding="async"
-        className="h-40 w-full object-cover"
+        className="h-full w-full object-cover"
       />
       <MosaicTileOverlay title={RECETARIO_BOOK.titulo} colorVar="--cocina" />
     </Link>
@@ -42,18 +42,24 @@ function Recetario() {
   const { language } = useLeonor();
   return (
     <SectionPageLayout sectionId="cocina" dialogueSectionId="cocina_recetario">
-      <div className="py-8">
-        <h1 className="mb-6 px-5 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
+      <div
+        className="flex flex-col py-8"
+        style={{ minHeight: "calc(var(--app-vh, 100dvh) - 112px)" }}
+      >
+        <h1
+          className="mb-6 shrink-0 px-5 font-serif text-3xl"
+          style={{ color: "var(--section-color)" }}
+        >
           {language === "es" ? "Recetario" : "Recipes"}
         </h1>
-        <div className="grid grid-cols-1">
+        <div className="flex flex-1 flex-col">
           {recetas.map((r, i) => (
             <Link
               key={i}
               to="/cocina/receta/$recetaId"
               params={{ recetaId: String(i) }}
               aria-label={r.nombre}
-              className="group relative block"
+              className="group relative block flex-1"
             >
               <img
                 src={recetaImg(r.imagen, "thumb")}
@@ -62,7 +68,7 @@ function Recetario() {
                 height={450}
                 loading="eager"
                 decoding="async"
-                className={`h-40 w-full bg-[var(--section-color)]/10 object-cover ${
+                className={`h-full w-full bg-[var(--section-color)]/10 object-cover ${
                   r.imagenRotada180 ? "rotate-180" : ""
                 }`}
               />

@@ -13,16 +13,6 @@ function RecetarioLibro() {
   return (
     <SectionPageLayout sectionId="cocina" bare>
       <div className="px-5 py-8 pb-24">
-        <Link
-          to="/cocina/recetario"
-          className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground"
-        >
-          <ArrowLeft className="h-3 w-3" /> Recetario
-        </Link>
-        <h1 className="mb-6 font-serif text-3xl" style={{ color: "var(--section-color)" }}>
-          {RECETARIO_BOOK.titulo}
-        </h1>
-
         <img
           src={recetarioBookCover}
           alt={RECETARIO_BOOK.titulo}
@@ -30,6 +20,18 @@ function RecetarioLibro() {
           height={685}
           className="mx-auto w-64 rounded-lg shadow-xl"
         />
+
+        <div className="mt-6">
+          <Link
+            to="/cocina/recetario"
+            className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground"
+          >
+            <ArrowLeft className="h-3 w-3" /> Recetario
+          </Link>
+          <h1 className="font-serif text-3xl" style={{ color: "var(--section-color)" }}>
+            {RECETARIO_BOOK.titulo}
+          </h1>
+        </div>
 
         <div className="mt-6 space-y-4">
           {RECETARIO_BOOK.parrafos.map((p, i) => (

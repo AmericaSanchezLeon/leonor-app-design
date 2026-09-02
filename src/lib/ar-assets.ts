@@ -11,10 +11,20 @@ export type ARItem = {
   image: string;
   label_es?: string;
   label_en?: string;
+  /** Multiplier on the default face-mask size (1 = default). */
+  maskScale?: number;
+  /** Shifts the mask down (positive) or up (negative), in units of eye distance, to line up its painted eyes with the wearer's. */
+  maskOffsetY?: number;
 };
 
 export const bibliotecaMasks: ARItem[] = [
-  { id: "mascara-0", image: mask0, label_es: "Mirando hacia adentro", label_en: "Looking in" },
+  {
+    id: "mascara-0",
+    image: mask0,
+    label_es: "Mirando hacia adentro",
+    label_en: "Looking in",
+    maskScale: 0.82,
+  },
   {
     id: "mascara-1",
     image: mask1,
@@ -22,7 +32,14 @@ export const bibliotecaMasks: ARItem[] = [
     label_en: "The inventor of atole",
   },
   { id: "mascara-2", image: mask2, label_es: "Abrazo", label_en: "Hug" },
-  { id: "mascara-3", image: mask3, label_es: "Jaguar de la noche", label_en: "Night jaguar" },
+  {
+    id: "mascara-3",
+    image: mask3,
+    label_es: "Jaguar de la noche",
+    label_en: "Night jaguar",
+    maskScale: 1.15,
+    maskOffsetY: 0.35,
+  },
 ];
 
 export const cocinaStickers: ARItem[] = [

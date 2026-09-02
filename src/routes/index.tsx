@@ -44,13 +44,13 @@ function HomePage() {
 
   return (
     <RoomLandingLayout sectionId="home">
-      <nav aria-label={t("Habitaciones", "Rooms", language)} className="flex flex-col">
+      <nav aria-label={t("Habitaciones", "Rooms", language)} className="flex flex-1 flex-col">
         {sections.map((r) => (
           <Link
             key={r.id}
             to={`/${r.id}` as "/cocina"}
             aria-label={t(r["es-id"], r["en-id"], language)}
-            className="group relative block aspect-[3/2] w-full border-4"
+            className="group relative block w-full flex-1 border-4"
             style={{ borderColor: `var(--${r.color})` }}
           >
             <img

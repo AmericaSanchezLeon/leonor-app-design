@@ -19,7 +19,17 @@ function LibroDetalle() {
   return (
     <SectionPageLayout sectionId="biblioteca" bare>
       <div className="pb-24">
-        <div className="px-5 pt-8">
+        <img
+          src={bookImg(b.slug, "full")}
+          alt={`Portada de ${language === "es" ? b.nombre_es : b.nombre}`}
+          width={1000}
+          height={1500}
+          fetchPriority="high"
+          decoding="async"
+          className="aspect-[2/3] w-full bg-[var(--section-color)]/10 object-cover"
+        />
+
+        <div className="px-5 pt-6">
           <Link
             to="/biblioteca/estante"
             className="mb-3 inline-flex items-center gap-1 text-xs text-muted-foreground"
@@ -33,16 +43,6 @@ function LibroDetalle() {
             {language === "es" ? b.nombre_es : b.nombre}
           </h1>
         </div>
-
-        <img
-          src={bookImg(b.slug, "full")}
-          alt={`Portada de ${language === "es" ? b.nombre_es : b.nombre}`}
-          width={1000}
-          height={1500}
-          fetchPriority="high"
-          decoding="async"
-          className="mt-5 aspect-[2/3] w-full bg-[var(--section-color)]/10 object-cover"
-        />
 
         <div className="px-5 pt-6 text-center">
           <span

@@ -13,7 +13,7 @@ export function MosaicTileOverlay({ title, colorVar }: { title: string; colorVar
       }}
     >
       <h2
-        className="text-center text-3xl leading-tight text-[var(--leonor-cream)]"
+        className="text-center text-lg leading-tight text-[var(--leonor-cream)]"
         style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
       >
         {title}
