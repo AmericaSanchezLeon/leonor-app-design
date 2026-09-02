@@ -6,13 +6,24 @@ type Props = {
   maskImage: string;
   mirror: boolean;
   subscribe: (cb: (lm: FaceLandmarks | null) => void) => () => void;
+  /** Multiplier on the default mask size (1 = default). */
+  scale?: number;
+  /** Shifts the mask down (positive) or up (negative), in units of eye distance. */
+  offsetY?: number;
 };
 
 // Landmark indices (MediaPipe Face Landmarker 478-pt)
 const LEFT_EYE = 33;
 const RIGHT_EYE = 263;
 
-export function FaceMaskOverlay({ videoRef, maskImage, mirror, subscribe }: Props) {
+export function FaceMaskOverlay({
+  videoRef,
+  maskImage,
+  mirror,
+  subscribe,
+  scale = 1,
+  offsetY = 0,
+}: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const imgReadyRef = useRef(false);
@@ -81,7 +92,7 @@ export function FaceMaskOverlay({ videoRef, maskImage, mirror, subscribe }: Prop
       const eyeDist = Math.hypot(eyeDx, eyeDy);
       if (!eyeDist) return;
 
-      const width = eyeDist * 3.8;
+      const width = eyeDist * 3.8 * scale;
       const aspect = img.naturalHeight / img.naturalWidth || 1;
       const height = width * aspect;
 
@@ -92,6 +103,7 @@ export function FaceMaskOverlay({ videoRef, maskImage, mirror, subscribe }: Prop
       ctx.save();
       ctx.translate(cx, cy);
       ctx.rotate(angle);
+      ctx.translate(0, eyeDist * offsetY);
       ctx.drawImage(img, -width / 2, -height / 2, width, height);
       ctx.restore();
     };
@@ -102,7 +114,7 @@ export function FaceMaskOverlay({ videoRef, maskImage, mirror, subscribe }: Prop
       unsub();
       drawRef.current = null;
     };
-  }, [subscribe, videoRef]);
+  }, [subscribe, videoRef, scale, offsetY]);
 
   return (
     <canvas

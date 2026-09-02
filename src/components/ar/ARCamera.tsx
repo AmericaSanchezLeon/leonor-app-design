@@ -341,6 +341,8 @@ export function ARCamera({ mode, items, sectionColor, title }: Props) {
           maskImage={item.image}
           mirror={facingMode === "user"}
           subscribe={subscribe}
+          scale={item.maskScale}
+          offsetY={item.maskOffsetY}
         />
       )}
       {item && mode === "surface" && <SurfaceStickerOverlay stickerImage={item.image} />}
