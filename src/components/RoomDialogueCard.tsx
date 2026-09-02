@@ -126,11 +126,17 @@ export function RoomDialogueCard({
         )}
 
         {/* info — grows to fill whatever space the mascot doesn't need */}
-        <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2 pl-9 pr-1">
-          <p className="text-center font-serif text-sm not-italic leading-relaxed">
-            {t(current.es, current.en, lang)}
-          </p>
-          {n > 1 && <Dots n={n} active={index} />}
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden py-3 pl-9 pr-0">
+          <div className="flex flex-1 items-start overflow-y-auto">
+            <p className="w-full text-center font-serif text-sm not-italic leading-relaxed">
+              {t(current.es, current.en, lang)}
+            </p>
+          </div>
+          {n > 1 && (
+            <div className="flex shrink-0 justify-center pt-2">
+              <Dots n={n} active={index} />
+            </div>
+          )}
         </div>
 
         {/* mascot img — sized to its own aspect ratio, no leftover box padding */}
