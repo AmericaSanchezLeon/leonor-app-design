@@ -36,7 +36,7 @@ export function SectionPageLayout({
 
   return (
     <div
-      className={`relative min-h-[calc(var(--app-vh,100dvh)-112px)] bg-neutral-lighter text-foreground ${dialogueSectionId ? "pb-52" : ""} ${className ?? ""}`}
+      className={`relative min-h-[calc(var(--app-vh,100dvh)-112px)] bg-neutral-lighter text-foreground ${dialogueSectionId ? "pb-28" : ""} ${className ?? ""}`}
       style={style}
     >
       <div className={`relative z-10 ${bare ? "" : ""}`}>{children}</div>
