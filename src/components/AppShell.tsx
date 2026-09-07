@@ -56,14 +56,27 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     >
       {/* Landscape/wide-viewport letterboxes: duplicate the center column's
           own texture into the side margins (fixed to the same 500px scale
-          it renders at in the center) instead of stretching one instance
-          across the whole width. */}
-      <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden>
-        <div className="absolute left-0 top-0 h-full w-[500px]">
-          <RoomIllustrationBg sectionId={sectionId} />
+          it renders at in the center), anchored flush against the center
+          column so they pick up where it leaves off instead of overlapping
+          it. Each letterbox is only as wide as the actual margin outside
+          the 500px column, so on a narrower wide viewport the texture is
+          simply cropped short rather than lapping under the center. */}
+      <div className="pointer-events-none absolute inset-0 z-[1]" aria-hidden>
+        <div
+          className="absolute left-0 top-0 h-full overflow-hidden"
+          style={{ width: "calc(50% - 250px)" }}
+        >
+          <div className="absolute right-0 top-0 h-full w-[500px]">
+            <RoomIllustrationBg sectionId={sectionId} />
+          </div>
         </div>
-        <div className="absolute right-0 top-0 h-full w-[500px]">
-          <RoomIllustrationBg sectionId={sectionId} />
+        <div
+          className="absolute right-0 top-0 h-full overflow-hidden"
+          style={{ width: "calc(50% - 250px)" }}
+        >
+          <div className="absolute left-0 top-0 h-full w-[500px]">
+            <RoomIllustrationBg sectionId={sectionId} />
+          </div>
         </div>
       </div>
       <div
