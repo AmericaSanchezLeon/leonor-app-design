@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLeonor, t } from "@/lib/leonor-context";
 import rooms from "@/data/roomData.json";
@@ -38,20 +39,26 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+const randomTilt = () => Math.round((Math.random() * 10 - 5) * 10) / 10;
+
 function HomePage() {
   const { language } = useLeonor();
   const sections = rooms.filter((r) => r.id !== "home");
+  const tilts = useMemo(() => sections.map(randomTilt), [sections]);
 
   return (
     <RoomLandingLayout sectionId="home">
-      <nav aria-label={t("Habitaciones", "Rooms", language)} className="flex flex-1 flex-col">
-        {sections.map((r) => (
+      <nav
+        aria-label={t("Habitaciones", "Rooms", language)}
+        className="grid flex-1 grid-cols-2 content-center place-items-center gap-8 px-8 py-6"
+      >
+        {sections.map((r, i) => (
           <Link
             key={r.id}
             to={`/${r.id}` as "/cocina"}
             aria-label={t(r["es-id"], r["en-id"], language)}
-            className="group relative block w-full flex-1 border-4"
-            style={{ borderColor: `var(--${r.color})` }}
+            className="group relative block aspect-square w-full max-w-40 overflow-hidden rounded-2xl shadow-[0_8px_20px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.03]"
+            style={{ transform: `rotate(${tilts[i]}deg)` }}
           >
             <img
               src={HOME_ROOM_IMG[r.id]}
