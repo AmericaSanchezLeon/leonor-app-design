@@ -127,8 +127,8 @@ export function RoomDialogueCard({
 
         {/* info — grows to fill whatever space the mascot doesn't need */}
         <div className="flex min-w-0 flex-1 flex-col overflow-hidden py-3 pl-9 pr-0">
-          <div className="flex flex-1 items-start overflow-y-auto">
-            <p className="w-full text-center font-serif text-sm not-italic leading-relaxed">
+          <div className="flex flex-1 flex-col overflow-y-auto">
+            <p className="m-auto w-full text-center font-serif text-sm not-italic leading-relaxed">
               {t(current.es, current.en, lang)}
             </p>
           </div>
