@@ -139,7 +139,7 @@ export function RoomDialogueCard({
           )}
         </div>
 
-        {/* mascot img — sized to its own aspect ratio, no leftover box padding */}
+        {/* mascot img — sized to its own aspect ratio (capped so wide mascots can't crowd out the text) */}
         {mascot && (
           <div className="flex shrink-0 items-end overflow-hidden pr-9">
             <img
@@ -150,7 +150,7 @@ export function RoomDialogueCard({
               loading="eager"
               decoding="async"
               draggable={false}
-              className="h-full w-auto select-none object-contain object-bottom"
+              className="h-full w-auto max-w-32 select-none object-contain object-bottom"
             />
           </div>
         )}

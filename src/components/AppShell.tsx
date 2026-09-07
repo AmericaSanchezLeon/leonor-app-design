@@ -3,7 +3,12 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useLeonor, t } from "@/lib/leonor-context";
 import { sectionIcon, type SectionId } from "@/lib/leonor-icons";
 import { useSectionBackground } from "@/lib/use-section-background";
-import { sectionTokenFor, type SectionContextId } from "@/lib/use-section-context";
+import {
+  sectionTokenFor,
+  sectionIdFromPath,
+  type SectionContextId,
+} from "@/lib/use-section-context";
+import { RoomIllustrationBg } from "@/components/RoomIllustrationBg";
 import logoUrl from "@/assets/leonorapp-logo.svg";
 
 const navItems: { path: string; id: SectionContextId; label_es: string; label_en: string }[] = [
@@ -42,11 +47,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, [pathname]);
 
+  const sectionId = sectionIdFromPath(pathname);
+
   return (
     <div
       className="relative min-h-screen w-full overflow-x-hidden transition-[background-image] duration-700"
       style={{ backgroundImage: gradient }}
     >
+      <RoomIllustrationBg sectionId={sectionId} />
       <div
         className="relative mx-auto min-h-screen w-full max-w-[500px] shadow-2xl"
         style={{ backgroundImage: gradient }}
