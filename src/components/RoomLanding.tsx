@@ -89,7 +89,13 @@ export function RoomLanding({
     <RoomLandingLayout sectionId={sectionId}>
       <div className="relative flex flex-1 flex-col items-center justify-center px-4">
         {leftLink && (
-          <div className="absolute left-5 top-2">{renderButton(leftLink, leftTilt)}</div>
+          <div
+            className={
+              hasCard ? "absolute left-5 top-2" : "absolute left-5 top-1/4 -translate-y-1/2"
+            }
+          >
+            {renderButton(leftLink, leftTilt)}
+          </div>
         )}
 
         <div className={hasCard ? "-mt-32 text-center" : "text-center"}>
@@ -102,7 +108,11 @@ export function RoomLanding({
         </div>
 
         {rightLink && (
-          <div className={`absolute right-5 ${hasCard ? "bottom-40" : "bottom-16"}`}>
+          <div
+            className={
+              hasCard ? "absolute right-5 bottom-40" : "absolute right-5 top-3/4 -translate-y-1/2"
+            }
+          >
             {renderButton(rightLink, rightTilt)}
           </div>
         )}
