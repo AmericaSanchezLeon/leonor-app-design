@@ -54,7 +54,18 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       className="relative min-h-screen w-full overflow-x-hidden transition-[background-image] duration-700"
       style={{ backgroundImage: gradient }}
     >
-      <RoomIllustrationBg sectionId={sectionId} />
+      {/* Landscape/wide-viewport letterboxes: duplicate the center column's
+          own texture into the side margins (fixed to the same 500px scale
+          it renders at in the center) instead of stretching one instance
+          across the whole width. */}
+      <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden>
+        <div className="absolute left-0 top-0 h-full w-[500px]">
+          <RoomIllustrationBg sectionId={sectionId} />
+        </div>
+        <div className="absolute right-0 top-0 h-full w-[500px]">
+          <RoomIllustrationBg sectionId={sectionId} />
+        </div>
+      </div>
       <div
         className="relative mx-auto min-h-screen w-full max-w-[500px] shadow-2xl"
         style={{ backgroundImage: gradient }}
