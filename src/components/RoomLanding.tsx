@@ -96,7 +96,12 @@ export function RoomLanding({
         </div>
 
         {rightLink && (
-          <div className="absolute right-5 top-3/4 -translate-y-1/2">
+          // top-3/4 landed the button under the fixed mascot bubble (bottom-20,
+          // h-20) on short viewports. Its safe top edge sits a constant 96px
+          // above this container's bottom regardless of viewport height, so
+          // splitting the difference with the title's center (50%) puts the
+          // button at the midpoint of that gap without needing JS measurement.
+          <div className="absolute right-5 top-[calc(75%-3rem)] -translate-y-1/2">
             {renderButton(rightLink, rightTilt)}
           </div>
         )}
