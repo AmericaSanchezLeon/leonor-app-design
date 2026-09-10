@@ -35,7 +35,7 @@ export function DoorIntro({ onDone }: { onDone: () => void }) {
         <source src={doorVideoMp4} type="video/mp4" />
       </video>
       <h1
-        className={`pointer-events-none absolute inset-x-0 bottom-16 px-8 text-center text-2xl leading-tight text-[var(--leonor-cream)] transition-opacity duration-1000 ${
+        className={`pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 px-8 text-center text-2xl leading-tight text-[var(--leonor-cream)] transition-opacity duration-1000 ${
           showText ? "opacity-100" : "opacity-0"
         }`}
         style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}
@@ -46,6 +46,13 @@ export function DoorIntro({ onDone }: { onDone: () => void }) {
           language,
         )}
       </h1>
+      <button
+        type="button"
+        onClick={onDone}
+        className="absolute right-4 top-4 rounded-full border border-[var(--leonor-cream)]/70 px-4 py-1.5 text-sm font-semibold text-[var(--leonor-cream)] transition-colors hover:bg-[var(--leonor-cream)]/10"
+      >
+        {t("Saltar", "Skip", language)}
+      </button>
     </div>
   );
 }
