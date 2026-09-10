@@ -49,7 +49,7 @@ export function DoorIntro({ onDone }: { onDone: () => void }) {
       <button
         type="button"
         onClick={onDone}
-        className="absolute right-4 top-4 rounded-full border border-[var(--leonor-cream)]/70 px-4 py-1.5 text-sm font-semibold text-[var(--leonor-cream)] transition-colors hover:bg-[var(--leonor-cream)]/10"
+        className="absolute inset-x-0 bottom-8 mx-auto w-fit rounded-full border border-[var(--leonor-cream)]/70 px-4 py-1.5 text-sm font-semibold text-[var(--leonor-cream)] transition-colors hover:bg-[var(--leonor-cream)]/10"
       >
         {t("Saltar", "Skip", language)}
       </button>
