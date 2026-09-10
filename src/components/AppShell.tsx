@@ -57,8 +57,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* Landscape/wide-viewport letterboxes: duplicate the center column's
           own texture into the side margins (fixed to the same 500px scale
           it renders at in the center) instead of stretching one instance
-          across the whole width. */}
-      <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden>
+          across the whole width. Hidden below that 500px breakpoint, where
+          the center column already fills the full width and these would
+          just double up on top of its own pattern. */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] hidden overflow-hidden min-[501px]:block"
+        aria-hidden
+      >
         <div className="absolute left-0 top-0 h-full w-[500px]">
           <RoomIllustrationBg sectionId={sectionId} />
         </div>
