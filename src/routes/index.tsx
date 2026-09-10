@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useLeonor, t } from "@/lib/leonor-context";
-import { sectionIcon, type SectionId } from "@/lib/leonor-icons";
+import { mascotImg } from "@/lib/leonor-images";
 import rooms from "@/data/roomData.json";
 import { RoomLandingLayout } from "@/components/RoomLandingLayout";
 import {
@@ -83,7 +83,7 @@ function HomePage() {
         >
           <CarouselContent className="-ml-0 h-full">
             {sections.map((r, i) => {
-              const Icon = sectionIcon[r.id as SectionId];
+              const mascot = mascotImg[r.id];
               const title = t(r["es-id"], r["en-id"], language);
               return (
                 <CarouselItem key={r.id} className="flex h-full basis-full flex-col pl-0">
@@ -105,9 +105,13 @@ function HomePage() {
                     <span className="absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-white/90 px-4 py-1 text-[11px] font-semibold uppercase tracking-wide text-neutral-800 backdrop-blur-sm">
                       {title}
                     </span>
-                    {Icon && (
-                      <span className="absolute bottom-6 right-6 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg">
-                        <Icon size={20} style={{ color: `var(--${r.color})` }} />
+                    {mascot && (
+                      <span className="absolute bottom-6 right-6 h-12 w-12 overflow-hidden rounded-full bg-white shadow-lg">
+                        <img
+                          src={mascot}
+                          alt=""
+                          className="h-full w-full select-none object-cover object-top"
+                        />
                       </span>
                     )}
                   </div>
