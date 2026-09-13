@@ -12,7 +12,7 @@ export const Route = createFileRoute("/comedor/")({
       sectionId="comedor"
       links={[
         { to: "/comedor/amigos", title_es: "Nuestros Amigos", title_en: "Our Friends", iconKey: "comedor-amigos" },
-        { to: "/comedor/mapas", title_es: "Rutas Gastronómicas", title_en: "Gastronomic Routes", iconKey: "comedor-rutas" },
+        { to: "/comedor/mapas", title_es: "Rutas de Leonora", title_en: "Leonora's Routes", iconKey: "comedor-rutas" },
       ]}
     />
   ),

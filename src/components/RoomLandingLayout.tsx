@@ -43,7 +43,7 @@ export function RoomLandingLayout({
     >
       {isPatternSection(id) && <RoomIllustrationBg sectionId={id} />}
 
-      <div className="relative z-[2] flex flex-1 flex-col">{children}</div>
+      <div className="relative z-[2] flex min-h-0 flex-1 flex-col">{children}</div>
 
       {withDialogue && <RoomDialogueCard sectionId={id === "home" ? "lobby" : id} />}
     </div>

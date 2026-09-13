@@ -82,7 +82,7 @@ function HomePage() {
       <div className="flex min-h-0 flex-1 flex-col">
         <nav
           aria-label={t("Habitaciones", "Rooms", language)}
-          className="flex flex-1 snap-y snap-mandatory flex-col gap-5 overflow-y-auto px-4 pb-2 pt-4"
+          className="flex flex-1 snap-y snap-proximity flex-col gap-5 overflow-y-auto px-4 pb-2 pt-4"
         >
           {sections.map((r, i) => {
             const color = `var(--${r.color})`;
