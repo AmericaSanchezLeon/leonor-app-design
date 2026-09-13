@@ -71,27 +71,31 @@ export function FaceMaskOverlay({
       if (!vw || !vh || !lm || !imgReadyRef.current || !img) return;
 
       // Replicate object-cover mapping: scale up, center, crop overflow.
-      const scale = Math.max(cw / vw, ch / vh);
-      const ox = (cw - vw * scale) / 2;
-      const oy = (ch - vh * scale) / 2;
+      const coverScale = Math.max(cw / vw, ch / vh);
+      const ox = (cw - vw * coverScale) / 2;
+      const oy = (ch - vh * coverScale) / 2;
       canvas.dataset["arOx"] = String(ox);
       canvas.dataset["arOy"] = String(oy);
-      canvas.dataset["arScale"] = String(scale);
+      canvas.dataset["arScale"] = String(coverScale);
 
       const le = lm[LEFT_EYE];
       const re = lm[RIGHT_EYE];
       if (!le || !re) return;
 
-      const lex = ox + le.x * vw * scale;
-      const ley = oy + le.y * vh * scale;
-      const rex = ox + re.x * vw * scale;
-      const rey = oy + re.y * vh * scale;
+      const lex = ox + le.x * vw * coverScale;
+      const ley = oy + le.y * vh * coverScale;
+      const rex = ox + re.x * vw * coverScale;
+      const rey = oy + re.y * vh * coverScale;
 
       const eyeDx = rex - lex;
       const eyeDy = rey - ley;
       const eyeDist = Math.hypot(eyeDx, eyeDy);
       if (!eyeDist) return;
 
+      // `eyeDist` is already in canvas-pixel space (lex/rex above bake in
+      // coverScale), so only the per-mask `scale` prop belongs here. It used
+      // to be shadowed by the object-cover ratio above — silently ignoring
+      // each mask's calibration and double-applying coverScale to the size.
       const width = eyeDist * 3.8 * scale;
       const aspect = img.naturalHeight / img.naturalWidth || 1;
       const height = width * aspect;
