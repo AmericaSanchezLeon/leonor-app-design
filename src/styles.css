@@ -132,3 +132,13 @@ h1 {
     background-position: 0% 50%;
   }
 }
+
+/* Scrollable text that shouldn't show a scrollbar track (e.g. the mascot
+   dialogue card): keeps the scroll, hides the bar across browsers. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
