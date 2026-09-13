@@ -15,13 +15,20 @@ type Props = {
 // Landmark indices (MediaPipe Face Landmarker 478-pt)
 const LEFT_EYE = 33;
 const RIGHT_EYE = 263;
+// Face-contour points used to size the mask to the whole face rather than
+// just the distance between the eyes: top of the forehead, chin, and the
+// two temples.
+const FOREHEAD = 10;
+const CHIN = 152;
+const LEFT_FACE = 234;
+const RIGHT_FACE = 454;
 
 export function FaceMaskOverlay({
   videoRef,
   maskImage,
   mirror,
   subscribe,
-  scale = 1,
+  scale: maskScaleProp = 1,
   offsetY = 0,
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -71,33 +78,52 @@ export function FaceMaskOverlay({
       if (!vw || !vh || !lm || !imgReadyRef.current || !img) return;
 
       // Replicate object-cover mapping: scale up, center, crop overflow.
-      const scale = Math.max(cw / vw, ch / vh);
-      const ox = (cw - vw * scale) / 2;
-      const oy = (ch - vh * scale) / 2;
+      const videoScale = Math.max(cw / vw, ch / vh);
+      const ox = (cw - vw * videoScale) / 2;
+      const oy = (ch - vh * videoScale) / 2;
       canvas.dataset["arOx"] = String(ox);
       canvas.dataset["arOy"] = String(oy);
-      canvas.dataset["arScale"] = String(scale);
+      canvas.dataset["arScale"] = String(videoScale);
 
       const le = lm[LEFT_EYE];
       const re = lm[RIGHT_EYE];
-      if (!le || !re) return;
+      const top = lm[FOREHEAD];
+      const bottom = lm[CHIN];
+      const left = lm[LEFT_FACE];
+      const right = lm[RIGHT_FACE];
+      if (!le || !re || !top || !bottom || !left || !right) return;
 
-      const lex = ox + le.x * vw * scale;
-      const ley = oy + le.y * vh * scale;
-      const rex = ox + re.x * vw * scale;
-      const rey = oy + re.y * vh * scale;
+      const toScreen = (p: { x: number; y: number }) => ({
+        x: ox + p.x * vw * videoScale,
+        y: oy + p.y * vh * videoScale,
+      });
+      const leP = toScreen(le);
+      const reP = toScreen(re);
+      const topP = toScreen(top);
+      const bottomP = toScreen(bottom);
+      const leftP = toScreen(left);
+      const rightP = toScreen(right);
 
-      const eyeDx = rex - lex;
-      const eyeDy = rey - ley;
+      const eyeDx = reP.x - leP.x;
+      const eyeDy = reP.y - leP.y;
       const eyeDist = Math.hypot(eyeDx, eyeDy);
       if (!eyeDist) return;
 
-      const width = eyeDist * 3.8 * scale;
+      // Size the mask to fully cover the detected face (forehead-to-chin
+      // and temple-to-temple), like object-fit: cover against the face's
+      // own bounding box, instead of a fixed multiple of eye distance —
+      // that left gaps at the forehead/chin for many face shapes.
+      const faceHeight = Math.hypot(bottomP.x - topP.x, bottomP.y - topP.y);
+      const faceWidth = Math.hypot(rightP.x - leftP.x, rightP.y - leftP.y);
       const aspect = img.naturalHeight / img.naturalWidth || 1;
+      const COVERAGE_PAD = 1.15;
+      const widthForFaceWidth = faceWidth * COVERAGE_PAD;
+      const widthForFaceHeight = (faceHeight * COVERAGE_PAD) / aspect;
+      const width = Math.max(widthForFaceWidth, widthForFaceHeight) * maskScaleProp;
       const height = width * aspect;
 
-      const cx = (lex + rex) / 2;
-      const cy = (ley + rey) / 2;
+      const cx = (topP.x + bottomP.x + leftP.x + rightP.x) / 4;
+      const cy = (topP.y + bottomP.y + leftP.y + rightP.y) / 4;
       const angle = Math.atan2(eyeDy, eyeDx);
 
       ctx.save();
@@ -114,7 +140,7 @@ export function FaceMaskOverlay({
       unsub();
       drawRef.current = null;
     };
-  }, [subscribe, videoRef, scale, offsetY]);
+  }, [subscribe, videoRef, maskScaleProp, offsetY]);
 
   return (
     <canvas
