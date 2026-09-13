@@ -6,6 +6,12 @@ import mascotData from "@/data/mascotData.json";
 
 type Phrase = { es: string; en: string };
 
+/** Whether `sectionId` has mascot phrases to show (i.e. RoomDialogueCard renders something for it). */
+export function hasDialogue(sectionId: string): boolean {
+  const raw = (mascotData as Record<string, unknown>)[sectionId];
+  return Array.isArray(raw) && raw.length > 0;
+}
+
 function Dots({ n, active }: { n: number; active: number }) {
   return (
     <div className="flex items-center gap-1.5">
@@ -36,9 +42,8 @@ export function RoomDialogueCard({
   const [open, setOpen] = useState(false);
   const startX = useRef<number | null>(null);
 
-  const raw = (mascotData as Record<string, unknown>)[sectionId];
-  if (!Array.isArray(raw) || raw.length === 0) return null;
-  const phrases = raw as Phrase[];
+  if (!hasDialogue(sectionId)) return null;
+  const phrases = (mascotData as Record<string, unknown>)[sectionId] as Phrase[];
   const n = phrases.length;
   const current = phrases[index];
   const mascot = mascotImg[sectionId] ?? mascotImg[sectionId.split("_")[0]];

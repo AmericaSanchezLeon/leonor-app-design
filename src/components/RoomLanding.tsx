@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useLeonor, t, type Lang } from "@/lib/leonor-context";
 import { RoomLandingLayout } from "@/components/RoomLandingLayout";
+import { hasDialogue } from "@/components/RoomDialogueCard";
 import { roomIcons, type RoomIconKey } from "@/lib/room-icons";
 import type { SectionContextId } from "@/lib/use-section-context";
 import type { ReactNode } from "react";
@@ -38,6 +39,11 @@ export function RoomLanding({
   const lang: Lang = language;
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [leftLink, rightLink] = links;
+  // Without a mascot dialogue card floating over the bottom of the screen,
+  // spread the two buttons closer to the edges so the room fills the height.
+  const roomHasDialogue = sectionId ? hasDialogue(sectionId) : true;
+  const leftAnchor = roomHasDialogue ? "top-1/4" : "top-[16%]";
+  const rightAnchor = roomHasDialogue ? "top-3/4" : "top-[84%]";
 
   // One random tilt per button, picked fresh on every mount (screen load).
   const leftTilt = useMemo(randomTilt, [leftLink?.to]);
@@ -81,7 +87,7 @@ export function RoomLanding({
     <RoomLandingLayout sectionId={sectionId}>
       <div className="relative flex flex-1 flex-col items-center justify-center px-4">
         {leftLink && (
-          <div className="absolute left-5 top-1/4 -translate-y-1/2">
+          <div className={`absolute left-5 -translate-y-1/2 ${leftAnchor}`}>
             {renderButton(leftLink, leftTilt)}
           </div>
         )}
@@ -96,7 +102,7 @@ export function RoomLanding({
         </div>
 
         {rightLink && (
-          <div className="absolute right-5 top-3/4 -translate-y-1/2">
+          <div className={`absolute right-5 -translate-y-1/2 ${rightAnchor}`}>
             {renderButton(rightLink, rightTilt)}
           </div>
         )}
