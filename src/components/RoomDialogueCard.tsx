@@ -26,14 +26,16 @@ type Variant = "room" | "internal";
 export function RoomDialogueCard({
   sectionId,
   variant = "room",
+  defaultOpen = false,
 }: {
   sectionId: string;
   variant?: Variant;
+  defaultOpen?: boolean;
 }) {
   const { language } = useLeonor();
   const lang: Lang = language;
   const [index, setIndex] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(defaultOpen);
   const startX = useRef<number | null>(null);
 
   const raw = (mascotData as Record<string, unknown>)[sectionId];
