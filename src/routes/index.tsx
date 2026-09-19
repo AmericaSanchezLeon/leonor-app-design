@@ -32,7 +32,7 @@ function HomePage() {
       <div className="relative flex flex-1 flex-col items-center justify-center px-4">
         <div className="text-center">
           <h1 className="text-6xl leading-tight">{t("Bienvenidx", "Welcomex", language)}</h1>
-          <p className="mx-auto mt-4 max-w-xs text-base">
+          <p className="mx-auto mt-4 max-w-xs font-serif text-base">
             {t(
               "a la Casa Estudio Leonora Carrington",
               "to the Leonora Carrington Casa Estudio",

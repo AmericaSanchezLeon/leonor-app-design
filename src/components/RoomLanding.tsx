@@ -89,7 +89,7 @@ export function RoomLanding({
         <div className="text-center">
           <h1 className="text-6xl leading-tight">{t(title_es, title_en, lang)}</h1>
           {(intro_es || intro_en) && (
-            <p className="mx-auto mt-4 max-w-xs text-base">
+            <p className="mx-auto mt-4 max-w-xs font-serif text-base">
               {t(intro_es ?? "", intro_en ?? "", lang)}
             </p>
           )}
