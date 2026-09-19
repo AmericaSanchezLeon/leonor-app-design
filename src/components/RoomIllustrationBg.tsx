@@ -81,7 +81,8 @@ export function RoomIllustrationBg({
       />
       {/* Twinkling sparkles: not masked to the illustration, so they can
           appear/fade anywhere across the section, not just inside the
-          line-art shapes. */}
+          line-art shapes. Golden-yellow with a soft glow so they read as
+          a diffuse glimmer rather than a crisp icon. */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
         {twinkles.map((s, i) => (
           <Sparkle
@@ -93,7 +94,8 @@ export function RoomIllustrationBg({
               left: `${s.left}%`,
               width: s.size,
               height: s.size,
-              color: "var(--leonor-cream)",
+              color: "#FFDE7A",
+              filter: "blur(0.6px) drop-shadow(0 0 6px #FFD24A)",
               animation: `sparkle-twinkle ${s.duration}s ease-in-out ${s.delay}s infinite`,
             }}
           />
