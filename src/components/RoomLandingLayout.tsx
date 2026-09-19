@@ -13,6 +13,8 @@ interface Props {
   sectionId?: SectionContextId;
   /** Render the mascot dialogue card anchored to the bottom. */
   withDialogue?: boolean;
+  /** Show the dialogue card open by default instead of collapsed to its bubble. */
+  dialogueDefaultOpen?: boolean;
   className?: string;
   children: ReactNode;
 }
@@ -24,6 +26,7 @@ interface Props {
 export function RoomLandingLayout({
   sectionId,
   withDialogue = true,
+  dialogueDefaultOpen = false,
   className,
   children,
 }: Props) {
@@ -45,7 +48,12 @@ export function RoomLandingLayout({
 
       <div className="relative z-[2] flex flex-1 flex-col">{children}</div>
 
-      {withDialogue && <RoomDialogueCard sectionId={id === "home" ? "lobby" : id} />}
+      {withDialogue && (
+        <RoomDialogueCard
+          sectionId={id === "home" ? "lobby" : id}
+          defaultOpen={dialogueDefaultOpen}
+        />
+      )}
     </div>
   );
 }
