@@ -54,7 +54,7 @@ export function RoomIllustrationBg({
   // rendered more than once at a time on wide viewports (duplicated into
   // the side letterboxes alongside the centered copy), so every instance
   // must resolve to the exact same gradient or the copies visibly seam.
-  const [a, b, c] = tones;
+  const [a, b, c, sparkleColor] = tones;
   const gradient = `linear-gradient(135deg, ${a}, ${b}, ${c}, ${a})`;
 
   if (!svg) return null;
@@ -81,8 +81,9 @@ export function RoomIllustrationBg({
       />
       {/* Twinkling sparkles: not masked to the illustration, so they can
           appear/fade anywhere across the section, not just inside the
-          line-art shapes. Golden-yellow with a soft glow so they read as
-          a diffuse glimmer rather than a crisp icon. */}
+          line-art shapes. Tinted with the room's own lightest tone (with a
+          matching glow) so each room's sparkles read as part of its palette
+          instead of one fixed color everywhere. */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
         {twinkles.map((s, i) => (
           <Sparkle
@@ -94,8 +95,8 @@ export function RoomIllustrationBg({
               left: `${s.left}%`,
               width: s.size,
               height: s.size,
-              color: "#FFDE7A",
-              filter: "blur(0.6px) drop-shadow(0 0 6px #FFD24A)",
+              color: sparkleColor,
+              filter: `blur(0.6px) drop-shadow(0 0 6px ${sparkleColor})`,
               animation: `sparkle-twinkle ${s.duration}s ease-in-out ${s.delay}s infinite`,
             }}
           />
